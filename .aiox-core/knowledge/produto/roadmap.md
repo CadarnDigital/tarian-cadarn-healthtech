@@ -1,26 +1,46 @@
-# Roadmap de Capacidades — {NOME_PRODUTO}
+# Roadmap — Cadarn Healthtech
 
-> Preencher no setup do Tarian. Atualizar a cada ciclo de planejamento.
+> Fonte: Design Brief Llif v1.0, Cap 6 do Corpus IA
+> **Cap 6 = HIPÓTESE Cadarn — a validar. Não é plano consolidado.**
 
-## Capacidades atuais (MVP)
+## Fase atual: Validação (piloto)
 
-| Capacidade | Status | Notas |
+**Objetivo:** Validar a jogada BPO Tech com 1-2 clientes-piloto antes de escalar.
+
+**Capacidades ativas — Llif:**
+
+| Capacidade | Status | Comando |
 |---|---|---|
-| (preencher) | ativo / em dev / planejado | |
+| Diagnóstico de corretora | ativo | `*diagnostico-corretora` |
+| Diagnóstico de clínica | ativo | `*diagnostico-clinica` |
+| Planilha de ROI | ativo | `*planilha-roi` |
+| Roteiro de venda consultiva | ativo | `*roteiro-venda-consultiva` |
+| E-mail de convite | ativo | `*email-convite` |
+| Apresentação comercial | ativo | `*apresentacao-comercial` |
+| Roadmap de validação | ativo | `*roadmap-validacao` |
+| Crossover (corretora↔clínica) | ativo | `*crossover` |
 
-## Próximo ciclo
+**Ponto de entrada PENDENTE:** martelo de Fabiano
+- Opção A: Delma / corretora → `*diagnostico-corretora`
+- Opção B: Alexandre / faturamento → `*diagnostico-clinica`
 
-| Capacidade | Prioridade | Dependências |
-|---|---|---|
-| (preencher) | alta / média / baixa | |
+---
 
-## Backlog (longo prazo)
+## Próximo ciclo: Operação [HIPÓTESE CADARN — a validar]
 
-- {CAPACIDADE_FUTURA_1}
-- {CAPACIDADE_FUTURA_2}
+**Trigger:** piloto validado + ROI real confirmado
+
+**O que muda:**
+- 2º agente nasce por cisão (comercial/SDR) — herda caps 3-4-5 de Llif
+- Llif foca em estratégia + entregáveis de alto valor
+- SDR assume prospecção e qualificação
+
+**Comando de cisão:** `*extend-squad cadarn-healthtech --add agent`
+
+---
 
 ## Decisões de não-fazer
 
-> O que foi explicitamente decidido que o produto NÃO vai fazer (e por quê)?
-
-- {NAO_FAZER_1} — Motivo: {MOTIVO}
+- **Produto SaaS antes de validar BPO** — Motivo: aprendizado de campo define o produto
+- **Integração técnica complexa na venda** — Motivo: anti-pattern do corpus (exige integração = trava)
+- **Liderar com IA na abordagem** — Motivo: IA entra no passo 3, nunca abre

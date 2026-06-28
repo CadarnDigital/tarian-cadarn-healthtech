@@ -1,30 +1,57 @@
-# ICP — Perfil do Usuário/Parceiro Ideal
+# ICP — Cadarn Healthtech
 
-> Preencher no setup do Tarian.
+> Fonte: Corpus IA caps 02-05, DNA-EXTRACT
 
-## Usuário Ideal
+## ICP Primário — Corretora de Planos de Saúde
 
-- **Perfil:** {PERFIL_USUARIO}
-- **Dor principal:** {DOR_PRINCIPAL}
-- **Ganho desejado:** {GANHO_DESEJADO}
-- **Canal de aquisição:** {CANAL}
+**Perfil:** PME corretora de planos de saúde, ES e Brasil
+**Dor central:** Cadastro de beneficiários manual, comissões desconciliadas, venda perdida por demora no processo
 
-## Parceiro Ideal (se aplicável)
+**Centro de compras (3 papéis):**
+- **Econômico:** proprietário-gestor (autoridade final)
+- **Técnico:** gerente operacional (validador do processo)
+- **Usuário:** analista de cadastro/comissão
 
-- **Perfil:** {PERFIL_PARCEIRO}
-- **Papel na operação:** {PAPEL_PARCEIRO}
+**Gatilho de compra:** Perda de comissão por erro de cadastro; cliente cancelando por demora; crescimento travado por backoffice manual
 
-## Jobs-to-be-Done
+**Oferta de entrada:** Diagnóstico de 20 movimentações (Raio-X de cadastro) — baixo risco, alto sinal
 
-> O que o usuário está tentando fazer quando recorre ao produto?
+---
 
-1. {JOB_1}
-2. {JOB_2}
-3. {JOB_3}
+## ICP Secundário — Clínica / Hospital
+
+**Perfil:** Clínica ou hospital de médio porte com faturamento interno
+**Dor central:** Glosas (68% administrativas, evitáveis), gap de caixa 32 dias, rejeição de guias TISS
+
+**Centro de compras (3 papéis):**
+- **Econômico:** diretoria financeira
+- **Técnico:** coordenador de faturamento / TI
+- **Usuário:** equipe de faturamento TISS
+
+**Gatilho de compra:** Glosa acima de 7%; caixa represado; auditoria ANS pendente
+
+**Oferta de entrada:** Raio-X de glosas (análise de lote XML TISS anonimizado) — prova técnica antes de qualquer compromisso
+
+---
 
 ## Anti-ICP
 
-> Quem NÃO é o usuário/parceiro ideal?
+- Operadoras de plano (são reguladoras, não clientes)
+- Corretoras de grande porte com TI próprio robusto
+- Clínicas sem faturamento TISS (sem o problema central)
 
-- {ANTI_ICP_1}
-- {ANTI_ICP_2}
+---
+
+## Dados de referência do mercado
+
+- Glosa média: 7-18% do faturamento bruto (68% de natureza administrativa — evitáveis) `[fonte: cap-04]`
+- Gap de caixa médio: 32 dias `[fonte: cap-04]`
+- Reajuste <30 vidas: 14,24% (2024) `[fonte: cap-02]`
+- VCMH médio: 15,1% `[fonte: cap-01]`
+
+---
+
+## LGPD Art. 11 — alerta permanente
+
+Dados de beneficiários e guias TISS são **dados sensíveis de saúde**.
+Gate @aegis obrigatório antes de qualquer flow com dados reais.

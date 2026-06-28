@@ -1,35 +1,42 @@
-# Index — Domain Knowledge
+# Index — Domain Knowledge: Saúde Suplementar
 
-> Este diretório contém o corpus técnico do domínio do produto.
-> Preencher no setup do Tarian com os arquivos reais do domínio.
+> Corpus técnico do domínio da Cadarn Healthtech.
+> Fonte: Corpus IA Saúde Suplementar (9 arquivos — minerado 2026-06-28).
 
-## O que vai aqui
+## Arquivos do corpus
 
-Conhecimento especializado e atemporal do setor/domínio:
-- Regulamentação e normas do setor
-- Protocolos técnicos
-- Benchmarks e dados de mercado
-- Pesquisas e estudos do domínio
+| Arquivo | Conteúdo |
+|---------|----------|
+| `00-indice.md` | Índice geral do corpus |
+| `01-mercado-saude-suplementar.md` | Panorama do mercado, regulação ANS, dados macro |
+| `02-corretora-perfil-operacao.md` | Perfil operacional da corretora, dores de cadastro/comissão |
+| `03-corretora-modelo-negocio.md` | Modelo de negócio, Crossover, Efeito Espelho, Insight de Ouro |
+| `04-faturamento-saude-clinicas-bpo.md` | Faturamento hospitalar, glosas, TISS, gap de caixa |
+| `05-decisor-jornada-compra.md` | Centro de compras (3 papéis), jornada de compra (8 etapas) |
+| `06-cadarn-modelo-oferta.md` | Jogada Cadarn — BPO Tech + IA. **Cap 6 = HIPÓTESE a validar** |
+| `07-anexo-perguntas-estrategicas.md` | Perguntas de diagnóstico por persona |
+| `08-anexo-glossario.md` | Glossário completo — léxico nativo do setor |
+| `DNA-EXTRACT.md` | Destilação do corpus — 7 dimensões de DNA do agente Llif |
 
-## Como carregar por tipo de tarefa
+## Carregar por tipo de tarefa
 
-> Atualizar esta seção no setup — mapear subtemas aos arquivos reais.
+| Tarefa Llif | Carregar prioritariamente |
+|-------------|--------------------------|
+| `*diagnostico-corretora` | cap 02, 03, 08, DNA-EXTRACT |
+| `*diagnostico-clinica` | cap 04, 08, DNA-EXTRACT |
+| `*planilha-roi` | cap 06 (**hipótese**), cap 03 ou 04 (métricas reais) |
+| `*roteiro-venda-consultiva` | cap 05, cap 02 ou 04 (por persona) |
+| `*email-convite` | cap 05, DNA-EXTRACT |
+| `*apresentacao-comercial` | caps 01-05 + DNA-EXTRACT |
+| `*roadmap-validacao` | cap 06, cap 07 |
+| `*crossover` | caps 02 + 04 (corretora vs clínica em paralelo) |
 
-| Tipo de tarefa | Arquivos a carregar |
-|---|---|
-| (preencher no setup) | (preencher no setup) |
+## Regra epistêmica — OBRIGATÓRIA para Llif
 
-## Estrutura sugerida
-
-```
-domain/
-├── INDEX.md              ← este arquivo
-├── regulamentacao/       ← leis, normas, resoluções
-├── protocolos/           ← protocolos técnicos do setor
-├── pesquisas/            ← benchmarks, estudos
-└── {subtema}/            ← conforme domínio específico
-```
+- **Caps 1-5 + Glossário = FATO** → afirmar e citar `[fonte: cap-0X]`
+- **Cap 6 + Anexo A = HIPÓTESE 🜂** → prefixo obrigatório `[HIPÓTESE CADARN — a validar]`
+- **ROI 211,7%** está no Cap 6 — NUNCA apresentar como benchmark de mercado
 
 ---
 
-*Atualizar este INDEX no setup do Tarian com os arquivos reais do domínio.*
+*Atualizado: 2026-06-28 | Fonte: Corpus IA minerado por Athena*

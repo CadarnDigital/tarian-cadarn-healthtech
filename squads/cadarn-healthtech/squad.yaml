@@ -1,0 +1,68 @@
+id: cadarn-healthtech
+name: Cadarn Healthtech
+version: 0.1.0
+created: 2026-06-28
+status: active
+
+description: >
+  Unidade de negócio Cadarn Healthtech — Engenharia de Fluxo para saúde
+  suplementar. Combate a Demora: glosa, cadastro travado, gargalo de TISS.
+  Squad-semente que migra para tarian-health na Fase de operação.
+  Cânone-mãe herdado da Cadarn Martech sob o Cadw.
+
+foundation:
+  positioning: "Engenharia de Fluxo — 'Onde a saúde emperra, nós fazemos fluir.'"
+  antagonist: "a Demora"
+  canon_inheritance: "Método C.A.D.A.R.N. + Hermès Tech + 6 valores — sob o Cadw"
+  migration_target: "tarian-health (Fase de operação) — cópia controlada, não fork"
+
+agents:
+  - id: llif
+    persona: Llif
+    file: agents/llif.md
+    skill: .claude/skills/cadarn-healthtech:llif/SKILL.md
+    scope: >
+      Estratégia e consultoria em saúde suplementar — diagnósticos de operação
+      (corretora e faturamento hospitalar), roteiro de venda consultiva,
+      planilha de ROI, crossover corretora × clínica, roadmap de validação.
+
+hierarchy:
+  decision_authority: Fabiano
+  canon_guardian: "Cadw (Emrys transversal)"
+  squad_members_active: 1
+  squad_members_planned:
+    - "comercial/SDR — cisão de Llif na Fase de operação (*extend-squad cadarn-healthtech --add agent)"
+
+# Via 3 (híbrido) — decisão B (Fabiano, 2026-06-28)
+# Squad copia os 3 artefatos operacionais leves (viajam para o Tarian com ele).
+# Corpus IA bruto (~228 KB) permanece em docs/cadarn-healthtech/Corpus IA/ como lastro de auditoria.
+# Quando o tarian-health nascer, o corpus vai junto em cópia controlada sob o Cadw.
+shared_config:
+  voice: "config/tom-de-voz-cadarn-healthtech-v1.0.md    (cópia controlada)"
+  brand: "config/dossie-marca-cadarn-healthtech-v0.1.md   (cópia controlada)"
+  domain_brain: "data/DNA-EXTRACT.md                      (cópia controlada — 88% confidence)"
+  domain_source_canon: >
+    docs/cadarn-healthtech/Corpus IA/ — LASTRO na HQ, NÃO duplicado.
+    ~228 KB, 8 capítulos + anexos + DNA-EXTRACT. Rastreabilidade de auditoria.
+
+squad_boundary:
+  faz:
+    - Diagnóstico de corretora (movimentações cadastrais, conciliação de comissões)
+    - Diagnóstico de faturamento hospitalar (raio-X de glosas TISS, 30-60 dias)
+    - Roteiro de venda consultiva 4 blocos (Abertura / Fiscal / Operacional / Estratégico)
+    - Planilha de ROI com dados reais do cliente (ROI 211,7% = referência marcada 🜂)
+    - Crossover automático (mesma base, discurso corretora × discurso clínica)
+    - E-mail de convite e apresentação comercial (gate transversal obrigatório)
+    - Roadmap de validação em 3 fases (Wizard of Oz / Design Partner)
+  nao_faz:
+    - Assessoria jurídica ou interpretação regulatória formal (ANS/TISS)
+    - Gestão de carteiras de investimento
+    - Atendimento ao paciente ou gestão clínica
+    - Integração técnica sistêmica (TI do cliente + Gage @devops)
+    - Push de IA como protagonista (IA entra no passo 3, nunca abre a mensagem)
+
+handoffs:
+  externos:
+    - advogado sanitarista (compliance ANS, interpretação regulatória formal)
+    - TI do cliente (integração de sistemas, acesso a XML TISS em produção)
+    - Gage (@devops) quando Llif identificar necessidade de infra/integração

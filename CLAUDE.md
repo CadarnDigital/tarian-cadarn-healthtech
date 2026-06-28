@@ -1,15 +1,15 @@
-# Tarian — {NOME_PRODUTO}
+# Tarian — Cadarn Healthtech
 
-> Este é um Tarian Cadarn para produto próprio: sistema de operação digital da Cadarn para o produto **{NOME_PRODUTO}**.
-> Operado por: {OPERADOR} | Framework: Synkra AIOX
+> Este é um Tarian Cadarn para produto próprio: sistema de operação digital da Cadarn para o produto **Cadarn Healthtech**.
+> Operado por: Fabiano + Gui | Framework: Synkra AIOX
 
 ## Produto
 
-- **Nome:** {NOME_PRODUTO}
-- **Domínio:** {DOMINIO}
-- **Vertical:** {VERTICAL}
-- **Operador:** {OPERADOR}
-- **Repositório:** CadarnDigital/tarian-cadarn-{slug-do-produto}
+- **Nome:** Cadarn Healthtech
+- **Domínio:** Saúde Suplementar
+- **Vertical:** Healthtech
+- **Operador:** Fabiano + Gui
+- **Repositório:** CadarnDigital/tarian-cadarn-healthtech
 - **Status:** em operação
 
 ## Knowledge Base
@@ -56,14 +56,20 @@ Use `@agent-name` ou `/AIOX:agents:agent-name`.
 
 ### Squads Ativas
 
-> Preencher no setup: listar squads e agentes ativados para este produto.
-
 | Squad | Agentes ativos | Escopo no produto |
 |-------|---------------|-------------------|
-| (preencher) | (preencher) | (preencher) |
+| `cadarn-healthtech` | **Llif** | Diagnóstico, ROI, roteiro de venda, apresentação comercial — agente principal do produto |
+| `cadarn-comercial` | Caio, Camaleão, Gestor-funil | Pipeline de vendas B2B Healthtech |
+| `cadarn-juridica` | Especialista LGPD | Contratos, LGPD Art. 11 (dados de saúde), conformidade TISS |
+| `cadarn-operacional` | Account-orchestrator, CS | Onboarding de parceiros (corretoras e clínicas) |
 
-### Squad de Produto (específica deste Tarian)
-Definida em `squads/cadarn-{produto}/` — criar no setup.
+### Skill do produto
+```
+/cadarn-healthtech:llif
+```
+
+### Squad de Produto
+Definida em `squads/cadarn-healthtech/` — Llif operacional.
 
 ## Git
 
@@ -73,7 +79,7 @@ Definida em `squads/cadarn-{produto}/` — criar no setup.
 
 ## Cowork
 
-- Project: "Tarian {NOME_PRODUTO} — Operação"
+- Project: "Tarian Cadarn Healthtech — Operação"
 - Knowledge base carregada: corpus de domínio + DNA do produto
 - Conectores: conforme stack do produto
 
