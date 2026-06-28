@@ -1,0 +1,133 @@
+# Calendário Editorial Template — Squad Cadarn Marketing
+# Framework: Rafael Kiso — Jornada 5-fases + Método Cadarn (Console S.I.C.)
+# Agentes: Cadarn (Estrategista) + Pulso (Social Media)
+# Replicável para clientes Tarian
+
+template:
+  name: calendario-editorial
+  version: "1.0.0"
+  description: "Calendário editorial: pilares, slots por dia, formatos, fases da jornada"
+  squad: cadarn-marketing
+  agents: [estrategista, social-media]
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - pilares_conteudo
+    - tom_de_voz
+
+params:
+  cliente:
+    nome: "{{cliente_nome}}"
+    periodo: "{{data_inicio}} a {{data_fim}}"
+    canais: ["{{canal_1}}", "{{canal_2}}"]
+    frequencia_semanal: "{{posts_por_semana}}"
+
+# ============================================================
+# PILARES DE CONTEÚDO
+# ============================================================
+
+pilares:
+  regra: "3-4 pilares máximo. Cada um com objetivo de funil e % do calendário."
+  distribuicao_jornada:
+    descoberta: "30%"
+    engajamento: "35%"
+    conversao: "20%"
+    retencao: "15%"
+
+  lista:
+    - id: P1
+      nome: "{{pilar_1}}"
+      objetivo_funil: "Descoberta | Engajamento | Conversão | Retenção"
+      percentual: "{{X}}%"
+      formatos_ideais: ["Reel", "Carrossel"]
+      descricao: "{{sobre_o_que_trata}}"
+
+    - id: P2
+      nome: "{{pilar_2}}"
+      objetivo_funil: ""
+      percentual: "{{X}}%"
+      formatos_ideais: []
+      descricao: ""
+
+    - id: P3
+      nome: "{{pilar_3}}"
+      objetivo_funil: ""
+      percentual: "{{X}}%"
+      formatos_ideais: []
+      descricao: ""
+
+# ============================================================
+# REGRAS DE CANAL
+# ============================================================
+
+regras_canal:
+  instagram:
+    formatos: "Reels (60%), Carrossel (25%), Stories (10%), Post (5%)"
+    horarios: "{{horarios_baseados_no_publico}}"
+    hashtags: "Máx 5, alta relevância"
+    stories: "Mín 3/dia em dias de publicação"
+  whatsapp:
+    frequencia: "Máx 2x/semana"
+    tipo: "Status + Lista de transmissão"
+    regra: "Canal íntimo — nunca spam"
+  site_blog:
+    frequencia: "{{X}}/mês"
+    foco: "SEO long-tail, autoridade"
+  outros: []
+
+# ============================================================
+# SLOTS DO CALENDÁRIO
+# ============================================================
+
+slots:
+  # Semana 1
+  - data: "{{YYYY-MM-DD}}"
+    dia_semana: "Segunda"
+    canal: "Instagram"
+    pilar: "P1"
+    formato: "Reel"
+    tema_gancho: "{{1 linha descritiva}}"
+    fase_jornada: "Descoberta"
+    agente_criacao: "Logos (copy) + Magnética (roteiro)"
+    agente_design: "Pixel"
+    status: "[ ] Pendente"
+
+  - data: "{{YYYY-MM-DD}}"
+    dia_semana: "Quarta"
+    canal: "Instagram"
+    pilar: "P2"
+    formato: "Carrossel"
+    tema_gancho: ""
+    fase_jornada: "Engajamento"
+    agente_criacao: "Logos (copy) + Iris (direção)"
+    agente_design: "Pixel"
+    status: "[ ] Pendente"
+
+  - data: "{{YYYY-MM-DD}}"
+    dia_semana: "Sexta"
+    canal: "Instagram"
+    pilar: "P3"
+    formato: "Reel"
+    tema_gancho: ""
+    fase_jornada: "Conversão"
+    agente_criacao: "Logos (copy) + Magnética (roteiro)"
+    agente_design: "Pixel"
+    status: "[ ] Pendente"
+
+  # ... repetir para cada semana do período
+
+# ============================================================
+# MÉTRICAS DE ACOMPANHAMENTO
+# ============================================================
+
+metricas:
+  semanal:
+    - "Alcance total"
+    - "Engajamento médio (%)"
+    - "Novos seguidores"
+  mensal:
+    - "{{kpi_estrela_1}}"
+    - "{{kpi_estrela_2}}"
+    - "{{kpi_estrela_3}}"
+  task_analise: "run-performance-analysis"

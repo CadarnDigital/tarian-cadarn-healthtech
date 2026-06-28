@@ -1,0 +1,43 @@
+name: cadarn-{PRODUTO}
+version: 1.0.0
+description: Squad do produto {NOME_PRODUTO} — preencher no setup do Tarian
+author: Cadarn Digital
+license: UNLICENSED
+
+aiox:
+  minVersion: "2.1.0"
+  type: squad
+
+# ICP — preencher no setup
+icp:
+  primary: "{PERFIL_USUARIO_PARCEIRO}"
+  segments:
+    - (preencher)
+  ticket_range: "{TICKET}"
+  ciclo: "{CICLO}"
+
+# Hierarquia
+hierarchy:
+  decision_authority: "Fabiano (decisão final absoluta)"
+  squad_leader: "{AGENTE_LEAD} — Lead do Produto"
+
+# Agentes — preencher no setup
+agents: []
+# Exemplo:
+# - id: llif
+#   name: Llif
+#   role: Agente principal do produto
+#   layer: fundacao
+#   status: ativo
+#   knowledge_path:
+#     - ".aiox-core/knowledge/domain/"
+#     - ".aiox-core/knowledge/produto/"
+
+config:
+  extends: extend
+  language: pt-BR
+
+tags:
+  - produto-cadarn
+  - "{VERTICAL}"
+  - "{SLUG_PRODUTO}"

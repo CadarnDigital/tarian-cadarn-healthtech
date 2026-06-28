@@ -1,0 +1,155 @@
+# Contrato PJ Anti-Pejotização — Squad Cadarn Jurídica
+# Framework: CLT Art. 3 + Matriz de Subordinação
+# Agente: Ergon (Especialista Trabalhista) + Themis (revisão)
+# Replicável para clientes Tarian
+
+template:
+  name: contrato-pj-antiprecarizacao
+  version: "1.0.0"
+  description: "Modelo de contrato PJ/freelancer com cláusulas que afastam vínculo empregatício"
+  squad: cadarn-juridica
+  agent: especialista-trabalhista
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+
+# Parâmetros
+params:
+  contratante:
+    nome: "{{contratante_nome}}"
+    cnpj: "{{contratante_cnpj}}"
+  contratado:
+    nome: "{{contratado_nome}}"
+    cnpj: "{{contratado_cnpj}}"
+    funcao: "{{funcao: designer | gestor-trafego | redator | dev | corretor | outro}}"
+
+# ============================================================
+# 6 CLÁUSULAS ANTI-PEJOTIZAÇÃO
+# ============================================================
+
+clausulas:
+
+  - id: AP1
+    nome: "Autonomia de Métodos e Horários"
+    objetivo: "Afastar SUBORDINAÇÃO (Art. 3 CLT)"
+    conteudo: |
+      O CONTRATADO tem liberdade para definir:
+      - Métodos de execução do trabalho
+      - Horários de trabalho
+      - Local de execução (presencial, remoto ou híbrido)
+      - Ferramentas e equipamentos próprios
+
+      O CONTRATANTE define RESULTADOS esperados, nunca o PROCESSO.
+    red_flags:
+      - "Horário fixo imposto pelo contratante"
+      - "Obrigação de presença em escritório"
+      - "Ferramentas fornecidas exclusivamente pelo contratante"
+
+  - id: AP2
+    nome: "Possibilidade de Prepostos"
+    objetivo: "Afastar PESSOALIDADE (Art. 3 CLT)"
+    conteudo: |
+      O CONTRATADO pode designar prepostos ou subcontratados para
+      execução parcial ou total dos serviços, desde que mantenha
+      a qualidade contratada. A comunicação de substituição deve
+      ser feita com antecedência razoável.
+    red_flags:
+      - "Proibição de enviar substitutos"
+      - "Exigência de execução pessoal exclusiva"
+
+  - id: AP3
+    nome: "Declaração de Não-Exclusividade"
+    objetivo: "Afastar HABITUALIDADE vinculativa"
+    conteudo: |
+      O CONTRATADO declara atender múltiplos clientes simultaneamente
+      e que a presente contratação não implica exclusividade.
+      O CONTRATANTE reconhece e aceita esta condição.
+    red_flags:
+      - "Cláusula de dedicação exclusiva"
+      - "Proibição de atender concorrentes sem compensação"
+
+  - id: AP4
+    nome: "Risco do Negócio"
+    objetivo: "Afastar proteção CLT"
+    conteudo: |
+      O CONTRATADO assume:
+      - Custos operacionais próprios (equipamentos, software, internet)
+      - Responsabilidade tributária (ISS, IRPJ, CSLL)
+      - Emissão de NF obrigatória para cada pagamento
+      - Risco de inadimplência de seus próprios clientes
+    red_flags:
+      - "Contratante fornece tudo (laptop, software, celular)"
+      - "Pagamento sem NF"
+
+  - id: AP5
+    nome: "Avaliação por Resultado"
+    objetivo: "Reforçar natureza B2B"
+    conteudo: |
+      A avaliação do CONTRATADO será exclusivamente por RESULTADO
+      entregue, não por horas trabalhadas ou presença. Entregas
+      são medidas por indicadores objetivos definidos neste contrato.
+
+      Indicadores de entrega:
+      {{lista de entregas e critérios de aceitação}}
+    red_flags:
+      - "Controle de ponto ou timesheet"
+      - "Avaliação por comportamento/atitude"
+
+  - id: AP6
+    nome: "Rescisão e Prazo"
+    objetivo: "Contrato por projeto, não por tempo indefinido"
+    conteudo: |
+      Prazo: {{prazo_meses}} meses, renovável por aditivo escrito.
+      Aviso prévio para rescisão: 15 dias.
+      Não há verbas rescisórias trabalhistas (natureza civil).
+
+# ============================================================
+# DIAGNÓSTICO DE RISCO (pré-contrato)
+# ============================================================
+
+diagnostico:
+  descricao: "Aplicar ANTES de assinar o contrato para verificar se a relação é realmente B2B"
+  requisitos_clt:
+    - id: R1
+      nome: "Pessoalidade"
+      pergunta: "Só essa pessoa pode executar?"
+      risco_alto: "Sim, insubstituível"
+      risco_baixo: "Pode enviar prepostos"
+
+    - id: R2
+      nome: "Onerosidade"
+      pergunta: "Recebe pagamento?"
+      nota: "Sempre presente — não é diferenciador"
+
+    - id: R3
+      nome: "Habitualidade"
+      pergunta: "Trabalha com que frequência?"
+      risco_alto: "Diário, há meses"
+      risco_baixo: "Por projeto/demanda"
+
+    - id: R4
+      nome: "Subordinação"
+      matriz:
+        - "Define horário? (contratante = subordinação)"
+        - "Define método? (contratante = subordinação)"
+        - "Controla ferramentas? (contratante = subordinação)"
+        - "Aplica punições? (contratante = subordinação)"
+        - "Integra organização? (sim = subordinação)"
+
+  scoring:
+    baixo: "0-1 requisitos presentes"
+    medio: "2 requisitos presentes — AJUSTAR contrato"
+    alto: "3-4 requisitos presentes — RECONFIGURAR relação"
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+
+anti_patterns:
+  - "Contrato PJ com horário fixo"
+  - "Contrato PJ com dedicação exclusiva sem compensação"
+  - "Pagamento sem NF"
+  - "Contratado usa só ferramentas do contratante"
+  - "Avaliação por horas em vez de entregas"
+  - "Contrato por prazo indeterminado sem projeto definido"

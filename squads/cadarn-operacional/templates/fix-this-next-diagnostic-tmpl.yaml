@@ -1,0 +1,248 @@
+# Fix This Next Diagnostic Template — Squad Cadarn Operacional
+# Framework: Mike Michalowicz — Fix This Next (Business Hierarchy of Needs)
+# Agente: Vault (Gestor Financeiro)
+# Replicável para clientes Tarian
+
+template:
+  name: fix-this-next-diagnostic
+  version: "1.0.0"
+  description: "Diagnóstico da pirâmide Business Hierarchy of Needs — identificar a Vital Need"
+  squad: cadarn-operacional
+  agent: financeiro
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - tom_de_voz
+
+# Parâmetros
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+    estagio: "{{estagio}}"  # startup, crescimento, maturidade
+    principal_dor: "{{principal_dor}}"
+
+# ============================================================
+# BUSINESS HIERARCHY OF NEEDS — PIRÂMIDE
+# ============================================================
+# REGRA ABSOLUTA: Resolver o nível MAIS BAIXO com necessidade
+# não atendida ANTES de subir. Igual Maslow.
+# ============================================================
+
+piramide:
+
+  # NÍVEL 1 — BASE
+  - nivel: 1
+    nome: SALES
+    descricao: "Geração de caixa — a empresa consegue trazer dinheiro?"
+    analogia_maslow: "Necessidades fisiológicas"
+    prioridade: "Se este nível está quebrado, NADA mais importa"
+
+    core_needs:
+      - id: S1
+        nome: "Lifestyle Congruence"
+        pergunta: "A receita cobre seu estilo de vida mínimo como empreendedor?"
+        sinal_problema: "Sócio tirando menos que um CLT equivalente"
+        sinal_saudavel: "Pró-labore cobre custos pessoais com folga"
+
+      - id: S2
+        nome: "Prospect Attraction"
+        pergunta: "Prospects qualificados chegam de forma previsível?"
+        sinal_problema: "Depende de indicação aleatória ou 'momento'"
+        sinal_saudavel: "Pipeline de leads com fonte identificável"
+
+      - id: S3
+        nome: "Client Conversion"
+        pergunta: "Prospects viram clientes com taxa previsível?"
+        sinal_problema: "Taxa de conversão desconhecida ou <10%"
+        sinal_saudavel: "Processo de venda documentado com métricas"
+
+      - id: S4
+        nome: "Delivering on Commitments"
+        pergunta: "Entrega o que prometeu, no prazo?"
+        sinal_problema: "Atrasos constantes, retrabalho, cliente insatisfeito"
+        sinal_saudavel: ">90% no prazo, NPS positivo"
+
+      - id: S5
+        nome: "Collecting"
+        pergunta: "Recebe o que é devido, no prazo?"
+        sinal_problema: "Inadimplência >10%, cobrar é constrangedor"
+        sinal_saudavel: "Recebimento automatizado, inadimplência <5%"
+
+  # NÍVEL 2
+  - nivel: 2
+    nome: PROFIT
+    descricao: "Estabilidade financeira — a empresa é sustentável?"
+    analogia_maslow: "Segurança"
+    prerequisito: "SALES deve estar saudável"
+
+    core_needs:
+      - id: P1
+        nome: "Debt Eradication"
+        pergunta: "A empresa está se livrando de dívidas (ou nunca teve)?"
+        sinal_problema: "Dívida crescente, usando crédito para operar"
+        sinal_saudavel: "Sem dívida ou plano ativo de quitação"
+
+      - id: P2
+        nome: "Margin Health"
+        pergunta: "A margem de lucro está saudável para o setor?"
+        sinal_problema: "Margem <10% para serviços (deveria ser 40-75%)"
+        sinal_saudavel: "Margem dentro dos TAPs do Profit First"
+
+      - id: P3
+        nome: "Transaction Frequency"
+        pergunta: "Clientes compram mais de uma vez / fazem upsell?"
+        sinal_problema: "Cada cliente compra uma vez e some"
+        sinal_saudavel: "Retainers, renovações, pacotes adicionais"
+
+      - id: P4
+        nome: "Profitable Leverage"
+        pergunta: "A empresa pode crescer sem aumentar custos proporcionalmente?"
+        sinal_problema: "Para faturar 2x, precisa gastar 2x"
+        sinal_saudavel: "Processos escaláveis, automação, templates"
+
+      - id: P5
+        nome: "Cash Reserves"
+        pergunta: "Tem reserva para 3+ meses de operação?"
+        sinal_problema: "Vive mês a mês, qualquer imprevisto é crise"
+        sinal_saudavel: "3-6 meses de reserva na conta de lucro"
+
+  # NÍVEL 3
+  - nivel: 3
+    nome: ORDER
+    descricao: "Eficiência organizacional — a empresa funciona sem o dono?"
+    analogia_maslow: "Pertencimento"
+    prerequisito: "PROFIT deve estar saudável"
+
+    core_needs:
+      - id: O1
+        nome: "Minimized Waste"
+        pergunta: "Processos são eficientes? Sem retrabalho, desperdício, redundância?"
+        sinal_problema: "Mesma tarefa feita 2x, reuniões sem resultado"
+        sinal_saudavel: "SOPs documentados, processos enxutos"
+
+      - id: O2
+        nome: "Role Alignment"
+        pergunta: "Cada pessoa está no papel certo (Working Genius alinhado)?"
+        sinal_problema: "Pessoas frustradas, talentos mal aproveitados"
+        sinal_saudavel: "Papéis claros, alocação por gênio"
+
+      - id: O3
+        nome: "Outcome Delegation"
+        pergunta: "Delega resultado, não tarefa?"
+        sinal_problema: "Micromanagement, dono envolvido em tudo"
+        sinal_saudavel: "'Quero X resultado até Y data' — o como é do time"
+
+      - id: O4
+        nome: "Linchpin Redundancy"
+        pergunta: "Se a pessoa-chave sumir, a empresa sobrevive?"
+        sinal_problema: "Uma pessoa é insubstituível (inclui o dono)"
+        sinal_saudavel: "Documentação, cross-training, backup"
+
+      - id: O5
+        nome: "Mastery Reputation"
+        pergunta: "A empresa é reconhecida como referência no que faz?"
+        sinal_problema: "Compete por preço, sem diferencial claro"
+        sinal_saudavel: "Clientes vêm por reputação, não por preço"
+
+  # NÍVEL 4
+  - nivel: 4
+    nome: IMPACT
+    descricao: "Transformação — a empresa faz diferença real?"
+    analogia_maslow: "Estima"
+    prerequisito: "ORDER deve estar saudável"
+
+    core_needs:
+      - id: I1
+        nome: "Transaction Transformation"
+        pergunta: "Cada transação transforma o cliente de forma significativa?"
+
+      - id: I2
+        nome: "Mission Motivation"
+        pergunta: "O time é motivado pela missão, não só pelo salário?"
+
+      - id: I3
+        nome: "Dream Alignment"
+        pergunta: "Os sonhos do time se alinham com os da empresa?"
+
+      - id: I4
+        nome: "Feedback Integrity"
+        pergunta: "O feedback do mercado é positivo e consistente?"
+
+      - id: I5
+        nome: "Complementary Network"
+        pergunta: "Parcerias estratégicas amplificam o impacto?"
+
+  # NÍVEL 5 — TOPO
+  - nivel: 5
+    nome: LEGACY
+    descricao: "Permanência — a empresa sobrevive sem o fundador?"
+    analogia_maslow: "Auto-realização"
+    prerequisito: "IMPACT deve estar saudável"
+
+    core_needs:
+      - id: L1
+        nome: "Community Continuance"
+        pergunta: "A comunidade que a empresa criou se sustenta?"
+
+      - id: L2
+        nome: "Intentional Leadership Turn"
+        pergunta: "A liderança pode ser transferida de forma planejada?"
+
+      - id: L3
+        nome: "Heart-Based Promoters"
+        pergunta: "Clientes promovem a empresa por convicção?"
+
+      - id: L4
+        nome: "Quarter Turn Scalability"
+        pergunta: "O modelo pode ser replicado em novos mercados?"
+
+      - id: L5
+        nome: "Ongoing Adaptation"
+        pergunta: "A empresa se adapta continuamente sem o fundador?"
+
+# ============================================================
+# PROTOCOLO DE DIAGNÓSTICO
+# ============================================================
+
+protocolo:
+  regra: "De BAIXO para CIMA. Parar no primeiro nível com necessidade não atendida"
+
+  passos:
+    - passo: 1
+      acao: "Começar por SALES — responder as 5 perguntas"
+      nota: "Se QUALQUER need de SALES está 'problema', PARAR AQUI"
+
+    - passo: 2
+      acao: "Se SALES saudável, subir para PROFIT"
+      nota: "Repetir: se qualquer need está 'problema', parar"
+
+    - passo: 3
+      acao: "Continuar subindo até encontrar o nível com problema"
+
+    - passo: 4
+      acao: "No nível encontrado, identificar a VITAL NEED"
+      nota: "Vital Need = a need que, se resolvida, resolve ou facilita as outras"
+
+    - passo: 5
+      acao: "Criar plano de ação focado APENAS na Vital Need"
+      nota: "NÃO resolver tudo de uma vez. Uma coisa por vez"
+
+  output:
+    - "Nível atual da pirâmide (SALES/PROFIT/ORDER/IMPACT/LEGACY)"
+    - "Status de cada need no nível (saudável/problema)"
+    - "Vital Need identificada"
+    - "Plano de ação: 3-5 ações concretas para resolver a Vital Need"
+    - "Prazo: 30-90 dias"
+    - "Data de reassessment"
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+anti_patterns:
+  - "Tentar resolver ORDER (eficiência) com SALES quebrado"
+  - "Investir em IMPACT (branding) sem PROFIT (caixa) resolvido"
+  - "Resolver 5 needs ao mesmo tempo em vez de focar na Vital Need"
+  - "Ignorar SALES porque 'já vende' — sempre verificar as 5 needs"
+  - "Pular para LEGACY ('quero vender a empresa') sem ter passado pelos 4 níveis"
+  - "Diagnosticar uma vez e nunca reassessar"

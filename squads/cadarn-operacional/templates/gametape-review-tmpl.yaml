@@ -1,0 +1,206 @@
+# Gametape Review Template — Squad Cadarn Operacional
+# Framework: Leila Hormozi — Gametape Review (7 passos)
+# Agente: Scala (Líder Operacional)
+# Replicável para clientes Tarian
+
+template:
+  name: gametape-review
+  version: "1.0.0"
+  description: "Sessão de Gametape Review: revisar interações reais para coaching baseado em evidência"
+  squad: cadarn-operacional
+  agent: lider-operacional
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - padrao_atendimento
+    - tom_de_voz
+
+# Parâmetros
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+  sessao:
+    tipo: "{{tipo}}"  # vendas | atendimento | reuniao | entrega
+    data: "{{data_sessao}}"
+    participantes: "{{participantes}}"
+    gravacao: "{{link_ou_descricao}}"
+
+# ============================================================
+# O QUE É GAMETAPE REVIEW
+# ============================================================
+
+conceito:
+  descricao: |
+    Gametape Review vem do esporte: times assistem às gravações dos jogos para
+    analisar o que funcionou e o que precisa melhorar. Aplicado ao negócio,
+    significa revisar interações REAIS com clientes/time para coaching
+    baseado em EVIDÊNCIA, não opinião.
+
+  regra_ouro: "NÃO é punitivo — é coaching. Ambiente de aprendizado, não julgamento"
+  frequencia: "Semanal (1-2 interações por semana)"
+  duracao: "30-60 minutos por sessão"
+
+# ============================================================
+# TIPOS DE GAMETAPE
+# ============================================================
+
+tipos:
+  - tipo: vendas
+    o_que_gravar: "Reuniões de vendas, calls de prospecção, apresentações de proposta"
+    o_que_analisar:
+      - "Tom de voz e confiança"
+      - "Escuta ativa (quanto o vendedor fala vs ouve)"
+      - "Qualificação do lead (perguntas certas?)"
+      - "Tratamento de objeções"
+      - "Call to action claro"
+    metrica_impacto: "Taxa de conversão"
+
+  - tipo: atendimento
+    o_que_gravar: "Interações com clientes (chat, email, ligação)"
+    o_que_analisar:
+      - "Tempo de resposta"
+      - "Empatia (H.E.R.E. method aplicado?)"
+      - "Resolução no primeiro contato"
+      - "Tom de voz alinhado com a marca"
+      - "Follow-up após resolução"
+    metrica_impacto: "NPS, tempo de resolução"
+
+  - tipo: reuniao
+    o_que_gravar: "Reuniões internas (weekly, planning, retro)"
+    o_que_analisar:
+      - "Agenda clara e respeitada"
+      - "Todos participam ou 1 pessoa domina?"
+      - "Decisões são tomadas e registradas"
+      - "Tempo respeitado"
+      - "Ações concretas definidas (quem, o quê, quando)"
+    metrica_impacto: "Produtividade, comprometimento"
+
+  - tipo: entrega
+    o_que_gravar: "Apresentações de resultado, kickoffs, entregas para cliente"
+    o_que_analisar:
+      - "Clareza da comunicação"
+      - "Dados/métricas apresentados"
+      - "Reação do cliente (entusiasmo, dúvida, frustração)"
+      - "Próximos passos definidos"
+      - "Experiência geral (Five Star Service?)"
+    metrica_impacto: "Satisfação do cliente, renovação"
+
+# ============================================================
+# OS 7 PASSOS DO GAMETAPE REVIEW
+# ============================================================
+
+passos:
+
+  - passo: 1
+    nome: "Gravar"
+    instrucao: "Gravar a interação (com permissão quando necessário)"
+    ferramentas:
+      - "Google Meet / Zoom (gravação nativa)"
+      - "Loom (assíncrono)"
+      - "WhatsApp (prints de conversa)"
+      - "Email (thread completa)"
+    nota: "Se não pode gravar, anotar em tempo real (menos eficaz mas funciona)"
+
+  - passo: 2
+    nome: "Selecionar"
+    instrucao: "Escolher 1-2 interações da semana para revisar"
+    criterios:
+      - "Interação que deu certo e não se sabe por quê (replicar)"
+      - "Interação que deu errado e precisa entender (corrigir)"
+      - "Interação com cliente importante (alto impacto)"
+      - "Interação de membro novo do time (acelerar aprendizado)"
+    nota: "NÃO escolher sempre o pior caso — alternar entre bons e ruins"
+
+  - passo: 3
+    nome: "Assistir"
+    instrucao: "Assistir/ler a interação completa SEM interrupção"
+    regras:
+      - "Todos assistem juntos (síncrono)"
+      - "ZERO comentários durante a reprodução"
+      - "Cada pessoa anota individualmente"
+      - "Tomar notas em 3 categorias: Funcionou / Não funcionou / Faria diferente"
+
+  - passo: 4
+    nome: "Anotar"
+    instrucao: "Cada participante preenche suas anotações"
+    formato: |
+      | Timestamp/Momento | Funcionou | Não funcionou | Faria diferente |
+      |-------------------|-----------|---------------|-----------------|
+      | (momento)         | (o quê)   | (o quê)       | (como)          |
+
+  - passo: 5
+    nome: "Discutir"
+    instrucao: "Discussão em grupo baseada em EVIDÊNCIA (não opinião)"
+    regras:
+      - "Começar pelo que FUNCIONOU (positivo primeiro)"
+      - "Depois o que não funcionou (com evidência específica)"
+      - "Pessoa da interação fala por ÚLTIMO (ouvir antes de defender)"
+      - "Foco em COMPORTAMENTO, não PESSOA ('a pergunta não qualificou' vs 'você é ruim')"
+      - "Máximo 15 minutos de discussão por interação"
+
+  - passo: 6
+    nome: "Identificar Padrão"
+    instrucao: "Buscar padrões recorrentes (bons e ruins)"
+    perguntas:
+      - "Isso já aconteceu antes?"
+      - "Outros membros do time fazem a mesma coisa?"
+      - "É um problema pontual ou sistêmico?"
+    nota: "Padrão = oportunidade de SOP ou treinamento"
+
+  - passo: 7
+    nome: "Ação"
+    instrucao: "Definir ação concreta baseada no que foi identificado"
+    opcoes:
+      bom_padrao:
+        - "Criar SOP para replicar (documentar com Kairos)"
+        - "Compartilhar como exemplo para o time"
+        - "Reconhecer publicamente (reforço positivo)"
+      mau_padrao:
+        - "Criar SOP para prevenir"
+        - "Treinar o time no comportamento correto"
+        - "Ajustar processo (se o erro é do sistema, não da pessoa)"
+    regra: "SEMPRE sair com pelo menos 1 ação concreta. Sem ação = perda de tempo"
+
+# ============================================================
+# TEMPLATE DA SESSÃO
+# ============================================================
+
+sessao_template:
+  formato: |
+    # Gametape Review — {{data}}
+
+    **Tipo:** {{tipo}}
+    **Participantes:** {{participantes}}
+    **Interação revisada:** {{descricao}}
+
+    ## Anotações
+    | Momento | Funcionou | Não funcionou | Faria diferente |
+    |---------|-----------|---------------|-----------------|
+    |         |           |               |                 |
+
+    ## Padrões Identificados
+    - Positivo: ...
+    - Negativo: ...
+
+    ## Ações
+    | Ação | Responsável | Prazo | Tipo (SOP/Treino/Ajuste) |
+    |------|-------------|-------|--------------------------|
+    |      |             |       |                          |
+
+    ## Próxima Sessão
+    Data: {{próxima_data}}
+    Tipo sugerido: {{tipo}}
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+anti_patterns:
+  - "Usar Gametape para punir ('viu o que você fez?')"
+  - "Só revisar interações ruins (reforço > punição)"
+  - "Comentar durante a reprodução (contamina percepção)"
+  - "Pessoa revisada fala primeiro (defensiva imediata)"
+  - "Foco em pessoa em vez de comportamento"
+  - "Sessão sem ação concreta no final"
+  - "Fazer esporadicamente ('quando der')"
+  - "Não gravar por preguiça e tentar 'lembrar' depois"

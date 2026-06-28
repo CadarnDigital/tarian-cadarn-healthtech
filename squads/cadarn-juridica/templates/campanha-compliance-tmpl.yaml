@@ -1,0 +1,162 @@
+# Campanha Compliance Template — Squad Cadarn Jurídica
+# Framework: CDC + CONAR + Regulamentação Setorial
+# Agente: Aequitas (Especialista Consumidor & Publicidade)
+# Replicável para clientes Tarian
+
+template:
+  name: campanha-compliance
+  version: "1.0.0"
+  description: "Auditoria de compliance publicitário em 8 etapas para campanhas de marketing digital"
+  squad: cadarn-juridica
+  agent: especialista-consumidor
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - tom_de_voz
+
+# Parâmetros
+params:
+  campanha:
+    descricao: "{{descricao}}"
+    canal: "{{canal}}"
+    setor: "{{setor}}"
+    tipo: "{{tipo: post | anuncio | video | landing | email | whatsapp}}"
+
+# ============================================================
+# PIPELINE DE 8 ETAPAS
+# ============================================================
+
+etapas:
+
+  - id: P1
+    nome: "Identificação Publicitária"
+    fundamentacao: "CONAR Art. 28 + Art. 36 CDC"
+    verificar:
+      - "Conteúdo é claramente identificado como publicidade"
+      - "Se influencer: #publi ou #ad presente (CONAR Anexo P)"
+      - "Se branded content: relação comercial declarada"
+      - "Publicidade subliminar ausente"
+
+  - id: P2
+    nome: "Veracidade"
+    fundamentacao: "Art. 37 CDC"
+    verificar:
+      - "Claims são comprováveis com evidências"
+      - "Dados estatísticos têm fonte citada"
+      - "Depoimentos são reais e documentados"
+      - "Imagens correspondem ao produto/serviço real"
+      - "Preço anunciado é praticável"
+
+  - id: P3
+    nome: "Publicidade Abusiva"
+    fundamentacao: "Art. 37 §2 CDC"
+    verificar:
+      - "Não explora medo ou superstição"
+      - "Não é discriminatória"
+      - "Não incita violência"
+      - "Não explora público vulnerável (crianças, idosos)"
+      - "Não apela para autoridade indevida"
+
+  - id: P4
+    nome: "Regulamentação Setorial"
+    setores:
+      saude:
+        normas: "CFM 2.336/2023, ANVISA, CRO 196/2019, CRP"
+        proibicoes:
+          - "Antes/depois sem autorização do conselho"
+          - "Garantia de resultado em procedimento"
+          - "Preço como atrativo principal"
+      imobiliario:
+        normas: "CRECI, COFECI, Lei 4.591/64"
+        delegar_para: "Praedium"
+      advocacia:
+        normas: "CFOAB 205/2021"
+        proibicoes:
+          - "Captação de clientela"
+          - "Promessa de resultado"
+          - "Mercantilização"
+      financeiro:
+        normas: "BACEN, CVM, SUSEP"
+        proibicoes:
+          - "Garantia de rentabilidade"
+          - "Omissão de riscos"
+
+  - id: P5
+    nome: "Promoções e Sorteios"
+    fundamentacao: "Lei 5.768/71, SECAP/SEAE"
+    arvore_decisao:
+      - "Distribuição gratuita de prêmios? → Autorização SPA obrigatória + GRU"
+      - "Sorteio? → Autorização prévia + regulamento depositado"
+      - "Concurso cultural? → Regulamento + sem elemento sorte"
+      - "Desconto condicional? → Geralmente dispensado, mas verificar"
+
+  - id: P6
+    nome: "Dark Patterns"
+    verificar:
+      - "Urgência artificial ('últimas vagas', 'só hoje') com base real"
+      - "Scarcity verdadeira (quantidade limitada comprovável)"
+      - "Sem confirmshaming ('Não, prefiro continuar perdendo dinheiro')"
+      - "Sem hidden costs revelados só no checkout"
+      - "Opt-out claro e fácil"
+      - "Sem nagging (notificações excessivas)"
+
+  - id: P7
+    nome: "Publicidade Comparativa"
+    fundamentacao: "Art. 32 CONAR"
+    verificar:
+      - "Comparação é objetiva e comprovável"
+      - "Não denigre concorrente"
+      - "Não usa marca de terceiro como keyword (STJ jul/2024)"
+      - "Se comparativa: dados verificáveis citados"
+
+  - id: P8
+    nome: "Disclaimers e Disclosures"
+    verificar:
+      - "IA: disclosure de uso presente (se aplicável)"
+      - "Resultados: 'resultados podem variar'"
+      - "Saúde: disclaimer profissional obrigatório"
+      - "Financeiro: 'investimento envolve riscos'"
+      - "Imobiliário: 'sujeito a disponibilidade'"
+      - "Promoção: 'consulte regulamento'"
+
+# ============================================================
+# RELATÓRIO
+# ============================================================
+
+relatorio:
+  formato: |
+    # Auditoria de Compliance Publicitário
+
+    **Campanha:** {{descricao}}
+    **Canal:** {{canal}}
+    **Setor:** {{setor}}
+    **Auditado por:** Aequitas
+
+    ## Resultado
+    | Etapa | Status | Observação |
+    |-------|--------|------------|
+    (8 etapas com ✅/⚠️/❌/N.A.)
+
+    ## Score: {{X}}/8 conformes
+
+    ## Riscos Identificados
+    (ordenados por gravidade)
+
+    ## Ajustes Necessários
+    (ações concretas para conformidade)
+
+    ---
+    ⚠️ DISCLAIMER: Análise consultiva. Setores regulados exigem validação
+    pelo conselho profissional competente.
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+
+anti_patterns:
+  - "Aprovar campanha sem verificar setor regulado"
+  - "Ignorar dark patterns ('todo mundo faz')"
+  - "Não verificar fonte de claims estatísticos"
+  - "Aprovar sorteio sem autorização SPA"
+  - "Ignorar CONAR ('não é lei')"

@@ -1,0 +1,201 @@
+# Reativação de Lead Template — Squad Cadarn Comercial
+# Agente: Caio
+# Para leads frios (30-90 dias sem contato) ou cheque pré-datado vencendo
+# tarian_portable: true
+
+template:
+  name: reativacao-lead
+  version: "1.0.0"
+  description: "Script de reativação de leads frios — cheque pré-datado + nova perspectiva"
+  squad: cadarn-comercial
+  agent: caio
+  replicavel: true
+  tarian_portable: true
+
+# Parâmetros
+params:
+  lead:
+    nome: "{{nome_lead}}"
+    empresa: "{{empresa}}"
+    segmento: "{{segmento}}"
+    dor_original: "{{dor_mapeada_na_discovery}}"
+    motivo_nao_fechou: "{{motivo}}"  # timing | preco | concorrente | decisor | outro
+    data_ultimo_contato: "{{data}}"
+    dias_sem_contato: "{{N}}"
+  canal: "{{whatsapp|email|linkedin}}"
+  gatilho_reativacao: "{{mudanca_mercado|sazonalidade|novo_servico|cheque_predatado}}"
+
+# ============================================================
+# PRINCÍPIOS DA REATIVAÇÃO
+# ============================================================
+
+principios:
+  - "NUNCA cobrar a decisão anterior — não mencionar 'você disse que ia pensar'"
+  - "SEMPRE trazer perspectiva NOVA (dado, mudança, sazonalidade)"
+  - "Tom: casual, sem pressão, sem urgência artificial"
+  - "Cheque pré-datado: o 'não' de hoje é um cheque pré-datado para o futuro"
+  - "Reativação boa: o lead não sente que sumiu"
+
+filosofia_vende_c: |
+  "O não é um cheque pré-datado pro futuro."
+  "Faça as pazes com o não — ele não é definitivo."
+  "Um lead frio hoje pode ser o melhor cliente amanhã."
+
+# ============================================================
+# GATILHOS DE REATIVAÇÃO
+# ============================================================
+
+gatilhos:
+
+  mudanca_mercado:
+    descricao: "Algo mudou no segmento do lead (dado, tendência, regulação)"
+    imobiliaria:
+      - "Alta/queda da Selic"
+      - "Novo lançamento de concorrente na região"
+      - "Dado de mercado imobiliário local"
+    advocacia:
+      - "Nova lei ou decisão judicial relevante para a área do escritório"
+      - "Pesquisa OAB sobre marketing jurídico"
+    estetica:
+      - "Novo procedimento aprovado pela ANVISA/CFM"
+      - "Sazonalidade (verão, datas comemorativas)"
+      - "Concorrente lançando novo posicionamento"
+
+  sazonalidade:
+    descricao: "Momento do ano favorável ao segmento"
+    imobiliaria: "Março-abril e setembro-outubro (alta temporada)"
+    advocacia: "Março e setembro (períodos de demanda crescente)"
+    estetica: "Novembro-dezembro (verão) + agosto-setembro (procedimentos)"
+
+  novo_servico:
+    descricao: "Cadarn lançou algo novo relevante para o lead"
+    nota: "Usar apenas se genuinamente relevante — não forçar"
+
+  cheque_predatado:
+    descricao: "Prazo combinado na última conversa chegou"
+    nota: "Se combinado 'me dá um contato daqui X meses', honrar o prazo exato"
+
+# ============================================================
+# SCRIPTS POR SEGMENTO E GATILHO
+# ============================================================
+
+scripts:
+
+  # ────────────────────────────
+  # WHATSAPP — REATIVAÇÃO GENÉRICA
+  # ────────────────────────────
+  whatsapp_generico:
+    mensagem: |
+      "Oi {nome}! Desde nossa última conversa, {dado novo do segmento/mercado}.
+      Me veio você na cabeça quando vi isso.
+      Faz sentido uma conversa rápida?"
+    tom: "Casual, sem cobrar. O lead deve sentir que foi lembrado com carinho."
+
+  # ────────────────────────────
+  # IMOBILIÁRIA
+  # ────────────────────────────
+  imobiliaria:
+    mudanca_mercado: |
+      "Oi {nome}! Tô vendo esse cenário de {Selic/mercado imobiliário} e
+      lembrei da nossa conversa. Isso impacta diretamente o que discutimos.
+      Como tá o volume de vocês nesse momento?"
+
+    sazonalidade: |
+      "Oi {nome}! {Março/Setembro} chegando — historicamente o melhor período
+      para posicionamento em {área/bairro}.
+      Quem começa agora chega preparado para o pico. Vale uma conversa rápida?"
+
+    cheque_predatado: |
+      "Oi {nome}! Combinamos de retomar contato agora.
+      Alguma mudança no contexto de vocês desde nossa última conversa?"
+
+    nota: "WhatsApp OK. Áudio OK após rapport (3+ trocas de texto)."
+
+  # ────────────────────────────
+  # ADVOCACIA
+  # ────────────────────────────
+  advocacia:
+    mudanca_lei: |
+      "Dr./Dra. {nome}, com as mudanças recentes em {tema jurídico},
+      lembrei da nossa conversa sobre posicionamento do {escritório}.
+      Como vocês estão se adaptando a esse novo cenário?"
+
+    sazonalidade: |
+      "Dr./Dra. {nome}, {março/setembro} costuma ser o período de maior
+      busca por {área jurídica}. Retomando nosso contato —
+      faz sentido revisitar o que conversamos?"
+
+    cheque_predatado: |
+      "Dr./Dra. {nome}, conforme combinamos. Alguma atualização no contexto
+      de vocês que faça sentido retomar a conversa?"
+
+    nota: "NUNCA áudio. E-mail ou WhatsApp formal."
+
+  # ────────────────────────────
+  # ESTÉTICA PREMIUM
+  # ────────────────────────────
+  estetica:
+    sazonalidade: |
+      "Dra./Dr. {nome}, {verão/procedimento sazonal} chegando —
+      quem começa o posicionamento agora já colhe nos próximos 60 dias.
+      Faz sentido uma conversa rápida sobre o que conversamos?"
+
+    novo_procedimento: |
+      "Dra./Dr. {nome}! Vi que vocês estão ampliando para {procedimento novo}.
+      Esse é exatamente o tipo de serviço que se posiciona bem com o método
+      que discutimos. Vale retomar?"
+
+    concorrente: |
+      "Dra./Dr. {nome}, vi que {clínica concorrente — não nomear, genérico}
+      em {bairro/cidade} tá crescendo bastante no Instagram.
+      Lembrando do que conversamos — esse seria o momento de agir.
+      Faz sentido uma conversa?"
+
+# ============================================================
+# SEGUÊNCIA DE REATIVAÇÃO (3 toques máx)
+# ============================================================
+
+sequencia:
+  toque_1:
+    timing: "D+0 — mensagem de reativação (gatilho + nova perspectiva)"
+    canal: "{{canal_preferido}}"
+    script: "{{script_por_segmento_e_gatilho}}"
+    proximo_passo: "Se responder: reabrir diagnóstico. Se não: D+7"
+
+  toque_2:
+    timing: "D+7 — conteúdo de valor (sem cobrar resposta anterior)"
+    canal: "{{canal}}"
+    mensagem: |
+      "{Conteúdo de valor do segmento — sem mencionar que mandou msg anterior}"
+    proximo_passo: "Se responder: qualificar novamente. Se não: D+14"
+
+  toque_3:
+    timing: "D+14 — saída elegante definitiva"
+    mensagem: |
+      "Encerrando o ciclo de contato por enquanto.
+      Fico disponível quando o momento for o certo. Vai bem!"
+    proximo_passo: "Descartar ou cheque pré-datado (D+90)"
+
+# ============================================================
+# QUALIFICAÇÃO PÓS-REATIVAÇÃO
+# ============================================================
+
+pos_reativacao:
+  se_lead_responde:
+    acao: "Verificar se o contexto mudou — requalificar via MEDDIC"
+    perguntar: "Algo mudou no contexto de vocês desde nossa última conversa?"
+    task_referencia: "qualify-lead.md"
+
+  se_novo_score_alto:
+    acao: "Retomar funil do ponto correto — briefing Camaleão + diagnóstico"
+
+  se_score_ainda_baixo:
+    acao: "Manter em nutrição por mais 30 dias"
+    task_referencia: "run-followup-cadence.md (modo nutricao)"
+
+metadata:
+  criado_por: "Caio"
+  data: "{{data}}"
+  versao: "1.0"
+  squad: "cadarn-comercial"
+  filosofia: "VENDE-C — O não é um cheque pré-datado pro futuro"

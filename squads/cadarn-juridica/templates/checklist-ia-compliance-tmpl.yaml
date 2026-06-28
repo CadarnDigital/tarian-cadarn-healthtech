@@ -1,0 +1,121 @@
+# Checklist IA Compliance — Squad Cadarn Jurídica
+# Framework: PL 2338/2023 + LGPD + Melhores Práticas
+# Agente: Themis (Líder Jurídico) + Shield (LGPD) + Signum (PI)
+# Replicável para clientes Tarian
+
+template:
+  name: checklist-ia-compliance
+  version: "1.0.0"
+  description: "Checklist de compliance para uso de IA generativa em contratos e operações de agência"
+  squad: cadarn-juridica
+  agent: lider-juridico
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+
+# ============================================================
+# 6 BLOCOS DE COMPLIANCE
+# ============================================================
+
+blocos:
+
+  - id: IA1
+    nome: "Disclosure e Transparência"
+    fundamentacao: "PL 2338/2023 Art. 10, III + Art. 24 + CDC Art. 31"
+    checklist:
+      - item: "Disclosure de uso de IA ao cliente"
+        obrigatorio: true
+        como: "Cláusula contratual + comunicação verbal no kickoff"
+      - item: "Disclosure ao público final (se B2C)"
+        obrigatorio: "Recomendado (será obrigatório com PL 2338)"
+        como: "Aviso no material: 'conteúdo assistido por IA'"
+      - item: "Informar quais outputs usam IA"
+        obrigatorio: true
+        como: "Relatório mensal indicando o que foi gerado por IA"
+
+  - id: IA2
+    nome: "Titularidade e PI"
+    fundamentacao: "Lei 9.610/98 + CC Art. 422"
+    checklist:
+      - item: "Cessão de uso comercial sobre outputs de IA"
+        obrigatorio: true
+        como: "Cláusula contratual expressa"
+      - item: "Garantia limitada de não-infração"
+        obrigatorio: true
+        como: "NUNCA garantia absoluta — usar 'melhores práticas'"
+      - item: "Responsabilidade por infração de PI em output"
+        obrigatorio: true
+        como: "Cap de 6 meses de fees por danos de IA"
+    cross_ref: "Signum revisa esta seção"
+
+  - id: IA3
+    nome: "Revisão Humana"
+    fundamentacao: "OAB Recomendação 001/2024 + PL 2338/2023"
+    checklist:
+      - item: "Todo output de IA passa por revisão humana"
+        obrigatorio: true
+        niveis:
+          - "Posts/stories: revisão editorial"
+          - "Contratos/termos: revisão jurídica"
+          - "Saúde/financeiro: revisão especializada"
+      - item: "Responsável pela revisão identificado"
+        obrigatorio: true
+      - item: "Registro de revisão mantido"
+        obrigatorio: "Recomendado"
+
+  - id: IA4
+    nome: "Dados e Privacidade"
+    fundamentacao: "LGPD Art. 7, 33, 46"
+    checklist:
+      - item: "Dados pessoais NÃO inseridos em interfaces web de IA"
+        obrigatorio: true
+        motivo: "Risco de treinamento + transferência internacional"
+      - item: "API com zero data retention"
+        obrigatorio: true
+        plataformas: "Anthropic API, OpenAI API (verificar settings)"
+      - item: "Opt-out de treinamento ativo"
+        obrigatorio: true
+      - item: "Dados anonimizados antes de envio à IA"
+        obrigatorio: "Quando possível"
+    cross_ref: "Shield revisa esta seção"
+
+  - id: IA5
+    nome: "Limitação de Responsabilidade"
+    fundamentacao: "CC Art. 927 + PL 2338/2023 Art. 27"
+    checklist:
+      - item: "Cap de responsabilidade por IA"
+        obrigatorio: true
+        valor: "6 meses de fees pagos (separado do cap geral de 12)"
+      - item: "Exclusão de responsabilidade por alucinação"
+        obrigatorio: true
+        como: "Cláusula: agência não garante ausência de erros em outputs de IA"
+      - item: "Opacidade algorítmica: reconhecimento expresso"
+        obrigatorio: true
+        como: "Impossibilidade de explicar 100% do raciocínio da IA"
+
+  - id: IA6
+    nome: "Future-Proofing Regulatório"
+    fundamentacao: "PL 2338/2023 + PL 6707/2025"
+    checklist:
+      - item: "Cláusula de adaptação regulatória"
+        obrigatorio: true
+        como: "Contrato prevê ajustes automáticos quando nova lei entrar em vigor"
+      - item: "Multa PL 2338 prevista"
+        informativo: true
+        valor: "Até 2% faturamento, máx R$ 50M por infração"
+      - item: "Classificação de risco do sistema de IA"
+        obrigatorio: "Quando PL 2338 for aprovado"
+        como: "Alto risco, risco excessivo, ou baixo risco"
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+
+anti_patterns:
+  - "Garantir originalidade absoluta de outputs de IA"
+  - "Usar ChatGPT web com dados de clientes"
+  - "Não informar uso de IA ao cliente"
+  - "Publicar output de IA sem revisão humana"
+  - "Ignorar PL 2338 ('ainda não é lei')"
+  - "Cap de responsabilidade por IA igual ao cap geral"

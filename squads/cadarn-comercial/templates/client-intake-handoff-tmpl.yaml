@@ -1,0 +1,156 @@
+# Client Intake Handoff Template — Squad Cadarn Comercial
+# Preenchido por Caio (Líder Comercial) ao fechar contrato
+# Dispara onboarding no Operacional e diagnóstico no Marketing
+# tarian_portable: true
+
+template:
+  name: client-intake-handoff
+  version: "1.0.0"
+  description: "Briefing estruturado de cliente recém-fechado — input para Arc, Kairos e Marketing"
+  squad: cadarn-comercial
+  agent: caio
+  replicavel: true
+  tarian_portable: true
+
+# ============================================================
+# SEÇÃO 1 — IDENTIFICAÇÃO DO CLIENTE
+# ============================================================
+
+cliente:
+  nome_contato: "{{nome_decisor}}"
+  cargo: "{{cargo_decisor}}"
+  empresa: "{{nome_empresa}}"
+  segmento: "{{segmento}}"  # imobiliaria | advocacia | estetica | consultor | outro
+  porte: "{{porte}}"        # solo | pequena (2-10) | media (10-50)
+  cidade: "{{cidade}}"
+
+contato:
+  whatsapp: "{{whatsapp}}"
+  email: "{{email}}"
+  canal_preferido: "{{canal}}"  # whatsapp | email | ligacao
+  melhor_horario: "{{horario}}"
+
+# ============================================================
+# SEÇÃO 2 — O CONTRATO
+# ============================================================
+
+contrato:
+  servicos_contratados:
+    - "{{servico_1}}"
+    - "{{servico_2}}"  # opcional
+  valor_mensal: "{{valor_mrr}}"
+  duracao_meses: "{{duracao}}"
+  data_fechamento: "{{data_fechamento}}"
+  data_inicio_entrega: "{{data_inicio}}"
+  forma_pagamento: "{{pagamento}}"
+
+escopo:
+  incluido:
+    - "{{item_incluido_1}}"
+    - "{{item_incluido_2}}"
+  nao_incluido:
+    - "{{item_excluido_1}}"  # evitar surpresas de escopo
+  limite_revisoes: "{{qtd_revisoes}}"
+  prazo_aprovacao_dias: "{{prazo_aprovacao}}"
+
+# ============================================================
+# SEÇÃO 3 — CONTEXTO DA VENDA (o que Caio sabe)
+# ============================================================
+
+contexto_venda:
+  dor_principal: "{{dor_principal}}"
+  situacao_atual: "{{como_esta_hoje}}"
+  resultado_esperado_90d: "{{o_que_espera_em_90_dias}}"
+  motivo_escolha_cadarn: "{{por_que_nos}}"
+
+  historico_relevante:
+    fornecedor_anterior: "{{anterior}}"       # se trocou de agência, qual
+    motivo_troca: "{{motivo_troca}}"          # se aplicável
+    tentativas_anteriores: "{{tentativas}}"   # já tentou resolver isso de outra forma?
+
+  objecoes_superadas:
+    - "{{objecao_1}}"
+    - "{{objecao_2}}"   # opcional
+
+  comprometimentos_feitos:
+    - "{{o_que_prometemos_1}}"    # compromissos ESPECÍFICOS feitos durante a venda
+    - "{{o_que_prometemos_2}}"   # CRÍTICO: Arc precisa saber para cumprir
+
+# ============================================================
+# SEÇÃO 4 — PERFIL DO DECISOR (Camaleão)
+# ============================================================
+
+perfil_decisor:
+  disc_dominante: "{{disc}}"         # D | I | S | C
+  disc_confianca: "{{confianca}}"    # alta | media | baixa (precisão do diagnóstico)
+  estilo_comunicacao: "{{estilo}}"   # direto | empático | analítico | sociável
+  tom_recomendado: "{{tom}}"
+  sensibilidades:
+    - "{{sensibilidade_1}}"          # ex: "não gosta de pressão", "valoriza dados"
+  motivacao_primaria: "{{motivacao}}" # ex: "crescer seguidores", "gerar leads"
+
+stakeholders_adicionais:
+  - nome: "{{nome_stakeholder_2}}"
+    cargo: "{{cargo_stakeholder_2}}"
+    papel: "{{papel}}"               # ex: "aprova peças", "paga fatura"
+    contato: "{{contato_stk2}}"
+
+# ============================================================
+# SEÇÃO 5 — RESTRIÇÕES E SENSIBILIDADES
+# ============================================================
+
+restricoes:
+  nao_falar_sobre:
+    - "{{topico_restrito_1}}"       # ex: "concorrente X", "escândalo passado"
+  nao_publicar_sem_aprovacao: "{{conteudos_sensiveis}}"
+  canais_ativos:
+    - "{{canal_ativo_1}}"           # ex: Instagram, LinkedIn, Google Ads
+  canais_inativos_ou_proibidos:
+    - "{{canal_inativo_1}}"
+  identidade_visual_aprovada: "{{tem_manual}}"   # sim | não | parcial
+  tom_de_voz_aprovado: "{{tem_guideline}}"       # sim | não
+
+# ============================================================
+# SEÇÃO 6 — HANDOFF TARGETS
+# ============================================================
+
+handoff:
+  # Kairos recebe para configurar ClickUp + iniciar checklist operacional
+  operacional:
+    destino: "Kairos (gestor-processos)"
+    acao_imediata: "Configurar projeto no ClickUp em <4h do fechamento"
+    prioridade: URGENTE
+
+  # Arc recebe para iniciar fase AFFIRM (contato em <24h)
+  client_success:
+    destino: "Arc (client-success)"
+    acao_imediata: "Iniciar fase AFFIRM — contato pessoal em <24h"
+    prioridade: URGENTE
+    nota: "Ver comprometimentos_feitos — Arc deve saber o que foi prometido"
+
+  # Marketing recebe APÓS Arc confirmar kickoff (ACTIVATE concluído)
+  marketing:
+    destino: "Consultora (squad-marketing)"
+    acao_imediata: "Aguardar sinal de Arc (kickoff concluído) para iniciar diagnóstico"
+    prioridade: ALTA
+    gate: "Arc confirma ACTIVATE completo antes do Marketing começar"
+
+  # Argus cadastra o cliente no portfólio
+  portfolio:
+    destino: "Argus (account-orchestrator)"
+    acao_imediata: "Cadastrar cliente no portfolio — iniciar monitoramento de health score"
+    prioridade: ALTA
+
+# ============================================================
+# CHECKLIST DE PREENCHIMENTO (Caio valida antes de enviar)
+# ============================================================
+
+checklist_caio:
+  - "[ ] Dor principal descrita em 1 frase clara"
+  - "[ ] Resultado esperado em 90 dias especificado (não genérico)"
+  - "[ ] Comprometimentos feitos durante a venda listados"
+  - "[ ] Perfil DISC preenchido (mesmo que confiança baixa)"
+  - "[ ] Restrições de conteúdo/canal informadas"
+  - "[ ] Stakeholders adicionais identificados"
+  - "[ ] Data de início de entrega confirmada com cliente"
+  - "[ ] Handoff para Kairos e Arc disparados"

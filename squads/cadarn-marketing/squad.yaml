@@ -1,0 +1,223 @@
+name: cadarn-marketing
+version: 1.1.0
+description: Squad Cadarn Martech — 11 agentes, 7 tasks, 7 templates para prestadores de serviços premium (high-ticket)
+author: Fabiano Cunha
+license: UNLICENSED
+
+aiox:
+  minVersion: "2.1.0"
+  type: squad
+
+# ICP — Ideal Customer Profile
+icp:
+  primary: "Prestadores de serviços premium (high-ticket)"
+  segments:
+    - Imobiliárias de luxo
+    - Escritórios de advocacia
+    - Clínicas de estética avançada
+    - Arquitetos e designers de interiores
+    - Consultores e profissionais liberais
+
+# Hierarquia
+hierarchy:
+  decision_authority: "Fabiano (decisão final absoluta)"
+  brand_guardian: "#2 Brand Guardian — Coel (Patrick Hanlon) — parecer + escalação, sem veto"
+  strategy_lead: "#1 Estrategista-chefe (Código Cadarn)"
+
+# 11 agentes em 5 camadas
+agents:
+  # CAMADA 1 — FUNDAÇÃO
+  - id: estrategista
+    name: Cadarn
+    role: Estrategista-chefe
+    layer: fundacao
+    dna_source: "Código Cadarn (Samira + Fabiano)"
+    knowledge_path: ".aiox-core/knowledge/framework-cadarn-m2m/"
+
+  - id: brand-guardian
+    name: Coel
+    role: Brand Guardian
+    layer: fundacao
+    dna_source: "Patrick Hanlon (Primal Branding)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/hanlon/"
+
+  # CAMADA 2 — ESTRATÉGIA
+  - id: branding
+    name: Vinci
+    role: Branding Estratégico
+    layer: estrategia
+    dna_source: "Tay Dantas (Vinci Society)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/tay-dantas/"
+
+  - id: consultora
+    name: Clarissa
+    role: Consultora Sênior
+    layer: estrategia
+    dna_source: "Camila Renaux (Metodologia CR+)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/renaux/"
+
+  # CAMADA 3 — CRIAÇÃO
+  - id: copywriter
+    name: Logos
+    role: Copywriter
+    layer: criacao
+    dna_source: "Ícaro de Carvalho (tom) + Alex Hormozi (frameworks)"
+    knowledge_path:
+      - ".aiox-core/knowledge/agents-dna/icaro-carvalho/"
+      - ".aiox-core/knowledge/agents-dna/hormozi/"
+
+  - id: roteirista
+    name: Magnética
+    role: Roteirista de Vídeo
+    layer: criacao
+    dna_source: "Giullya Becker (Conteúdos Magnéticos)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/becker/"
+
+  - id: diretora-criativa
+    name: Iris
+    role: Diretora Criativa
+    layer: criacao
+    dna_source: "Hanah Franklin (Formato Criativo)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/franklin/"
+
+  # CAMADA 4 — DISTRIBUIÇÃO
+  - id: social-media
+    name: Pulso
+    role: Social Media Manager
+    layer: distribuicao
+    dna_source: "Rafael Kiso (mLabs)"
+    knowledge_path: ".aiox-core/knowledge/cursos/engaje-mais-venda/"
+
+  - id: trafego
+    name: Mídia
+    role: Gestor de Tráfego Pago
+    layer: distribuicao
+    dna_source: "Pedro Sobral (Comunidade Subido)"
+    knowledge_path:
+      - ".aiox-core/knowledge/agents-dna/sobral/"
+      - ".aiox-core/knowledge/cursos/engaje-mais-venda/06-midia-paga/"
+
+  - id: analytics
+    name: Métrica
+    role: Analytics de Conteúdo
+    layer: distribuicao
+    dna_source: "Rafael Kiso (mLabs)"
+    knowledge_path: ".aiox-core/knowledge/cursos/engaje-mais-venda/"
+
+  # CAMADA 5 — EXECUÇÃO
+  - id: designer
+    name: Pixel
+    role: Designer Social Media
+    layer: execucao
+    dna_source: "Raysa Keila (Canva Evolution)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/raysa-keila/"
+
+# Pipeline de produção de conteúdo
+pipeline:
+  description: "Fluxo padrão de produção de conteúdo para clientes premium"
+  stages:
+    - name: diagnostico
+      agent: consultora
+      output: "Diagnóstico multicanal + persona + objetivos"
+
+    - name: posicionamento
+      agent: branding
+      output: "Identidade de marca + universo + regras"
+
+    - name: estrategia
+      agent: estrategista
+      output: "Plano estratégico + pilares de conteúdo + Console S.I.C."
+
+    - name: planejamento
+      agent: social-media
+      output: "Calendário editorial + formatos + frequência"
+
+    - name: criacao
+      agents: [copywriter, roteirista, diretora-criativa]
+      output: "Copies, roteiros de vídeo, direção visual"
+
+    - name: design
+      agent: designer
+      output: "Peças visuais (templates, posts, carrosséis, stories)"
+
+    - name: aprovacao
+      agent: brand-guardian
+      output: "Auditoria Primal Code → APROVADO ou PAUSA + escalação para Fabiano"
+
+    - name: distribuicao
+      agents: [social-media, trafego]
+      output: "Publicação orgânica + campanhas pagas"
+
+    - name: analise
+      agent: analytics
+      output: "Relatório de performance + recomendações"
+
+# Tasks (7) — workflows executáveis por agente
+tasks:
+  - id: run-diagnostic
+    agent: consultora
+    template: diagnostico-multicanal-tmpl.yaml
+    description: "Diagnóstico multicanal completo (CR+ Etapa 1)"
+
+  - id: create-brand-positioning
+    agent: branding
+    template: brand-positioning-tmpl.yaml
+    description: "Posicionamento de marca (Creator Brand System)"
+    depends_on: [run-diagnostic]
+
+  - id: create-content-strategy
+    agents: [estrategista, social-media]
+    template: calendario-editorial-tmpl.yaml
+    description: "Estratégia + calendário editorial (Jornada 5-fases)"
+    depends_on: [run-diagnostic, create-brand-positioning]
+
+  - id: create-content-batch
+    agents: [copywriter, roteirista, diretora-criativa, designer]
+    template: briefing-conteudo-tmpl.yaml
+    description: "Produção de conteúdo em lote (pipeline multi-agente)"
+    depends_on: [create-content-strategy]
+
+  - id: audit-brand-content
+    agent: brand-guardian
+    template: auditoria-primal-code-tmpl.yaml
+    description: "Auditoria Primal Code® (5 etapas)"
+    depends_on: [create-content-batch]
+
+  - id: plan-paid-media
+    agent: trafego
+    template: plano-midia-paga-tmpl.yaml
+    description: "Plano de mídia paga (Metodologia Sobral)"
+    depends_on: [run-diagnostic]
+
+  - id: run-performance-analysis
+    agent: analytics
+    template: relatorio-campanha-tmpl.yaml
+    description: "Análise de performance (Pirâmide de Dados)"
+
+# Templates (7) — deliverables estruturados
+templates:
+  - diagnostico-multicanal-tmpl.yaml
+  - brand-positioning-tmpl.yaml
+  - calendario-editorial-tmpl.yaml
+  - briefing-conteudo-tmpl.yaml
+  - auditoria-primal-code-tmpl.yaml
+  - plano-midia-paga-tmpl.yaml
+  - relatorio-campanha-tmpl.yaml
+
+# Upgrade path
+upgrades:
+  note: "Todos os agentes receberão upgrades de conhecimento conforme material adicional for disponibilizado"
+  process: "Novo material → Echo (M2M-ETL) → Athena (Knowledge Miner) → atualizar knowledge_path → rebuild agent"
+
+config:
+  extends: extend
+  language: pt-BR
+
+dependencies:
+  squads: []
+
+tags:
+  - marketing
+  - cadarn
+  - premium
+  - high-ticket

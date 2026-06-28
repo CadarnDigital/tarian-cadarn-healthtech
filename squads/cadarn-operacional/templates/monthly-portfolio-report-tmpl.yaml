@@ -1,0 +1,174 @@
+# Monthly Portfolio Report Template — Squad Cadarn Operacional
+# Dois formatos: (1) Relatório de Portfólio para Fabiano, (2) Relatório Mensal para o Cliente
+# Agente: Argus (account-orchestrator)
+# tarian_portable: true
+
+template:
+  name: monthly-portfolio-report
+  version: "1.0.0"
+  description: "Template dual: relatório de portfólio (gestor) e relatório mensal executivo (cliente)"
+  squad: cadarn-operacional
+  agent: account-orchestrator
+  replicavel: true
+  tarian_portable: true
+
+# ============================================================
+# FORMATO 1 — RELATÓRIO DE PORTFÓLIO (uso interno — Fabiano)
+# ============================================================
+
+portfolio_view:
+  destinatario: "Fabiano (CEO)"
+  frequencia: mensal
+  gerado_por: Argus
+
+  sections:
+
+    executive_summary:
+      titulo: "Executive Summary — {{mes_ano}}"
+      campos:
+        mrr_total: "R$ {{mrr_total}} ({{variacao_vs_anterior}}% vs mês anterior)"
+        saude_carteira:
+          verde: "{{n_verde}} clientes (R$ {{mrr_verde}} | {{pct_verde}}% do MRR)"
+          amarelo: "{{n_amarelo}} clientes (R$ {{mrr_amarelo}} | {{pct_amarelo}}% do MRR)"
+          vermelho: "{{n_vermelho}} clientes (R$ {{mrr_vermelho}} | {{pct_vermelho}}% do MRR)"
+        principal_risco: "{{risco_do_mes}}"
+        principal_oportunidade: "{{oportunidade_do_mes}}"
+
+    tabela_carteira:
+      titulo: "Carteira de Clientes — Visão Consolidada"
+      colunas:
+        - cliente
+        - segmento
+        - ticket_mensal
+        - health_score
+        - semaforo
+        - fase_coleman
+        - renovacao_em
+        - alerta_ativo
+
+    clientes_em_risco:
+      titulo: "Clientes em Atenção"
+      instrucao: "Listar todos com semáforo amarelo ou vermelho"
+      por_cliente:
+        nome: "{{cliente}}"
+        score: "{{score}}/100"
+        causa_principal: "{{causa}}"
+        dimensao_mais_fraca: "{{dimensao}}"
+        acao_recomendada: "{{acao}}"
+        responsavel: "{{agente_responsavel}}"
+        prazo: "{{prazo}}"
+
+    oportunidades_expansao:
+      titulo: "Oportunidades de Expansão"
+      instrucao: "Clientes verdes (score > 70) com sinal de upsell ou indicação"
+      por_cliente:
+        nome: "{{cliente}}"
+        score: "{{score}}"
+        sinal: "{{sinal}}"   # ex: "NPS 9 por 2 meses", "fase ADVOCATE"
+        acao_sugerida: "{{acao}}"  # ex: "Oferecer expansão para tráfego pago"
+
+    financas_carteira:
+      titulo: "Saúde Financeira da Carteira"
+      campos:
+        mrr_total: "R$ {{mrr_total}}"
+        receita_em_risco: "R$ {{receita_risco}} (clientes amarelos + vermelhos)"
+        receita_em_expansao_potencial: "R$ {{receita_expansao}}"
+        churn_do_mes: "{{n_churns}} clientes | R$ {{mrr_perdido}}"
+        novos_clientes: "{{n_novos}} clientes | R$ {{mrr_novo}}"
+
+    entregas_do_mes:
+      titulo: "Performance de Entrega"
+      campos:
+        pct_no_prazo: "{{pct}}% dos entregáveis no prazo"
+        clientes_com_atraso: "{{lista}}"
+        feedback_critico: "{{feedback}}"
+
+    proximas_acoes:
+      titulo: "Top 5 Ações para o Próximo Mês"
+      formato: "| # | Cliente | Ação | Responsável | Prazo | Impacto esperado |"
+      instrucao: "Máximo 5, ordenadas por urgência/impacto"
+
+# ============================================================
+# FORMATO 2 — RELATÓRIO MENSAL EXECUTIVO (client-facing)
+# ============================================================
+
+client_report:
+  destinatario: "{{cliente_nome}} ({{cliente_empresa}})"
+  frequencia: mensal
+  gerado_por: Argus
+  revisado_por: Coel (brand-guardian)
+
+  params:
+    empresa_cliente: "{{empresa_cliente}}"
+    mes_referencia: "{{mes_ano}}"
+    gestor_conta: "{{gestor_conta}}"
+    servicos_ativos: "{{servicos}}"
+
+  sections:
+
+    cabecalho:
+      titulo: "Relatório Mensal — {{mes_ano}}"
+      subtitulo: "{{empresa_cliente}} × Cadarn"
+      apresentacao: >
+        Aqui está o resumo do que aconteceu em {{mes_ano}}.
+        Nossa missão é que cada mês você veja claramente onde
+        estamos, o que está funcionando e o que vem a seguir.
+
+    destaques_do_mes:
+      titulo: "Destaques de {{mes_referencia}}"
+      instrucao: "3 bullets — o mais relevante do mês (resultados, entregas, marcos)"
+      formato:
+        - "→ {{destaque_1}}"
+        - "→ {{destaque_2}}"
+        - "→ {{destaque_3}}"
+
+    resultados_vs_metas:
+      titulo: "Resultados vs Metas"
+      instrucao: "Tabela com KPIs contratados. Ser transparente — não omitir resultados abaixo da meta"
+      formato: "| KPI | Meta | Realizado | Status | Observação |"
+      status_opcoes: "✅ Atingido | 🟡 Parcial | 🔴 Abaixo | ⏳ Em andamento"
+
+    o_que_fizemos:
+      titulo: "O Que Entregamos em {{mes_referencia}}"
+      instrucao: "Lista das principais entregas do mês com contexto de por que cada uma importa"
+      formato:
+        - entrega: "{{nome_entrega}}"
+          contexto: "{{por_que_importa}}"
+          resultado: "{{resultado_se_houver}}"
+
+    analise:
+      titulo: "Análise do Mês"
+      subsecoes:
+        o_que_funcionou:
+          titulo: "O que funcionou bem"
+          instrucao: "Máximo 3 pontos com evidência"
+        o_que_ajustaremos:
+          titulo: "O que vamos ajustar"
+          instrucao: "Transparência: listar o que não foi como esperado e o plano"
+          formato:
+            situacao: "{{o_que_aconteceu}}"
+            causa: "{{por_que}}"
+            ajuste: "{{o_que_mudaremos}}"
+
+    proximos_30_dias:
+      titulo: "Próximos 30 Dias"
+      instrucao: "O que está planejado — específico, não genérico"
+      formato:
+        - acao: "{{acao}}"
+          objetivo: "{{por_que_faremos}}"
+          entrega_esperada: "{{o_que_o_cliente_vai_receber}}"
+
+    pergunta_de_engajamento:
+      titulo: ""
+      instrucao: >
+        Uma pergunta que convida o cliente a participar, dar feedback
+        ou refletir sobre o que vem a seguir. Tom: parceiro, não fornecedor.
+      exemplo: >
+        "Olhando para o que fizemos em {{mes_referencia}} — tem algo que
+        você gostaria que déssemos mais atenção no próximo mês?
+        Queremos ajustar a rota conforme você avança."
+
+    rodape:
+      contato: "{{gestor_conta}} | {{whatsapp_gestor}} | {{email_gestor}}"
+      proxima_reuniao: "{{data_proxima_reuniao}}"
+      assinatura: "Cadarn Martech — {{mes_ano}}"

@@ -1,0 +1,333 @@
+# Follow-up Cadence Template — Squad Cadarn Comercial
+# Agente: GestorFunil (define) + Caio (executa)
+# Calibrado por segmento e estágio do lead
+# tarian_portable: true
+
+template:
+  name: followup-cadence
+  version: "1.0.0"
+  description: "Cadência de follow-up D+0 a D+45 por segmento e estágio — canal, mensagem e próximo passo"
+  squad: cadarn-comercial
+  agent: gestor-funil
+  replicavel: true
+  tarian_portable: true
+  executor: caio
+
+# Parâmetros
+params:
+  lead:
+    nome: "{{nome_lead}}"
+    segmento: "{{segmento}}"  # imobiliaria | advocacia | estetica
+    canal_preferido: "{{canal}}"
+    disc_provavel: "{{D|I|S|C}}"
+  estagio: "{{pos_proposta|nutricao|reativacao}}"
+  data_inicio: "{{data_d0}}"
+
+# ============================================================
+# REGRAS GERAIS DE FOLLOW-UP
+# ============================================================
+
+regras:
+  max_toques_semana: 3
+  tom: "Valor antes de cobrança — nunca abrir com 'o que achou?'"
+  canal: "calibrado por segmento e preferência"
+  abertura: "Texto SEMPRE primeiro — áudio só com permissão (espelhamento)"
+  encerramento: "Fechar SEMPRE com próximo passo ou saída elegante"
+  pergunta: "Uma por mensagem — nunca bombardear"
+
+  anti_patterns:
+    - "NUNCA: 'Oi, vim ver se você viu a proposta'"
+    - "NUNCA: pressão artificial ('só até sexta!')"
+    - "NUNCA: múltiplos canais simultâneos no mesmo dia"
+    - "NUNCA: reenviar proposta sem contexto novo"
+    - "NUNCA: 'qualquer dúvida me avisa' — sempre próximo passo"
+
+# ============================================================
+# CADÊNCIA PÓS-PROPOSTA
+# ============================================================
+
+pos_proposta:
+
+  # ────────────────────────────
+  # IMOBILIÁRIA (ciclo 30-60d, 6-9 toques)
+  # ────────────────────────────
+  imobiliaria:
+    ciclo_total: "30-60 dias"
+    toques_totais: "6-9"
+    canal_primario: "WhatsApp"
+    nota: "Mover rápido nos primeiros 7 dias. Max 4 linhas. Texto primeiro."
+
+    toques:
+      D0:
+        dia: 0
+        canal: "WhatsApp"
+        tipo: "envio da proposta"
+        mensagem: |
+          "{Nome}, conforme conversamos — a proposta está aqui: [link]
+          Ela já reflete {dor principal que você descreveu}.
+          Agendei nossa conversa para {dia/hora} para percorrer juntos.
+          Qualquer ponto antes disso, estou disponível."
+        proximo_passo: "Reunião de revisão agendada"
+
+      D2:
+        dia: 2
+        canal: "WhatsApp"
+        tipo: "check-in"
+        mensagem: |
+          "Conseguiu dar uma olhada na proposta?"
+        proximo_passo: "Confirmar reunião de revisão"
+
+      D5:
+        dia: 5
+        canal: "WhatsApp"
+        tipo: "valor"
+        mensagem: |
+          "{Dado de resultado de corretor/imobiliária similar}
+          Me veio você na cabeça quando vi isso."
+        proximo_passo: "Abertura para conversa"
+
+      D7:
+        dia: 7
+        canal: "WhatsApp"
+        tipo: "convite reunião"
+        mensagem: |
+          "Faz sentido conversarmos 20 minutos sobre a proposta?"
+        proximo_passo: "Agendar call"
+        variacao_se_abriu_sem_responder: |
+          "Vi que você acessou — ficou com alguma dúvida específica?"
+
+      D10:
+        dia: 10
+        canal: "WhatsApp"
+        tipo: "reativação com perspectiva nova"
+        mensagem: |
+          "{Dado de sazonalidade ou mercado imobiliário local}
+          Contexto continua favorável para o que conversamos."
+        proximo_passo: "Retomar conversa ou agendar"
+
+      D15:
+        dia: 15
+        canal: "WhatsApp"
+        tipo: "saída elegante com abertura"
+        mensagem: |
+          "Se não fizer sentido agora, sem problema —
+          fico disponível se o contexto mudar."
+        proximo_passo: "Cheque pré-datado ou encerrar"
+
+      D21:
+        dia: 21
+        canal: "WhatsApp"
+        tipo: "conteúdo de valor (sem CTA direto)"
+        mensagem: |
+          "{Artigo ou dado de mercado imobiliário relevante}"
+        proximo_passo: "Manter presença na mente"
+
+      D30:
+        dia: 30
+        canal: "WhatsApp"
+        tipo: "encerramento ou cheque pré-datado"
+        mensagem: |
+          "Passando para fechar o ciclo de contato.
+          Faz sentido mantermos contato para quando o momento chegar?"
+        proximo_passo: "Cheque pré-datado (D+60) ou nutrir"
+
+  # ────────────────────────────
+  # ADVOCACIA (ciclo 45-90d, 8-12 toques)
+  # ────────────────────────────
+  advocacia:
+    ciclo_total: "45-90 dias"
+    toques_totais: "8-12"
+    canal_primario: "E-mail + LinkedIn → WhatsApp (formal)"
+    nota: "NUNCA áudio no WhatsApp. Tom formal mesmo no WhatsApp."
+
+    toques:
+      D0:
+        dia: 0
+        canal: "E-mail + WhatsApp formal"
+        tipo: "envio"
+        mensagem_email: |
+          "Assunto: Plano de Posicionamento Digital — {escritório}
+          Dr./Dra. {nome},
+          Conforme nossa conversa, segue o Plano de Posicionamento [link].
+          O documento inclui a seção específica de conformidade com o
+          Provimento OAB 205/2021 que discutimos.
+          Posso passar na {data} para percorrer os pontos?"
+        proximo_passo: "Reunião de revisão agendada"
+
+      D3:
+        dia: 3
+        canal: "E-mail"
+        tipo: "check-in"
+        mensagem: |
+          "Ficou alguma dúvida sobre o plano — especialmente em relação ao
+          processo dentro das diretrizes da OAB?"
+        proximo_passo: "Resposta ou confirmação de reunião"
+
+      D7:
+        dia: 7
+        canal: "LinkedIn"
+        tipo: "valor"
+        mensagem: |
+          "{Insight sobre posicionamento digital para escritórios}"
+        proximo_passo: "Visibilidade + abertura"
+
+      D10:
+        dia: 10
+        canal: "WhatsApp (formal)"
+        tipo: "atualização processo"
+        mensagem: |
+          "Alguma atualização no processo de decisão de vocês?"
+        proximo_passo: "Entender estágio de decisão"
+
+      D14:
+        dia: 14
+        canal: "E-mail"
+        tipo: "material complementar"
+        mensagem: |
+          "{Documento: conformidade OAB ou caso de uso similar anexo}"
+        proximo_passo: "Fortalecer autoridade + rebater objeção compliance"
+
+      D21:
+        dia: 21
+        canal: "WhatsApp"
+        tipo: "DI (Decisão Imediata)"
+        mensagem: |
+          "Faz sentido incluir {sócio/parceiro} numa conversa rápida
+          sobre o plano? 20 minutos."
+        proximo_passo: "Ampliar buying center"
+
+      D30:
+        dia: 30
+        canal: "E-mail"
+        tipo: "proposta revisada"
+        mensagem: |
+          "Posso preparar uma versão simplificada focada em {ponto específico}?"
+        proximo_passo: "Reduzir fricção de aprovação"
+
+      D45:
+        dia: 45
+        canal: "WhatsApp"
+        tipo: "saída elegante ou cheque pré-datado"
+        mensagem: |
+          "Fechando o ciclo — fico disponível se e quando fizer sentido."
+        proximo_passo: "Cheque pré-datado (D+90) ou descartar"
+
+  # ────────────────────────────
+  # ESTÉTICA PREMIUM (ciclo 14-30d, 5-7 toques)
+  # ────────────────────────────
+  estetica:
+    ciclo_total: "14-30 dias"
+    toques_totais: "5-7"
+    canal_primario: "WhatsApp + Instagram DM"
+    nota: "Urgência sazonal > qualquer ROI. Áudio OK após rapport."
+
+    toques:
+      D0:
+        dia: 0
+        canal: "WhatsApp"
+        tipo: "envio"
+        mensagem: |
+          "Dr./Dra. {nome}, conforme conversamos — o plano está aqui: [link]
+          Fiz questão de refletir {o que você descreveu sobre posicionamento}.
+          Quando posso passar para percorrer juntos?"
+        proximo_passo: "Reunião de revisão agendada"
+
+      D2:
+        dia: 2
+        canal: "WhatsApp"
+        tipo: "check-in"
+        mensagem: |
+          "Dra./Dr. {nome}, conseguiu dar uma olhada?"
+        proximo_passo: "Confirmar interesse"
+
+      D4:
+        dia: 4
+        canal: "WhatsApp"
+        tipo: "prova social visual"
+        mensagem: |
+          "Clínica com o mesmo perfil que a sua — resultado em 60 dias:
+          {dado concreto de agenda/leads/posicionamento}."
+        proximo_passo: "Despertar urgência comparativa"
+
+      D7:
+        dia: 7
+        canal: "WhatsApp"
+        tipo: "nova angular do diagnóstico"
+        mensagem: |
+          "Tem algum procedimento ou área que você sente que poderia crescer mais?"
+        proximo_passo: "Reabrir diagnóstico com gancho de expansão"
+
+      D10:
+        dia: 10
+        canal: "WhatsApp"
+        tipo: "proposta focada"
+        mensagem: |
+          "Se fizer sentido, posso preparar um plano focado especificamente em
+          {procedimento prioritário que mencionou}."
+        proximo_passo: "Reduzir escopo para facilitar decisão"
+
+      D14:
+        dia: 14
+        canal: "WhatsApp"
+        tipo: "saída elegante ou proposta revisada"
+        mensagem: |
+          "Entendo que o momento pode não ser ideal. Se preferir, posso
+          guardar o contexto para quando fizer sentido."
+        proximo_passo: "Cheque pré-datado (sazonalidade) ou descartar"
+
+      D21:
+        dia: 21
+        canal: "WhatsApp"
+        tipo: "cheque pré-datado (sazonalidade)"
+        mensagem: |
+          "Lembrando que {sazonalidade — verão/procedimento novo} se aproxima.
+          Quem começa agora chega preparado."
+        proximo_passo: "Fechar ou descartar"
+
+# ============================================================
+# CADÊNCIA DE NUTRIÇÃO (score 4-6)
+# ============================================================
+
+nutricao:
+  duracao: "30 dias"
+  objetivo: "Entregar valor sem vender. Estar na mente quando urgência aumentar."
+  conteudo: "Resolver a dor identificada na discovery — NÃO falar sobre Cadarn"
+
+  semana_1:
+    tipo: "conteúdo educativo"
+    foco: "Problema identificado no Pain (MEDDIC)"
+    tom: "Educativo — sem CTA de venda"
+
+  semana_2:
+    tipo: "case de empresa similar"
+    foco: "Empresa parecida que resolveu o mesmo problema"
+    tom: "Inspiracional — 'é possível'"
+
+  semana_3:
+    tipo: "dado de mercado"
+    foco: "Tendência ou benchmark do segmento do lead"
+    tom: "Informativo — posicionamento de autoridade"
+
+  semana_4:
+    tipo: "check-in leve"
+    mensagem: "Aconteceu alguma mudança no contexto de vocês?"
+    decisao: "Requalificar ou manter ciclo mais 30 dias"
+
+# ============================================================
+# CADÊNCIA DE REATIVAÇÃO (lead frio — 30-90 dias sem contato)
+# ============================================================
+
+reativacao:
+  gatilho: "Cheque pré-datado vencendo OU mudança de contexto do mercado"
+  mensagem_base: |
+    "Oi {nome}! Desde nossa última conversa, {dado novo do segmento/mercado}.
+    Me veio você na cabeça. Faz sentido uma conversa rápida?"
+  tom: "Casual, sem pressão, sem cobrar a decisão anterior"
+  referencia: "reativacao-lead-tmpl.yaml"
+
+metadata:
+  criado_por: "GestorFunil"
+  executor: "Caio"
+  data: "{{data}}"
+  versao: "1.0"
+  squad: "cadarn-comercial"

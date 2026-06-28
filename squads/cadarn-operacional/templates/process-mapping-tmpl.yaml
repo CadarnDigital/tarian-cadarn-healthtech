@@ -1,0 +1,241 @@
+# Process Mapping Template — Squad Cadarn Operacional
+# Framework: JP da Bravy — Fase 1 (Documentação) + Fase 2 (Implementação)
+# Agente: Kairos (Gestor de Processos)
+# Replicável para clientes Tarian
+
+template:
+  name: process-mapping
+  version: "1.0.0"
+  description: "Mapeamento completo de processo: fluxograma, responsáveis, entradas/saídas, gaps e plano de implementação"
+  squad: cadarn-operacional
+  agent: gestor-processos
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - tom_de_voz
+
+# Parâmetros (preenchidos na elicitação)
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+    departamento: "{{departamento}}"  # 1 dos 6 universais
+  processo:
+    nome: "{{processo_nome}}"
+    dono: "{{dono_processo}}"
+    frequencia: "{{frequencia}}"  # diário, semanal, mensal, por demanda
+    ferramenta_atual: "{{ferramenta}}"  # ClickUp, planilha, nenhuma
+
+# ============================================================
+# ESTRUTURA DO MAPEAMENTO (Fase 1 Bravy — Documentação)
+# ============================================================
+
+mapeamento:
+
+  # IDENTIDADE DO PROCESSO
+  identidade:
+    nome: "{{processo_nome}}"
+    departamento: "{{departamento}}"
+    dono: "{{dono_processo}}"
+    frequencia: "{{frequencia}}"
+    objetivo: "{{objetivo_processo}}"  # em 1 frase: o que este processo entrega?
+    cliente_do_processo: "{{quem_recebe}}"  # cliente externo, outro departamento, etc.
+
+  # TRIGGER — O que inicia o processo?
+  trigger:
+    descricao: "{{o_que_dispara}}"
+    tipo: "{{tipo_trigger}}"  # evento, data, solicitação, automação
+    exemplos:
+      - "Status mudou para X (ClickUp)"
+      - "Cliente enviou mensagem (WhatsApp)"
+      - "Todo dia 10 (calendário)"
+      - "Solicitação do gestor"
+
+  # ENTRADAS — O que o processo precisa para começar?
+  entradas:
+    - nome: "{{entrada_1}}"
+      origem: "{{de_onde_vem}}"
+      formato: "{{formato}}"  # formulário, email, doc, verbal
+      obrigatoria: true
+    # repetir para cada entrada
+
+  # ETAPAS — Passo a passo do processo
+  etapas:
+    formato: |
+      Para cada etapa, documentar:
+      - Número sequencial
+      - Ação (verbo no infinitivo: "Enviar", "Revisar", "Aprovar")
+      - Responsável (pessoa ou cargo)
+      - Ferramenta usada (ClickUp, WhatsApp, planilha, manual)
+      - Tempo estimado
+      - Decisão? (sim/não — se sim, quais os caminhos)
+      - Entrega da etapa (o que sai)
+
+    template_etapa:
+      - etapa: 1
+        acao: "{{verbo + complemento}}"
+        responsavel: "{{quem}}"
+        ferramenta: "{{ferramenta}}"
+        tempo: "{{estimativa}}"
+        decisao: false
+        entrega: "{{output}}"
+
+    decisoes:
+      formato: |
+        Quando há decisão (if/then):
+        - Critério de decisão (o que determina o caminho)
+        - Caminho A: {{ação se SIM}}
+        - Caminho B: {{ação se NÃO}}
+        - Quem decide (pessoa ou regra automática)
+
+  # SAÍDAS — O que o processo entrega?
+  saidas:
+    - nome: "{{saida_1}}"
+      destino: "{{para_quem}}"
+      formato: "{{formato}}"
+      kpi: "{{como_medir_qualidade}}"
+
+  # TEMPO TOTAL
+  tempo:
+    estimado: "{{tempo_total}}"
+    sla: "{{prazo_maximo}}"  # se aplicável
+
+# ============================================================
+# ANÁLISE DE GAPS (AX4: List = Processo Não Padronizado)
+# ============================================================
+
+analise_gaps:
+  checklist:
+    - pergunta: "O processo está documentado?"
+      status: "{{sim/nao}}"
+      gap: "Sem documentação = não existe padrão"
+
+    - pergunta: "Cada etapa tem responsável claro?"
+      status: "{{sim/nao}}"
+      gap: "Sem responsável = ninguém é accountable"
+
+    - pergunta: "Existe ferramenta configurada para o processo?"
+      status: "{{sim/nao}}"
+      gap: "Sem ferramenta = execução depende de memória"
+
+    - pergunta: "Existe ritual vinculado (daily, weekly, review)?"
+      status: "{{sim/nao}}"
+      gap: "Sem ritual = ferramenta sem acompanhamento (AX2)"
+
+    - pergunta: "Existe automação possível que não está implementada?"
+      status: "{{sim/nao}}"
+      gap: "IA e automação devem ser padrão, não extra (AX5)"
+
+    - pergunta: "O time foi treinado no processo?"
+      status: "{{sim/nao}}"
+      gap: "Sem treinamento = template não resolve sozinho (AX3)"
+
+    - pergunta: "Existem KPIs para medir o processo?"
+      status: "{{sim/nao}}"
+      gap: "Sem KPI = impossível melhorar"
+
+  scoring:
+    7_sim: "Processo maduro — manter e otimizar"
+    5_6_sim: "Processo funcional — gaps pontuais a resolver"
+    3_4_sim: "Processo imaturo — precisa das 4 Fases Bravy"
+    0_2_sim: "Processo inexistente — começar da Fase 1"
+
+# ============================================================
+# PLANO DE IMPLEMENTAÇÃO (Fases 2-4 Bravy)
+# ============================================================
+
+implementacao:
+
+  fase_2_ferramenta:
+    descricao: "Configurar o processo na ferramenta de gestão"
+    checklist:
+      - "Criar List no Space/Folder correto"
+      - "Definir Task Types e Statuses"
+      - "Criar campos personalizados necessários"
+      - "Configurar views (Board, List, Calendar)"
+      - "Definir permissões (quem vê/edita)"
+    hierarquia_clickup:
+      space: "{{departamento}}"
+      folder: "{{area}}"
+      list: "{{processo_nome}}"
+      statuses: "{{lista_statuses}}"
+      campos: "{{campos_personalizados}}"
+
+  fase_3_automacao:
+    descricao: "Criar automações para etapas repetitivas"
+    tipos:
+      - tier: "Nativa"
+        descricao: "Automação dentro da ferramenta (ClickUp, etc.)"
+        exemplos:
+          - "Quando status muda → atribuir responsável"
+          - "Quando prazo passa → notificar gestor"
+          - "Quando task criada → aplicar template"
+
+      - tier: "Make/n8n"
+        descricao: "Automação entre ferramentas"
+        exemplos:
+          - "ClickUp → Make → WhatsApp (notificação)"
+          - "Formulário → Make → ClickUp (criar task)"
+          - "ClickUp → Make → Google Docs (gerar documento)"
+
+      - tier: "IA"
+        descricao: "Automação com inteligência artificial"
+        exemplos:
+          - "Task criada → IA gera briefing/copy"
+          - "Dados coletados → IA analisa e sugere"
+          - "Processo completo → IA gera relatório"
+
+    priorizar: |
+      Ordem de implementação:
+      1. Nativas (menor esforço, maior confiabilidade)
+      2. Make/n8n (médio esforço, alto impacto)
+      3. IA (maior esforço, diferencial competitivo)
+
+  fase_4_treinamento:
+    descricao: "Capacitar equipe no processo implementado"
+    checklist:
+      - "Documentação acessível (SOP no ClickUp Docs ou Wiki)"
+      - "Sessão de treinamento (30-60 min)"
+      - "Período de acompanhamento (2 semanas)"
+      - "Revisão pós-treinamento (o time está usando?)"
+      - "Ajustes com base no feedback real"
+    ritual_vinculado:
+      tipo: "{{daily_ou_weekly}}"
+      criterio: "Time imaturo no processo → Daily. Sênior → Weekly"
+      duracao: "{{duracao}}"
+      participantes: "{{quem}}"
+
+# ============================================================
+# FLUXOGRAMA — FORMATO DE SAÍDA
+# ============================================================
+
+fluxograma:
+  formato: |
+    Gerar fluxograma em formato Mermaid (renderizável em markdown):
+
+    ```mermaid
+    flowchart TD
+      A[Trigger: {{trigger}}] --> B[Etapa 1: {{ação}}]
+      B --> C{Decisão?}
+      C -->|Sim| D[Etapa 2a: {{ação}}]
+      C -->|Não| E[Etapa 2b: {{ação}}]
+      D --> F[Saída: {{resultado}}]
+      E --> F
+    ```
+
+  alternativa: |
+    Se Mermaid não for possível, usar formato texto:
+    START → [Etapa 1] → <Decisão?> → SIM: [Etapa 2a] / NÃO: [Etapa 2b] → END
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+anti_patterns:
+  - "Documentar processo que ninguém usa (processo fantasma)"
+  - "Pular direto para automação sem documentar (AX1)"
+  - "Configurar ferramenta sem ritual vinculado (AX2)"
+  - "Entregar template e sumir sem treinar (AX3)"
+  - "Criar List sem documentação (AX4)"
+  - "Ignorar automação com IA quando aplicável (AX5)"
+  - "Mapear processo ideal em vez do processo REAL (mapear o que É, depois melhorar)"
+  - "Criar SOP de 30 páginas que ninguém lê (máximo 1-2 páginas)"

@@ -1,0 +1,292 @@
+# Five Dysfunctions Diagnostic Template — Squad Cadarn Operacional
+# Framework: Patrick Lencioni — The Five Dysfunctions of a Team
+# Agente: Nexus (RH e Gestão de Pessoas)
+# Replicável para clientes Tarian
+
+template:
+  name: five-dysfunctions-diagnostic
+  version: "1.0.0"
+  description: "Diagnóstico das 5 disfunções do time com plano de ação por nível"
+  squad: cadarn-operacional
+  agent: rh-pessoas
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - cultura_time
+    - tom_de_voz
+
+# Parâmetros (preenchidos na elicitação)
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+    tamanho_time: "{{tamanho_time}}"
+  time:
+    membros: "{{lista_membros}}"
+    lider: "{{lider_nome}}"
+    contexto: "{{situacao_atual}}"  # ex: conflito recente, novo membro, reestruturação
+
+# ============================================================
+# A PIRÂMIDE — 5 DISFUNÇÕES (de baixo para cima)
+# ============================================================
+# REGRA ABSOLUTA: Diagnosticar de BAIXO para CIMA.
+# Se a base está quebrada, nada acima funciona.
+# ============================================================
+
+piramide:
+
+  # NÍVEL 1 — BASE
+  - nivel: 1
+    disfuncao: "Ausência de Confiança"
+    oposto_saudavel: "Confiança baseada em vulnerabilidade"
+    descricao: "Membros escondem erros, fraquezas e pedidos de ajuda"
+    impacto_time_pequeno: "Com 3 pessoas, se 1 não confia = 33% do time quebrado"
+
+    sinais_presentes:
+      - "Pessoas não admitem erros abertamente"
+      - "Ninguém pede ajuda — cada um resolve sozinho"
+      - "Reuniões são superficiais — só 'tudo bem'"
+      - "Feedback é evitado ou suavizado demais"
+      - "Histórias pessoais nunca são compartilhadas"
+
+    sinais_saudaveis:
+      - "Pessoas admitem 'não sei' ou 'errei' sem medo"
+      - "Pedem ajuda quando precisam"
+      - "Oferecem feedback direto e construtivo"
+      - "Compartilham contexto pessoal relevante"
+
+    diagnostico:
+      perguntas:
+        - "Quando foi a última vez que alguém do time admitiu um erro abertamente?"
+        - "As pessoas pedem ajuda quando estão travadas?"
+        - "Existe algo que ninguém fala mas todo mundo sabe?"
+        - "O líder é o primeiro a mostrar vulnerabilidade?"
+
+      scoring:
+        saudavel: "3+ respostas positivas"
+        alerta: "1-2 respostas positivas"
+        critico: "0 respostas positivas"
+
+    antidoto:
+      exercicios:
+        - nome: "Personal Histories Exercise"
+          duracao: "30 min"
+          instrucao: "Cada membro conta: onde cresceu, quantos irmãos, desafio da infância, primeiro emprego"
+          nota: "NÃO é terapia. É humanizar. Simples e poderoso"
+
+        - nome: "Behavioral Profiling"
+          duracao: "1-2 horas"
+          instrucao: "Compartilhar resultados de Working Genius, DISC ou similar"
+          nota: "Reduz julgamento. 'Não é defeito, é perfil'"
+
+        - nome: "Leader Goes First"
+          duracao: "Contínuo"
+          instrucao: "Líder admite erro, pede feedback sobre si mesmo, mostra vulnerabilidade"
+          nota: "Se o líder não faz, ninguém fará. CEO/fundador dá o tom"
+
+  # NÍVEL 2
+  - nivel: 2
+    disfuncao: "Medo de Conflito"
+    oposto_saudavel: "Conflito saudável sobre ideias"
+    descricao: "Harmonia artificial — ninguém debate de verdade, decisões são fracas"
+    prerequisito: "Nível 1 (Confiança) deve estar saudável"
+
+    sinais_presentes:
+      - "Reuniões são entediantes — ninguém discorda"
+      - "Decisões são tomadas por 1 pessoa, resto aceita calado"
+      - "Conversas reais acontecem nos corredores, não na reunião"
+      - "Conflitos pessoais disfarçados de 'tudo bem'"
+
+    sinais_saudaveis:
+      - "Debates acalorados sobre ideias (não pessoas)"
+      - "Todos opinam, mesmo discordando do líder"
+      - "Decisões saem de discussão real, não de acomodação"
+
+    diagnostico:
+      perguntas:
+        - "Na última reunião, alguém discordou abertamente de uma ideia?"
+        - "As melhores discussões acontecem na reunião ou fora dela?"
+        - "Quando há discordância, o grupo debate ou alguém 'decide' sozinho?"
+        - "O time diferencia conflito de ideias vs conflito pessoal?"
+
+      scoring:
+        saudavel: "3+ respostas positivas"
+        alerta: "1-2 respostas positivas"
+        critico: "0 respostas positivas"
+
+    antidoto:
+      exercicios:
+        - nome: "Mining for Conflict"
+          duracao: "15 min por reunião"
+          instrucao: "Líder pergunta: 'Alguém vê isso diferente? Qual o risco que não estamos considerando?'"
+          nota: "Extrair discordância ativamente. Silêncio ≠ concordância"
+
+        - nome: "Real-Time Permission"
+          duracao: "Contínuo"
+          instrucao: "Quando surgir tensão, líder diz: 'Isso é bom. Vamos explorar essa discordância'"
+          nota: "Normalizar conflito produtivo. Não apagar o fogo"
+
+  # NÍVEL 3
+  - nivel: 3
+    disfuncao: "Falta de Comprometimento"
+    oposto_saudavel: "Comprometimento após debate"
+    descricao: "Ambiguidade nas decisões — 'concordo' sem convicção, ninguém sabe o que foi decidido"
+    prerequisito: "Nível 2 (Conflito saudável) deve estar funcional"
+
+    sinais_presentes:
+      - "Após reuniões, pessoas não sabem o que foi decidido"
+      - "Revisitam as mesmas decisões várias vezes"
+      - "Pessoas dizem 'concordo' mas agem diferente"
+      - "Esperam consenso total antes de agir"
+
+    sinais_saudaveis:
+      - "Decisões claras ao final de cada reunião"
+      - "Mesmo quem discordou se compromete com a decisão"
+      - "Prazos são definidos e respeitados"
+
+    diagnostico:
+      perguntas:
+        - "Após a última reunião, todos saberiam listar as 3 decisões tomadas?"
+        - "Há decisões que foram tomadas mas nunca executadas?"
+        - "O time busca consenso ou 'disagree and commit'?"
+
+      scoring:
+        saudavel: "3 respostas positivas"
+        alerta: "1-2 respostas positivas"
+        critico: "0 respostas positivas"
+
+    antidoto:
+      exercicios:
+        - nome: "Cascading Communication"
+          duracao: "5 min ao final de cada reunião"
+          instrucao: "Antes de sair: 'O que decidimos? Quem faz o quê? Até quando?'"
+          nota: "Escrever no chat/doc. Se não está escrito, não foi decidido"
+
+        - nome: "Disagree and Commit"
+          duracao: "Contínuo"
+          instrucao: "Líder declara: 'Não preciso que concordem, preciso que se comprometam'"
+
+  # NÍVEL 4
+  - nivel: 4
+    disfuncao: "Evitação de Accountability"
+    oposto_saudavel: "Time cobra time"
+    descricao: "Ninguém cobra ninguém — só o líder cobra, e com resistência"
+    prerequisito: "Nível 3 (Comprometimento) deve estar funcional"
+
+    sinais_presentes:
+      - "Só o líder cobra entregas — time não cobra entre si"
+      - "Prazos são perdidos sem consequências"
+      - "Performance medíocre é tolerada"
+      - "Pessoas evitam conversas difíceis com pares"
+
+    sinais_saudaveis:
+      - "Membros cobram uns aos outros respeitosamente"
+      - "Prazos são levados a sério"
+      - "Performance abaixo do esperado é endereçada rapidamente"
+
+    diagnostico:
+      perguntas:
+        - "Alguém do time (não o líder) já cobrou um par por prazo perdido?"
+        - "Performance abaixo do esperado é endereçada em quanto tempo?"
+        - "O time tem expectativas claras E escritas entre si?"
+
+      scoring:
+        saudavel: "3 respostas positivas"
+        alerta: "1-2 respostas positivas"
+        critico: "0 respostas positivas"
+
+    antidoto:
+      exercicios:
+        - nome: "Publication of Goals"
+          duracao: "Semanal"
+          instrucao: "Cada membro declara publicamente seus compromissos da semana"
+          nota: "Transparência cria pressão positiva. Não é punição, é clareza"
+
+        - nome: "Team Effectiveness Exercise"
+          duracao: "30 min trimestral"
+          instrucao: "Cada membro diz para cada par: 1 coisa que faz bem + 1 que precisa melhorar"
+
+  # NÍVEL 5 — TOPO
+  - nivel: 5
+    disfuncao: "Inatenção a Resultados"
+    oposto_saudavel: "Foco em resultados coletivos"
+    descricao: "Ego, status individual ou departamental acima do resultado do time"
+    prerequisito: "Nível 4 (Accountability) deve estar funcional"
+
+    sinais_presentes:
+      - "Pessoas priorizam sucesso individual sobre coletivo"
+      - "Departamentos/áreas competem em vez de colaborar"
+      - "Métricas individuais importam mais que métricas do time"
+      - "Pessoas ficam mesmo quando resultados do time são ruins"
+
+    sinais_saudaveis:
+      - "Celebram vitórias COLETIVAS"
+      - "Sacrificam interesse pessoal pelo resultado do time"
+      - "KPIs são do TIME, não individuais"
+
+    diagnostico:
+      perguntas:
+        - "O time celebra vitórias coletivas ou individuais?"
+        - "Alguém sacrificou interesse pessoal pelo time recentemente?"
+        - "Os KPIs principais são do time ou individuais?"
+
+      scoring:
+        saudavel: "3 respostas positivas"
+        alerta: "1-2 respostas positivas"
+        critico: "0 respostas positivas"
+
+    antidoto:
+      exercicios:
+        - nome: "Scoreboard"
+          duracao: "Contínuo"
+          instrucao: "Dashboard público com KPIs do TIME. Revisado semanalmente"
+          nota: "Se todos veem o score, todos se sentem responsáveis"
+
+        - nome: "Results-Based Rewards"
+          duracao: "Trimestral"
+          instrucao: "Bonificação/reconhecimento atrelado a resultado COLETIVO"
+
+# ============================================================
+# PROTOCOLO DE DIAGNÓSTICO
+# ============================================================
+
+protocolo:
+  regra_ouro: "SEMPRE diagnosticar de BAIXO para CIMA. Resolver nível 1 antes de tocar nível 2"
+
+  passos:
+    - passo: 1
+      acao: "Entrevistar cada membro individualmente (ou em grupo se confiança permite)"
+      duracao: "30-45 min por pessoa"
+
+    - passo: 2
+      acao: "Aplicar perguntas diagnósticas nível por nível, da base ao topo"
+      nota: "PARAR no primeiro nível com score 'crítico' ou 'alerta'"
+
+    - passo: 3
+      acao: "Identificar o nível mais baixo com disfunção ativa — este é o FOCO"
+
+    - passo: 4
+      acao: "Aplicar antídotos do nível identificado por 30 dias"
+
+    - passo: 5
+      acao: "Reassessar após 30 dias. Se saudável, subir para próximo nível"
+
+  output:
+    formato: markdown
+    conteudo:
+      - "Resultado por nível (saudável/alerta/crítico)"
+      - "Nível FOCO identificado"
+      - "Evidências (citações das entrevistas)"
+      - "Plano de ação com exercícios + prazos"
+      - "Data de reassessment"
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+anti_patterns:
+  - "Tentar resolver nível 5 sem ter nível 1 saudável"
+  - "Diagnosticar só por formulário sem conversa real"
+  - "Líder não participa do diagnóstico ('é problema do time, não meu')"
+  - "Aplicar uma vez e nunca reassessar"
+  - "Usar resultado para culpar pessoas em vez de melhorar dinâmica"
+  - "Pular exercícios de vulnerabilidade ('isso é coisa de RH')"

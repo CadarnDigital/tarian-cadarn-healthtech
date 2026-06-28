@@ -1,0 +1,237 @@
+# Automation Planning Template — Squad Cadarn Operacional
+# Framework: JP da Bravy — Fase 3 (Automatização) + Jornada de Maturidade IA
+# Agente: Kairos (Gestor de Processos)
+# Replicável para clientes Tarian
+
+template:
+  name: automation-planning
+  version: "1.0.0"
+  description: "Planejamento de automações: priorização, desenho de fluxos e jornada de maturidade IA"
+  squad: cadarn-operacional
+  agent: gestor-processos
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - tom_de_voz
+
+# Parâmetros
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+    maturidade_ia: "{{nivel}}"  # 1-chat, 2-automações, 3-sistemas
+    ferramentas_atuais: "{{ferramentas}}"
+    orcamento_automacao: "{{orcamento}}"  # mensal, para Make/n8n/ferramentas
+
+# ============================================================
+# JORNADA DE MATURIDADE EM IA (JP, Dia 3)
+# ============================================================
+
+maturidade_ia:
+
+  - nivel: 1
+    nome: "Chat (Uso Direto)"
+    descricao: "IA usada manualmente, por conversa"
+    complexidade: "1/10"
+    ferramentas: ["ChatGPT", "Claude", "Gemini"]
+    aplicacoes:
+      - "Copywriting e revisão de textos"
+      - "Geração de contratos e documentos"
+      - "Brainstorming e pesquisa"
+      - "Análise de dados simples"
+    custo: "R$0-200/mês (assinaturas)"
+    prerequisito: "Nenhum — começar aqui"
+    indicador_prontidao_nivel_2: "Time usa IA diariamente em >3 processos"
+
+  - nivel: 2
+    nome: "Automações (Make/n8n)"
+    descricao: "IA integrada em fluxos automáticos"
+    complexidade: "4-7/10"
+    ferramentas:
+      make:
+        complexidade: "4/10"
+        recomendacao: "Começar aqui (visual, mais fácil)"
+        custo: "R$50-350/mês"
+      n8n:
+        complexidade: "7/10"
+        recomendacao: "Para quem quer mais controle (self-hosted)"
+        custo: "R$0 (self-hosted) ou R$100-400/mês (cloud)"
+    padrao_fluxo: "Ferramenta Gestão → Make/n8n → IA → Resultado automático"
+    aplicacoes:
+      - "Contrato automático (status mudou → IA gera → salva)"
+      - "Copy automática (task criada → IA gera → insere no card)"
+      - "Follow-up automático (sem atualização → lembrete)"
+      - "Onboarding automático (fechou → checklist criado)"
+      - "Relatório automático (fim do mês → IA consolida → envia)"
+    prerequisito: "Nível 1 estável + processos documentados (Fase 1 Bravy)"
+    indicador_prontidao_nivel_3: "5+ automações ativas, time não precisa intervir"
+
+  - nivel: 3
+    nome: "Sistemas (Vibecoding)"
+    descricao: "Sistemas completos construídos com IA"
+    complexidade: "7-10/10"
+    ferramentas: ["Cursor", "V0", "Bolt", "Lovable", "Claude Code"]
+    aplicacoes:
+      - "CRM personalizado"
+      - "Dashboard customizado"
+      - "Bot WhatsApp multiagente"
+      - "Portal do cliente"
+    custo: "Variável — depende do sistema"
+    prerequisito: "Nível 2 maduro + necessidade que ferramentas prontas não atendem"
+    exemplo_real: "BravSales (Bravy) — economia R$60-75K/ano vs SaaS"
+
+# ============================================================
+# FRAMEWORK DE PRIORIZAÇÃO DE AUTOMAÇÕES
+# ============================================================
+
+priorizacao:
+  metodo: "Matriz Impacto x Esforço"
+
+  criterios_impacto:
+    - "Frequência: quantas vezes/mês o processo roda?"
+    - "Tempo gasto: quantas horas/mês consome manualmente?"
+    - "Erro humano: com que frequência falha quando manual?"
+    - "Receita: impacta diretamente receita ou retenção?"
+
+  criterios_esforco:
+    - "Complexidade técnica: quantos sistemas envolvidos?"
+    - "Dados: os dados estão estruturados?"
+    - "Ferramentas: Make resolve ou precisa código?"
+    - "Manutenção: precisa de ajuste frequente?"
+
+  matriz:
+    - quadrante: "FAZER PRIMEIRO"
+      impacto: Alto
+      esforco: Baixo
+      exemplos: ["Notificações automáticas", "Atribuição de responsável", "Templates de task"]
+
+    - quadrante: "PLANEJAR"
+      impacto: Alto
+      esforco: Alto
+      exemplos: ["Geração de contratos com IA", "Relatórios automatizados", "Bot de atendimento"]
+
+    - quadrante: "QUICK WINS"
+      impacto: Baixo
+      esforco: Baixo
+      exemplos: ["Lembretes de prazo", "Campos auto-preenchidos", "Duplicação de templates"]
+
+    - quadrante: "NÃO FAZER (agora)"
+      impacto: Baixo
+      esforco: Alto
+      exemplos: ["Sistema customizado para processo raro", "Integração com sistema legado"]
+
+# ============================================================
+# DESENHO DE AUTOMAÇÃO (por fluxo)
+# ============================================================
+
+desenho_fluxo:
+  template: |
+    ## Automação: {{nome}}
+
+    **Objetivo:** {{o_que_resolve}}
+    **Tier:** {{nativa | make | ia}}
+    **Prioridade:** {{fazer_primeiro | planejar | quick_win}}
+
+    ### Trigger
+    - Evento: {{o_que_dispara}}
+    - Origem: {{sistema_origem}}
+
+    ### Steps
+    1. {{passo_1}} ({{ferramenta}})
+    2. {{passo_2}} ({{ferramenta}})
+    3. {{passo_3}} ({{ferramenta}})
+
+    ### Output
+    - Resultado: {{o_que_é_entregue}}
+    - Destino: {{onde_vai}}
+
+    ### Tratamento de Erro
+    - Se falha no step {{N}}: {{o_que_fazer}}
+    - Notificar: {{quem}}
+
+    ### KPI
+    - Antes (manual): {{tempo/erro_antes}}
+    - Depois (automatizado): {{tempo/erro_esperado}}
+
+# ============================================================
+# PADRÕES DE AUTOMAÇÃO VALIDADOS (JP, Dia 3)
+# ============================================================
+
+padroes_validados:
+
+  - nome: "Contrato Automático"
+    trigger: "Status mudou para 'Negócio Fechado'"
+    fluxo: "ClickUp → Make → extrair campos → IA formata → Google Docs/PDF"
+    tier: Make + IA
+    impacto: "Elimina 2-4h por contrato"
+
+  - nome: "Copy Automática"
+    trigger: "Task criada (tipo: conteúdo)"
+    fluxo: "ClickUp → Make → extrair briefing → IA gera copy → insere no card"
+    tier: Make + IA
+    impacto: "Primeiro rascunho em 2 min vs 30 min"
+
+  - nome: "Follow-up Automático"
+    trigger: "Task sem atualização há X dias"
+    fluxo: "ClickUp (automação nativa) → criar lembrete → notificar responsável"
+    tier: Nativa
+    impacto: "Zero tasks esquecidas"
+
+  - nome: "Onboarding de Cliente"
+    trigger: "Negócio fechado"
+    fluxo: "ClickUp → template de projeto aplicado → tasks distribuídas → notificações"
+    tier: Nativa + Make
+    impacto: "Onboarding padronizado em 5 min vs 2h"
+
+  - nome: "Relatório Mensal"
+    trigger: "Primeiro dia útil do mês"
+    fluxo: "Make → coleta dados (ClickUp, Analytics, financeiro) → IA consolida → email/PDF"
+    tier: Make + IA
+    impacto: "Relatório pronto automaticamente"
+
+  - nome: "Alerta de Churn"
+    trigger: "NPS < 7 ou sem interação há 14 dias"
+    fluxo: "ClickUp/CRM → Make → verificar condições → WhatsApp para gestor"
+    tier: Make
+    impacto: "Prevenção proativa de churn"
+
+# ============================================================
+# PLANO DE IMPLEMENTAÇÃO DE AUTOMAÇÕES
+# ============================================================
+
+plano:
+  fases:
+    - fase: 1
+      nome: "Quick Wins (Semana 1-2)"
+      foco: "Automações nativas da ferramenta"
+      exemplos: ["Templates de task", "Atribuição automática", "Notificações de prazo"]
+      esforco: Baixo
+
+    - fase: 2
+      nome: "Fluxos Core (Semana 3-4)"
+      foco: "Make/n8n conectando 2-3 ferramentas"
+      exemplos: ["Onboarding automático", "Follow-up", "Notificações WhatsApp"]
+      esforco: Médio
+
+    - fase: 3
+      nome: "IA Integrada (Semana 5-6)"
+      foco: "IA como camada nos fluxos existentes"
+      exemplos: ["Geração de documentos", "Copy automática", "Análise de dados"]
+      esforco: Alto
+
+    - fase: 4
+      nome: "Monitoramento (Contínuo)"
+      foco: "Medir, ajustar, expandir"
+      acoes: ["Revisar KPIs quinzenalmente", "Ajustar fluxos com problemas", "Identificar próximas automações"]
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+anti_patterns:
+  - "Automatizar processo que não está documentado (AX1)"
+  - "Automatizar processo ruim (automatizar lixo = lixo mais rápido)"
+  - "Começar por automações complexas (Make+IA) antes das nativas"
+  - "Não ter tratamento de erro (fluxo falha e ninguém sabe)"
+  - "Criar automação e não medir impacto"
+  - "Depender de 1 pessoa para manter as automações (linchpin)"
+  - "Ignorar IA como opção (AX5 — é padrão, não extra)"

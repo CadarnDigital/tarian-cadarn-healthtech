@@ -1,0 +1,334 @@
+# Client Journey 8 Phases Template — Squad Cadarn Operacional
+# Framework: Joey Coleman — Never Lose a Customer Again (First 100 Days)
+# Agente: Arc (Client Success)
+# Replicável para clientes Tarian
+
+template:
+  name: client-journey-8phases
+  version: "1.0.0"
+  description: "Mapeamento da jornada do cliente nas 8 fases com touchpoints, canais e KPIs"
+  squad: cadarn-operacional
+  agent: client-success
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - tom_comunicacao
+    - canais_preferidos
+
+# Parâmetros (preenchidos na elicitação)
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+    servico_principal: "{{servico}}"
+    ticket_medio: "{{ticket_medio}}"
+    ciclo_venda: "{{ciclo_venda_dias}}"
+  cliente:
+    nome: "{{cliente_nome}}"           # específico ou "persona genérica"
+    servico_contratado: "{{servico_contratado}}"
+    data_fechamento: "{{data_fechamento}}"
+    gestor_conta: "{{gestor}}"
+
+# ============================================================
+# AS 8 FASES DA JORNADA
+# ============================================================
+
+fases:
+
+  - numero: 1
+    fase: ASSESS
+    nome_pt: Avaliar
+    descricao: "Cliente pesquisa se você resolve o problema dele"
+    momento: "Antes da compra"
+    dono: "Marketing / Vendas"
+    emocao_cliente: "Curiosidade + ceticismo"
+
+    touchpoints:
+      - "Site/landing page com prova social"
+      - "Conteúdo educativo (blog, vídeo, podcast)"
+      - "Primeira reunião / diagnóstico gratuito"
+      - "Proposta comercial personalizada"
+
+    canais:
+      - "Site + SEO"
+      - "Redes sociais"
+      - "Email marketing"
+      - "WhatsApp (primeiro contato)"
+
+    kpis:
+      - metrica: "Taxa de conversão lead → reunião"
+        meta: ">20%"
+      - metrica: "Tempo médio lead → proposta"
+        meta: "<7 dias"
+
+    perguntas_diagnostico:
+      - "Como o cliente nos encontrou?"
+      - "O que ele pesquisou antes de falar conosco?"
+      - "Quais objeções surgiram na primeira conversa?"
+
+  - numero: 2
+    fase: ADMIT
+    nome_pt: Admitir
+    descricao: "Cliente decide comprar. DIA 1 dos 100 dias"
+    momento: "Momento da compra"
+    dono: "Vendas + Client Success"
+    emocao_cliente: "Empolgação + ansiedade"
+
+    touchpoints:
+      - "Assinatura do contrato"
+      - "Mensagem de boas-vindas IMEDIATA"
+      - "Apresentação do gestor de conta"
+
+    canais:
+      - "Reunião (presencial ou vídeo)"
+      - "WhatsApp (mensagem pessoal, não automática)"
+      - "Email (confirmação formal)"
+
+    kpis:
+      - metrica: "Tempo entre fechamento e primeiro contato pós-venda"
+        meta: "<2 horas"
+      - metrica: "Taxa de assinatura → kickoff agendado"
+        meta: "100%"
+
+    perguntas_diagnostico:
+      - "Quanto tempo entre a assinatura e o primeiro contato pós-venda?"
+      - "O cliente sabe exatamente o que acontece agora?"
+      - "Quem faz a transição vendas → entrega?"
+
+  - numero: 3
+    fase: AFFIRM
+    nome_pt: Afirmar
+    descricao: "Buyer's remorse — FASE MAIS CRÍTICA. Comunicar IMEDIATAMENTE"
+    momento: "0-48 horas após compra"
+    dono: "Client Success"
+    emocao_cliente: "Dúvida, arrependimento potencial"
+    criticidade: MAXIMA
+
+    touchpoints:
+      - "Vídeo personalizado do CEO/líder (24h)"
+      - "Kit boas-vindas digital ou físico"
+      - "Cronograma das próximas 2 semanas"
+      - "Ligação pessoal: 'Fez a escolha certa'"
+
+    canais:
+      minimo: 3
+      obrigatorios:
+        - "Vídeo personalizado (alto impacto)"
+        - "WhatsApp/ligação (pessoal)"
+        - "Email (formal + cronograma)"
+      opcionais:
+        - "Presente físico (surpreende)"
+        - "Carta manuscrita (premium)"
+
+    kpis:
+      - metrica: "% clientes que recebem contato em <24h"
+        meta: "100%"
+      - metrica: "Open/view rate do vídeo de boas-vindas"
+        meta: ">80%"
+
+    perguntas_diagnostico:
+      - "O cliente recebe algum contato nas primeiras 24h após assinar?"
+      - "Usamos mais de 1 canal nessa fase?"
+      - "O cliente sabe o cronograma dos próximos passos?"
+
+    alerta: |
+      Se o cliente NÃO recebe contato em 24h, o risco de arrependimento DOBRA.
+      Esta fase determina o tom de toda a relação.
+
+  - numero: 4
+    fase: ACTIVATE
+    nome_pt: Ativar
+    descricao: "Primeira interação real pós-compra. Tornar MEMORÁVEL"
+    momento: "Semana 1"
+    dono: "Client Success + Equipe de entrega"
+    emocao_cliente: "Expectativa alta"
+
+    touchpoints:
+      - "Kickoff meeting (toda equipe relevante presente)"
+      - "Entrega do diagnóstico/briefing inicial"
+      - "Acesso a ferramentas e dashboards"
+      - "Apresentação da equipe que vai atender"
+
+    canais:
+      - "Reunião (vídeo ou presencial)"
+      - "Email (ata + próximos passos)"
+      - "Ferramenta de gestão (ClickUp, etc.)"
+
+    kpis:
+      - metrica: "% clientes com kickoff na semana 1"
+        meta: ">90%"
+      - metrica: "Participação do cliente no kickoff"
+        meta: "100% stakeholders presentes"
+
+    perguntas_diagnostico:
+      - "O kickoff é memorável ou burocrático?"
+      - "O cliente sai do kickoff sabendo exatamente o que esperar?"
+      - "A equipe de entrega conhece o contexto do cliente?"
+
+  - numero: 5
+    fase: ACCLIMATE
+    nome_pt: Aclimatar
+    descricao: "Cliente aprendendo a trabalhar com você. HAND-HOLDING necessário"
+    momento: "Semanas 2-4"
+    dono: "Client Success"
+    emocao_cliente: "Aprendizado + possível frustração"
+    criticidade: ALTA
+
+    touchpoints:
+      - "Check-ins semanais (não esperar o cliente reclamar)"
+      - "Entrega parcial com resultado tangível"
+      - "Tutoriais/guias de uso das ferramentas"
+      - "Respostas rápidas a dúvidas (<4h)"
+
+    canais:
+      - "Reunião semanal (breve, 15-30min)"
+      - "WhatsApp (respostas rápidas)"
+      - "Email (reports de progresso)"
+      - "Ferramenta de gestão (transparência)"
+
+    kpis:
+      - metrica: "% do checklist de onboarding concluído em 30 dias"
+        meta: ">80%"
+      - metrica: "Tempo médio de resposta a dúvidas do cliente"
+        meta: "<4 horas"
+      - metrica: "Primeira entrega parcial"
+        meta: "<21 dias"
+
+    perguntas_diagnostico:
+      - "O cliente sabe acompanhar o progresso do projeto?"
+      - "Quantos contatos proativos fazemos por semana?"
+      - "Há algum gargalo que está frustrando o cliente?"
+
+    alerta: |
+      MAIORIA DO CHURN acontece entre ACTIVATE e ACCLIMATE.
+      Cliente que se sente 'abandonado' aqui NUNCA chega a ACCOMPLISH.
+
+  - numero: 6
+    fase: ACCOMPLISH
+    nome_pt: Realizar
+    descricao: "Cliente alcança o resultado que buscava. CELEBRAR"
+    momento: "Semanas 4-8"
+    dono: "Equipe de entrega + Client Success"
+    emocao_cliente: "Satisfação + validação"
+
+    touchpoints:
+      - "Entrega do resultado principal prometido"
+      - "Apresentação de resultados com dados"
+      - "Celebração (reconhecer o marco)"
+      - "Depoimento/feedback estruturado"
+
+    canais:
+      - "Reunião de apresentação de resultados"
+      - "Report visual (dashboard, PDF)"
+      - "WhatsApp (parabéns informal)"
+
+    kpis:
+      - metrica: "Dias até primeiro resultado mensurável"
+        meta: "<45 dias"
+      - metrica: "NPS pós-primeira entrega"
+        meta: ">8"
+      - metrica: "% clientes que atingem resultado prometido"
+        meta: ">85%"
+
+    perguntas_diagnostico:
+      - "O cliente PERCEBE que atingiu o resultado?"
+      - "Celebramos a conquista ou só entregamos e seguimos?"
+      - "O cliente tem dados para provar ROI?"
+
+  - numero: 7
+    fase: ADOPT
+    nome_pt: Adotar
+    descricao: "Lealdade. Cliente não considera concorrentes"
+    momento: "Semanas 8-12+"
+    dono: "Client Success"
+    emocao_cliente: "Confiança + lealdade"
+
+    touchpoints:
+      - "Proposta de renovação/expansão"
+      - "Roadmap de próximas fases"
+      - "Convite para comunidade/grupo exclusivo"
+      - "Upsell natural (não forçado)"
+
+    canais:
+      - "Reunião estratégica trimestral"
+      - "Email (relatório mensal de resultados)"
+      - "Evento exclusivo (presencial ou online)"
+
+    kpis:
+      - metrica: "Taxa de renovação"
+        meta: ">85%"
+      - metrica: "Ticket médio após 6 meses vs inicial"
+        meta: "Crescimento >20%"
+
+    perguntas_diagnostico:
+      - "O cliente já comparou preço com concorrente recentemente?"
+      - "Pediu mais serviços/expansão?"
+      - "Participa de iniciativas da empresa (eventos, grupos)?"
+
+  - numero: 8
+    fase: ADVOCATE
+    nome_pt: Advogar
+    descricao: "Indica espontaneamente. NUNCA pedir — merecer"
+    momento: "Mês 3+"
+    dono: "Toda empresa"
+    emocao_cliente: "Orgulho + pertencimento"
+
+    touchpoints:
+      - "Case study (com permissão e participação)"
+      - "Depoimento em vídeo"
+      - "Indicação espontânea"
+      - "Co-criação (beta tester, advisory)"
+
+    canais:
+      - "Vídeo (depoimento)"
+      - "Redes sociais (menção espontânea)"
+      - "Boca a boca"
+
+    kpis:
+      - metrica: "Indicações por cliente por trimestre"
+        meta: ">1"
+      - metrica: "% receita vinda de indicação"
+        meta: ">30%"
+      - metrica: "NPS geral"
+        meta: ">50"
+
+    perguntas_diagnostico:
+      - "Quantos clientes indicaram nos últimos 90 dias?"
+      - "Temos cases publicados?"
+      - "Clientes mencionam a empresa espontaneamente?"
+
+    regra: |
+      NUNCA pedir indicação diretamente. Se a jornada foi bem feita,
+      a indicação vem naturalmente. Se não vem, o problema está em
+      alguma fase anterior.
+
+# ============================================================
+# PROTOCOLO DE DIAGNÓSTICO — FASE ATUAL
+# ============================================================
+
+diagnostico_fase:
+  instrucao: |
+    Para identificar em qual fase um cliente está:
+    1. Percorrer as fases de 1 a 8
+    2. Para cada fase, aplicar as perguntas_diagnostico
+    3. A fase atual é a ÚLTIMA com todas as perguntas respondidas positivamente
+    4. Recomendar ações da fase atual + preparar a próxima
+
+  output:
+    - "Fase atual identificada"
+    - "Evidências por fase (o que já foi feito)"
+    - "Gaps encontrados (fases com falhas)"
+    - "Plano de ação: touchpoints + canais + prazos"
+    - "KPIs a monitorar"
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+anti_patterns:
+  - "Não fazer contato em 24h após ADMIT (buyer's remorse)"
+  - "Kickoff burocrático e genérico (ACTIVATE deve ser memorável)"
+  - "Sumir entre ACTIVATE e ACCLIMATE (onde ocorre a maioria do churn)"
+  - "Entregar resultado sem celebrar (ACCOMPLISH perde impacto)"
+  - "Pedir indicação diretamente (ADVOCATE deve ser orgânico)"
+  - "Usar só email em todas as fases (mínimo 3 canais)"
+  - "Não medir KPIs por fase (impossível saber onde melhorar)"

@@ -1,0 +1,120 @@
+name: cadarn-operacional
+version: 1.0.0
+description: Squad Cadarn Operacional — 5 agentes que fazem a empresa funcionar (scaling, processos, financeiro, RH, client success). Replicável para clientes.
+author: Fabiano Cunha
+license: UNLICENSED
+
+aiox:
+  minVersion: "2.1.0"
+  type: squad
+
+# ICP — Ideal Customer Profile (mesmo da Cadarn)
+icp:
+  primary: "Prestadores de serviços premium (high-ticket)"
+  segments:
+    - Imobiliárias de luxo
+    - Escritórios de advocacia
+    - Clínicas de estética avançada
+    - Arquitetos e designers de interiores
+    - Consultores e profissionais liberais
+
+# Hierarquia
+hierarchy:
+  decision_authority: "Fabiano (decisão final absoluta)"
+  operations_lead: "#1 Líder Operacional (Leila Hormozi)"
+  scrum_integration: "Sensei (Conselho) — rituais Scrum integrados"
+
+# Princípio de replicação
+replication:
+  principle: "O DNA é Cadarn. A pele é do cliente."
+  note: "Ao instalar AIOX-cliente, replicar esta squad com contexto do cliente"
+  exclusive_to_hq: false
+
+# 6 agentes em 4 camadas
+agents:
+  # CAMADA 1 — LIDERANÇA
+  - id: lider-operacional
+    name: Scala
+    role: Líder Operacional
+    layer: lideranca
+    dna_source: "Leila Hormozi (Acquisition.com)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/leila-hormozi/"
+    conselho_duplo_chapeu: true
+
+  # CAMADA 2 — GESTÃO
+  - id: gestor-processos
+    name: Kairos
+    role: Gestor de Processos e Projetos
+    layer: gestao
+    dna_source: "JP da Bravy"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/bravy/"
+    note: "Agente existente no AIOX core — migra para Squad Operacional"
+    external_ref: ".aiox-core/development/agents/kairos.md"
+
+  - id: financeiro
+    name: Vault
+    role: Gestor Financeiro
+    layer: gestao
+    dna_source: "Mike Michalowicz (Profit First + Fix This Next + Clockwork)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/michalowicz/"
+
+  - id: rh-pessoas
+    name: Nexus
+    role: RH e Gestão de Pessoas
+    layer: gestao
+    dna_source: "Patrick Lencioni (Five Dysfunctions + Ideal Team Player + Org Health + Working Genius)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/lencioni/"
+
+  # CAMADA 3 — RELACIONAMENTO
+  - id: client-success
+    name: Arc
+    role: Client Success
+    layer: relacionamento
+    dna_source: "Joey Coleman (First 100 Days)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/coleman/"
+
+  # CAMADA 4 — GOVERNANÇA
+  - id: account-orchestrator
+    name: Argus
+    role: Account Orchestrator — Visão 360 do Portfólio
+    layer: governanca
+    dna_source: "David Maister (Managing the Professional Service Firm + The Trusted Advisor) + Lincoln Murphy (Customer Success at Scale)"
+    note: "Visão de portfólio multi-cliente. Arc = jornada individual. Argus = saúde de todos os clientes."
+
+# Integração com outras squads/entidades
+integrations:
+  - entity: conselho/cadarn-mentoria
+    agent: scrum-master (Sensei)
+    role: "Rituais Scrum, Sprint Planning, Daily, Retro"
+
+  - entity: squads/cadarn-marketing
+    role: "Operacional entrega infraestrutura para Marketing executar"
+
+  - entity: pool/cadarn-juridico
+    role: "Contratos, compliance, LGPD"
+
+# Frameworks integrados
+frameworks:
+  scrum: "Jeff Sutherland (via Sensei) — Sprints, rituais, velocity"
+  financeiro: "Profit First (Michalowicz) — 5 contas, alocação bi-mensal"
+  processos: "JP da Bravy (via Kairos) — ClickUp, SOPs, automações"
+  pessoas: "Lencioni — Five Dysfunctions, Ideal Team Player, Working Genius"
+  client_success: "Coleman — First 100 Days, 8 fases, 6 canais"
+  operacoes: "Leila Hormozi — 5 Scaling Frameworks, H.E.R.E."
+  reunioes: "Lencioni (Death by Meeting) — Daily, Weekly, Monthly, Quarterly"
+  diagnostico: "Fix This Next (Michalowicz) — Business Hierarchy of Needs"
+  autonomia: "Clockwork (Michalowicz) — QBR, 4D Mix, teste das 4 semanas"
+
+config:
+  extends: extend
+  language: pt-BR
+
+dependencies:
+  squads:
+    - cadarn-marketing
+
+tags:
+  - operacional
+  - cadarn
+  - premium
+  - replicavel

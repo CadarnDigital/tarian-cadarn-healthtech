@@ -1,0 +1,219 @@
+# Working Genius Assessment Template — Squad Cadarn Operacional
+# Framework: Patrick Lencioni — The 6 Types of Working Genius
+# Agente: Nexus (RH e Gestão de Pessoas)
+# Replicável para clientes Tarian
+
+template:
+  name: working-genius-assessment
+  version: "1.0.0"
+  description: "Mapeamento dos 6 Working Genius do time — gênios, competências e frustrações"
+  squad: cadarn-operacional
+  agent: rh-pessoas
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - valores_cultura
+    - tom_de_voz
+
+# Parâmetros (preenchidos na elicitação)
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+    tamanho_time: "{{tamanho_time}}"
+    valores: "{{valores}}"
+  time:
+    membros: "{{lista_membros}}"  # array de nomes
+    contexto: "{{contexto_time}}"  # desafio atual, momento
+
+# ============================================================
+# OS 6 TIPOS DE WORKING GENIUS
+# ============================================================
+
+genius_types:
+
+  - id: W
+    name: Wonder (Ponderar)
+    description: "Questionar o estado das coisas, perguntar 'por quê?', identificar necessidade de mudança"
+    fase_trabalho: Ideação
+    par: Invention
+    sinais_genio:
+      - "Fica energizado ao questionar como as coisas são feitas"
+      - "Percebe problemas antes dos outros"
+      - "Gosta de filosofar e refletir sobre possibilidades"
+    sinais_frustracao:
+      - "Não consegue parar de questionar — trava a execução"
+      - "Frustra-se quando pedem para 'apenas fazer'"
+
+  - id: I
+    name: Invention (Inventar)
+    description: "Criar soluções originais, conectar pontos, gerar ideias novas"
+    fase_trabalho: Ideação
+    par: Wonder
+    sinais_genio:
+      - "Energiza-se ao resolver problemas de forma criativa"
+      - "Tem ideias constantemente, mesmo sem pedir"
+      - "Conecta conceitos de áreas diferentes"
+    sinais_frustracao:
+      - "Detesta implementar — quer só idealizar"
+      - "Frustra-se com restrições práticas"
+
+  - id: D
+    name: Discernment (Discernir)
+    description: "Avaliar ideias intuitivamente, dar feedback certeiro, 'sentir' o que funciona"
+    fase_trabalho: Ativação
+    par: Galvanizing
+    sinais_genio:
+      - "Dá feedback preciso sobre ideias (bom/ruim) rapidamente"
+      - "Tem 'gut feeling' confiável"
+      - "Outros pedem opinião naturalmente"
+    sinais_frustracao:
+      - "Frustra-se quando ignoram seu julgamento"
+      - "Não consegue explicar 'por quê' — apenas sente"
+
+  - id: G
+    name: Galvanizing (Mobilizar)
+    description: "Inspirar e mobilizar pessoas para agir, criar urgência e entusiasmo"
+    fase_trabalho: Ativação
+    par: Discernment
+    sinais_genio:
+      - "Energiza-se ao convencer pessoas a embarcar numa ideia"
+      - "Cria senso de urgência naturalmente"
+      - "Move o grupo da inércia para a ação"
+    sinais_frustracao:
+      - "Detesta trabalhar sozinho"
+      - "Frustra-se quando pessoas resistem a agir"
+
+  - id: E
+    name: Enablement (Habilitar)
+    description: "Dar suporte, responder ao que outros precisam, adaptar-se para ajudar"
+    fase_trabalho: Implementação
+    par: Tenacity
+    sinais_genio:
+      - "Energiza-se ao ajudar outros a terem sucesso"
+      - "Adapta-se rapidamente ao que é necessário"
+      - "É o 'cola' do time — conecta pessoas e necessidades"
+    sinais_frustracao:
+      - "Pode dizer 'sim' demais e se sobrecarregar"
+      - "Frustra-se quando esforço não é reconhecido"
+
+  - id: T
+    name: Tenacity (Tenacidade)
+    description: "Completar tarefas, garantir que projetos cruzem a linha de chegada"
+    fase_trabalho: Implementação
+    par: Enablement
+    sinais_genio:
+      - "Energiza-se ao concluir tarefas e riscar itens da lista"
+      - "Sente desconforto com coisas inacabadas"
+      - "Puxa o time para o fechamento quando energia diminui"
+    sinais_frustracao:
+      - "Frustra-se com mudanças constantes de direção"
+      - "Detesta retrabalho e escopo que muda"
+
+# ============================================================
+# ESTRUTURA DO ASSESSMENT
+# ============================================================
+
+assessment:
+  metodo: "workinggenius.com — 42 perguntas, ~10 minutos por pessoa"
+  custo: "US$25/pessoa (assessment oficial) ou mapeamento qualitativo gratuito"
+
+  resultado_por_pessoa:
+    genios: 2          # Atividades que ENERGIZAM — alocar AQUI
+    competencias: 2    # Consegue fazer, mas não energiza — usar com moderação
+    frustracoes: 2     # DRENA energia — evitar ou minimizar
+
+  # Mapeamento qualitativo (alternativa gratuita)
+  mapeamento_qualitativo:
+    instrucao: |
+      Para cada membro do time, responder sobre cada um dos 6 tipos:
+      G (Gênio) = "Isso me ENERGIZA, eu faria o dia todo"
+      C (Competência) = "Consigo fazer, mas não me anima"
+      F (Frustração) = "Isso me DRENA, evito sempre que posso"
+
+    perguntas_guia:
+      W: "Você se energiza questionando como as coisas são feitas?"
+      I: "Você se energiza criando soluções novas para problemas?"
+      D: "Você se energiza avaliando ideias e dando feedback?"
+      G: "Você se energiza convencendo pessoas a agir?"
+      E: "Você se energiza ajudando outros a terem sucesso?"
+      T: "Você se energiza completando tarefas e fechando projetos?"
+
+# ============================================================
+# TEAM MAP — ANÁLISE DE COBERTURA
+# ============================================================
+
+team_map:
+  instrucao: |
+    Após todos os membros serem mapeados, gerar a matriz:
+
+    | Membro | W | I | D | G | E | T |
+    |--------|---|---|---|---|---|---|
+    | Nome 1 | G | C | G | F | C | F |
+    | Nome 2 | F | G | C | G | F | C |
+    | ...    |   |   |   |   |   |   |
+
+    Legenda: G=Gênio, C=Competência, F=Frustração
+
+  analise_cobertura:
+    - "Quantos gênios o time tem em cada tipo?"
+    - "Há GAPS (tipos sem nenhum gênio no time)?"
+    - "Há SOBREPOSIÇÕES (3+ gênios no mesmo tipo)?"
+    - "A alocação ATUAL respeita os gênios ou força frustrações?"
+
+  gaps_resolucao:
+    opcoes:
+      - "Realocar tarefas entre membros existentes"
+      - "Criar processos/ferramentas que compensem (ex: checklist para T)"
+      - "Contratar com foco no gap (informar Scala)"
+      - "Automatizar (informar Kairos)"
+
+  # Para time pequeno (3 pessoas)
+  time_pequeno:
+    nota: "Com 3 pessoas = 6 gênios disponíveis = cobertura EXATA se não houver sobreposição"
+    risco: "Sobreposição é quase certa. Gaps vão existir. Planejar compensação"
+    cadarn_aplicacao: |
+      {LIDER}, {SÓCIO}, {IA_OPERATOR}:
+      Mapear os 6 gênios → identificar gaps → definir se compensa com processo ou contratação
+
+# ============================================================
+# PLANO DE AÇÃO PÓS-ASSESSMENT
+# ============================================================
+
+plano_acao:
+  passos:
+    - passo: 1
+      acao: "Aplicar assessment individual (oficial ou qualitativo)"
+      duracao: "1 dia"
+      responsavel: "Nexus (RH)"
+
+    - passo: 2
+      acao: "Sessão de revelação em grupo — cada pessoa compartilha seus resultados"
+      duracao: "1-2 horas"
+      responsavel: "Nexus (RH)"
+      nota: "Ambiente seguro. Sem julgamento. Gênios não são 'melhor' ou 'pior'"
+
+    - passo: 3
+      acao: "Montar team map e analisar cobertura/gaps"
+      duracao: "30 min"
+      responsavel: "Nexus (RH)"
+
+    - passo: 4
+      acao: "Discutir realocação: quem está fazendo tarefas que são frustração?"
+      duracao: "1 hora"
+      responsavel: "Nexus (RH) + Scala (Líder)"
+
+    - passo: 5
+      acao: "Implementar mudanças de alocação e monitorar por 30 dias"
+      duracao: "30 dias"
+      responsavel: "Scala (Líder)"
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+anti_patterns:
+  - "Usar resultados para justificar limitações ('não é meu gênio, não faço')"
+  - "Forçar pessoa a operar em frustração por conveniência"
+  - "Ignorar gaps do time ('a gente se vira')"
+  - "Não fazer a sessão de revelação em grupo (perde 80% do valor)"
+  - "Aplicar uma vez e nunca mais revisitar (reassessar a cada 6 meses)"

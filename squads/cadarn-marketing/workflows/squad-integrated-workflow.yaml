@@ -1,0 +1,410 @@
+# Squad Cadarn Marketing — Workflow Integrado
+# Como os 11 agentes trabalham juntos em cada cenário de marketing
+# Versão: 1.0.0
+
+workflow:
+  name: squad-marketing-integrated
+  version: "1.0.0"
+  description: "Orquestração das 5 camadas em cenários-chave do ciclo de marketing premium"
+  squad: cadarn-marketing
+
+# ============================================================
+# HIERARQUIA DE COMANDO
+# ============================================================
+
+hierarquia:
+  decisao_final: "Fabiano (CEO)"
+  brand_authority: "Coel (Brand Guardian) — parecer + escalação"
+  strategy_lead: "Cadarn (Estrategista-chefe)"
+
+  camadas:
+    fundacao: "Cadarn (Estrategista) + Coel (Brand Guardian)"
+    estrategia: "Clarissa (Diagnóstico) + Vinci (Branding)"
+    criacao: "Logos (Copy) + Magnética (Roteiro) + Iris (Direção Criativa)"
+    distribuicao: "Pulso (Social) + Mídia (Tráfego) + Métrica (Analytics)"
+    execucao: "Pixel (Design)"
+
+  regra: |
+    Cadarn DEFINE a direção estratégica.
+    Coel AUDITA conformidade de marca (não veta — escala para Fabiano).
+    Clarissa DIAGNÓSTICA antes de qualquer estratégia nova.
+    Criação NUNCA começa sem briefing aprovado.
+    Mídia NUNCA ativa campanhas sem peças auditadas pelo Coel.
+    GATE MARKETING (handoff Comercial): Marketing só inicia onboarding
+    após Arc (client-success) confirmar kickoff ACTIVATE completo.
+
+# ============================================================
+# 5 CENÁRIOS INTEGRADOS
+# ============================================================
+
+cenarios:
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 1: ONBOARDING DE NOVO CLIENTE
+  # ─────────────────────────────────────────
+  - id: C1
+    nome: "Onboarding de Novo Cliente — Do Kickoff ao Primeiro Conteúdo"
+    trigger: "Arc (client-success) sinaliza ACTIVATE completo + client-intake-handoff recebido"
+    complexidade: ALTA
+    duracao: "7-14 dias"
+
+    pre_requisito: |
+      GATE OBRIGATÓRIO: Receber client-intake-handoff preenchido por Caio (squad-comercial).
+      Handoff contém: dor principal, DISC do cliente, restrições, comprometimentos, segmento.
+      SEM handoff = onboarding bloqueado.
+
+    fluxo:
+      - step: 1
+        agente: Clarissa
+        acao: "Diagnóstico multicanal completo (CR+ Etapa 1)"
+        task: "run-diagnostic.md"
+        template: "diagnostico-multicanal-tmpl.yaml"
+        input: "client-intake-handoff + acesso às redes sociais do cliente"
+        output: "Diagnóstico: persona, canais, benchmarks, lacunas, objetivos 90d"
+        duracao: "2-3 dias"
+
+      - step: 2
+        agente: Vinci
+        acao: "Posicionamento e identidade de marca (Creator Brand System)"
+        task: "create-brand-positioning.md"
+        template: "brand-positioning-tmpl.yaml"
+        input: "Diagnóstico da Clarissa + conhecimento DNA Tay Dantas"
+        output: "Universo de marca, regras visuais, tom de voz, pilares"
+        gate: "Diagnóstico Clarissa aprovado ANTES de iniciar"
+        duracao: "2-3 dias"
+
+      - step: 3
+        agente: Coel
+        acao: "Auditoria inicial — Primal Code® (7 elementos)"
+        task: "audit-brand-content.md"
+        template: "auditoria-primal-code-tmpl.yaml"
+        input: "Posicionamento do Vinci + material existente do cliente"
+        output: "APROVADO (pode avançar) | PAUSA (ajustes antes de produzir)"
+        nota: "Coel audita o posicionamento ANTES da produção começar"
+
+      - step: 4
+        agente: Cadarn + Pulso
+        acao: "Estratégia de conteúdo + calendário editorial mês 1"
+        task: "create-content-strategy.md"
+        template: "calendario-editorial-tmpl.yaml"
+        input: "Diagnóstico + Posicionamento + Auditoria Coel"
+        output: "Console S.I.C. configurado + calendário 30 dias + pilares definidos"
+        duracao: "1-2 dias"
+
+      - step: 5
+        agente: Logos + Magnética + Iris + Pixel
+        acao: "Produção do primeiro lote de conteúdo (semana 1)"
+        task: "create-content-batch.md"
+        template: "briefing-conteudo-tmpl.yaml"
+        input: "Calendário editorial + briefing criativo do Cadarn"
+        output: "Copies, roteiros, direção visual, peças prontas para auditoria"
+        duracao: "3-5 dias"
+
+      - step: 6
+        agente: Coel
+        acao: "Auditoria final das peças antes de publicar"
+        input: "Lote de conteúdo produzido"
+        output: "APROVADO → publicar | PAUSA → ajustes → reavaliar"
+
+      - step: 7
+        agente: Pulso
+        acao: "Publicação do primeiro lote + ativação orgânica"
+        output: "Conteúdo publicado + relatório de publicação para Métrica"
+
+    kpis:
+      - "Onboarding concluído em <14 dias após kickoff Arc"
+      - "Primeiro conteúdo publicado com aprovação Coel"
+      - "Console S.I.C. configurado antes do primeiro post"
+      - "GATE: client-intake-handoff recebido antes de qualquer ação"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 2: PRODUÇÃO DE CONTEÚDO MENSAL
+  # ─────────────────────────────────────────
+  - id: C2
+    nome: "Ciclo Mensal de Produção de Conteúdo"
+    trigger: "D-10 antes do início do mês (planejamento) | D-5 (produção)"
+    complexidade: MEDIA
+    duracao: "10-15 dias (ciclo mensal)"
+
+    fluxo:
+      - step: 1
+        agente: Métrica
+        acao: "Análise da performance do mês anterior"
+        task: "run-performance-analysis.md"
+        output: "O que funcionou, o que não funcionou, recomendações para próximo mês"
+        timing: "D-10 do mês anterior"
+
+      - step: 2
+        agente: Cadarn
+        acao: "Ajustar direção estratégica com base nos dados da Métrica"
+        input: "Relatório de performance + objetivos do cliente"
+        output: "Briefing estratégico do mês: tema central, pilares ativos, ajustes de formato"
+        timing: "D-8"
+
+      - step: 3
+        agente: Pulso
+        acao: "Montar calendário editorial do mês com datas e formatos"
+        task: "create-content-strategy.md"
+        template: "calendario-editorial-tmpl.yaml"
+        input: "Briefing estratégico + sazonalidade + datas relevantes do segmento"
+        output: "Calendário completo: 20-30 posts, formatos, horários, plataformas"
+        timing: "D-7"
+
+      - step: 4
+        agente: Logos + Magnética + Iris
+        acao: "Produção em lote: copies, roteiros, direção visual"
+        task: "create-content-batch.md"
+        template: "briefing-conteudo-tmpl.yaml"
+        input: "Calendário editorial + briefing criativo"
+        output: "100% das peças do mês: copies prontas, roteiros gravados, direção entregue"
+        timing: "D-5 a D-2"
+
+      - step: 5
+        agente: Pixel
+        acao: "Design das peças (templates, carrosséis, stories, reels)"
+        input: "Copies + direção visual da Iris"
+        output: "Todas as peças visuais finalizadas"
+        timing: "D-3 a D-1"
+
+      - step: 6
+        agente: Coel
+        acao: "Auditoria final do lote completo"
+        template: "auditoria-primal-code-tmpl.yaml"
+        input: "Lote completo de peças"
+        output: "APROVADO (100% do lote) | PAUSA (lista de ajustes necessários)"
+        nota: "Máx 2 ciclos de revisão — se bloquear no 3º, escalar para Fabiano"
+
+      - step: 7
+        agente: Pulso
+        acao: "Agendar publicação no calendário e executar"
+        output: "Conteúdo agendado para o mês inteiro"
+        timing: "D0"
+
+    kpis:
+      - "Ciclo mensal concluído antes do início do mês"
+      - "100% das peças aprovadas pelo Coel antes de publicar"
+      - "Zero publicações sem auditoria"
+      - "Briefing estratégico da Métrica integrado ao planejamento mensal"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 3: CAMPANHA DE TRÁFEGO PAGO
+  # ─────────────────────────────────────────
+  - id: C3
+    nome: "Campanha de Tráfego Pago — Meta Ads"
+    trigger: "Cliente autoriza verba OU campanha orgânica atingiu meta de validação"
+    complexidade: ALTA
+    duracao: "5-7 dias (setup) + contínuo (otimização)"
+
+    pre_requisito: |
+      Validação orgânica: ao menos 1 formato performando acima da média (CTR > benchmark).
+      Metodologia Sobral: não ativar tráfego pago em conteúdo não validado organicamente.
+
+    fluxo:
+      - step: 1
+        agente: Mídia
+        acao: "Diagnóstico da conta de anúncios e briefing de campanha"
+        task: "plan-paid-media.md"
+        template: "plano-midia-paga-tmpl.yaml"
+        input: "Diagnóstico Clarissa + performance orgânica + verba disponível"
+        output: "Plano de mídia: objetivo, público, verba, criativos necessários, KPIs"
+        nota: "Metodologia Sobral: Ninja ($60-120/dia) OU Boladão (>$300/dia)"
+
+      - step: 2
+        agente: Iris + Logos
+        acao: "Criação de criativos específicos para tráfego pago"
+        input: "Plano de mídia da Mídia + melhores performers orgânicos"
+        output: "Criativos de teste: 3-5 variações de copy + visual por formato"
+        regra: "Adaptar top performers orgânicos — não criar do zero para tráfego"
+
+      - step: 3
+        agente: Pixel
+        acao: "Produção visual dos criativos de anúncio"
+        input: "Direção criativa Iris + copies Logos"
+        output: "Peças finais: proporções corretas (1:1, 4:5, 9:16) + specs Meta Ads"
+
+      - step: 4
+        agente: Coel
+        acao: "Auditoria dos criativos pagos — conformidade de marca"
+        input: "Criativos de tráfego pago finalizados"
+        output: "APROVADO → ativar campanhas | AJUSTES → corrigir antes de subir"
+        nota: "Criativos pagos têm alcance amplificado — auditoria obrigatória"
+
+      - step: 5
+        agente: Mídia
+        acao: "Setup e ativação das campanhas no Meta Ads Manager"
+        input: "Criativos aprovados + plano de mídia"
+        output: "Campanhas ativas: Ninja (teste) | Boladão (escala após validação)"
+
+      - step: 6
+        agente: Mídia + Métrica
+        acao: "Monitoramento e otimização contínua (D+3, D+7, D+14)"
+        output: |
+          - D+3: Verificar entrega e CPM — pausar se anormal
+          - D+7: Primeira otimização (pausar < 50% CTR médio)
+          - D+14: Decisão de escala OU recriativos
+
+    kpis:
+      - "Criativos auditados por Coel antes de qualquer veiculação"
+      - "ROAS > meta definida no plano (varia por segmento)"
+      - "CTR > benchmark do segmento (imob: 1.2%, adv: 0.8%, estética: 2%)"
+      - "Nenhuma campanha ativa sem validação orgânica prévia"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 4: RELATÓRIO DE PERFORMANCE
+  # ─────────────────────────────────────────
+  - id: C4
+    nome: "Relatório de Performance — Análise Mensal e Decisões"
+    trigger: "Fim do mês OU solicitação do cliente OU 30 dias pós-ativação"
+    complexidade: MEDIA
+    duracao: "2-3 dias"
+
+    fluxo:
+      - step: 1
+        agente: Métrica
+        acao: "Coleta e análise de dados (Pirâmide de Dados Kiso)"
+        task: "run-performance-analysis.md"
+        template: "relatorio-campanha-tmpl.yaml"
+        input: "Dados: Instagram Insights, Meta Ads, Google Analytics (se ativo)"
+        output: |
+          - Alcance, impressões, engajamento (orgânico)
+          - Investimento, resultado, ROAS (pago)
+          - Top 3 posts por engajamento + análise de por quê performaram
+          - Bottom 3 + análise de por quê não performaram
+
+      - step: 2
+        agente: Cadarn
+        acao: "Interpretação estratégica dos dados e decisões"
+        input: "Relatório bruto da Métrica"
+        output: |
+          - O que funcionou e por quê (ancorado no Método C.A.D.A.R.N.)
+          - Recomendações: ajustar pilares? formato? frequência?
+          - Prioridade para o próximo mês
+
+      - step: 3
+        agente: Métrica
+        acao: "Montar relatório final para o cliente"
+        input: "Dados + interpretação estratégica do Cadarn"
+        output: "Relatório visual: gráficos, comparativo vs. mês anterior, próximos passos"
+
+    kpis:
+      - "Relatório entregue ao cliente em até 5 dias após fim do período"
+      - "Análise inclui recomendações acionáveis (não só dados)"
+      - "Decisões do próximo mês baseadas em dados do atual"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 5: REVISÃO DE MARCA OU REPOSICIONAMENTO
+  # ─────────────────────────────────────────
+  - id: C5
+    nome: "Revisão de Marca ou Reposicionamento Estratégico"
+    trigger: "Mudança de direção do cliente OU resultado abaixo da meta por 2 ciclos OU solicitação explícita"
+    complexidade: ALTA
+    duracao: "5-10 dias"
+
+    fluxo:
+      - step: 1
+        agente: Clarissa
+        acao: "Rediagnóstico: o que mudou desde o diagnóstico original?"
+        task: "run-diagnostic.md"
+        input: "Relatórios de performance + novas informações do cliente"
+        output: "Diagnóstico atualizado: o que mudou, novos gaps, nova hipótese de posicionamento"
+
+      - step: 2
+        agente: Coel
+        acao: "Auditoria Primal Code — verificar se os 7 elementos continuam coerentes"
+        template: "auditoria-primal-code-tmpl.yaml"
+        input: "Diagnóstico + material atual publicado"
+        output: "Relatório: quais elementos perderam coerência e por quê"
+
+      - step: 3
+        agente: Cadarn + Vinci
+        acao: "Reposicionamento estratégico e novo universo de marca"
+        input: "Rediagnóstico + auditoria Coel"
+        output: |
+          - Novo posicionamento (ou confirmação do atual com ajustes)
+          - Ajustes no tom de voz, pilares, formatos
+          - Novo briefing estratégico para o ciclo seguinte
+
+      - step: 4
+        agente: Coel
+        acao: "Validação final do novo posicionamento"
+        output: "APROVADO → comunicar ao cliente | PAUSA → escalar para Fabiano"
+
+      - step: 5
+        agente: Pulso + Logos + Iris
+        acao: "Atualizar calendário editorial e peças com novo posicionamento"
+        output: "Primeiro lote de conteúdo com novo posicionamento aprovado"
+
+    kpis:
+      - "Reposicionamento validado por Coel antes de comunicar ao cliente"
+      - "Transição de posicionamento feita sem perda de consistência histórica"
+      - "Novo ciclo de conteúdo iniciado em até 10 dias após decisão"
+
+# ============================================================
+# REGRAS DE ORQUESTRAÇÃO
+# ============================================================
+
+regras:
+
+  - regra: "Diagnóstico antes de tudo"
+    descricao: "'Estratégia sem diagnóstico é suposição.' Clarissa diagnostica antes de qualquer novo ciclo estratégico."
+
+  - regra: "Coel audita antes de publicar"
+    descricao: "Nenhum conteúdo vai ao ar sem auditoria Primal Code. Peças pagas têm prioridade máxima de auditoria."
+
+  - regra: "Tráfego valida orgânico primeiro"
+    descricao: "Metodologia Sobral: não escalar com verba o que não funciona organicamente."
+
+  - regra: "Gate Marketing (integração Comercial)"
+    descricao: "Marketing só inicia onboarding após Arc (squad-ops) confirmar kickoff ACTIVATE. Dependência: client-intake-handoff preenchido por Caio."
+
+  - regra: "Dados informam estratégia"
+    descricao: "Cadarn ajusta direção estratégica com base nos relatórios da Métrica. Decisões sem dados = bloqueado."
+
+  - regra: "Criação nunca começa sem briefing"
+    descricao: "Logos, Magnética, Iris e Pixel precisam de briefing aprovado pelo Cadarn antes de iniciar qualquer produção."
+
+  - regra: "Máx 2 ciclos de revisão por Coel"
+    descricao: "Se lote não aprovado após 2 revisões → escalar para Fabiano com lista de conflitos identificados."
+
+# ============================================================
+# INTEGRAÇÃO INTER-SQUADS
+# ============================================================
+
+integracao:
+
+  com_squad_operacional:
+    trigger_entrada: "Arc (client-success) → Cadarn: 'ACTIVATE completo. Handoff anexo.'"
+    handoff_necessario: "client-intake-handoff-tmpl.yaml (preenchido por Caio)"
+    trigger_saida: "Marketing → Arc: 'Onboarding concluído. Primeiro conteúdo publicado.'"
+
+  com_squad_comercial:
+    trigger: "Argus (account-orchestrator) notifica Cadarn quando cliente entra em fase ADOPT"
+    acao: "Cadarn + Clarissa revisitam diagnóstico para expansão de escopo"
+    nota: "Expansão de contrato passa por Caio (comercial) antes de Marketing ajustar escopo"
+
+  com_brand_guardian_externo:
+    quando: |
+      - Peças de alto impacto (propostas, apresentações institucionais)
+      - Reposicionamento estratégico
+      - Campanhas de lançamento
+    como: "@brand-guardian *parecer {artefato}"
+
+# ============================================================
+# COEL INTEGRATION
+# ============================================================
+
+coel_integration:
+  modelo: "Residente na Squad Marketing — participa de TODOS os ciclos de produção"
+  gate_obrigatorio:
+    - "Pós-posicionamento (antes de produzir)"
+    - "Pós-produção (antes de publicar)"
+    - "Pós-criativos pagos (antes de veicular)"
+  escalacao: "PAUSA → Fabiano decide em <24h"
+  nota: "Diferente das outras squads, Coel é residente no Marketing, não convocado"
+
+metadata:
+  criado_por: "Orion (orquestrador)"
+  data: "2026-03-25"
+  versao: "1.0"
+  squad: "cadarn-marketing"
+  tarian_portable: true

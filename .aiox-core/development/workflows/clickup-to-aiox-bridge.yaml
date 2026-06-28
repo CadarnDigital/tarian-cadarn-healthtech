@@ -1,0 +1,40 @@
+# 🌉 Workflow: ClickUp to AIOX Bridge (Orchestrated by Orion)
+# Purpose: Define how ClickUp templates and automations map to AIOX logic for AI training.
+
+name: clickup-to-aiox-bridge
+version: 1.0.0
+owner: orion-master
+
+mapping_rules:
+  # Templates de Espaço (Space) -> Agrupamento de Projetos AIOX
+  space_mapping:
+    trigger: "New ClickUp Space detected"
+    action: "Create AIOX Project Brief and Workspace folder"
+
+  # Templates de Pasta (Folder) -> Epics/User Stories
+  folder_mapping:
+    trigger: "Folder template applied"
+    action: "Map Folders to AIOX Epics and Lists to Stories"
+
+  # Templates de Lista (List) -> Ciclos de Entrega (Sprints)
+  list_mapping:
+    trigger: "List template applied"
+    action: "Initialize Sprint Checklist from AIOX checklists"
+
+  # Automações de Status (ClickUp) -> Gates de Qualidade AIOX
+  automation_mapping:
+    - when: "Status changes to 'In Progress'"
+      then: "Run AIOX Quality Gate: code-linting"
+    - when: "Status changes to 'Review'"
+      then: "Notify @qa Agent and lock Task"
+    - when: "Status changes to 'Done'"
+      then: "Archive Artifact and trigger post-deployment-check"
+
+training_prompts:
+  system_instruction: |
+    "Você é um especialista em automação ClickUp integrado ao framework AIOX. 
+    Sua missão é ler descrições de templates do ClickUp e convertê-los em Tasks e Workflows AIOX 
+    usando as mapping_rules acima."
+
+---
+*Orion — Orquestrador AIOX 🎯*

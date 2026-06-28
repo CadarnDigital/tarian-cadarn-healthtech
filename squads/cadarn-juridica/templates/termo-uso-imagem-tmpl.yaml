@@ -1,0 +1,172 @@
+# Termo de Uso de Imagem — Squad Cadarn Jurídica
+# Framework: CF Art. 5, X + CC Art. 20 + Lei 9.610/98
+# Agente: Signum (Especialista PI)
+# Replicável para clientes Tarian
+
+template:
+  name: termo-uso-imagem
+  version: "1.0.0"
+  description: "Termo de autorização de uso de imagem completo com 11 campos"
+  squad: cadarn-juridica
+  agent: especialista-pi
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+
+# ============================================================
+# 11 CAMPOS DO TERMO
+# ============================================================
+
+campos:
+
+  - id: TI1
+    nome: "Identificação do Autorizante"
+    campos:
+      - "Nome completo"
+      - "CPF"
+      - "RG"
+      - "Endereço"
+      - "Se menor: nome e CPF de AMBOS responsáveis legais"
+
+  - id: TI2
+    nome: "Identificação do Autorizado"
+    campos:
+      - "Nome/razão social"
+      - "CNPJ"
+      - "Representante legal"
+
+  - id: TI3
+    nome: "Objeto da Autorização"
+    descricao: |
+      Descrição precisa de quais imagens/vídeos estão sendo autorizados.
+      Referência a sessão fotográfica, evento ou material específico.
+
+  - id: TI4
+    nome: "Finalidade de Uso"
+    opcoes:
+      - "Publicidade e marketing digital"
+      - "Redes sociais (especificar quais)"
+      - "Site institucional"
+      - "Material impresso"
+      - "Apresentações comerciais"
+      - "Outros (especificar)"
+    nota: "Uso além do autorizado = violação"
+
+  - id: TI5
+    nome: "Mídias e Canais"
+    opcoes:
+      - "Digital (redes sociais, site, e-mail marketing)"
+      - "Impresso (folders, cartões, outdoor)"
+      - "Audiovisual (TV, YouTube, streaming)"
+      - "Todos os meios (amplo)"
+
+  - id: TI6
+    nome: "Territorialidade"
+    opcoes:
+      - "Brasil"
+      - "América Latina"
+      - "Mundial"
+      - "Específico: {{território}}"
+
+  - id: TI7
+    nome: "Prazo"
+    opcoes:
+      - "Determinado: {{prazo}} meses/anos"
+      - "Indeterminado (com possibilidade de revogação)"
+    nota: "Prazo indeterminado pode ser revogado a qualquer tempo"
+
+  - id: TI8
+    nome: "Remuneração"
+    opcoes:
+      - "Gratuito (declarar expressamente)"
+      - "Oneroso: R$ {{valor}}"
+      - "Incluído no contrato de serviço (referenciar cláusula)"
+
+  - id: TI9
+    nome: "Modificações"
+    descricao: |
+      Autorização (ou não) para:
+      - Edição e tratamento de imagem
+      - Recorte e composição
+      - Uso em montagens/collages
+      - Sobreposição de texto/marca
+
+  - id: TI10
+    nome: "Revogação"
+    descricao: |
+      Direito de revogar a autorização a qualquer tempo.
+      Revogação não retroage para materiais já publicados.
+      Prazo para retirada de novos usos: 30 dias.
+    fundamentacao: "CC Art. 20, parágrafo único"
+
+  - id: TI11
+    nome: "Menor de Idade"
+    condicional: "autorizante < 18 anos"
+    descricao: |
+      OBRIGATÓRIO: Assinatura de AMBOS responsáveis legais.
+      Se apenas um responsável: autorização judicial pode ser necessária.
+      ECA (Art. 17): direito ao respeito e dignidade preservados.
+    fundamentacao: "CC Art. 1.634 + ECA Art. 17"
+
+# ============================================================
+# MODELO DO TERMO
+# ============================================================
+
+modelo:
+  formato: |
+    # TERMO DE AUTORIZAÇÃO DE USO DE IMAGEM
+
+    **AUTORIZANTE:** {{nome}}, {{nacionalidade}}, {{estado_civil}},
+    portador(a) do CPF nº {{cpf}} e RG nº {{rg}}, residente em {{endereco}}.
+
+    **AUTORIZADO:** {{empresa}}, inscrita no CNPJ nº {{cnpj}},
+    com sede em {{endereco_empresa}}.
+
+    Pelo presente instrumento, o AUTORIZANTE autoriza o AUTORIZADO a
+    utilizar sua imagem, conforme as seguintes condições:
+
+    **1. OBJETO:** {{objeto}}
+    **2. FINALIDADE:** {{finalidade}}
+    **3. MÍDIAS:** {{midias}}
+    **4. TERRITORIALIDADE:** {{territorialidade}}
+    **5. PRAZO:** {{prazo}}
+    **6. REMUNERAÇÃO:** {{remuneracao}}
+    **7. MODIFICAÇÕES:** {{modificacoes_permitidas}}
+
+    **8. REVOGAÇÃO:** O AUTORIZANTE poderá revogar esta autorização
+    a qualquer tempo, mediante notificação escrita com antecedência
+    de 30 (trinta) dias, sem retroagir para materiais já publicados.
+
+    **9. FORO:** Comarca de {{comarca}}.
+
+    {{cidade}}, {{data}}.
+
+    ___________________________________
+    AUTORIZANTE
+
+    ___________________________________
+    AUTORIZADO
+
+    {{se_menor}}
+    ___________________________________
+    RESPONSÁVEL LEGAL 1
+
+    ___________________________________
+    RESPONSÁVEL LEGAL 2
+    {{/se_menor}}
+
+    TESTEMUNHAS:
+    1. Nome: _____________ CPF: _____________
+    2. Nome: _____________ CPF: _____________
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+
+anti_patterns:
+  - "Termo sem finalidade definida ('para todos os fins')"
+  - "Menor sem assinatura dos dois responsáveis"
+  - "Termo verbal ('autorizou por WhatsApp')"
+  - "Uso além do autorizado no termo"
+  - "Sem possibilidade de revogação"

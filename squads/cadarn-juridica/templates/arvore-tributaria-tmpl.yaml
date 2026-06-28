@@ -1,0 +1,160 @@
+# Árvore de Decisão Tributária — Squad Cadarn Jurídica
+# Framework: Simples Nacional + Fator R + EC 132/2023
+# Agente: Themis (Líder Jurídico)
+# Replicável para clientes Tarian
+
+template:
+  name: arvore-tributaria
+  version: "1.0.0"
+  description: "Árvore de decisão tributária para agências Martech: regime, Fator R, CNAE, reforma"
+  squad: cadarn-juridica
+  agent: lider-juridico
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+
+# Parâmetros
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+    cnpj: "{{cnpj}}"
+    faturamento_anual: "{{faturamento}}"
+    folha_12m: "{{folha_12m}}"
+    receita_bruta_12m: "{{receita_bruta_12m}}"
+    cnae_principal: "{{cnae}}"
+
+# ============================================================
+# ÁRVORE DE DECISÃO (7 PASSOS)
+# ============================================================
+
+passos:
+
+  - id: T1
+    nome: "Identificar CNAE"
+    descricao: |
+      CNAE principal: geralmente 7311-4/00 (Agências de publicidade)
+      ou 7319-0/03 (Marketing direto).
+
+      IMPORTANTE: CNAE 7319-0/03 é FIXO no Anexo III sem Fator R
+      (SC COSIT nº 13/2022). CNAEs 7311-4/00 e 6311-9/00 estão
+      sujeitos ao Fator R.
+    acao: "Verificar CNAEs principal e secundários no cartão CNPJ"
+
+  - id: T2
+    nome: "Calcular Fator R"
+    formula: "Fator R = Folha 12 meses / Receita Bruta 12 meses"
+    componentes_folha:
+      incluem:
+        - "Pro-labore dos sócios + encargos"
+        - "Salários CLT + encargos"
+        - "FGTS, INSS patronal"
+      nao_incluem:
+        - "Distribuição de lucros"
+        - "Pagamento a PJs"
+        - "Aluguéis"
+    referencia_legal: "LC 123/2006, Art. 18, §24"
+
+  - id: T3
+    nome: "Enquadrar Anexo"
+    condicional:
+      se_fator_r_maior_28: |
+        ANEXO III — Alíquotas de 6% a 33%
+        Faixa 1 (até R$ 180.000): 6,00%
+        Faixa 2 (até R$ 360.000): 11,20%
+        Faixa 3 (até R$ 720.000): 13,50%
+        Faixa 4 (até R$ 1.800.000): 16,00%
+        Faixa 5 (até R$ 3.600.000): 21,00%
+        Faixa 6 (até R$ 4.800.000): 33,00%
+        ✅ RECOMENDADO
+      se_fator_r_menor_28: |
+        ANEXO V — Alíquotas de 15,5% a 30,5%
+        Faixa 1 (até R$ 180.000): 15,50%
+        ❌ DESFAVORÁVEL — ajustar pro-labore para subir Fator R
+
+  - id: T4
+    nome: "Otimizar Pro-Labore"
+    descricao: |
+      Se Fator R < 28%: aumentar pro-labore até atingir 28%.
+      Cálculo: Pro-labore mínimo = (Receita Bruta 12m × 0.28) - demais folha
+
+      ALERTA: Pro-labore artificialmente baixo + distribuição desproporcional
+      de lucros = risco de desconsideração pela Receita Federal.
+    acao: "Simular cenários de pro-labore vs alíquota efetiva"
+
+  - id: T5
+    nome: "Avaliar Limite Simples"
+    condicional:
+      se_faturamento_maior_4800000: |
+        Migrar para LUCRO PRESUMIDO:
+        - IRPJ: 32% × 15% = 4,80%
+        - CSLL: 32% × 9% = 2,88%
+        - PIS: 0,65%
+        - COFINS: 3,00%
+        - ISS: 2% a 5%
+        Total efetivo: ~13,33% + ISS
+      se_faturamento_menor_4800000: |
+        Manter Simples Nacional (se Fator R ok)
+
+  - id: T6
+    nome: "EC 132/2023 — Transição Tributária"
+    descricao: |
+      IVA Dual (CBS + IBS) substituirá PIS/COFINS e ICMS/ISS.
+      Transição: 2026-2033.
+
+      2026 (teste): CBS 0,9% + IBS 0,1%
+      2027-2032: transição gradual
+      2033: sistema novo completo
+
+      Para contratos de longo prazo: OBRIGATÓRIO incluir cláusula
+      de hardship fiscal para reequilíbrio.
+    acao: "Incluir cláusula C12 no contrato"
+
+  - id: T7
+    nome: "Monitoramento Mensal"
+    descricao: |
+      Fator R deve ser MONITORADO mensalmente:
+      - Recalcular a cada fechamento
+      - Se próximo de 28%: ajustar pro-labore imediatamente
+      - Documentar cálculos (proteção em fiscalização)
+    frequencia: "Mensal (até dia 20)"
+
+# ============================================================
+# RELATÓRIO
+# ============================================================
+
+relatorio:
+  formato: |
+    # Análise Tributária — {{empresa_nome}}
+
+    **Data:** {{data}}
+    **CNPJ:** {{cnpj}}
+    **Faturamento Anual:** R$ {{faturamento}}
+    **Analisado por:** Themis
+
+    ## Diagnóstico Atual
+    - CNAE Principal: {{cnae}}
+    - Fator R: {{fator_r}}%
+    - Anexo Atual: {{anexo}}
+    - Alíquota Efetiva: {{aliquota}}%
+
+    ## Recomendações
+    (tabela com ações, prazos e impacto)
+
+    ## Simulação de Cenários
+    (comparativo Anexo III vs V vs Lucro Presumido)
+
+    ---
+    ⚠️ DISCLAIMER: Orientação tributária preliminar.
+    Para enquadramento formal, consultar contador habilitado.
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+
+anti_patterns:
+  - "Calcular Fator R uma vez e esquecer"
+  - "Pro-labore mínimo sem justificativa"
+  - "Ignorar EC 132/2023 em contratos longos"
+  - "Confiar apenas no CNAE principal"
+  - "Distribuição desproporcional de lucros"

@@ -1,0 +1,160 @@
+# Brand Positioning Template — Squad Cadarn Marketing
+# Framework: Tay Dantas — Creator Brand System (8 elementos)
+# Agente: Vinci (Branding Estratégico)
+# Replicável para clientes Tarian
+
+template:
+  name: brand-positioning
+  version: "1.0.0"
+  description: "Posicionamento de marca: DNA, arquétipo, tom de voz, narrativa, hierarquia B/M/V"
+  squad: cadarn-marketing
+  agent: branding
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_marca
+    - identidade_visual
+    - tom_de_voz
+
+params:
+  marca:
+    nome: "{{marca_nome}}"
+    segmento: "{{segmento}}"
+    fundador: "{{nome_fundador}}"
+    data_criacao: "{{data}}"
+
+# ============================================================
+# DNA DE MARCA — 8 ELEMENTOS CBS
+# ============================================================
+
+dna:
+  proposito:
+    descricao: "Por que a marca existe além do lucro?"
+    declaracao: "{{proposito}}"
+
+  valores:
+    descricao: "3-5 valores inegociáveis"
+    lista:
+      - "{{valor_1}}"
+      - "{{valor_2}}"
+      - "{{valor_3}}"
+
+  crencas:
+    descricao: "O que a marca defende publicamente?"
+    lista:
+      - "{{crenca_1}}"
+      - "{{crenca_2}}"
+      - "{{crenca_3}}"
+
+  cultura:
+    descricao: "Como a marca se comporta internamente — o que pratica, não o que diz"
+    manifestacoes:
+      - "{{cultura_1}}"
+      - "{{cultura_2}}"
+
+  arquetipo:
+    primario: "{{arquetipo_jung}}"
+    secundario: "{{arquetipo_complementar}}"
+    justificativa: "Por que esse arquétipo e não outro"
+
+  tom_de_voz:
+    descricao: "Como a marca fala"
+    adjetivos: ["{{adj_1}}", "{{adj_2}}", "{{adj_3}}"]
+    exemplos:
+      fala_assim: "{{exemplo_positivo}}"
+      nunca_fala: "{{exemplo_negativo}}"
+    nivel_formalidade: "{{formal_a_coloquial}}"
+
+  universo_visual:
+    cores_primarias: ["{{cor_1}}", "{{cor_2}}"]
+    cores_secundarias: ["{{cor_3}}", "{{cor_4}}"]
+    tipografia: "{{familia_tipografica}}"
+    mood: "{{descricao_mood}}"
+    texturas: "{{texturas_ou_patterns}}"
+
+  narrativa_core:
+    descricao: "A história da marca em 1 parágrafo — Creation Story para Primal Code"
+    texto: "{{narrativa}}"
+
+# ============================================================
+# HIERARQUIA B/M/V
+# ============================================================
+
+hierarquia_bmv:
+  brand:
+    nome: "{{marca_mae}}"
+    posicionamento: "{{posicionamento_geral}}"
+    personalidade: "{{personalidade}}"
+    promessa: "{{promessa_central}}"
+
+  marca_pessoal:
+    aplicavel: true | false
+    fundador: "{{nome}}"
+    voz: "{{como_fala}}"
+    autoridade: "{{de_onde_vem}}"
+    relacao_com_brand: "{{como_se_conecta}}"
+
+  verticais:
+    - nome: "{{produto_servico_1}}"
+      posicionamento: "{{pos_especifico}}"
+      publico: "{{publico_especifico}}"
+    - nome: "{{produto_servico_2}}"
+      posicionamento: ""
+      publico: ""
+
+# ============================================================
+# DIFERENCIAÇÃO E CONTRASTE
+# ============================================================
+
+diferenciacao:
+  diferencial_percebido:
+    declaracao: "{{diferencial}}"
+    teste: "O cliente realmente percebe ou é só interno?"
+
+  territorio_proprio:
+    descricao: "Espaço mental que a marca ocupa"
+    frase: "{{territorio}}"
+
+  inimigos:
+    descricao: "Pagans — o que a marca combate (Primal Code)"
+    lista:
+      - "{{inimigo_1}}"
+      - "{{inimigo_2}}"
+      - "{{inimigo_3}}"
+
+  frases_proibidas:
+    descricao: "Expressões que a marca NUNCA usa"
+    lista:
+      - "{{proibida_1}}"
+      - "{{proibida_2}}"
+
+  sacred_words:
+    descricao: "Vocabulário proprietário — Sacred Words do Primal Code"
+    lista:
+      - "{{sacred_1}}"
+      - "{{sacred_2}}"
+      - "{{sacred_3}}"
+
+# ============================================================
+# APLICAÇÃO PRÁTICA
+# ============================================================
+
+aplicacao:
+  como_falar_do_produto: "{{guia_de_comunicacao}}"
+  como_responder_criticas: "{{tom_e_postura}}"
+  como_aparecer_stories: "{{informal_mas_coerente}}"
+  como_vender: "{{venda_relacional_ou_direta}}"
+
+# ============================================================
+# PRIMAL CODE CHECK (Coel valida)
+# ============================================================
+
+primal_code_check:
+  creation_story: "{{presente_parcial_ausente}}"
+  creed: "{{presente_parcial_ausente}}"
+  icons: "{{presente_parcial_ausente}}"
+  rituals: "{{presente_parcial_ausente}}"
+  pagans: "{{presente_parcial_ausente}}"
+  sacred_words: "{{presente_parcial_ausente}}"
+  leader: "{{presente_parcial_ausente}}"
+  score: "{{X}}/14"

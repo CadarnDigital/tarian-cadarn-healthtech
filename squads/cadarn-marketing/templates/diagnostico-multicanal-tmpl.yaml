@@ -1,0 +1,218 @@
+# Diagnóstico Multicanal Template — Squad Cadarn Marketing
+# Framework: Camila Renaux — Metodologia CR+ (Etapa 1)
+# Agente: Clarissa (Consultora Sênior)
+# Replicável para clientes Tarian
+
+template:
+  name: diagnostico-multicanal
+  version: "1.0.0"
+  description: "Diagnóstico completo: presença digital, público, concorrência, SWOT, 6 pilares, KPIs"
+  squad: cadarn-marketing
+  agent: consultora
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - tom_de_voz
+    - identidade_visual
+
+# Parâmetros
+params:
+  cliente:
+    nome: "{{cliente_nome}}"
+    segmento: "{{segmento}}"
+    localizacao: "{{localizacao}}"
+    data_diagnostico: "{{data}}"
+
+# ============================================================
+# SEÇÃO 1 — RESUMO EXECUTIVO
+# ============================================================
+
+resumo_executivo:
+  descricao: "Visão geral em 5-7 linhas: cenário atual, principais achados e direção recomendada"
+  max_linhas: 7
+  regra: "Executivo deve entender a situação lendo APENAS esta seção"
+
+# ============================================================
+# SEÇÃO 2 — PERFIL DO NEGÓCIO
+# ============================================================
+
+perfil_negocio:
+  nome: "{{cliente_nome}}"
+  segmento: "{{segmento}}"
+  tempo_mercado: "{{anos}}"
+  tamanho_time: "{{pessoas}}"
+  produto_principal: "{{produto}}"
+  ticket_medio: "{{valor}}"
+  publico_atual: "{{descricao_publico}}"
+  publico_desejado: "{{descricao_publico_ideal}}"
+
+# ============================================================
+# SEÇÃO 3 — ANÁLISE DE MERCADO E CONCORRÊNCIA
+# ============================================================
+
+analise_mercado:
+  concorrentes:
+    - nome: "{{concorrente_1}}"
+      presenca_digital: "canais ativos, frequência, formatos"
+      pontos_fortes: "o que fazem bem"
+      pontos_fracos: "onde deixam gap"
+    - nome: "{{concorrente_2}}"
+      presenca_digital: ""
+      pontos_fortes: ""
+      pontos_fracos: ""
+    - nome: "{{concorrente_3}}"
+      presenca_digital: ""
+      pontos_fortes: ""
+      pontos_fracos: ""
+
+  gaps_mercado: "O que NINGUÉM faz bem no segmento — oportunidade"
+  referencias: "Benchmarks de fora do segmento que inspiram"
+
+# ============================================================
+# SEÇÃO 4 — AUDITORIA DE CANAIS
+# ============================================================
+
+auditoria_canais:
+  instagram:
+    url: "{{@perfil}}"
+    seguidores: "{{num}}"
+    frequencia: "{{posts_por_semana}}"
+    formatos_usados: "Reel, Carrossel, Stories, Post, Live"
+    engajamento_medio: "{{percentual}}"
+    bio_otimizada: true | false
+    destaques_organizados: true | false
+    estetica_coerente: true | false
+    nota: "{{nota_1_a_10}}"
+    observacoes: ""
+
+  site:
+    url: "{{url}}"
+    mobile_friendly: true | false
+    velocidade: "{{score_pagespeed}}"
+    seo_basico: true | false
+    cta_claro: true | false
+    nota: "{{nota_1_a_10}}"
+    observacoes: ""
+
+  google_meu_negocio:
+    ativo: true | false
+    reviews: "{{quantidade}}"
+    nota_media: "{{estrelas}}"
+    fotos_atualizadas: true | false
+    observacoes: ""
+
+  whatsapp:
+    uso_comercial: true | false
+    catalogo: true | false
+    automacoes: true | false
+    tempo_resposta: "{{horas}}"
+    observacoes: ""
+
+  outros_canais:
+    - canal: "{{nome}}"
+      status: "ativo | inativo | ausente"
+      observacoes: ""
+
+# ============================================================
+# SEÇÃO 5 — SWOT DIGITAL + TOWS
+# ============================================================
+
+swot:
+  forcas:
+    - "{{forca_1}}"
+    - "{{forca_2}}"
+    - "{{forca_3}}"
+  fraquezas:
+    - "{{fraqueza_1}}"
+    - "{{fraqueza_2}}"
+    - "{{fraqueza_3}}"
+  oportunidades:
+    - "{{oportunidade_1}}"
+    - "{{oportunidade_2}}"
+    - "{{oportunidade_3}}"
+  ameacas:
+    - "{{ameaca_1}}"
+    - "{{ameaca_2}}"
+    - "{{ameaca_3}}"
+
+tows:
+  FO: "Usar forças para aproveitar oportunidades"
+  FA: "Usar forças para mitigar ameaças"
+  DO: "Superar fraquezas via oportunidades"
+  DA: "Minimizar fraquezas e evitar ameaças"
+
+# ============================================================
+# SEÇÃO 6 — POSICIONAMENTO ATUAL (6 Pilares)
+# ============================================================
+
+posicionamento:
+  relevancia:
+    score: "{{1_a_5}}"
+    observacao: "Que dor cura? O público percebe?"
+  autoridade:
+    score: "{{1_a_5}}"
+    observacao: "Por que essa marca e não outra?"
+  promessa:
+    score: "{{1_a_5}}"
+    observacao: "Qual transformação promete?"
+  identidade:
+    score: "{{1_a_5}}"
+    observacao: "Verbal + visual coerentes?"
+  diferencial_percebido:
+    score: "{{1_a_5}}"
+    observacao: "O cliente realmente percebe?"
+  oferta_alinhada:
+    score: "{{1_a_5}}"
+    observacao: "Produto entrega o que promete?"
+
+  score_total: "{{soma}}/30"
+
+# ============================================================
+# SEÇÃO 7 — KPIs ESTRELAS-GUIA
+# ============================================================
+
+kpis:
+  regra: "Máximo 3 — mais que isso é ruído"
+  lista:
+    - nome: "{{kpi_1}}"
+      meta: "{{meta}}"
+      como_medir: "{{ferramenta_e_metodo}}"
+      frequencia: "{{semanal_mensal}}"
+    - nome: "{{kpi_2}}"
+      meta: "{{meta}}"
+      como_medir: ""
+      frequencia: ""
+    - nome: "{{kpi_3}}"
+      meta: "{{meta}}"
+      como_medir: ""
+      frequencia: ""
+
+# ============================================================
+# SEÇÃO 8 — RECOMENDAÇÕES INICIAIS
+# ============================================================
+
+recomendacoes:
+  regra: "Acionáveis, específicas, priorizadas. NUNCA genéricas."
+  lista:
+    - prioridade: ALTA
+      acao: "{{acao_1}}"
+      responsavel: "{{agente_ou_pessoa}}"
+      prazo: "{{dias}}"
+    - prioridade: ALTA
+      acao: "{{acao_2}}"
+      responsavel: ""
+      prazo: ""
+    - prioridade: MEDIA
+      acao: "{{acao_3}}"
+      responsavel: ""
+      prazo: ""
+
+# ============================================================
+# SEÇÃO 9 — PRÓXIMO PASSO
+# ============================================================
+
+proximo_passo:
+  descricao: "Ação imediata após o diagnóstico"
+  sugestao: "Agendar Sessão de Clareza ou iniciar Brand Positioning"
+  task_seguinte: "create-brand-positioning ou create-content-strategy"

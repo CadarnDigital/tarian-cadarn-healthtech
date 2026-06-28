@@ -1,0 +1,192 @@
+# Script de Prospecção Template — Squad Cadarn Comercial
+# Agente: Caio
+# Scripts de cold message calibrados por nicho e canal
+# tarian_portable: true
+
+template:
+  name: script-prospeccao
+  version: "1.0.0"
+  description: "Scripts de prospecção ativa VENDE-C por nicho e canal (WhatsApp, DM, LinkedIn, E-mail)"
+  squad: cadarn-comercial
+  agent: caio
+  replicavel: true
+  tarian_portable: true
+
+# Parâmetros
+params:
+  nicho: "{{imobiliaria|advocacia|estetica}}"
+  canal: "{{whatsapp|instagram_dm|linkedin|email}}"
+  lead:
+    nome: "{{nome}}"
+    empresa: "{{empresa}}"
+    especificidade: "{{algo_observavel_no_lead}}"  # post, bairro, especialidade, evento
+
+# ============================================================
+# REGRAS UNIVERSAIS DE PROSPECÇÃO
+# ============================================================
+
+regras_universais:
+  - "Gancho SEMPRE personalizado — mensagem genérica = bloqueio instantâneo"
+  - "Texto PRIMEIRO — áudio só após espelhamento (lead mandou áudio antes)"
+  - "Cold message: max 160 chars / 2-4 linhas"
+  - "Max 2-3 toques/semana por contato"
+  - "Saída fácil obrigatória: 'se não fizer sentido, sem problema'"
+  - "Fechar SEMPRE com próximo passo — nunca 'qualquer coisa me avisa'"
+  - "UMA pergunta por mensagem — nunca bombardear"
+  - "NUNCA proposta na cold message"
+  - "NUNCA 'prezado' ou 'atenciosamente'"
+  - "Usar 'você' e nome próprio — casual-profissional"
+
+# ============================================================
+# WHATSAPP — COLD MESSAGE
+# ============================================================
+
+whatsapp:
+  estrutura:
+    - "Saudação curta (1 linha) → PAUSA, aguarda resposta"
+    - "Identificação + contexto (2 linhas)"
+    - "Gancho personalizado (referência observável)"
+    - "UMA pergunta aberta de diagnóstico"
+    - "[total: max 4 linhas / 160 chars]"
+
+  imobiliaria:
+    cold_message: |
+      "Oi {nome}! Vi que vocês atuam em {bairro/região/especialidade}.
+      Tenho ajudado imobiliárias a captar leads qualificados direto no WhatsApp.
+      Qual é o maior desafio de vocês na captação hoje?"
+    nota: "COFECI 2024: não usar termos regulados. Tom casual. Texto primeiro."
+    adaptacao_gatilho_alta_selic: |
+      "Oi {nome}! Esse cenário de {Selic alta/queda de visitas} tá impactando
+      todo mundo. Vi que vocês atuam em {área}. Como tá o volume de leads?"
+    adaptacao_concorrente: |
+      "Oi {nome}! Vi que {concorrente genérico — não nomear} tá crescendo muito
+      no digital em {cidade/região}. Como vocês estão posicionando a marca?"
+
+  advocacia:
+    cold_message: |
+      "Dr./Dra. {nome}, bom dia.
+      Acompanho o trabalho do {escritório} em {área específica}.
+      Como vocês estão lidando com a captação de novos casos hoje?"
+    nota: "Tom formal mesmo no WhatsApp. NUNCA áudio. NUNCA 'marketing'."
+    adaptacao_nova_lei: |
+      "Dr./Dra. {nome}, diante das mudanças em {tema jurídico},
+      como vocês estão posicionando o escritório para captar os casos nessa área?"
+    adaptacao_indicacao: |
+      "Dr./Dra. {nome}, recebi uma referência sua de {nome_quem_indicou}.
+      Faz sentido conversarmos sobre captação de casos para {área}?"
+
+  estetica:
+    cold_message: |
+      "Dra./Dr. {nome}, vi seu perfil no Instagram — o trabalho em {procedimento}
+      é muito consistente. Pergunta rápida: qual é o maior desafio hoje com a
+      captação de pacientes para esse serviço?"
+    nota: "Instagram DM é mais fria — gancho no conteúdo publicado."
+    adaptacao_sazonalidade: |
+      "Dra./Dr. {nome}, verão chegando — esse é o pico para {procedimento}.
+      Como você tá se posicionando para capturar esse momento?"
+    adaptacao_novo_procedimento: |
+      "Dra./Dr. {nome}, vi que vocês estão oferecendo {procedimento novo}.
+      Como está sendo a resposta do mercado? Tô curioso."
+
+# ============================================================
+# INSTAGRAM DM
+# ============================================================
+
+instagram_dm:
+  estrutura:
+    - "Gancho contextual: referência ao que o prospect postou"
+    - "Elogio genuíno e específico (não bajulação)"
+    - "Transição direta: 'Vou ser bem direto aqui com você...'"
+    - "UMA única pergunta"
+    - "Mover para WhatsApp: 'Posso te mandar mais detalhes no WhatsApp?'"
+
+  imobiliaria:
+    script: |
+      "{Nome}! Vi o post sobre {imóvel/região específica} — que trabalho bacana
+      de posicionamento.
+      Vou ser direto: tenho ajudado corretores de {cidade} a captar leads
+      qualificados no digital.
+      Qual é o maior desafio de captação que você tem hoje?"
+    followup: "Posso te mandar mais detalhes no WhatsApp?"
+
+  estetica:
+    script: |
+      "Dra./Dr. {nome}! Vi o case de {procedimento} no perfil — resultado incrível.
+      Sou direto: vejo que o mercado de {especialidade} tá crescendo muito e
+      poucos estão aproveitando bem o digital para isso.
+      Como você tá posicionando sua autoridade no Instagram?"
+    followup: "Posso te mandar mais contexto no WhatsApp?"
+
+# ============================================================
+# LINKEDIN (ADVOCACIA — CANAL PRIMÁRIO)
+# ============================================================
+
+linkedin:
+  estrutura:
+    - "Conexão com área de atuação do escritório"
+    - "Problema relevante para o nicho jurídico"
+    - "Credencial Cadarn (sem soar vendedor)"
+    - "Proposta de conversa rápida"
+
+  advocacia:
+    mensagem_conexao: |
+      "Dr./Dra. {nome}, o trabalho do {escritório} em {área jurídica} é
+      referência na região. Solicito conexão para trocar ideias."
+    mensagem_pos_conexao: |
+      "Obrigado pela conexão, Dr./Dra. {nome}.
+      Vejo que o {escritório} atua em {área}. Com as mudanças recentes em
+      {tema jurídico}, como vocês estão pensando em posicionamento digital?
+      Trabalho com escritórios de perfil similar e tenho perspectivas que
+      podem ser úteis. Faz sentido uma conversa de 20min?"
+
+# ============================================================
+# E-MAIL (ADVOCACIA — FORMAL)
+# ============================================================
+
+email:
+  estrutura:
+    - "Subject: referência à área jurídica (NÃO 'marketing')"
+    - "Quem sou + contexto (3 linhas)"
+    - "Observação específica sobre o escritório"
+    - "Problema que o mercado deles enfrenta"
+    - "Proposta de 20min de conversa"
+    - "Assinatura formal (sem emojis)"
+
+  advocacia:
+    subject: "Posicionamento digital para {área jurídica} — {{escritório}}"
+    corpo: |
+      "Dr./Dra. {nome}, bom dia.
+
+      Me chamo {nome}, trabalho com posicionamento digital para escritórios
+      de advocacia com foco em {área} — respeitando as diretrizes do
+      Provimento OAB 205/2021.
+
+      Acompanhei o trabalho do {escritório} em {observação específica}.
+      Com as mudanças recentes em {tema}, escritórios que trabalham
+      posicionamento orgânico estão captando 4x mais casos do que os
+      que dependem só de indicação.
+
+      Faz sentido uma conversa de 20 minutos para trocar perspectivas?
+      Fico à disposição para {data/horário sugerido}.
+
+      Atenciosamente,
+      {nome}"
+
+# ============================================================
+# CADÊNCIA DE FOLLOW-UP DO BLITZ (genérica)
+# ============================================================
+# Cadência detalhada por segmento → followup-cadence-tmpl.yaml
+
+followup_blitz:
+  D0: "Envio do cold message"
+  D2: "'{Nome}, conseguiu ver minha mensagem?'"
+  D7: "Conteúdo de valor do nicho — sem CTA direto"
+  D10: "Reativação ou encerramento elegante"
+  nota: "Para cadência completa com segmento e estágio: followup-cadence-tmpl.yaml"
+
+metadata:
+  criado_por: "Caio"
+  data: "{{data}}"
+  versao: "1.0"
+  squad: "cadarn-comercial"
+  referencia: "VENDE-C (Caio Carneiro) + Pesquisa Aprofundamento BR WhatsApp"

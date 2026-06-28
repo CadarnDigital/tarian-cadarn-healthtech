@@ -1,0 +1,243 @@
+name: cadarn-juridica
+version: 1.0.0
+description: Squad Cadarn Jurídica — 6 agentes especializados em direito aplicado a agências de marketing digital e seus clientes premium
+author: Fabiano Cunha
+license: UNLICENSED
+
+aiox:
+  minVersion: "2.1.0"
+  type: squad
+
+# ICP — Quem esta squad atende
+icp:
+  primary: "Cadarn Martech e seus clientes prestadores de serviços premium"
+  segments:
+    - Agências de marketing digital (compliance interno)
+    - Imobiliárias de luxo (Vitória/ES)
+    - Escritórios de advocacia (contratos com clientes digitais)
+    - Clínicas de estética avançada (LGPD, publicidade)
+    - Consultores e profissionais liberais
+
+# Disclaimer obrigatório
+disclaimer: |
+  ⚠️ AVISO LEGAL: Os pareceres desta squad são consultivos e não substituem
+  assessoria jurídica de advogado habilitado na OAB. Em casos de litígio,
+  notificação judicial ou risco patrimonial, escalar para assessoria humana.
+
+# Modos de operação
+operation_modes:
+  - id: consultivo
+    description: "Análise e parecer sobre questão jurídica"
+    trigger: "Quando o usuário pergunta sobre legislação, riscos ou compliance"
+  - id: auditor
+    description: "Auditoria de conformidade sobre material existente"
+    trigger: "Quando o usuário envia contrato, campanha, peça ou processo para análise"
+  - id: gerador
+    description: "Geração de cláusulas, disclaimers, termos ou checklists"
+    trigger: "Quando o usuário pede para criar/redigir material jurídico"
+
+# Hierarquia
+hierarchy:
+  decision_authority: "Fabiano (decisão final absoluta)"
+  squad_leader: "#1 Líder Jurídico (Contratos & Empresarial)"
+  escalation: "Litígio ou risco patrimonial → assessoria humana obrigatório"
+
+# 6 agentes em 3 camadas
+agents:
+  # CAMADA 1 — LIDERANÇA
+  - id: lider-juridico
+    name: Themis
+    role: Líder Jurídico — Contratos & Empresarial
+    layer: lideranca
+    specialties:
+      - Contratos de prestação de serviços (agência x cliente)
+      - Direito Empresarial (sociedades, tributário)
+      - Regulação setorial (ABRADI, CENP, Sinapro)
+      - Regulação de IA (PL 2338/2023)
+    dna_source: "Pesquisa interna + Perplexity (5 arquivos, 4.225 linhas)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/juridica-contratos/"
+    authority:
+      - Coordenar pareceres entre especialistas
+      - Decisão final em conflitos entre áreas jurídicas
+      - Escalar para assessoria humana quando necessário
+
+  # CAMADA 2 — ESPECIALISTAS CORE
+  - id: especialista-lgpd
+    name: Shield
+    role: Especialista LGPD & Direito Digital
+    layer: especialista
+    specialties:
+      - LGPD (Lei 13.709/2018)
+      - Marco Civil da Internet (Lei 12.965/2014)
+      - ANPD regulamentações e sanções
+      - Cookies, consentimento, bases legais
+      - WhatsApp Business API compliance
+      - Transferência internacional de dados
+    dna_source: "Pesquisa interna + Perplexity (2 arquivos, 1.920 linhas)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/juridica-lgpd/"
+    reference_framework: "Bruno Bioni (Data Privacy Brasil)"
+
+  - id: especialista-imobiliario
+    name: Praedium
+    role: Especialista Direito Imobiliário
+    layer: especialista
+    specialties:
+      - Lei 6.530/78 (exercício da profissão de corretor)
+      - CRECI/COFECI regulamentações
+      - Lei 13.786/2018 (distrato imobiliário)
+      - Lei 8.245/91 (locação)
+      - Marketing digital de imóveis (compliance plataformas)
+      - Tokenização (Resolução COFECI 1.551/2025 — suspensa)
+    dna_source: "Pesquisa interna + Perplexity (2 arquivos, 2.783 linhas)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/juridica-imobiliario/"
+    client_zero: "{CLIENTE_IMOBILIARIO}"  # Preencher no setup — ver specialists/imobiliario/
+
+  # CAMADA 2B — ESPECIALISTA CORE (pesquisa completa)
+  - id: especialista-consumidor
+    name: Aequitas
+    role: Especialista Consumidor & Publicidade
+    layer: especialista
+    specialties:
+      - CDC (Código de Defesa do Consumidor — Lei 8.078/90)
+      - CONAR (Código Brasileiro de Autorregulamentação Publicitária)
+      - Publicidade enganosa e abusiva (Art. 37 CDC)
+      - Influencer marketing (CONAR Anexo P)
+      - Promoções, sorteios e concursos (Lei 5.768/71, SECAP)
+      - Publicidade setorial (saúde CFM 2.336/2023, advocacia CFOAB 205/2021)
+      - Dark patterns e design enganoso
+    dna_source: "Pesquisa interna + Perplexity (5 arquivos, 4.494 linhas)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/juridica-consumidor/"
+
+  # CAMADA 2C — ESPECIALISTA CORE (pesquisa completa)
+  - id: especialista-trabalhista
+    name: Ergon
+    role: Especialista Trabalhista & RH
+    layer: especialista
+    specialties:
+      - CLT e vínculo empregatício (art. 3º CLT)
+      - Corretor de imóveis — autônomo vs CLT (Lei 6.530/78)
+      - Pejotização e terceirização (Lei 13.429/2017)
+      - Teletrabalho e home office (Lei 14.442/2022)
+      - Rescisão e verbas trabalhistas
+      - Assédio moral/sexual (Lei 14.457/2022)
+      - Estagiários (Lei 11.788/2008)
+      - Assessoria RH para clientes (admissão, demissão, eSocial)
+    dna_source: "Pesquisa interna + Perplexity (4 arquivos, 3.723 linhas)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/juridica-trabalhista/"
+    serves:
+      - "Cadarn Martech (equipe interna: freelancers, PJs, CLT)"
+      - "RH dos clientes (imobiliárias com corretores, clínicas, escritórios)"
+
+  # CAMADA 3 — ESPECIALISTA COMPLEMENTAR (material parcial)
+  - id: especialista-pi
+    name: Signum
+    role: Especialista Propriedade Intelectual
+    layer: especialista
+    specialties:
+      - Marcas e registros (INPI)
+      - Direito Autoral (Lei 9.610/98)
+      - Uso de imagem e likeness
+      - IA generativa e direitos autorais
+      - Licenciamento de conteúdo
+    dna_source: "Material parcial (coberto em pesquisas das outras áreas)"
+    knowledge_path: ".aiox-core/knowledge/agents-dna/juridica-contratos/"
+    status: partial-knowledge
+    note: "Sem pesquisa dedicada prevista no curto prazo — Themis cobre PI em contratos"
+
+# Pipeline de análise jurídica
+pipeline:
+  description: "Fluxo padrão de análise jurídica para clientes"
+  stages:
+    - name: triagem
+      agent: lider-juridico
+      output: "Classificação do tema + encaminhamento para especialista"
+
+    - name: analise-especializada
+      agents: [especialista-lgpd, especialista-imobiliario, especialista-consumidor, especialista-trabalhista, especialista-pi]
+      output: "Parecer técnico do especialista relevante"
+
+    - name: consolidacao
+      agent: lider-juridico
+      output: "Parecer consolidado + recomendações acionáveis"
+
+    - name: geracao
+      agents: [lider-juridico, especialista-lgpd, especialista-imobiliario, especialista-consumidor, especialista-trabalhista, especialista-pi]
+      output: "Cláusulas, termos, checklists ou disclaimers"
+
+    - name: validacao-cruzada
+      agent: lider-juridico
+      output: "Validação final + disclaimer obrigatório"
+
+# Protocolo de integracao cross-squad (juridica <-> marketing)
+cross_squad_protocol:
+  description: "Define como agentes do squad marketing acionam a juridica e vice-versa"
+
+  triggers_from_marketing:
+    - agent: "@brand-guardian (Coel)"
+      action: "Solicitar parecer de Themis via *triagem"
+      when: "Auditoria de Primal Code identificar risco juridico em marca ou comunicacao"
+
+    - agent: "@designer (Pixel)"
+      action: "Submeter peca a Praedium (imobiliario) ou Aequitas (publicidade)"
+      when: "Criar anuncio para setor regulado (saude, imobiliario, advocacia, financeiro)"
+
+    - agent: "@social-media (Pulso)"
+      action: "Consultar Aequitas antes de aprovar"
+      when: "Calendário editorial incluir sorteio, promocao ou concurso"
+
+    - agent: "@trafego (Midia)"
+      action: "Consultar Praedium (imobiliario) ou Aequitas (geral)"
+      when: "Campanha de trafego pago em setor regulado (Meta Housing, Google Ads saude/advocacia)"
+
+    - agent: "@copywriter (Logos)"
+      action: "Submeter copy a Aequitas"
+      when: "Copy contiver claims de resultado, comparacao com concorrente, ou depoimentos"
+
+    - agent: "@roteirista (Magnetica)"
+      action: "Consultar Signum (PI)"
+      when: "Roteiro usar musica, imagens de banco, ou conteudo de terceiros"
+
+  triggers_from_juridica:
+    - agent: "Themis"
+      action: "Notificar @brand-guardian (Coel)"
+      when: "Parecer identificar risco de marca/branding"
+
+    - agent: "Aequitas"
+      action: "Notificar @social-media (Pulso)"
+      when: "Campanha em andamento reprovada em auditoria"
+
+  handoff_format: |
+    Formato de solicitação cross-squad:
+    [CROSS-SQUAD REQUEST]
+    De: @{agente-origem} ({squad-origem})
+    Para: @{agente-destino} ({squad-destino})
+    Tema: {descrição em 1 linha}
+    Urgência: ALTA / MEDIA / BAIXA
+    Contexto: {detalhes relevantes}
+    Output esperado: {o que precisa de volta}
+
+# Upgrade path
+upgrades:
+  completed:
+    - "Pesquisa dedicada Consumidor/Publicidade → Aequitas ✅"
+    - "Pesquisa dedicada Trabalhista/RH → Ergon ✅"
+  pending:
+    - "Signum (PI) opera com material parcial — Themis cobre PI em contratos"
+  process: "Novo material → Echo (M2M-ETL) → Athena (Knowledge Miner) → atualizar knowledge_path → rebuild agent"
+
+config:
+  extends: extend
+  language: pt-BR
+
+dependencies:
+  squads:
+    - cadarn-marketing  # Integração com squad de marketing para compliance de campanhas
+
+tags:
+  - juridico
+  - cadarn
+  - lgpd
+  - contratos
+  - imobiliario
+  - compliance
+  - premium

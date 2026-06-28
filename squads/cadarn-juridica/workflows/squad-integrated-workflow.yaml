@@ -1,0 +1,292 @@
+# Squad Cadarn Jurídica — Workflow Integrado
+# Como os 6 agentes trabalham juntos em cada cenário jurídico
+# Versão: 1.0.0
+
+workflow:
+  name: squad-juridica-integrated
+  version: "1.0.0"
+  description: "Orquestração dos 6 agentes jurídicos em cenários-chave"
+  squad: cadarn-juridica
+
+# ============================================================
+# HIERARQUIA DE COMANDO
+# ============================================================
+
+hierarquia:
+  decisao_final: "Fabiano (CEO)"
+  lider_squad: "Themis (lider-juridico)"
+  especialistas_core:
+    - "Shield (especialista-lgpd)"
+    - "Praedium (especialista-imobiliario)"
+    - "Aequitas (especialista-consumidor)"
+    - "Ergon (especialista-trabalhista)"
+  especialista_complementar:
+    - "Signum (especialista-pi)"
+  conselheiro_externo: "Coel (brand-guardian) — se risco de marca identificado"
+
+  regra: |
+    Themis é a PORTA DE ENTRADA e CONSOLIDADOR. Toda questão jurídica
+    passa por Themis que classifica, encaminha e consolida.
+    Especialistas são DONOS do seu domínio.
+    Escalação humana é OBRIGATÓRIA nos triggers definidos.
+
+# ============================================================
+# 5 CENÁRIOS INTEGRADOS
+# ============================================================
+
+cenarios:
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 1: PARECER JURÍDICO (TRIAGEM → ANÁLISE → CONSOLIDAÇÃO)
+  # ─────────────────────────────────────────
+  - id: J1
+    nome: "Parecer Jurídico Completo"
+    trigger: "Questão jurídica recebida (qualquer origem)"
+    complexidade: MEDIA
+    duracao: "1-3 horas"
+
+    fluxo:
+      - step: 1
+        agente: Themis
+        acao: "Triagem — classificar área e encaminhar"
+        task: "run-legal-triage.md"
+        template: "parecer-juridico-tmpl.yaml"
+        output: "Classificação + especialista designado"
+
+      - step: 2
+        agente: "Especialista designado"
+        acao: "Análise especializada com fundamentação"
+        output: "Parecer técnico do especialista"
+
+      - step: 3
+        agente: Themis
+        acao: "Consolidar parecer + validar + adicionar disclaimer"
+        output: "parecer-juridico-{tema}-{data}.md"
+
+      - step: 4
+        agente: Themis
+        acao: "Verificar triggers de escalação humana"
+        condicional: "Se trigger → informar Fabiano + disclaimer extra"
+
+    kpis:
+      - "Triagem em <15 minutos"
+      - "Parecer consolidado em <3 horas"
+      - "Fundamentação legal em 100% dos pareceres"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 2: NOVO CONTRATO DE CLIENTE
+  # ─────────────────────────────────────────
+  - id: J2
+    nome: "Geração de Contrato"
+    trigger: "Novo cliente fechando ou contrato existente para auditar"
+    complexidade: ALTA
+    duracao: "2-4 horas"
+
+    fluxo:
+      - step: 1
+        agente: Themis
+        acao: "Elicitar contexto + gerar minuta 12 cláusulas"
+        task: "draft-contract.md"
+        template: "contrato-agencia-12clausulas-tmpl.yaml"
+
+      - step: 2
+        agente: Shield
+        acao: "Revisar cláusula 9 (LGPD)"
+        condicional: "Sempre (LGPD é obrigatória)"
+        output: "Ajustes na cláusula de proteção de dados"
+
+      - step: 3
+        agente: Signum
+        acao: "Revisar cláusula 6 (PI) + cessão de direitos"
+        template: "cessao-direitos-tmpl.yaml"
+        output: "Ajustes na cláusula de PI"
+
+      - step: 4
+        agente: Ergon
+        acao: "Se contrato PJ: revisar anti-pejotização"
+        condicional: "Se tipo = PJ/freelancer"
+        template: "contrato-pj-antiprecarizacao-tmpl.yaml"
+
+      - step: 5
+        agente: Praedium
+        acao: "Se setor imobiliário: revisar cláusulas específicas"
+        condicional: "Se setor = imobiliário"
+
+      - step: 6
+        agente: Themis
+        acao: "Consolidar todas revisões + checklist IA (se aplicável)"
+        template: "checklist-ia-compliance-tmpl.yaml"
+        output: "contrato-{tipo}-{partes}-{data}.md"
+
+    kpis:
+      - "12/12 cláusulas presentes"
+      - "2 testemunhas no documento"
+      - "Revisão LGPD obrigatória"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 3: AUDITORIA DE CAMPANHA (CROSS-SQUAD MARKETING)
+  # ─────────────────────────────────────────
+  - id: J3
+    nome: "Auditoria de Campanha Cross-Squad"
+    trigger: "Marketing aciona Jurídica para compliance de campanha"
+    complexidade: MEDIA
+    duracao: "1-2 horas"
+
+    fluxo:
+      - step: 1
+        agente: Aequitas
+        acao: "Pipeline de 8 etapas para compliance publicitário"
+        task: "audit-campaign-compliance.md"
+        template: "campanha-compliance-tmpl.yaml"
+
+      - step: 2
+        agente: Praedium
+        acao: "Se setor imobiliário: checklist específico"
+        condicional: "Se setor = imobiliário"
+        task: "audit-real-estate-ad.md"
+        template: "anuncio-imobiliario-compliance-tmpl.yaml"
+
+      - step: 3
+        agente: Shield
+        acao: "Se dados pessoais envolvidos: verificar LGPD"
+        condicional: "Se campanha coleta dados"
+
+      - step: 4
+        agente: Signum
+        acao: "Se usa assets de terceiros: verificar PI"
+        condicional: "Se música, imagens de banco, marca"
+        task: "audit-ip-content.md"
+
+      - step: 5
+        agente: Themis
+        acao: "Consolidar pareceres + informar Marketing"
+        output: "auditoria-campanha-{tipo}-{data}.md"
+
+    kpis:
+      - "Resposta ao Marketing em <2 horas"
+      - "Score de compliance no parecer"
+      - "Ajustes acionáveis listados"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 4: AUDITORIA LGPD COMPLETA
+  # ─────────────────────────────────────────
+  - id: J4
+    nome: "Auditoria LGPD"
+    trigger: "Novo cliente, revisão periódica ou incidente"
+    complexidade: ALTA
+    duracao: "4-8 horas"
+
+    fluxo:
+      - step: 1
+        agente: Shield
+        acao: "Pipeline 7 etapas de auditoria LGPD"
+        task: "run-lgpd-audit.md"
+        template: "lgpd-audit-tmpl.yaml"
+
+      - step: 2
+        agente: Themis
+        acao: "Revisar cláusulas contratuais impactadas"
+        output: "Recomendações de ajuste contratual"
+
+      - step: 3
+        agente: Shield
+        acao: "Gerar documentos faltantes (política, termos, LIA)"
+        output: "Documentos de compliance"
+
+      - step: 4
+        agente: Themis
+        acao: "Consolidar relatório final"
+        output: "auditoria-lgpd-{contexto}-{data}.md"
+
+    kpis:
+      - "7/7 etapas verificadas"
+      - "Gaps críticos identificados"
+      - "Plano de ação com máx 5 itens"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 5: QUESTÃO TRABALHISTA
+  # ─────────────────────────────────────────
+  - id: J5
+    nome: "Análise Trabalhista"
+    trigger: "Contratação PJ, reclamação, reestruturação"
+    complexidade: MEDIA
+    duracao: "1-3 horas"
+
+    fluxo:
+      - step: 1
+        agente: Ergon
+        acao: "Diagnóstico 4 requisitos + Matriz de Subordinação"
+        task: "analyze-labor-risk.md"
+        template: "contrato-pj-antiprecarizacao-tmpl.yaml"
+
+      - step: 2
+        agente: Themis
+        acao: "Se contrato necessário: gerar cláusulas"
+        condicional: "Se risco MÉDIO ou ALTO"
+
+      - step: 3
+        agente: Shield
+        acao: "Verificar LGPD no tratamento de dados de RH"
+        condicional: "Se envolve dados de funcionários"
+
+      - step: 4
+        agente: Ergon
+        acao: "Gerar contrato PJ ou checklist de adequação"
+        output: "contrato-pj ou diagnostico-vinculo"
+
+    kpis:
+      - "4 requisitos CLT avaliados"
+      - "Risco classificado (BAIXO/MÉDIO/ALTO)"
+      - "Plano de adequação se MÉDIO+"
+
+# ============================================================
+# REGRAS DE ORQUESTRAÇÃO
+# ============================================================
+
+regras:
+
+  - regra: "Themis é a porta de entrada"
+    descricao: "Toda questão jurídica passa por Themis para triagem e consolidação"
+
+  - regra: "Especialistas são donos do domínio"
+    descricao: "Themis não faz análise especializada — delega e integra"
+
+  - regra: "Escalação humana é inegociável"
+    descricao: "Valor > R$ 20.000, liminar, dano por IA → advogado humano"
+
+  - regra: "Disclaimer é obrigatório"
+    descricao: "Todo parecer termina com disclaimer de não substituir advogado OAB"
+
+  - regra: "Cross-squad via protocolo formal"
+    descricao: "Marketing aciona Jurídica pelo handoff_format definido no squad.yaml"
+
+  - regra: "Replicável para clientes"
+    descricao: "Todo workflow funciona para Cadarn HQ e clientes Tarian"
+
+  - regra: "Multi-área = Themis coordena"
+    descricao: "Questão que cruza 2+ áreas: Themis convoca e consolida"
+
+# ============================================================
+# CROSS-SQUAD INTEGRATION
+# ============================================================
+
+cross_squad:
+  marketing:
+    trigger: "Campanha em setor regulado, claims de resultado, sorteio, influencer"
+    fluxo: "Marketing → Themis → Especialista → Themis → Marketing"
+    cenario: J3
+
+  operacional:
+    trigger: "Questão trabalhista, contratação PJ, assédio"
+    fluxo: "Nexus/RH → Themis → Ergon → Themis → Nexus/RH"
+    cenario: J5
+
+  comercial:
+    trigger: "Novo contrato de cliente, proposta com cláusulas"
+    fluxo: "Caio → Themis → Revisão multi-agente → Themis → Caio"
+    cenario: J2
+
+  brand_guardian:
+    trigger: "Risco de marca identificado em parecer jurídico"
+    fluxo: "Themis → Coel (parecer de marca)"
+    bidirecional: true

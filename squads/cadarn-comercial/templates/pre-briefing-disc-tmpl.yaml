@@ -1,0 +1,185 @@
+# Pre-Briefing DISC Template — Squad Cadarn Comercial
+# Agente: Camaleão
+# Usar ANTES de reunião de diagnóstico ou revisão de proposta
+# tarian_portable: true
+
+template:
+  name: pre-briefing-disc
+  version: "1.0.0"
+  description: "Briefing de personalização em 6 blocos por perfil DISC × segmento × canal"
+  squad: cadarn-comercial
+  agent: camaleao
+  replicavel: true
+  tarian_portable: true
+  nota: "O Camaleão NUNCA interage com o lead — opera como sistema de suporte para Caio"
+
+# Parâmetros de entrada
+params:
+  lead:
+    nome: "{{nome_lead}}"
+    empresa: "{{empresa}}"
+    segmento: "{{segmento}}"  # imobiliaria | advocacia | estetica
+    cargo: "{{cargo}}"
+    porte: "{{porte}}"
+  reuniao:
+    tipo: "{{pre_reuniao | revisao_proposta}}"
+    data: "{{data_reuniao}}"
+    quem_participa:
+      - "{{participante_1}}"
+      - "{{participante_2}}"
+  canal: "{{reuniao | videocall | whatsapp}}"
+
+# ============================================================
+# BLOCO 1 — PERFIL IDENTIFICADO
+# ============================================================
+
+perfil:
+  disc_dominante: "{{D|I|S|C}}"
+  disc_secundario: "{{D|I|S|C|nenhum}}"
+  confianca_identificacao: "{{alta|média|baixa}}"
+  challenger_type: "{{Go-Getter|Teacher|Skeptic|Friend|Lone-Wolf}}"
+
+  sinais_identificados:
+    - sinal: "{{sinal_1}}"
+      fonte: "{{primeiro_contato|comportamento|canal|cargo}}"
+    - sinal: "{{sinal_2}}"
+      fonte: "{{fonte}}"
+    - sinal: "{{sinal_3}}"
+      fonte: "{{fonte}}"
+
+  nota_cultural_br: |
+    Regra universal: SEMPRE abrir com rapport I-style, INDEPENDENTE do perfil.
+    Brasil tem Power Distance 69 — cordialidade antes de business, sempre.
+    DISC é hipótese probabilística, não rótulo fixo. Ajustar em tempo real.
+
+# ============================================================
+# BLOCO 2 — CONFIGURAÇÃO DA REUNIÃO
+# ============================================================
+
+configuracao:
+  tom_recomendado: "{{tom}}"
+  velocidade: "{{ritmo}}"
+  abertura_canal:
+    reuniao: "{{tom_na_reuniao}}"
+    videocall: "{{tom_na_videocall}}"  # leve shift para D (objetividade)
+    whatsapp: "sempre I-style — calor humano antes de qualquer dado"
+
+  regras_do_canal:
+    # Adaptação automática por canal (Camaleão)
+    whatsapp: "Todos os perfis → shift para I. Informal, caloroso, breve."
+    email: "Todos os perfis → shift para C. Formal, dados, estruturado."
+    reuniao_presencial: "Seguir perfil natural do decisor."
+    videocall: "Leve shift para D. Objetividade."
+
+  o_que_evitar_nessa_conversa:
+    - "{{anti_pattern_1}}"  # ex: "Apresentação longa (D)" | "Frieza técnica (I)" | etc.
+    - "{{anti_pattern_2}}"
+
+# ============================================================
+# BLOCO 3 — ABERTURA IDEAL
+# ============================================================
+
+abertura:
+  frase_calibrada: "{{frase_de_abertura}}"
+
+  # Referências por perfil:
+  # 🔴 D: "Antes de qualquer coisa — qual é o número que você precisa mover nos próximos 90 dias?"
+  # 🟡 I: "Recebi alguns contextos antes de entrar aqui, mas quero ouvir de você: como foi o último ciclo?"
+  # 🟢 S: "Vou te fazer algumas perguntas pra entender melhor como vocês operam — sem pressa."
+  # 🔵 C: "Antes de apresentar qualquer solução, quero mapear seu processo atual com detalhe."
+
+  adaptacao_segmento:
+    imobiliaria: "{{abertura_especifica_imobiliaria}}"
+    advocacia: "{{abertura_especifica_advocacia}}"
+    estetica: "{{abertura_especifica_estetica}}"
+
+  comprimento_ideal: "{{curta_1_frase | media_2_frases | longa_com_contexto}}"
+
+# ============================================================
+# BLOCO 4 — INSIGHT CHALLENGER
+# ============================================================
+
+insight_challenger:
+  insight: "{{insight_calibrado_pelo_gatilho_nao_pelo_segmento_generico}}"
+
+  # Referências por segmento (calibrar pelo GATILHO de compra):
+  # Imobiliária: "A maioria dos corretores acha que indicação é suficiente —
+  #               até o mês que o vizinho lança um perfil e passa a sua frente em buscas locais."
+  # Advocacia: "Escritórios que dominam SEO jurídico local convertem 4x mais
+  #              que os que dependem só de LinkedIn e indicação."
+  # Estética: "O problema raramente é volume de leads — é que sem posicionamento
+  #             de autoridade, você atrai paciente de R$300 quando cobra R$3.000."
+
+  momento_de_uso: "Após rapport. Antes de diagnóstico formal."
+  como_introduzir: "{{transição_para_o_insight}}"
+  o_que_nao_fazer: "Não calibrar insight só pelo segmento — usar o gatilho de compra específico."
+
+# ============================================================
+# BLOCO 5 — OBJEÇÕES MAIS PROVÁVEIS
+# ============================================================
+
+objecoes:
+  objecao_1:
+    texto: "{{objecao_principal_para_esse_perfil_segmento}}"
+    frequencia: "{{muito_alta|alta|média}}"
+    medo_real: "{{medo_subjacente}}"
+    contorno_vende_c: |
+      {{contorno_recomendado}}
+      # Técnica: Ouça → Valide → Reforce valor → Pergunte novamente
+
+  objecao_2:
+    texto: "{{objecao_secundaria}}"
+    frequencia: "{{frequencia}}"
+    contorno_vende_c: "{{contorno}}"
+
+  objecao_3:
+    texto: "{{objecao_terciaria}}"
+    frequencia: "{{frequencia}}"
+    contorno_vende_c: "{{contorno}}"
+
+  # Objeções padrão por ICP (referência):
+  referencia_imobiliaria:
+    objecao_1: "Já tive agência e não funcionou"
+    medo_real: "Desconfiança estrutural com agência — não é preço"
+    argumento_fecha: "ROI + velocidade ('leads no WhatsApp em 60 dias')"
+
+  referencia_advocacia:
+    objecao_1: "Preciso garantir que está dentro da OAB"
+    medo_real: "Risco reputacional — não é custo"
+    argumento_fecha: "Processo + risco controlado + conformidade OAB documentada"
+
+  referencia_estetica:
+    objecao_1: "Agência anterior não entregou qualidade visual"
+    medo_real: "Destruição da marca pessoal — não é preço"
+    argumento_fecha: "Diferenciação + prova social visual de clínica parecida"
+
+# ============================================================
+# BLOCO 6 — ENCERRAMENTO DA PROPOSTA
+# ============================================================
+
+encerramento_proposta:
+  frase_fechamento: "{{frase_calibrada_para_o_perfil}}"
+
+  # Referências por perfil:
+  # 🔴 D: "Você não precisa de mais reuniões — precisa de resultado. Se o diagnóstico
+  #         faz sentido, o próximo passo é assinar e começar na semana que vem."
+  # 🟡 I: "Estamos prontos para construir isso junto com você. Clínicas que partiram
+  #         desse mesmo ponto chegaram a um lugar completamente diferente em 6 meses."
+  # 🟢 S: "Não estamos pedindo que você decida agora. Estamos propondo que você
+  #         conheça o processo com calma."
+  # 🔵 C: "Disponibilizamos toda a documentação da metodologia para análise antes
+  #         da assinatura. Podemos agendar uma sessão técnica de 30 minutos?"
+
+  dimensoes_proposta:
+    paginas: "{{N_paginas}}"
+    começa_por: "{{resultado|transformação|problema|diagnóstico}}"
+    densidade: "{{baixa|média|alta|muito_alta}}"
+    tipo_prova: "{{quantitativo|depoimento|case_parceria|benchmark}}"
+
+metadata:
+  gerado_por: "Camaleão"
+  data: "{{data}}"
+  para: "Caio"
+  versao: "1.0"
+  squad: "cadarn-comercial"
+  nota: "Não compartilhar com o lead. Uso interno de preparação."

@@ -1,0 +1,124 @@
+# Briefing de Conteúdo Template — Squad Cadarn Marketing
+# Pipeline: Logos (copy) + Magnética (roteiro) + Iris (direção) → Pixel (design)
+# Replicável para clientes Tarian
+
+template:
+  name: briefing-conteudo
+  version: "1.0.0"
+  description: "Briefing consolidado por peça: copy, roteiro, direção criativa e instruções de design"
+  squad: cadarn-marketing
+  agents: [copywriter, roteirista, diretora-criativa, designer]
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_marca
+    - tom_de_voz
+    - identidade_visual
+    - sacred_words
+
+params:
+  peca:
+    id: "{{peca_id}}"
+    cliente: "{{cliente_nome}}"
+    data_publicacao: "{{YYYY-MM-DD}}"
+    canal: "{{canal}}"
+    formato: "{{Reel | Carrossel | Stories | Post | Video}}"
+    pilar: "{{pilar_conteudo}}"
+    fase_jornada: "{{Descoberta | Engajamento | Conversão | Retenção}}"
+
+# ============================================================
+# COPY (Logos)
+# ============================================================
+
+copy:
+  headline:
+    texto: "{{gancho_principal}}"
+    pattern: "{{Hormozi_pattern_usado}}"
+  body:
+    texto: "{{corpo_do_texto}}"
+    storytelling: "{{estrutura_Icaro_usada}}"
+  cta:
+    texto: "{{call_to_action}}"
+    regra: "1 CTA por peça — NUNCA múltiplos"
+  hashtags:
+    lista: ["{{#tag1}}", "{{#tag2}}", "{{#tag3}}"]
+    regra: "Máx 5, alta relevância"
+  sacred_words_usadas: ["{{word_1}}", "{{word_2}}"]
+  caption_alt:
+    texto: "{{versao_alternativa_para_teste_AB}}"
+    uso: "Opcional — quando houver teste de criativo"
+
+# ============================================================
+# ROTEIRO (Magnética) — SE vídeo
+# ============================================================
+
+roteiro:
+  aplicavel: true | false
+  gancho:
+    texto: "{{primeiros_3_segundos}}"
+    tipo_gancho: "{{dos_7_ganchos_Becker}}"
+  desenvolvimento:
+    - timestamp: "0:00-0:03"
+      acao: "{{gancho}}"
+    - timestamp: "0:03-0:15"
+      acao: "{{desenvolvimento}}"
+    - timestamp: "0:15-0:25"
+      acao: "{{clímax_ou_prova}}"
+    - timestamp: "0:25-0:30"
+      acao: "{{CTA_falado}}"
+  duracao_estimada: "{{segundos}}"
+  notas_producao:
+    cenario: "{{descricao}}"
+    iluminacao: "{{natural | ring_light | estudio}}"
+    props: "{{objetos_necessarios}}"
+    figurino: "{{sugestao}}"
+
+# ============================================================
+# DIREÇÃO CRIATIVA (Iris)
+# ============================================================
+
+direcao_criativa:
+  conceito_visual: "{{descricao_do_conceito}}"
+  referencias:
+    mood: "{{descricao_mood}}"
+    cores_dominantes: ["{{cor_1}}", "{{cor_2}}"]
+    texturas: "{{texturas_ou_patterns}}"
+  layout:
+    estrutura: "{{grid | assimétrico | centralizado}}"
+    hierarquia_visual: "{{o_que_olho_ve_primeiro}}"
+    espaco_respiro: "{{sim_nao}}"
+  tipografia:
+    principal: "{{fonte}}"
+    destaque: "{{fonte_destaque}}"
+    regra: "Seguir brand guidelines do cliente"
+  notas_pixel: "{{instrucoes_especificas_para_designer}}"
+
+# ============================================================
+# INSTRUÇÕES DE DESIGN (para Pixel)
+# ============================================================
+
+design:
+  formatos_necessarios:
+    - tipo: "Feed"
+      dimensao: "1080x1080"
+    - tipo: "Stories"
+      dimensao: "1080x1920"
+    - tipo: "Reel cover"
+      dimensao: "1080x1920"
+  ferramenta: "Canva | Paper.design | Manual"
+  brand_guidelines: "{{path_ou_referencia}}"
+  exportar_como: "PNG | MP4 | PDF"
+  validacao_marca: "Coel (*scanner) antes de publicar"
+
+# ============================================================
+# STATUS E TRACKING
+# ============================================================
+
+status:
+  copy: "[ ] Pendente"
+  roteiro: "[ ] Pendente | [ ] N/A"
+  direcao_criativa: "[ ] Pendente"
+  design: "[ ] Pendente"
+  auditoria_coel: "[ ] Pendente"
+  aprovacao_cliente: "[ ] Pendente"
+  publicado: "[ ] Pendente"

@@ -1,0 +1,325 @@
+# Employee Onboarding Template — Squad Cadarn Operacional
+# Combina 3 frameworks: 5 Cs (Leila Hormozi), First 100 Days (Joey Coleman), Lencioni (cultura)
+# Replicável: ao criar Tarian do cliente, este template vai junto parametrizado
+
+template:
+  name: employee-onboarding
+  version: "1.0.0"
+  description: "Plano de onboarding unificado para novos funcionários (Dia -3 a Dia 100)"
+  squad: cadarn-operacional
+  agents_envolvidos:
+    - lider-operacional   # Scala — estrutura operacional (5 Cs)
+    - client-success      # Arc — jornada emocional (8 fases adaptadas)
+    - rh-pessoas          # Nexus — integração cultural (Lencioni)
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - cultura_valores
+    - tom_comunicacao
+  requires:
+    - company-narrative-tmpl.yaml  # Narrativa da empresa deve ser preenchida ANTES
+
+# Parâmetros do cliente (preenchidos na elicitação)
+# Nota: empresa.historia e empresa.cultura vêm do company-narrative-tmpl.yaml
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+    setor: "{{empresa_setor}}"
+    tamanho_time: "{{tamanho_time}}"
+    cultura_valores: "{{cultura_valores}}"
+    narrativa: "{{company_narrative_path}}"  # path para o company-narrative preenchido
+  funcionario:
+    nome: "{{funcionario_nome}}"
+    cargo: "{{funcionario_cargo}}"
+    gestor_direto: "{{gestor_direto}}"
+    data_inicio: "{{data_inicio}}"
+  contexto:
+    ferramentas_principais: "{{ferramentas}}"
+    canais_comunicacao: "{{canais}}"
+    rituais_existentes: "{{rituais}}"
+
+# ============================================================
+# TIMELINE UNIFICADA — 3 CAMADAS SOBREPOSTAS
+# ============================================================
+
+timeline:
+
+  # ──────────────────────────────────────
+  # PRÉ-ONBOARDING (Dia -3 a Dia 0)
+  # Framework: Arc (AFFIRM) + Scala (Compliance)
+  # ──────────────────────────────────────
+  pre_onboarding:
+    periodo: "Dia -3 a Dia 0"
+    objetivo: "Eliminar buyer's remorse e preparar infraestrutura"
+    fase_arc: AFFIRM
+    fase_scala: Compliance
+
+    acoes:
+      - id: PRE-01
+        dia: -3
+        responsavel: RH / Gestor
+        acao: "Enviar mensagem de boas-vindas personalizada (NÃO genérica)"
+        canal: WhatsApp ou ligação
+        framework: Arc (AFFIRM)
+        nota: "Funcionário novo tem buyer's remorse igual cliente. Comunicar IMEDIATAMENTE que fez a escolha certa"
+
+      - id: PRE-02
+        dia: -3
+        responsavel: TI / Ops
+        acao: "Preparar toda infraestrutura: email, acessos, equipamento, ferramentas ({{ferramentas}})"
+        framework: Scala (Compliance)
+        nota: "NUNCA fazer funcionário esperar por acesso no primeiro dia"
+
+      - id: PRE-03
+        dia: -2
+        responsavel: CEO ou Líder
+        acao: "Ligação pessoal do líder — 5 min, casual, 'estamos te esperando'"
+        canal: Ligação telefônica
+        framework: Arc (AFFIRM)
+        nota: "Ligação do CEO ANTES do primeiro dia. Impacto desproporcional"
+
+      - id: PRE-04
+        dia: -1
+        responsavel: RH / Gestor
+        acao: "Enviar kit de boas-vindas: cronograma da primeira semana + documento de cultura/valores"
+        canal: Email + documento
+        framework: Scala (Clarity) + Nexus (cultura)
+        nota: "Incluir os valores da empresa ({{cultura_valores}}) de forma tangível"
+
+      - id: PRE-05
+        dia: -1
+        responsavel: Gestor direto
+        acao: "Avisar o time que novo membro chega amanhã. Pedir ao time que prepare uma recepção calorosa"
+        framework: Nexus (Connection)
+
+  # ──────────────────────────────────────
+  # SEMANA 1 — ACTIVATE (Dia 1 a Dia 7)
+  # Framework: Arc (ACTIVATE) + Scala (Clarity + Culture) + Nexus (Five Dysfunctions)
+  # ──────────────────────────────────────
+  semana_1:
+    periodo: "Dia 1 a Dia 7"
+    objetivo: "Primeiro dia MEMORÁVEL + clareza total de papel e expectativas"
+    fase_arc: ACTIVATE
+    fase_scala: Clarity + Culture
+
+    acoes:
+      - id: S1-01
+        dia: 1
+        responsavel: Gestor direto
+        acao: "Recepção calorosa. Mesa pronta, kit físico (se aplicável), café com o time"
+        framework: Arc (ACTIVATE — tornar MEMORÁVEL)
+        nota: "Primeiro dia é sobre EXPERIÊNCIA, não burocracia. Compliance já foi resolvido no pré"
+
+      - id: S1-02
+        dia: 1
+        responsavel: CEO ou Líder
+        acao: "Almoço/café com liderança — contar a história da empresa, o porquê, a visão"
+        framework: Scala (Culture) + Nexus (confiança)
+        nota: "Conexão humana. Sem PowerPoint. Conversa genuína"
+
+      - id: S1-03
+        dia: 1
+        responsavel: Gestor direto
+        acao: "Entregar documento de expectativas ESCRITAS: papel, responsabilidades, KPIs dos primeiros 30/60/90 dias"
+        framework: Scala (Clarity)
+        nota: "Se não está escrito, não existe. Expectativas verbais criam ambiguidade"
+
+      - id: S1-04
+        dia: 2
+        responsavel: Buddy (par designado)
+        acao: "Designar um buddy — colega de mesmo nível que será ponto de contato informal"
+        framework: Arc (ACTIVATE) + Nexus (Connection)
+        nota: "Buddy ≠ gestor. É alguém que pode responder 'perguntas bobas' sem julgamento"
+
+      - id: S1-05
+        dia: 3
+        responsavel: Gestor direto
+        acao: "Tour pelas ferramentas ({{ferramentas}}), rituais ({{rituais}}) e canais ({{canais}})"
+        framework: Scala (Clarity)
+
+      - id: S1-06
+        dia: 5
+        responsavel: Gestor direto
+        acao: "Check-in de fim de semana 1: como está se sentindo? Alguma dúvida? Algo que surpreendeu?"
+        framework: Arc (AFFIRM contínuo) + Nexus (confiança baseada em vulnerabilidade)
+        nota: "ESCUTAR mais do que falar. Se disser 'tudo bem' genérico, aprofundar"
+
+  # ──────────────────────────────────────
+  # SEMANAS 2-4 — ACCLIMATE (Dia 8 a Dia 30)
+  # Framework: Arc (ACCLIMATE) + Scala (Connection + Checkback) + Nexus (Working Genius)
+  # ──────────────────────────────────────
+  semanas_2_4:
+    periodo: "Dia 8 a Dia 30"
+    objetivo: "Adaptação guiada + primeira entrega real + mapeamento de talentos"
+    fase_arc: ACCLIMATE
+    fase_scala: Connection + Checkback
+
+    acoes:
+      - id: S24-01
+        dia: 8-10
+        responsavel: Nexus (RH)
+        acao: "Aplicar Working Genius assessment — mapear 2 Gênios + 2 Competências + 2 Frustrações"
+        framework: Nexus (Working Genius)
+        nota: "Resultado impacta alocação de tarefas. Não deixar para depois"
+
+      - id: S24-02
+        dia: 10
+        responsavel: Gestor direto
+        acao: "Atribuir primeira entrega real (pequena, com impacto visível). NÃO treinamento passivo"
+        framework: Arc (ACCLIMATE — hand-holding)
+        nota: "Entrega real cria senso de pertencimento. Treinamento infinito cria ansiedade"
+
+      - id: S24-03
+        dia: 14
+        responsavel: Gestor direto
+        acao: "Check-in quinzenal formal: progresso vs expectativas escritas (S1-03)"
+        framework: Scala (Checkback)
+        nota: "Comparar com documento de expectativas. Ajustar se necessário"
+
+      - id: S24-04
+        dia: 14
+        responsavel: Nexus (RH)
+        acao: "Sessão de cultura: explicar Five Dysfunctions (simplificado), como o time lida com conflito"
+        framework: Nexus (Five Dysfunctions)
+        nota: "Não é palestra. É conversa: 'aqui a gente debate ideias abertamente, e isso é bom'"
+
+      - id: S24-05
+        dia: 21
+        responsavel: Buddy
+        acao: "Buddy check: feedback informal. O que está indo bem? Onde está travando?"
+        framework: Arc (ACCLIMATE)
+
+      - id: S24-06
+        dia: 28-30
+        responsavel: Gestor direto + RH
+        acao: "Review de 30 dias: resultado da primeira entrega + feedback 360 (gestor + buddy + pares)"
+        framework: Scala (Checkback) + Nexus (accountability)
+        nota: "Celebrar o que foi bom (Arc — ACCOMPLISH parcial). Corrigir rota se necessário"
+        kpi: "Checklist de onboarding >80% concluído"
+
+  # ──────────────────────────────────────
+  # SEMANAS 5-8 — ACCOMPLISH (Dia 31 a Dia 60)
+  # Framework: Arc (ACCOMPLISH) + Scala (Checkback) + Nexus (Ideal Team Player)
+  # ──────────────────────────────────────
+  semanas_5_8:
+    periodo: "Dia 31 a Dia 60"
+    objetivo: "Resultado concreto + avaliação de fit cultural"
+    fase_arc: ACCOMPLISH
+    fase_scala: Checkback
+
+    acoes:
+      - id: S58-01
+        dia: 31-35
+        responsavel: Gestor direto
+        acao: "Atribuir projeto com autonomia parcial — responsabilidade real com suporte disponível"
+        framework: Arc (caminho para ACCOMPLISH)
+
+      - id: S58-02
+        dia: 45
+        responsavel: Nexus (RH)
+        acao: "Avaliar Ideal Team Player: Humble (compartilha crédito?), Hungry (busca mais?), Smart (lê o time?)"
+        framework: Nexus (Ideal Team Player)
+        nota: "Se faltar Humble → alerta máximo. Hungry e Smart são desenvolvíveis. Humble não"
+
+      - id: S58-03
+        dia: 45
+        responsavel: Gestor direto
+        acao: "Check-in de meio caminho: KPIs de 60 dias vs documento de expectativas"
+        framework: Scala (Checkback)
+
+      - id: S58-04
+        dia: 55-60
+        responsavel: Gestor direto + Time
+        acao: "CELEBRAR primeira conquista significativa do funcionário. Reconhecimento público"
+        framework: Arc (ACCOMPLISH)
+        nota: "Celebração cria memória emocional. Funcionário que atinge ACCOMPLISH raramente sai"
+
+  # ──────────────────────────────────────
+  # SEMANAS 9-14 — ADOPT + ADVOCATE (Dia 61 a Dia 100)
+  # Framework: Arc (ADOPT/ADVOCATE) + Scala (Performance) + Nexus (Accountability)
+  # ──────────────────────────────────────
+  semanas_9_14:
+    periodo: "Dia 61 a Dia 100"
+    objetivo: "Consolidação, autonomia e embaixador interno"
+    fase_arc: ADOPT → ADVOCATE
+    fase_scala: Performance
+
+    acoes:
+      - id: S914-01
+        dia: 60-70
+        responsavel: Gestor direto
+        acao: "Transição para autonomia: reduzir check-ins, aumentar responsabilidade"
+        framework: Arc (ADOPT — lealdade)
+
+      - id: S914-02
+        dia: 75
+        responsavel: Nexus (RH)
+        acao: "Atualizar Working Genius team map com dados do novo membro. Ajustar alocação do time"
+        framework: Nexus (Working Genius)
+        nota: "Com dados reais (não só assessment), realocar com base em onde a pessoa BRILHA"
+
+      - id: S914-03
+        dia: 80
+        responsavel: Gestor direto
+        acao: "Definir plano de crescimento: próximos 6 meses, skills a desenvolver, carreira"
+        framework: Scala (5 Cs implícito — investimento de longo prazo)
+
+      - id: S914-04
+        dia: 90
+        responsavel: Gestor direto + RH
+        acao: "Review formal de 90 dias: performance + fit cultural + decisão GO/NO-GO"
+        framework: Scala (Checkback final) + Nexus (Ideal Team Player final)
+        decisao:
+          go: "Funcionário integrado. Celebrar. Comunicar permanência ao time"
+          no_go: "Conversa honesta. Plano de correção de 30 dias OU desligamento respeitoso"
+        nota: "When in doubt — don't keep. Bom funcionário pede demissão quando mau funcionário fica"
+
+      - id: S914-05
+        dia: 100
+        responsavel: CEO ou Líder
+        acao: "Marco dos 100 dias: conversa 1:1 com liderança. 'Como foi a jornada? O que mudaríamos?'"
+        framework: Arc (ADVOCATE)
+        nota: "Esse feedback melhora o processo para o próximo funcionário. Loop de melhoria contínua"
+        kpi: "Funcionário indica a empresa como bom lugar para trabalhar? (eNPS)"
+
+# ============================================================
+# KPIs DO ONBOARDING
+# ============================================================
+kpis:
+  - nome: "Checklist de onboarding concluído"
+    meta: ">90% em 30 dias"
+    fase: ACCLIMATE
+
+  - nome: "Dias até primeira entrega real"
+    meta: "<15 dias"
+    fase: ACCLIMATE
+
+  - nome: "Dias até primeiro resultado significativo"
+    meta: "<60 dias"
+    fase: ACCOMPLISH
+
+  - nome: "Avaliação Ideal Team Player"
+    meta: "3/3 virtudes presentes no dia 45"
+    fase: ACCOMPLISH
+
+  - nome: "Retenção pós-100 dias"
+    meta: ">90%"
+    fase: ADVOCATE
+
+  - nome: "eNPS do novo funcionário"
+    meta: ">8/10"
+    fase: ADVOCATE
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+anti_patterns:
+  - "Primeiro dia 100% burocrático (formulários, compliance, sentar e ler)"
+  - "Sem buddy — funcionário novo depende só do gestor"
+  - "Expectativas verbais, não escritas"
+  - "Treinamento passivo por semanas sem entrega real"
+  - "Ignorar buyer's remorse — 'ele aceitou, tá feliz'"
+  - "Não celebrar conquistas — funcionário não sabe se está indo bem"
+  - "Manter funcionário que não é Humble 'porque é produtivo'"
+  - "Pular review de 90 dias — 'está tudo bem, não precisa'"

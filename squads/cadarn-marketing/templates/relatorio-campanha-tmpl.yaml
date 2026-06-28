@@ -1,0 +1,214 @@
+# Relatório de Campanha Template — Squad Cadarn Marketing
+# Framework: Rafael Kiso — Pirâmide de Dados + Diagnósticos Especializados
+# Agente: Métrica (Analytics de Conteúdo)
+# Replicável para clientes Tarian
+
+template:
+  name: relatorio-campanha
+  version: "1.0.0"
+  description: "Relatório de performance: pirâmide de dados, diagnósticos, orgânico + pago, recomendações"
+  squad: cadarn-marketing
+  agent: analytics
+  replicavel: true
+  tarian_portable: true
+
+params:
+  cliente:
+    nome: "{{cliente_nome}}"
+    periodo: "{{data_inicio}} a {{data_fim}}"
+    periodo_anterior: "{{data_inicio_ant}} a {{data_fim_ant}}"
+    canais_analisados: ["{{canal_1}}", "{{canal_2}}"]
+
+# ============================================================
+# RESUMO EXECUTIVO (3 bullets)
+# ============================================================
+
+resumo:
+  o_que_funcionou: "{{bullet_1}}"
+  o_que_nao_funcionou: "{{bullet_2}}"
+  proximo_passo: "{{bullet_3}}"
+
+# ============================================================
+# MÉTRICAS DO PERÍODO (comparativo)
+# ============================================================
+
+metricas_periodo:
+  instagram:
+    - metrica: "Alcance"
+      atual: "{{valor}}"
+      anterior: "{{valor}}"
+      variacao: "{{+X% | -X%}}"
+    - metrica: "Engajamento (%)"
+      atual: ""
+      anterior: ""
+      variacao: ""
+    - metrica: "Seguidores"
+      atual: ""
+      anterior: ""
+      variacao: ""
+    - metrica: "Saves"
+      atual: ""
+      anterior: ""
+      variacao: ""
+    - metrica: "Shares"
+      atual: ""
+      anterior: ""
+      variacao: ""
+
+  midia_paga:
+    - metrica: "Investimento"
+      atual: "R$ {{valor}}"
+      anterior: "R$ {{valor}}"
+    - metrica: "{{CPL | ROAS | CPA}}"
+      atual: ""
+      anterior: ""
+      variacao: ""
+    - metrica: "Leads/Vendas"
+      atual: ""
+      anterior: ""
+      variacao: ""
+    - metrica: "CTR"
+      atual: ""
+      anterior: ""
+      variacao: ""
+
+  site:
+    - metrica: "Sessões"
+      atual: ""
+      anterior: ""
+      variacao: ""
+    - metrica: "Bounce Rate"
+      atual: ""
+      anterior: ""
+      variacao: ""
+    - metrica: "Conversões"
+      atual: ""
+      anterior: ""
+      variacao: ""
+
+# ============================================================
+# PIRÂMIDE DE DADOS (Kiso)
+# ============================================================
+
+piramide:
+  base:
+    nome: "Visibilidade"
+    metricas: "Alcance, Impressões, Seguidores"
+    diagnostico: "O conteúdo está sendo VISTO?"
+    status: "{{saudavel | atencao | critico}}"
+    nota: ""
+
+  meio:
+    nome: "Ressonância"
+    metricas: "Saves, Shares, Comments, DMs, Tempo de visualização"
+    diagnostico: "O conteúdo está RESSONANDO?"
+    status: "{{saudavel | atencao | critico}}"
+    nota: ""
+
+  topo:
+    nome: "Conversão"
+    metricas: "Leads, Vendas, ROAS, LTV, Receita"
+    diagnostico: "O conteúdo está CONVERTENDO?"
+    status: "{{saudavel | atencao | critico}}"
+    nota: ""
+
+  cruzamento:
+    base_alta_meio_baixo: "Conteúdo genérico — não ressoa com o público"
+    meio_alto_topo_baixo: "Falta CTA ou oferta fraca"
+    tudo_baixo: "Problema de distribuição ou público errado"
+
+# ============================================================
+# TOP CONTEÚDOS
+# ============================================================
+
+top_conteudos:
+  - posicao: 1
+    tipo: "{{Reel | Carrossel | Post}}"
+    tema: "{{descricao}}"
+    alcance: "{{N}}"
+    engajamento: "{{%}}"
+    saves: "{{N}}"
+    shares: "{{N}}"
+    por_que_funcionou: "{{analise}}"
+
+  - posicao: 2
+    tipo: ""
+    tema: ""
+    por_que_funcionou: ""
+
+  - posicao: 3
+    tipo: ""
+    tema: ""
+    por_que_funcionou: ""
+
+# ============================================================
+# DIAGNÓSTICOS ESPECIALIZADOS
+# ============================================================
+
+diagnosticos:
+  audience_corruption:
+    detectado: true | false
+    evidencia: "{{seguidores_crescem_engajamento_cai}}"
+    acao: "Parar sorteio/viral vazio, focar em conteúdo de nicho"
+
+  reel_diagnostic:
+    detectado: true | false
+    evidencia: "{{alcance_alto_saves_baixo}}"
+    acao: "Adicionar gancho de valor nos primeiros 3s"
+
+  frequency_saturation:
+    detectado: true | false
+    evidencia: "{{CTR_caindo_frequencia_alta}}"
+    acao: "Renovar criativos ou expandir público"
+
+  organic_decay:
+    detectado: true | false
+    evidencia: "{{alcance_caindo_mes_a_mes}}"
+    causa: "{{algoritmo | relevancia | formato}}"
+    acao: ""
+
+# ============================================================
+# INTEGRAÇÃO ORGÂNICO + PAGO
+# ============================================================
+
+integracao:
+  posts_para_promover: "Posts com alto save/share orgânico → investir verba"
+  posts_para_nao_promover: "Posts com baixo engajamento orgânico → NÃO usar como anúncio"
+  insights_cruzados: "{{observacoes}}"
+
+# ============================================================
+# RECOMENDAÇÕES
+# ============================================================
+
+recomendacoes:
+  regra: "Acionáveis, específicas. NUNCA 'poste mais' ou 'melhore o conteúdo'."
+  lista:
+    - prioridade: ALTA
+      acao: "{{acao_1}}"
+      responsavel: "{{agente}}"
+      impacto_esperado: "{{descricao}}"
+    - prioridade: MEDIA
+      acao: "{{acao_2}}"
+      responsavel: ""
+      impacto_esperado: ""
+    - prioridade: BAIXA
+      acao: "{{acao_3}}"
+      responsavel: ""
+      impacto_esperado: ""
+
+# ============================================================
+# KPIs ESTRELAS-GUIA (próximo período)
+# ============================================================
+
+kpis_proximo_periodo:
+  regra: "Máximo 3"
+  lista:
+    - nome: "{{kpi_1}}"
+      meta: "{{meta}}"
+      baseline: "{{valor_atual}}"
+    - nome: "{{kpi_2}}"
+      meta: ""
+      baseline: ""
+    - nome: "{{kpi_3}}"
+      meta: ""
+      baseline: ""

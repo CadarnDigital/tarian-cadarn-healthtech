@@ -1,0 +1,335 @@
+# Squad Cadarn Comercial — Workflow Integrado
+# Como os 3 agentes trabalham juntos em cada cenário comercial
+# Versão: 1.0.0
+
+workflow:
+  name: squad-comercial-integrated
+  version: "1.0.0"
+  description: "Orquestração de Caio, GestorFunil e Camaleão em cenários-chave do pipeline"
+  squad: cadarn-comercial
+
+# ============================================================
+# HIERARQUIA DE COMANDO
+# ============================================================
+
+hierarquia:
+  decisao_final: "Fabiano (CEO)"
+  lider_squad: "Caio (líder-comercial)"
+  agentes_processo:
+    - "GestorFunil (qualificação e pipeline)"
+    - "Camaleão (personalização por perfil)"
+  fase2:
+    - "ProcessadorObjeções (awaiting — fase 2)"
+
+  regra: |
+    Caio LIDERA o funil de ponta a ponta.
+    GestorFunil FILTRA (não vende, não fecha — qualifica).
+    Camaleão ADAPTA (não interage com lead — opera nos bastidores).
+    Nenhum agente pula etapa: proposta só após qualificação e diagnóstico.
+
+# ============================================================
+# 5 CENÁRIOS INTEGRADOS
+# ============================================================
+
+cenarios:
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 1: PROSPECÇÃO ATIVA (BLITZ)
+  # ─────────────────────────────────────────
+  - id: C1
+    nome: "Prospecção Ativa — Blitz Diário"
+    trigger: "Bloco fixo diário na agenda de Caio"
+    complexidade: MEDIA
+    duracao: "1-2 horas (bloco diário)"
+
+    fluxo:
+      - step: 1
+        agente: Caio
+        acao: "Definir nicho do blitz de hoje + quantidade de leads"
+        task: "run-sales-blitz.md"
+        template: "script-prospeccao-tmpl.yaml"
+        output: "Lista de leads com ganchos + scripts de cold message"
+
+      - step: 2
+        agente: Caio
+        acao: "Executar cold messages personalizadas por lead"
+        regra: "Max 2-3 toques/semana por lead. Texto sempre primeiro."
+        output: "Leads abordados do dia"
+
+      - step: 3
+        agente: Caio
+        acao: "Para leads que respondem: triagem rápida (*triagem)"
+        gate: "Fit aparente com ICP? → Passar para GestorFunil"
+        output: "Lead triado: GO (passa ao GestorFunil) | NO (ignorar/nutrir)"
+
+      - step: 4
+        agente: GestorFunil
+        acao: "Recebe lead com fit → inicia qualificação MEDDIC"
+        trigger_condicional: "Apenas leads com GO na triagem"
+        task: "qualify-lead.md"
+        output: "Decisão: Avançar / Requalificar / Nutrir / Descartar"
+
+    kpis:
+      - "Blitz realizado TODOS os dias (sem exceção)"
+      - "Min 10 abordagens/dia por nicho"
+      - "Taxa de resposta: >10% (meta)"
+      - "Triagem feita no mesmo dia da resposta"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 2: QUALIFICAÇÃO E DIAGNÓSTICO
+  # ─────────────────────────────────────────
+  - id: C2
+    nome: "Qualificação → Diagnóstico → Proposta"
+    trigger: "Lead qualificado (score ≥ 10) entregue pelo GestorFunil"
+    complexidade: ALTA
+    duracao: "7-30 dias por lead (varia por segmento)"
+
+    fluxo:
+      - step: 1
+        agente: GestorFunil
+        acao: "Qualificar lead via MEDDIC (discovery call ou WhatsApp)"
+        task: "qualify-lead.md"
+        template: "meddic-scoring-tmpl.yaml"
+        output: "Ficha MEDDIC preenchida + decisão"
+
+      - step: 2
+        agente: GestorFunil → Camaleão
+        acao: "Score ≥ 10: solicitar briefing de personalização ao Camaleão"
+        task: "generate-pre-briefing.md"
+        template: "pre-briefing-disc-tmpl.yaml"
+        input: "Segmento + dados MEDDIC + sinais de perfil"
+        output: "Briefing em 6 blocos (perfil, configuração, abertura, insight, objeções, fechamento)"
+
+      - step: 3
+        agente: GestorFunil → Caio
+        acao: "Devolver lead ao Caio com score + briefing + JTBD keywords"
+        output: |
+          - Score MEDDIC completo
+          - Palavras-chave JTBD do lead
+          - Cadência recomendada por segmento
+          - Briefing do Camaleão anexo
+
+      - step: 4
+        agente: Caio
+        acao: "Conduzir reunião de diagnóstico usando briefing do Camaleão"
+        task: "run-diagnostic.md"
+        pre_requisito: "Briefing Camaleão lido antes de entrar na reunião"
+        output: "Mapa de diagnóstico (dor, situação, resultado 90d, JTBD, DISC confirmado)"
+
+      - step: 5
+        agente: Caio
+        acao: "Estruturar proposta com base no diagnóstico"
+        task: "generate-proposal.md"
+        template: "proposta-comercial-tmpl.yaml"
+        gate: "Diagnóstico confirmado pelo cliente ANTES de montar proposta"
+        output: "Proposta rascunho"
+
+      - step: 6
+        agente: Camaleão
+        acao: "Revisar proposta pelo perfil DISC confirmado na reunião"
+        task: "generate-pre-briefing.md (modo revisão de proposta)"
+        input: "Perfil DISC confirmado + proposta rascunho + segmento"
+        output: "Recomendações de ajuste (estrutura, extensão, prova, tom, fechamento)"
+
+      - step: 7
+        agente: Caio
+        acao: "Aplicar ajustes do Camaleão + enviar proposta"
+        task: "generate-proposal.md (fase de envio)"
+        output: "Proposta final enviada + reunião de revisão agendada"
+
+    kpis:
+      - "Score MEDDIC preenchido antes de qualquer proposta"
+      - "Briefing do Camaleão consultado antes de toda reunião"
+      - "Diagnóstico confirmado antes de proposta enviada"
+      - "Reunião de revisão de proposta agendada no momento do envio"
+      - "Taxa proposta → fechamento: >30% (meta)"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 3: FOLLOW-UP SISTEMÁTICO
+  # ─────────────────────────────────────────
+  - id: C3
+    nome: "Follow-up Sistemático Pós-Proposta"
+    trigger: "Proposta enviada sem resposta após D+2"
+    complexidade: MEDIA
+    duracao: "30-90 dias por segmento"
+
+    fluxo:
+      - step: 1
+        agente: GestorFunil
+        acao: "Definir cadência por segmento e estágio"
+        task: "run-followup-cadence.md"
+        template: "followup-cadence-tmpl.yaml"
+        input: "Segmento + dias desde envio da proposta"
+        output: "Calendário de follow-up D+0 a D+45 com canal e mensagem"
+
+      - step: 2
+        agente: Caio
+        acao: "Executar cadência conforme calendário do GestorFunil"
+        regra: "Max 2-3 toques/semana. Valor antes de cobrança."
+        gate: "Se lead responde → reassessar: nova reunião ou objeção?"
+
+      - step: 3
+        agente: Caio (se objeção)
+        acao: "Tratar objeção com processo VENDE-C (*objecao)"
+        output: "Objeção tratada + próximo passo concreto"
+
+      - step: 4
+        agente: GestorFunil (se score cai)
+        acao: "Se sinal de resfriamento: requalificar e redefinir ação"
+        output: "Decisão: continuar / nutrir / reativar depois"
+
+    kpis:
+      - "Cadência executada sem interrupção (sem 'deixar esfriar')"
+      - "Nenhuma mensagem sem próximo passo"
+      - "Lead não encerrado antes de esgotar toques do segmento"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 4: FECHAMENTO E HANDOFF
+  # ─────────────────────────────────────────
+  - id: C4
+    nome: "Fechamento + Handoff Estruturado"
+    trigger: "Cliente sinalizou aceite da proposta (verbal ou escrito)"
+    complexidade: ALTA
+    duracao: "1 dia"
+
+    fluxo:
+      - step: 1
+        agente: Caio
+        acao: "Confirmar aceite com fechamento formal VENDE-C"
+        task: "close-deal.md (fase fechamento)"
+        output: "Aceite confirmado + indicação pedida"
+
+      - step: 2
+        agente: Caio
+        acao: "Pedir indicação no momento de máxima satisfação"
+        regra: "Antes de qualquer burocracia — logo após o 'sim'"
+        output: "3-5 nomes de indicações → entram no blitz"
+
+      - step: 3
+        agente: Caio
+        acao: "Preencher client-intake-handoff COMPLETO"
+        task: "close-deal.md (fase handoff)"
+        template: "client-intake-handoff-tmpl.yaml"
+        gate: "OBRIGATÓRIO — handoff preenchido ANTES de notificar qualquer squad"
+        output: "Handoff preenchido com: dor, comprometimentos, DISC, restrições"
+
+      - step: 4
+        agente: Caio → Kairos + Arc + Argus
+        acao: "Disparar handoffs em ordem de prioridade"
+        ordem:
+          urgente_4h: "Kairos — configurar ClickUp"
+          urgente_24h: "Arc — iniciar fase AFFIRM"
+          alta_24h: "Argus — cadastrar no portfólio"
+          gate_marketing: "Marketing — aguardar sinal de Arc (kickoff)"
+        output: "Todos os handoffs confirmados"
+
+    kpis:
+      - "Handoff preenchido no mesmo dia do fechamento"
+      - "Kairos com projeto no ClickUp em <4h"
+      - "Arc com contato ao cliente em <24h"
+      - "Indicação pedida no ato do fechamento (antes da burocracia)"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 5: REATIVAÇÃO DE LEAD FRIO
+  # ─────────────────────────────────────────
+  - id: C5
+    nome: "Reativação de Lead Frio"
+    trigger: "Cheque pré-datado vencendo OR mudança de contexto no mercado"
+    complexidade: MEDIA
+    duracao: "14-30 dias"
+
+    fluxo:
+      - step: 1
+        agente: GestorFunil
+        acao: "Identificar leads frios com gatilho de reativação ativo"
+        output: "Lista: leads + gatilho + tempo sem contato + segmento"
+
+      - step: 2
+        agente: Caio
+        acao: "Executar mensagem de reativação (cheque pré-datado + perspectiva nova)"
+        task: "run-followup-cadence.md (modo reativação)"
+        template: "reativacao-lead-tmpl.yaml"
+        output: "Mensagem enviada com nova perspectiva"
+
+      - step: 3
+        agente: GestorFunil (se lead responde)
+        acao: "Requalificar lead com dados atualizados"
+        task: "qualify-lead.md (*score lead nova_informacao)"
+        output: "Score atualizado + decisão"
+
+      - step: 4
+        agente: Caio/GestorFunil/Camaleão
+        acao: "Se score ≥ 10: retomar funil em C2 (qualificação → diagnóstico)"
+        trigger_condicional: "Score ≥ 10 na requalificação"
+
+    kpis:
+      - "Nenhum cheque pré-datado ignorado"
+      - "Taxa de reativação: >15% de resposta (meta)"
+      - "Lead reativado → qualificado em <48h"
+
+# ============================================================
+# REGRAS DE ORQUESTRAÇÃO
+# ============================================================
+
+regras:
+
+  - regra: "Caio é o dono do funil"
+    descricao: "GestorFunil e Camaleão APOIAM Caio. Nunca o substituem."
+
+  - regra: "GestorFunil não vende"
+    descricao: "GestorFunil qualifica, filtra, decide. Caio vende, diagnostica, fecha."
+
+  - regra: "Camaleão não fala com lead"
+    descricao: "Camaleão opera nos bastidores — briefings e revisões para Caio/GestorFunil."
+
+  - regra: "Proposta só após diagnóstico"
+    descricao: "'Proposta sem diagnóstico é spam.' Regra inegociável do VENDE-C."
+
+  - regra: "Score mínimo para proposta: 10/12"
+    descricao: "GestorFunil bloqueia proposta se score < 10 OU knock-out ativo."
+
+  - regra: "Handoff preenchido antes do onboarding"
+    descricao: "Sem client-intake-handoff preenchido = onboarding bloqueado."
+
+  - regra: "Marketing só entra após kickoff Arc"
+    descricao: "Arc sinaliza ACTIVATE completo antes do Marketing iniciar diagnóstico."
+
+  - regra: "Blitz é diário e não negociável"
+    descricao: "'Prospectar pouco é o maior erro.' — VENDE-C. Bloco fixo na agenda."
+
+  - regra: "Indicação pedida sempre no fechamento"
+    descricao: "Antes de qualquer burocracia. 50-80% dos fechamentos vêm de indicação."
+
+# ============================================================
+# INTEGRAÇÃO COM SQUAD OPERACIONAL
+# ============================================================
+
+integracao_operacional:
+  descricao: "Handoff estruturado ao fechar contrato"
+
+  fluxo_handoff:
+    passo: 1
+    agente_origem: "Caio (squad-comercial)"
+    agentes_destino:
+      - "Kairos (gestor-processos) — ClickUp <4h"
+      - "Arc (client-success) — AFFIRM <24h"
+      - "Argus (account-orchestrator) — portfólio <24h"
+    template: "client-intake-handoff-tmpl.yaml"
+    gate_marketing: "Arc → Marketing (após ACTIVATE)"
+
+  dimensao_expansao:
+    descricao: "Após cliente atingir fase ADOPT (Arc confirma)"
+    acao: "Argus notifica Caio para acionar upsell ou pedido de indicação"
+    trigger: "NPS ≥ 9 por 2 ciclos OU fase ADOPT há >30 dias"
+
+# ============================================================
+# COEL INTEGRATION (Brand Guardian)
+# ============================================================
+
+coel_integration:
+  quando_convocar:
+    - "Scripts de cold message antes de escalar (opcional)"
+    - "Propostas formais com marca Cadarn visível"
+    - "Materiais client-facing de alto nível (não follow-up casual)"
+  como_convocar: "@brand-guardian *parecer {artefato}"
+  nota: "Coel não é residente na Squad Comercial — convocado pontualmente"

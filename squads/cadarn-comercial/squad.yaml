@@ -1,0 +1,158 @@
+name: cadarn-comercial
+version: 1.0.0
+description: Squad Cadarn Comercial — Prospecção, qualificação, fechamento e pós-venda para ICP high-ticket (Imobiliárias, Advocacia, Estética premium)
+author: Fabiano Cunha
+license: UNLICENSED
+
+aiox:
+  minVersion: "2.1.0"
+  type: squad
+
+# ICP — Ideal Customer Profile
+icp:
+  primary: "PMEs de serviços premium high-ticket"
+  segments:
+    - Imobiliárias (corretores premium, pequenas imobiliárias)
+    - Escritórios de advocacia (2-20 advogados)
+    - Clínicas de estética avançada (médico proprietário)
+  ticket_range: "R$5.000-R$30.000/mês"
+  ciclo_venda: "7-30 dias por segmento"
+
+# Hierarquia
+hierarchy:
+  decision_authority: "Fabiano (decisão final absoluta)"
+  squad_leader: "#1 Caio — Líder Comercial"
+
+# Agentes — MVP1 (3 de 4)
+agents:
+  # FASE 1 — MVP1
+  - id: caio
+    name: Caio
+    role: Líder Comercial — Prospecção, Diagnóstico e Fechamento
+    layer: fundacao
+    status: ativo
+    dna_source: "Caio Carneiro (VENDE-C) + Flávio Augusto (Wise Up)"
+    knowledge_path:
+      - ".aiox-core/knowledge/agents-dna/caio-carneiro/"
+      - ".aiox-core/knowledge/agents-dna/flavio-augusto/"
+    conselho: true
+    note: "Duplo chapéu: Squad Comercial (líder) + Conselho de Mentoria"
+
+  - id: gestor-funil
+    name: GestorFunil
+    role: Qualificação e Gestão de Pipeline
+    layer: processo
+    status: ativo
+    dna_source: "MEDDIC (Napoli & Dunkel) + Flávio Augusto (escala) + Caio Carneiro (execução) + JTBD"
+    knowledge_path:
+      - ".aiox-core/knowledge/agents-dna/frameworks/meddic-cadarn-m2m.md"
+      - ".aiox-core/knowledge/agents-dna/frameworks/ciclo-venda-icp-cadarn-m2m.md"
+      - ".aiox-core/knowledge/agents-dna/flavio-augusto/metodologia-flavio-augusto.md"
+      - ".aiox-core/knowledge/agents-dna/caio-carneiro/metodologia-vende-c.md"
+
+  - id: camaleao
+    name: Camaleão
+    role: Adaptador de Contexto por Perfil de Cliente
+    layer: suporte
+    status: ativo
+    dna_source: "DISC (Marston) + Challenger Sale (Dixon & Adamson) + SPIN Selling (Rackham)"
+    knowledge_path:
+      - ".aiox-core/knowledge/agents-dna/camaleao/disc-vendas-b2b-m2m.md"
+      - ".aiox-core/knowledge/agents-dna/camaleao/icp-perfis-decisor-m2m.md"
+      - ".aiox-core/knowledge/agents-dna/camaleao/adaptacao-comunicacao-m2m.md"
+    note: "Coringa adaptativo — gera briefing pré-reunião e revisa proposta escrita por perfil DISC"
+
+  # FASE 2
+  - id: processador-objecoes
+    name: ProcessadorObjeções
+    role: Especialista em Tratamento de Objeções
+    layer: suporte
+    status: fase2
+    dna_source: "Chris Voss (negociação) + Caio Carneiro (VENDE-C) + Biblioteca Cadarn"
+    knowledge_path:
+      - ".aiox-core/knowledge/agents-dna/frameworks/"
+    awaiting:
+      - ".aiox-core/knowledge/agents-dna/frameworks/objecoes-library-cadarn.md"
+
+# Pipeline Comercial
+pipeline:
+  description: "Fluxo padrão de aquisição de cliente Cadarn"
+  stages:
+    - name: prospeccao
+      agent: caio
+      output: "Lista de leads qualificados por nicho + scripts de abordagem"
+
+    - name: primeiro-contato
+      agent: caio
+      output: "Conversa iniciada (WhatsApp ou DM) + resposta obtida"
+
+    - name: qualificacao
+      agent: gestor-funil
+      output: "Score MEDDIC + decisão: avançar / nutrir / descartar"
+
+    - name: diagnostico
+      agent: caio
+      output: "Mapeamento de dor + perfil do decisor + urgência confirmada"
+
+    - name: adaptacao-contexto
+      agent: camaleao
+      output: "Proposta personalizada por perfil DISC + linguagem adaptada"
+
+    - name: proposta
+      agent: caio
+      output: "Proposta formal: situação → problema → solução → valor → CTA"
+
+    - name: followup
+      agent: caio
+      output: "Cadência D+2 / D+7 / D+10 + tratamento de objeções"
+
+    - name: fechamento
+      agent: caio
+      output: "Contrato assinado + onboarding agendado"
+
+    - name: indicacao
+      agent: caio
+      output: "2-5 indicações obtidas no momento de maior satisfação"
+
+# Integração com outras squads
+integrations:
+  - squad: cadarn-operacional
+    tipo: handoff
+    agente_destino: "Ops Lead + Arc"
+    trigger: "Contrato assinado → Ops registra onboarding e Arc inicia fase AFFIRM"
+    handoff_template: "squads/cadarn-comercial/templates/client-intake-handoff-tmpl.yaml"
+    nota: "Caio preenche client-intake-handoff ANTES de notificar. Sem handoff preenchido = onboarding bloqueado."
+
+  - squad: cadarn-operacional
+    tipo: handoff
+    agente_destino: "Argus (account-orchestrator)"
+    trigger: "Contrato assinado → Argus cadastra cliente no portfólio"
+    handoff_template: "squads/cadarn-comercial/templates/client-intake-handoff-tmpl.yaml"
+
+  - squad: cadarn-marketing
+    tipo: handoff
+    trigger: "GATE: apenas após Arc confirmar kickoff concluído (fase ACTIVATE)"
+    handoff_template: "squads/cadarn-comercial/templates/client-intake-handoff-tmpl.yaml"
+    nota: "Marketing NÃO inicia antes do sinal de Arc — protege fase AFFIRM/ACTIVATE do Coleman"
+
+# Upgrade path
+upgrades:
+  note: "MVP1 COMPLETO. Todos os 3 agentes ativos: Caio, GestorFunil, Camaleão."
+  prompts: ".aiox-core/knowledge/agents-dna/PROMPTS-PERPLEXITY-MVP1-PENDENTES.md"
+  process: "Perplexity → Echo (M2M-ETL) → atualizar knowledge_path → criar agente"
+  status:
+    caio: ativo
+    camaleao: ativo
+    gestor-funil: ativo
+    processador-objecoes: fase2 # aguarda prompt D do PROMPTS-PERPLEXITY-MVP1-PENDENTES.md
+
+config:
+  extends: extend
+  language: pt-BR
+
+tags:
+  - comercial
+  - cadarn
+  - vendas
+  - high-ticket
+  - prospeccao

@@ -1,0 +1,259 @@
+# Proposta Comercial Template — Squad Cadarn Comercial
+# Agente: Caio (geração) + Camaleão (revisão por perfil DISC)
+# PRÉ-CONDIÇÃO: diagnóstico confirmado (run-diagnostic.md)
+# tarian_portable: true
+
+template:
+  name: proposta-comercial
+  version: "1.0.0"
+  description: "Proposta comercial Cadarn — situação → problema → solução → valor → CTA"
+  squad: cadarn-comercial
+  agent: caio
+  replicavel: true
+  tarian_portable: true
+  revisao_obrigatoria: "Camaleão (perfil DISC) antes de enviar"
+
+# Parâmetros
+params:
+  cliente:
+    nome: "{{nome_cliente}}"
+    empresa: "{{empresa}}"
+    segmento: "{{segmento}}"  # imobiliaria | advocacia | estetica
+    disc_dominante: "{{disc}}"  # D | I | S | C
+    disc_confianca: "{{confianca}}"  # alta | média | baixa
+  data_proposta: "{{data}}"
+  validade_dias: 7
+  apresentado_por: "Caio (Cadarn)"
+
+# ============================================================
+# HEADLINE — PALAVRAS DO CLIENTE (JTBD)
+# ============================================================
+# REGRA: usar frase EXATA que o cliente usou ao descrever cenário ideal
+# Ex: "Agenda cheia sem depender de indicação" → vira o título
+
+headline:
+  frase_cliente: "{{palavras_exatas_jtbd}}"
+  headline_final: "{{headline_final}}"
+  # Adaptação por perfil DISC:
+  # D: "X% mais {resultado} em 90 dias."
+  # I: "De {situação atual} a {transformação} — essa é a virada."
+  # S: "Um plano estruturado para {resultado} sem depender de sorte."
+  # C: "Diagnóstico + plano em {N} fases — documentado e mensurável."
+
+# ============================================================
+# SEÇÃO 1 — SITUAÇÃO ATUAL
+# ============================================================
+# Espelhar o que o cliente disse no diagnóstico
+# NUNCA inventar. Usar apenas o que foi mapeado.
+
+situacao_atual:
+  descricao: "{{situacao_em_uma_frase}}"
+  detalhamento: "{{detalhe_do_contexto}}"
+  custo_atual:
+    descricao: "{{custo_da_situacao_atual}}"
+    estimativa: "{{valor_mensal_do_problema}}"  # se disponível do MEDDIC
+  fonte: "diagnóstico realizado em {{data_diagnostico}}"
+
+# ============================================================
+# SEÇÃO 2 — PROBLEMA (CUSTO DA INAÇÃO)
+# ============================================================
+
+problema:
+  descricao: "{{dor_principal}}"
+  impacto_12_meses: "{{impacto_se_nao_resolver}}"
+  metricas_meddic:
+    - "{{metrica_1}}"  # ex: "R$X/mês em leads perdidos"
+    - "{{metrica_2}}"
+  urgencia: "{{urgencia}}"  # por que resolver agora, não depois
+
+# ============================================================
+# SEÇÃO 3 — SOLUÇÃO (RESULTADO, NÃO FEATURE)
+# ============================================================
+
+solucao:
+  descricao_geral: "{{descricao_da_solucao_em_termos_de_resultado}}"
+
+  servicos:
+    - nome: "{{servico_1}}"
+      resultado_esperado: "{{resultado_1}}"
+      prazo: "{{prazo_1}}"
+
+    - nome: "{{servico_2}}"
+      resultado_esperado: "{{resultado_2}}"
+      prazo: "{{prazo_2}}"
+
+    - nome: "{{servico_3}}"
+      resultado_esperado: "{{resultado_3}}"
+      prazo: "{{prazo_3}}"
+
+  # ──────────────────────────────────────────
+  # COMPLIANCE POR SEGMENTO (incluir proativamente)
+  # ──────────────────────────────────────────
+  compliance_imobiliaria:
+    incluir_se: "{{segmento == imobiliaria}}"
+    texto: "Todas as ações seguem as diretrizes do COFECI 2024 para
+            divulgação imobiliária e proteção do corretor."
+
+  compliance_advocacia:
+    incluir_se: "{{segmento == advocacia}}"
+    texto: "Metodologia desenvolvida em conformidade com o Provimento OAB
+            205/2021 e diretrizes do Código de Ética. NUNCA chamar de
+            'marketing' — usar 'Plano de Posicionamento Digital'."
+    nota: "Mencionar proativamente ANTES que o cliente pergunte."
+
+  compliance_estetica:
+    incluir_se: "{{segmento == estetica}}"
+    texto: "Processo alinhado com a Resolução CFM 2.336/2023 sobre
+            publicidade médica e proibições de 'antes e depois' clínico.
+            Posicionamento de autoridade: conteúdo educativo e técnico."
+    nota: "Mencionar proativamente — medo de risco regulatório é objeção #1."
+
+# ============================================================
+# SEÇÃO 4 — METODOLOGIA (calibrada por perfil)
+# ============================================================
+
+metodologia:
+  incluir_para: "S e C — omitir ou resumir para D e I"
+  descricao: "{{metodologia_resumida}}"
+  diferenciais:
+    - "{{diferencial_1}}"
+    - "{{diferencial_2}}"
+    - "{{diferencial_3}}"
+
+# ============================================================
+# SEÇÃO 5 — CRONOGRAMA (90 dias)
+# ============================================================
+
+cronograma:
+  mes_1:
+    nome: "{{nome_fase_1}}"
+    acoes:
+      - "{{acao_1_mes_1}}"
+      - "{{acao_2_mes_1}}"
+    entregavel: "{{entregavel_mes_1}}"
+    kpi_esperado: "{{kpi_mes_1}}"
+
+  mes_2:
+    nome: "{{nome_fase_2}}"
+    acoes:
+      - "{{acao_1_mes_2}}"
+    entregavel: "{{entregavel_mes_2}}"
+    kpi_esperado: "{{kpi_mes_2}}"
+
+  mes_3:
+    nome: "{{nome_fase_3}}"
+    acoes:
+      - "{{acao_1_mes_3}}"
+    entregavel: "{{entregavel_mes_3}}"
+    kpi_esperado: "{{kpi_mes_3}}"
+
+# ============================================================
+# SEÇÃO 6 — INVESTIMENTO
+# ============================================================
+# REGRA: falar preço de boca cheia. Nunca hesitar. Nunca pedir desculpa.
+
+investimento:
+  valor_mensal: "{{valor_mrr}}"
+  duracao_meses: "{{duracao}}"
+  valor_total: "{{valor_total}}"
+  forma_pagamento: "{{pagamento}}"
+  inicio: "{{data_inicio}}"
+
+  # Frase padrão após valor (Caio Carneiro):
+  contexto_valor: |
+    "Esse investimento de R${{valor_mrr}}/mês corresponde a {{X}}% do ticket
+    médio de {{N}} novos clientes que o plano visa trazer nos primeiros 90 dias.
+    O custo de manter a situação atual é {{custo_inacao}}."
+
+# ============================================================
+# SEÇÃO 7 — PROVA SOCIAL (calibrada por perfil DISC)
+# ============================================================
+
+prova_social:
+  # D: dado quantitativo de cliente similar
+  perfil_D:
+    incluir_se: "{{disc == D}}"
+    tipo: "Resultado quantitativo"
+    conteudo: "{{resultado_numerico_de_cliente_similar}}"
+    # ex: "Imobiliária no mesmo porte: +47% de leads qualificados em 90 dias."
+
+  # I: depoimento humano + visual
+  perfil_I:
+    incluir_se: "{{disc == I}}"
+    tipo: "Depoimento + before/after"
+    depoimento: "{{depoimento_de_cliente}}"
+    visual: "{{screenshot_ou_resultado_visual}}"
+
+  # S: case de parceria de longo prazo
+  perfil_S:
+    incluir_se: "{{disc == S}}"
+    tipo: "Case de parceria estável"
+    conteudo: "{{case_de_cliente_longo_prazo}}"
+    garantia: "{{garantia_se_oferecida}}"
+
+  # C: benchmark + metodologia
+  perfil_C:
+    incluir_se: "{{disc == C}}"
+    tipo: "Benchmark + metodologia documentada"
+    benchmark: "{{benchmark_do_mercado}}"
+    documentacao: "Metodologia completa disponível para análise"
+
+# ============================================================
+# SEÇÃO 8 — PRÓXIMOS PASSOS (CTA)
+# ============================================================
+# REGRA: sempre fechar com próximo passo com data
+# NUNCA: "Qualquer dúvida me avisa"
+
+cta:
+  acao_imediata: "{{acao_concreta_para_fechar}}"
+  data_limite: "{{data_validade_proposta}}"
+  canal_assinatura: "{{canal}}"
+
+  # Frases de fechamento por perfil DISC:
+  frase_D: "Você não precisa de mais reuniões — precisa de resultado.
+            Se o diagnóstico faz sentido, o próximo passo é assinar e começar em {{data}}."
+  frase_I: "Estamos prontos para construir isso junto com você. {{Cases similares}} chegaram
+            a um lugar completamente diferente em 6 meses."
+  frase_S: "Não estamos pedindo que você decida agora. Estamos propondo que
+            você conheça o processo com calma. Reunião em {{data}}?"
+  frase_C: "Disponibilizamos toda a documentação da metodologia para análise
+            antes da assinatura. Podemos agendar uma sessão técnica de 30min
+            para percorrer qualquer ponto?"
+
+  frase_final: "{{frase_calibrada_por_perfil}}"
+
+# ============================================================
+# DIMENSÕES DA PROPOSTA (calibradas pelo Camaleão)
+# ============================================================
+
+dimensoes_disc:
+  perfil_D:
+    paginas: "6-8"
+    começa_por: "resultado"
+    densidade: "baixa — visual, direto"
+    extensao_metodologia: "omitir ou 1 slide"
+
+  perfil_I:
+    paginas: "8-12"
+    começa_por: "transformação"
+    densidade: "média — visual, narrativo (Canva preferível)"
+    extensao_metodologia: "resumida — foco em cases e depoimentos"
+
+  perfil_S:
+    paginas: "12-15"
+    começa_por: "problema validado"
+    densidade: "alta — cronograma detalhado"
+    extensao_metodologia: "completa com garantias documentadas"
+
+  perfil_C:
+    paginas: "16-22"
+    começa_por: "diagnóstico com dados"
+    densidade: "muito alta — índice + apêndices"
+    extensao_metodologia: "completa + benchmark + conformidade regulatória"
+
+metadata:
+  criado_por: "Caio"
+  revisado_por: "Camaleão (perfil DISC)"
+  data: "{{data}}"
+  versao: "1.0"
+  squad: "cadarn-comercial"

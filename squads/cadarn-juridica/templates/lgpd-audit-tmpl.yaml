@@ -1,0 +1,158 @@
+# LGPD Audit Template — Squad Cadarn Jurídica
+# Framework: LGPD (Lei 13.709/2018) + Bruno Bioni
+# Agente: Shield (Especialista LGPD)
+# Replicável para clientes Tarian
+
+template:
+  name: lgpd-audit
+  version: "1.0.0"
+  description: "Auditoria de compliance LGPD em 7 etapas com relatório de gaps e plano de ação"
+  squad: cadarn-juridica
+  agent: especialista-lgpd
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+
+# Parâmetros
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+    tipo: "{{tipo: martech | imobiliaria | clinica | escritorio}}"
+  escopo:
+    contexto: "{{contexto: site | app | campanha | operacao | contrato}}"
+
+# ============================================================
+# 7 ETAPAS DE AUDITORIA
+# ============================================================
+
+etapas:
+
+  - id: E1
+    nome: "Mapeamento de Dados"
+    checklist:
+      - "Inventário de dados pessoais coletados"
+      - "Canais de coleta identificados (site, WhatsApp, formulários, ads)"
+      - "Locais de armazenamento mapeados (banco, planilha, CRM, nuvem)"
+      - "Fluxo de dados documentado (entrada → processamento → saída)"
+      - "Dados sensíveis identificados (Art. 5, II)"
+    scoring:
+      conforme: "Inventário completo e atualizado"
+      parcial: "Inventário existe mas incompleto"
+      nao_conforme: "Sem inventário de dados"
+
+  - id: E2
+    nome: "Bases Legais (Art. 7)"
+    checklist:
+      - "Base legal definida para cada tratamento"
+      - "Consentimento: livre, informado, inequívoco (Art. 8)"
+      - "Legítimo interesse: LIA documentada (Art. 10)"
+      - "Execução de contrato: contrato válido existente (Art. 7, V)"
+      - "Revogação de consentimento: mecanismo implementado"
+    scoring:
+      conforme: "Todas as bases legais documentadas"
+      parcial: "Bases definidas mas sem documentação formal"
+      nao_conforme: "Tratamento sem base legal definida"
+
+  - id: E3
+    nome: "Subprocessadores"
+    checklist:
+      - "Lista atualizada de todos os terceiros"
+      - "DPA verificado para cada subprocessador"
+      - "Transferência internacional: base legal Art. 33"
+      - "Subprocessadores de IA com zero data retention"
+    lista_comum:
+      - "Meta (Facebook/Instagram Ads)"
+      - "Google (Analytics, Ads, Search Console)"
+      - "Supabase / banco de dados"
+      - "WhatsApp Business API"
+      - "OpenAI / Anthropic (se usa IA)"
+      - "Plataformas de e-mail (SendGrid, Mailchimp)"
+      - "CRM (HubSpot, Pipedrive)"
+
+  - id: E4
+    nome: "Direitos dos Titulares (Art. 18)"
+    checklist:
+      - "Canal de atendimento acessível"
+      - "Prazo de resposta: 15 dias (Art. 18, §5)"
+      - "Confirmação de existência de tratamento"
+      - "Acesso aos dados"
+      - "Correção de dados incompletos"
+      - "Exclusão/anonimização"
+      - "Portabilidade"
+      - "Revogação de consentimento"
+
+  - id: E5
+    nome: "Segurança (Art. 46)"
+    checklist:
+      - "Criptografia em trânsito (HTTPS/TLS)"
+      - "Criptografia em repouso (banco de dados)"
+      - "Controle de acesso (quem vê o quê)"
+      - "Logs de acesso mantidos"
+      - "Backup e recuperação"
+      - "Plano de resposta a incidentes"
+      - "Notificação em 48h (contrato) / ANPD (Art. 48)"
+
+  - id: E6
+    nome: "Documentação"
+    checklist:
+      - "Política de privacidade publicada e atualizada"
+      - "Termos de uso atualizados"
+      - "Política de cookies (se site/app)"
+      - "ROPA — Registro de Atividades de Tratamento"
+      - "LIA — Relatório de Impacto (se legítimo interesse)"
+      - "RIPD — Relatório de Impacto à Proteção de Dados (se alto risco)"
+
+  - id: E7
+    nome: "IA e Automação"
+    checklist:
+      - "Dados pessoais NÃO inseridos em interfaces web de IA"
+      - "API com zero data retention configurada"
+      - "Disclosure de uso de IA ao cliente"
+      - "Revisão humana antes de publicação"
+      - "Opt-out de treinamento ativo nas plataformas"
+
+# ============================================================
+# RELATÓRIO
+# ============================================================
+
+relatorio:
+  formato: |
+    # Auditoria LGPD — {{empresa_nome}}
+
+    **Data:** {{data}}
+    **Escopo:** {{contexto}}
+    **Auditado por:** Shield (Especialista LGPD)
+
+    ## Resumo Executivo
+    Score geral: {{X}}/7 etapas conformes
+    Nível de compliance: {{ALTO | MÉDIO | BAIXO | CRÍTICO}}
+
+    ## Resultado por Etapa
+    | Etapa | Status | Gaps |
+    |-------|--------|------|
+    (7 etapas com semáforo)
+
+    ## Gaps Críticos
+    (ordenados por risco, com fundamentação legal)
+
+    ## Plano de Ação
+    | # | Ação | Prazo | Prioridade | Artigo LGPD |
+    (máximo 5 ações prioritárias)
+
+    ## Documentos a Gerar
+    (lista de documentos faltantes)
+
+    ---
+    ⚠️ DISCLAIMER: Auditoria consultiva. Não substitui DPO ou assessoria jurídica.
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+
+anti_patterns:
+  - "Auditoria sem mapeamento de dados (chute)"
+  - "Aceitar 'consentimento genérico' como base legal"
+  - "Ignorar subprocessadores de IA"
+  - "Plano de ação com mais de 5 itens (paralisia)"
+  - "Não verificar transferência internacional"

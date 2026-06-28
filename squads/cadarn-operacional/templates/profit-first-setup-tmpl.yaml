@@ -1,0 +1,201 @@
+# Profit First Setup Template — Squad Cadarn Operacional
+# Framework: Mike Michalowicz — Profit First
+# Agente: Vault (Gestor Financeiro)
+# Replicável para clientes Tarian
+
+template:
+  name: profit-first-setup
+  version: "1.0.0"
+  description: "Implementação do sistema Profit First: 5 contas, CAPs, TAPs, ritmo bi-mensal"
+  squad: cadarn-operacional
+  agent: financeiro
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - tom_de_voz
+
+# Parâmetros (preenchidos na elicitação)
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+    tipo: "{{tipo}}"  # agência, consultoria, imobiliária, etc.
+    receita_mensal_media: "{{receita_mensal}}"
+    tipo_receita: "{{tipo_receita}}"  # recorrente, projeto, misto
+    despesas_fixas_mensais: "{{despesas_fixas}}"
+    num_socios: "{{num_socios}}"
+    banco_principal: "{{banco}}"
+
+# ============================================================
+# A FÓRMULA INVERTIDA
+# ============================================================
+# Tradicional: Receita - Despesas = Lucro (sobra)
+# Profit First: Receita - Lucro = Despesas (força)
+# ============================================================
+
+formula:
+  principio: "Receita - Lucro = Despesas"
+  fundamento: |
+    Lei de Parkinson: despesas expandem para consumir toda receita disponível.
+    Se você espera sobrar, NUNCA sobra. Se você separa ANTES, sempre tem.
+    175K+ empresas usam Profit First globalmente.
+
+# ============================================================
+# AS 5 CONTAS
+# ============================================================
+
+contas:
+
+  - id: INCOME
+    nome: "Conta de Entrada"
+    tipo: Corrente
+    proposito: "Toda receita entra aqui. É a estação de triagem — dinheiro NÃO fica aqui"
+    regra: "No 10 e 25 de cada mês, distribuir para as outras 4 contas"
+    saldo_ideal: "Próximo de zero após cada alocação"
+
+  - id: PROFIT
+    nome: "Conta de Lucro"
+    tipo: Poupança ou conta separada
+    proposito: "Lucro reservado. NÃO É para despesas. É o prêmio por empreender"
+    regra: "NUNCA usar para pagar despesas operacionais. Jamais"
+    distribuicao: "50% trimestral para sócios como bônus. 50% permanece como reserva"
+
+  - id: OWNER
+    nome: "Pró-labore / Retirada dos Sócios"
+    tipo: Corrente
+    proposito: "Pagamento dos sócios. Não é lucro — é salário"
+    regra: "Pagar em data fixa como se fosse funcionário"
+
+  - id: OPEX
+    nome: "Despesas Operacionais"
+    tipo: Corrente
+    proposito: "TODAS as despesas da empresa saem daqui"
+    regra: "Se o opex não fecha depois de alocar lucro, o problema é DESPESA. Cortar"
+
+  - id: TAX
+    nome: "Impostos"
+    tipo: Poupança
+    proposito: "Reserva para impostos. Nunca ser surpreendido por imposto"
+    regra: "Separar TODO mês. Não esperar o trimestre"
+
+# ============================================================
+# TAPs vs CAPs
+# ============================================================
+
+percentuais:
+  descricao: |
+    TAP = Target Allocation Percentage (onde você quer chegar)
+    CAP = Current Allocation Percentage (onde você está hoje)
+    REGRA: Começar com CAP realista (mesmo 1% de lucro) e mover para TAP a cada trimestre
+
+  # TAPs por faixa de receita (agências/prestadores de serviço)
+  taps_referencia:
+    - faixa: "R$0-250K/ano"
+      profit: "5%"
+      owner: "50%"
+      opex: "30%"
+      tax: "15%"
+
+    - faixa: "R$250K-500K/ano"
+      profit: "10%"
+      owner: "35%"
+      opex: "35%"
+      tax: "20%"
+
+    - faixa: "R$500K-1M/ano"
+      profit: "15%"
+      owner: "30%"
+      opex: "35%"
+      tax: "20%"
+
+    - faixa: "R$1M+/ano"
+      profit: "20%"
+      owner: "25%"
+      opex: "35%"
+      tax: "20%"
+
+  # CAPs iniciais sugeridos
+  caps_iniciais:
+    nota: "Se nunca separou lucro, começar com 1% e subir 1% a cada trimestre"
+    minimo_absoluto:
+      profit: "1%"
+      nota: "Mesmo 1% é melhor que 0%. O hábito importa mais que o valor"
+
+# ============================================================
+# RITMO DE ALOCAÇÃO
+# ============================================================
+
+ritmo:
+  frequencia: "Bi-mensal (10 e 25 de cada mês)"
+
+  dia_10:
+    passo_1: "Verificar saldo da conta INCOME"
+    passo_2: "Aplicar CAPs/TAPs sobre o saldo"
+    passo_3: "Transferir para cada conta"
+    passo_4: "Registrar a alocação"
+
+  dia_25:
+    passo_1: "Mesma rotina do dia 10"
+    passo_2: "Revisar se OPEX está dentro do orçamento"
+    passo_3: "Se OPEX apertado, revisar despesas — NÃO tocar PROFIT"
+
+  trimestral:
+    passo_1: "Distribuir 50% da conta PROFIT para sócios (bônus)"
+    passo_2: "Manter 50% como reserva"
+    passo_3: "Revisar CAPs: aumentar 1-3% em direção aos TAPs"
+    passo_4: "Revisar despesas: cortar o que não agrega"
+    passo_5: "Ajustar precificação se margem está abaixo do TAP"
+
+  receita_irregular:
+    regra: "Alocar % sobre o que ENTRA, não sobre meta"
+    exemplo: "Entrou R$5K este mês? Separa 1% = R$50 de lucro. SEMPRE separa"
+    nota: "O valor é simbólico no início. O HÁBITO é o que importa"
+
+# ============================================================
+# PLANILHA DE ALOCAÇÃO
+# ============================================================
+
+planilha:
+  formato: |
+    | Data | Receita | PROFIT (%) | OWNER (%) | OPEX (%) | TAX (%) | INCOME restante |
+    |------|---------|------------|-----------|----------|---------|-----------------|
+    | 10/mm | R$XX | R$XX (X%) | R$XX (X%) | R$XX (X%) | R$XX (X%) | R$0 |
+    | 25/mm | R$XX | R$XX (X%) | R$XX (X%) | R$XX (X%) | R$XX (X%) | R$0 |
+
+  nota: "INCOME restante deve estar próximo de zero após cada alocação"
+
+# ============================================================
+# SETUP BANCÁRIO
+# ============================================================
+
+setup_bancario:
+  recomendacao: |
+    Abrir 4 contas adicionais (muitos bancos digitais permitem sem custo):
+    - INCOME: conta principal existente
+    - PROFIT: conta poupança em OUTRO banco (dificultar acesso)
+    - OWNER: sub-conta ou conta separada
+    - OPEX: sub-conta ou conta separada
+    - TAX: conta poupança
+
+  dica_profit: |
+    Conta de lucro em OUTRO BANCO (sem app no celular).
+    Friccionar o acesso. Se for fácil mexer, você vai mexer.
+
+  bancos_sugeridos_br:
+    - "Nubank (sub-contas com Caixinhas)"
+    - "Inter (multi-contas)"
+    - "C6 Bank (contas adicionais)"
+    - "BTG Pactual (para reserva — mais fricção)"
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+anti_patterns:
+  - "Esperar sobrar para separar lucro ('esse mês não deu')"
+  - "Usar conta PROFIT para cobrir despesa operacional"
+  - "Não alocar em mês de receita baixa ('não vale a pena')"
+  - "Separar lucro mas não distribuir trimestral (lucro sem recompensa)"
+  - "Todas as contas no mesmo banco/app (acesso fácil = tentação)"
+  - "Aumentar OPEX quando receita sobe (Lei de Parkinson)"
+  - "Precificar por hora em vez de por valor"
+  - "Não ter CAPs definidos ('vou separando o que dá')"

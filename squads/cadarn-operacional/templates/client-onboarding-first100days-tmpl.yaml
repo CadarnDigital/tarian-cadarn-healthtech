@@ -1,0 +1,307 @@
+# Client Onboarding First 100 Days Template — Squad Cadarn Operacional
+# Framework: Joey Coleman — Never Lose a Customer Again
+# Agente: Arc (Client Success)
+# Replicável para clientes Tarian
+
+template:
+  name: client-onboarding-first100days
+  version: "1.0.0"
+  description: "Plano de onboarding do cliente nos primeiros 100 dias — timeline com touchpoints por fase"
+  squad: cadarn-operacional
+  agent: client-success
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - tom_comunicacao
+    - identidade_visual
+
+# Parâmetros (preenchidos na elicitação)
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+    servico_principal: "{{servico}}"
+    equipe_entrega: "{{equipe}}"
+    canais_comunicacao: "{{canais}}"
+  cliente:
+    nome: "{{cliente_nome}}"
+    servico_contratado: "{{servico_contratado}}"
+    valor_contrato: "{{valor}}"
+    data_fechamento: "{{data_fechamento}}"
+    gestor_conta: "{{gestor}}"
+    stakeholders: "{{stakeholders_cliente}}"
+
+# ============================================================
+# TIMELINE — PRIMEIROS 100 DIAS
+# ============================================================
+
+timeline:
+
+  # ──────────────────────────────────────
+  # FASE AFFIRM — Dia 0 a Dia 2
+  # Objetivo: Eliminar buyer's remorse
+  # ──────────────────────────────────────
+  affirm:
+    periodo: "Dia 0 a Dia 2"
+    objetivo: "Confirmar que o cliente fez a escolha certa"
+    emocao_alvo: "Segurança, confiança"
+    criticidade: MAXIMA
+
+    acoes:
+      - id: AF-01
+        dia: 0
+        responsavel: Gestor de conta
+        acao: "Mensagem de boas-vindas PESSOAL (não template automático)"
+        canal: WhatsApp
+        nota: "Usar o nome, mencionar algo específico da conversa de venda"
+
+      - id: AF-02
+        dia: 0
+        responsavel: Equipe de entrega
+        acao: "Email formal de boas-vindas: quem somos, o que esperar, cronograma"
+        canal: Email
+        nota: "Incluir foto/nome de cada pessoa que vai atender"
+
+      - id: AF-03
+        dia: 1
+        responsavel: CEO / Líder
+        acao: "Vídeo personalizado de boas-vindas (30-60 segundos)"
+        canal: WhatsApp ou email
+        nota: "Gravar com nome do cliente. Impacto desproporcional ao esforço"
+
+      - id: AF-04
+        dia: 1
+        responsavel: Gestor de conta
+        acao: "Enviar cronograma detalhado: semana 1, semana 2, marco de 30 dias"
+        canal: Email + ferramenta de gestão
+
+      - id: AF-05
+        dia: 2
+        responsavel: Gestor de conta
+        acao: "Ligação rápida: 'Só queria saber se ficou tudo claro. Alguma dúvida?'"
+        canal: Ligação telefônica
+        nota: "Se o cliente disser 'tudo bem', perguntar: 'O que mais te animou na proposta?'"
+
+  # ──────────────────────────────────────
+  # FASE ACTIVATE — Dia 3 a Dia 7
+  # Objetivo: Kickoff MEMORÁVEL
+  # ──────────────────────────────────────
+  activate:
+    periodo: "Dia 3 a Dia 7"
+    objetivo: "Primeiro impacto real, tornar memorável"
+    emocao_alvo: "Empolgação, clareza"
+
+    acoes:
+      - id: AC-01
+        dia: 3-5
+        responsavel: Gestor de conta + Equipe
+        acao: "Kickoff meeting: diagnóstico inicial, alinhamento de expectativas, metas"
+        canal: Reunião (vídeo ou presencial)
+        nota: "TODA equipe relevante presente — não só gestor. Cliente deve sentir 'time inteiro por mim'"
+
+      - id: AC-02
+        dia: 5
+        responsavel: Equipe de entrega
+        acao: "Entregar primeiro artefato tangível (diagnóstico, briefing, análise)"
+        canal: Email + apresentação
+        nota: "Algo que o cliente possa MOSTRAR para o chefe/sócio. Valida a compra"
+
+      - id: AC-03
+        dia: 7
+        responsavel: Gestor de conta
+        acao: "Dar acesso à ferramenta de gestão (ClickUp, Notion, etc.) com projeto do cliente"
+        canal: Ferramenta de gestão
+        nota: "Transparência total. Cliente vê o que está sendo feito"
+
+      - id: AC-04
+        dia: 7
+        responsavel: Gestor de conta
+        acao: "Check-in de fim de semana 1: 'Como foi a primeira semana?'"
+        canal: WhatsApp
+        nota: "Proativo — não esperar o cliente vir com problema"
+
+  # ──────────────────────────────────────
+  # FASE ACCLIMATE — Dia 8 a Dia 30
+  # Objetivo: Hand-holding, adaptação guiada
+  # ──────────────────────────────────────
+  acclimate:
+    periodo: "Dia 8 a Dia 30"
+    objetivo: "Guiar adaptação, entregar resultados parciais"
+    emocao_alvo: "Confiança crescente"
+    criticidade: ALTA
+
+    acoes:
+      - id: CL-01
+        frequencia: Semanal
+        responsavel: Gestor de conta
+        acao: "Check-in semanal: progresso, dúvidas, ajustes"
+        canal: Reunião (15-30 min)
+        nota: "PROATIVO. NÃO esperar o cliente reclamar. Agenda fixa"
+
+      - id: CL-02
+        dia: 14
+        responsavel: Equipe de entrega
+        acao: "Primeira entrega parcial com resultado tangível"
+        canal: Reunião de apresentação
+        nota: "Resultado que o cliente SENTE. Mesmo que pequeno, mostra progresso"
+
+      - id: CL-03
+        dia: 14
+        responsavel: Gestor de conta
+        acao: "Pesquisa rápida de satisfação (1-3 perguntas, não formulário longo)"
+        canal: WhatsApp
+        nota: "'De 1 a 10, como está sua experiência até aqui? O que melhoraria?'"
+
+      - id: CL-04
+        dia: 21
+        responsavel: Equipe de entrega
+        acao: "Enviar report de progresso: o que foi feito, o que vem, métricas iniciais"
+        canal: Email + dashboard
+        nota: "Dados concretos. Cliente precisa de EVIDÊNCIA de que está funcionando"
+
+      - id: CL-05
+        dia: 28-30
+        responsavel: Gestor de conta + Equipe
+        acao: "Review de 30 dias: resultados vs expectativas, ajustes de rota"
+        canal: Reunião formal
+        nota: "Marco importante. Celebrar o que deu certo. Ajustar o que não deu"
+        kpi: "Checklist de onboarding >80% concluído"
+
+  # ──────────────────────────────────────
+  # FASE ACCOMPLISH — Dia 31 a Dia 60
+  # Objetivo: Resultado concreto prometido
+  # ──────────────────────────────────────
+  accomplish:
+    periodo: "Dia 31 a Dia 60"
+    objetivo: "Cliente atinge o resultado que buscava"
+    emocao_alvo: "Satisfação, validação"
+
+    acoes:
+      - id: AP-01
+        dia: 31-40
+        responsavel: Equipe de entrega
+        acao: "Entregar resultado principal prometido (campanha, sistema, relatório)"
+        canal: Reunião de apresentação com dados
+
+      - id: AP-02
+        dia: 40-45
+        responsavel: Gestor de conta
+        acao: "Apresentação de ROI: investimento vs resultado, com dados"
+        canal: Reunião + report PDF
+        nota: "Cliente precisa de NÚMEROS para justificar a compra internamente"
+
+      - id: AP-03
+        dia: 45
+        responsavel: CEO / Líder
+        acao: "Ligação/mensagem pessoal: reconhecer o resultado alcançado"
+        canal: Ligação ou vídeo
+        nota: "CEO ligar = cliente se sente VIP. Alto impacto, baixo esforço"
+
+      - id: AP-04
+        dia: 50-55
+        responsavel: Gestor de conta
+        acao: "CELEBRAR: reconhecimento formal do marco. Case parcial, depoimento"
+        canal: Email + redes sociais (com permissão)
+        nota: "Momento emocional. Cliente que é celebrado NUNCA esquece"
+
+      - id: AP-05
+        dia: 55-60
+        responsavel: Gestor de conta
+        acao: "NPS formal + pedir feedback estruturado"
+        canal: Formulário breve (máx 5 perguntas)
+        kpi: "NPS >8"
+
+  # ──────────────────────────────────────
+  # FASE ADOPT + ADVOCATE — Dia 61 a Dia 100
+  # Objetivo: Lealdade e indicação orgânica
+  # ──────────────────────────────────────
+  adopt_advocate:
+    periodo: "Dia 61 a Dia 100"
+    objetivo: "Consolidar lealdade, plantar semente de indicação"
+    emocao_alvo: "Orgulho, pertencimento"
+
+    acoes:
+      - id: AD-01
+        dia: 60-70
+        responsavel: Gestor de conta
+        acao: "Apresentar roadmap de próximas fases / oportunidades de expansão"
+        canal: Reunião estratégica
+        nota: "Upsell NATURAL — mostrar possibilidades, não empurrar"
+
+      - id: AD-02
+        dia: 70-80
+        responsavel: Gestor de conta
+        acao: "Convidar para comunidade/grupo exclusivo de clientes"
+        canal: WhatsApp grupo ou plataforma
+        nota: "Pertencimento. Cliente que faz parte de comunidade tem menor churn"
+
+      - id: AD-03
+        dia: 80
+        responsavel: Equipe de entrega
+        acao: "Case study completo (com permissão): antes/depois, números, depoimento"
+        canal: Blog, redes, PDF
+        nota: "Cliente participa da construção do case. Co-criação gera orgulho"
+
+      - id: AD-04
+        dia: 90
+        responsavel: CEO / Líder
+        acao: "Reunião estratégica trimestral: big picture, próximo trimestre"
+        canal: Reunião (presencial se possível)
+        nota: "Relacionamento C-level. Diferencia de commodity"
+
+      - id: AD-05
+        dia: 100
+        responsavel: Gestor de conta
+        acao: "Marco dos 100 dias: retrospectiva, resultados acumulados, próximos passos"
+        canal: Reunião + report especial
+        nota: "Celebrar o marco. Pedir: 'O que mudaríamos se recomeçássemos?'"
+        kpi: "Taxa de renovação >85%. Indicações espontâneas"
+
+# ============================================================
+# KPIs DO ONBOARDING DE CLIENTE
+# ============================================================
+kpis:
+  - nome: "Contato em <24h após fechamento"
+    meta: "100%"
+    fase: AFFIRM
+
+  - nome: "Kickoff na semana 1"
+    meta: ">90%"
+    fase: ACTIVATE
+
+  - nome: "Checklist de onboarding concluído em 30 dias"
+    meta: ">80%"
+    fase: ACCLIMATE
+
+  - nome: "Dias até primeiro resultado mensurável"
+    meta: "<45 dias"
+    fase: ACCOMPLISH
+
+  - nome: "NPS pós-primeira entrega"
+    meta: ">8"
+    fase: ACCOMPLISH
+
+  - nome: "Taxa de renovação"
+    meta: ">85%"
+    fase: ADOPT
+
+  - nome: "Indicações por cliente por trimestre"
+    meta: ">1"
+    fase: ADVOCATE
+
+  - nome: "Churn nos primeiros 100 dias"
+    meta: "<10%"
+    fase: GERAL
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+anti_patterns:
+  - "Não contactar em 24h após fechamento"
+  - "Kickoff genérico e burocrático"
+  - "Sumir entre kickoff e review de 30 dias"
+  - "Entregar resultado sem dados/métricas"
+  - "Não celebrar marcos"
+  - "Pedir indicação diretamente"
+  - "Usar só email (mínimo 3 canais por fase)"
+  - "Esperar o cliente reclamar para agir"

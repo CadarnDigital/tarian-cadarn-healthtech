@@ -1,0 +1,212 @@
+# Operational Diagnostic Template — Squad Cadarn Operacional
+# Framework: Leila Hormozi — 5 Scaling Frameworks + KPIs Operacionais
+# Agente: Scala (Líder Operacional)
+# Replicável para clientes Tarian
+
+template:
+  name: operational-diagnostic
+  version: "1.0.0"
+  description: "Diagnóstico completo de saúde operacional: 7 KPIs, 5 áreas, plano de ação"
+  squad: cadarn-operacional
+  agent: lider-operacional
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - tom_de_voz
+    - identidade_visual
+
+# Parâmetros
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+    tipo: "{{tipo}}"
+    tamanho_time: "{{tamanho_time}}"
+    meses_operacao: "{{meses_operacao}}"
+
+# ============================================================
+# 7 KPIs OPERACIONAIS (Máximo — mais que isso é ruído)
+# ============================================================
+
+kpis:
+
+  - id: KPI-1
+    nome: "MRR (Receita Recorrente Mensal)"
+    categoria: Financeiro
+    meta_referencia: "Crescendo mês a mês"
+    como_medir: "Soma de retainers + contratos recorrentes ativos"
+    frequencia: Mensal
+    responsavel_dado: Vault (financeiro)
+    alerta: "Se MRR cai 2 meses consecutivos → ação imediata"
+
+  - id: KPI-2
+    nome: "Churn Rate"
+    categoria: Retenção
+    meta_referencia: "<5% mensal"
+    como_medir: "(Clientes perdidos no mês / Clientes início do mês) x 100"
+    frequencia: Mensal
+    responsavel_dado: Arc (client success)
+    alerta: "Se churn >10% → diagnóstico de jornada urgente"
+
+  - id: KPI-3
+    nome: "% Projetos Entregues no Prazo"
+    categoria: Entrega
+    meta_referencia: ">90%"
+    como_medir: "(Projetos entregues no prazo / Total projetos) x 100"
+    frequencia: Mensal
+    responsavel_dado: Kairos (processos)
+    alerta: "Se <70% → processos estão quebrados, auditar com Kairos"
+
+  - id: KPI-4
+    nome: "NPS do Cliente"
+    categoria: Satisfação
+    meta_referencia: ">50 (zona de excelência)"
+    como_medir: "Pesquisa trimestral: 'De 0-10, recomendaria?' Promotores - Detratores"
+    frequencia: Trimestral
+    responsavel_dado: Arc (client success)
+    alerta: "Se NPS <0 → crise de satisfação"
+
+  - id: KPI-5
+    nome: "Horas por Entregável"
+    categoria: Eficiência
+    meta_referencia: "Diminuindo trimestre a trimestre"
+    como_medir: "Total horas gastas / Total entregas feitas"
+    frequencia: Mensal
+    responsavel_dado: Kairos (processos)
+    alerta: "Se aumentando → ineficiência ou escopo inflado"
+
+  - id: KPI-6
+    nome: "Happiness Metric"
+    categoria: Pessoas
+    meta_referencia: ">3.5/5"
+    como_medir: "Pesquisa quinzenal anônima: 'De 1-5, quão feliz está trabalhando aqui?'"
+    frequencia: Quinzenal
+    responsavel_dado: Nexus (rh-pessoas)
+    alerta: "Se <3.0 → investigar disfunções do time com Nexus"
+
+  - id: KPI-7
+    nome: "Profit Margin"
+    categoria: Financeiro
+    meta_referencia: "Conforme TAPs do Profit First"
+    como_medir: "(Lucro separado / Receita total) x 100"
+    frequencia: Mensal
+    responsavel_dado: Vault (financeiro)
+    alerta: "Se margem <5% → diagnóstico Fix This Next"
+
+# ============================================================
+# 5 ÁREAS DE DIAGNÓSTICO
+# ============================================================
+
+areas:
+
+  - id: A1
+    area: "Entrega / Operações"
+    responsavel_squad: Kairos
+    perguntas:
+      - "Processos-chave estão documentados (SOPs)?"
+      - "Entregas são feitas no prazo?"
+      - "Há retrabalho significativo?"
+      - "Ferramentas de gestão estão sendo usadas (ClickUp, etc.)?"
+      - "Automações existem ou tudo é manual?"
+    scoring:
+      verde: "SOPs existem, >90% no prazo, automações ativas"
+      amarelo: "SOPs parciais, 70-90% no prazo, poucas automações"
+      vermelho: "Sem SOPs, <70% no prazo, tudo manual"
+
+  - id: A2
+    area: "Financeiro"
+    responsavel_squad: Vault
+    perguntas:
+      - "Profit First implementado (5 contas)?"
+      - "Sabe a margem de lucro real?"
+      - "Reserva de caixa para 3+ meses?"
+      - "Precificação baseada em valor?"
+      - "Inadimplência controlada (<5%)?"
+    scoring:
+      verde: "Profit First ativo, margem saudável, reserva OK"
+      amarelo: "Separando lucro inconsistente, margem apertada"
+      vermelho: "Sem separação de lucro, sem reserva, vive mês a mês"
+
+  - id: A3
+    area: "Pessoas / Cultura"
+    responsavel_squad: Nexus
+    perguntas:
+      - "Working Genius do time mapeado?"
+      - "Five Dysfunctions diagnosticado?"
+      - "Expectativas escritas para cada papel?"
+      - "Reuniões estruturadas (4 tipos Lencioni)?"
+      - "Happiness Metric >3.5?"
+    scoring:
+      verde: "Genius mapeado, sem disfunções críticas, reuniões funcionando"
+      amarelo: "Parcialmente mapeado, 1-2 disfunções em alerta"
+      vermelho: "Nada mapeado, disfunções críticas, sem estrutura de reuniões"
+
+  - id: A4
+    area: "Clientes / Retenção"
+    responsavel_squad: Arc
+    perguntas:
+      - "Jornada de 8 fases mapeada?"
+      - "Onboarding First 100 Days implementado?"
+      - "Churn <5%?"
+      - "NPS >50?"
+      - "Indicações acontecem organicamente?"
+    scoring:
+      verde: "Jornada mapeada, onboarding ativo, churn OK, NPS alto"
+      amarelo: "Jornada parcial, onboarding informal, churn 5-10%"
+      vermelho: "Sem jornada, sem onboarding, churn >10%"
+
+  - id: A5
+    area: "Sistemas / Escala"
+    responsavel_squad: Scala
+    perguntas:
+      - "O negócio funciona se o dono tirar 1 semana de férias?"
+      - "Decision trees existem para decisões recorrentes?"
+      - "KPIs são revisados semanalmente?"
+      - "Side quests estão controladas?"
+      - "Gametape Review acontece?"
+    scoring:
+      verde: "Funciona sem dono, KPIs ativos, Gametape regular"
+      amarelo: "Funciona parcialmente, KPIs inconsistentes"
+      vermelho: "Dono é o gargalo, sem KPIs, sem rituais"
+
+# ============================================================
+# RELATÓRIO DE DIAGNÓSTICO
+# ============================================================
+
+relatorio:
+  formato: |
+    # Diagnóstico Operacional — {{empresa_nome}}
+    **Data:** {{data}}
+    **Facilitado por:** Scala (Líder Operacional)
+
+    ## Resumo Executivo
+    Score geral: X/5 (média das 5 áreas)
+    Área mais forte: {{area}}
+    Área mais fraca: {{area}} ← FOCO
+
+    ## KPIs Atuais
+    | KPI | Valor Atual | Meta | Status |
+    |-----|-------------|------|--------|
+    (7 KPIs com semáforo)
+
+    ## Diagnóstico por Área
+    (5 áreas com scoring verde/amarelo/vermelho + evidências)
+
+    ## Plano de Ação (90 dias)
+    | Prioridade | Ação | Responsável | Prazo | KPI impactado |
+    (máximo 5 ações, focadas na área mais fraca)
+
+    ## Próximo Diagnóstico
+    Data: {{data + 90 dias}}
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+anti_patterns:
+  - "Diagnosticar sem dados (achismo)"
+  - "Mais de 7 KPIs (ruído)"
+  - "Plano de ação com 15 itens (impossível executar)"
+  - "Não definir data do próximo diagnóstico"
+  - "Ignorar Happiness Metric ('isso é subjetivo')"
+  - "Diagnosticar uma vez e nunca mais"
+  - "Focar na área favorita em vez da mais fraca"

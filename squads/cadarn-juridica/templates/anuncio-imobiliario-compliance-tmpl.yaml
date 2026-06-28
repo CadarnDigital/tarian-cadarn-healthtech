@@ -1,0 +1,161 @@
+# Anúncio Imobiliário Compliance — Squad Cadarn Jurídica
+# Framework: CRECI/COFECI + CDC Setorial + Plataformas
+# Agente: Praedium (Especialista Imobiliário)
+# Replicável para clientes Tarian
+
+template:
+  name: anuncio-imobiliario-compliance
+  version: "1.0.0"
+  description: "Checklist de compliance 10 pontos para publicidade imobiliária digital"
+  squad: cadarn-juridica
+  agent: especialista-imobiliario
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+
+# Parâmetros
+params:
+  anuncio:
+    descricao: "{{descricao}}"
+    canal: "{{canal: meta | google | zap | olx | vivareal | site | whatsapp | tiktok}}"
+    tipo_imovel: "{{tipo: venda | locacao | lancamento | loteamento}}"
+    valor: "{{valor}}"
+
+# ============================================================
+# CHECKLIST 10 PONTOS
+# ============================================================
+
+checklist:
+
+  - id: CI1
+    nome: "CRECI Visível"
+    obrigatorio: true
+    fundamentacao: "Lei 6.530/78 + Resolução COFECI 1.065/2007"
+    verificar:
+      - "Número CRECI do corretor/imobiliária presente no anúncio"
+      - "CRECI ativo e válido no estado"
+      - "Se pessoa física: CRECI-F. Se jurídica: CRECI-J"
+    risco_se_ausente: "Exercício ilegal da profissão + multa CRECI"
+
+  - id: CI2
+    nome: "Informações Obrigatórias"
+    obrigatorio: true
+    fundamentacao: "CDC Art. 31"
+    verificar:
+      - "Endereço ou localização do imóvel"
+      - "Área (útil e/ou construída)"
+      - "Preço ou condição de pagamento"
+      - "Número de quartos, vagas, etc."
+    risco_se_ausente: "Violação do dever de informação (CDC)"
+
+  - id: CI3
+    nome: "Fotos Reais"
+    obrigatorio: true
+    fundamentacao: "Art. 37 CDC"
+    verificar:
+      - "Imagens correspondem ao imóvel anunciado"
+      - "Fotos de banco de imagens NÃO usadas como se fossem do imóvel"
+      - "Se render/maquete: identificado como 'imagem ilustrativa'"
+    risco_se_ausente: "Publicidade enganosa (Art. 37 CDC)"
+
+  - id: CI4
+    nome: "Promessas de Valorização"
+    obrigatorio: true
+    fundamentacao: "CDC Art. 37 + CVM"
+    verificar:
+      - "NÃO promete valorização sem laudo técnico"
+      - "NÃO garante retorno de investimento"
+      - "Se menciona valorização: fonte e período citados"
+
+  - id: CI5
+    nome: "Metragem"
+    obrigatorio: true
+    fundamentacao: "Art. 18 CDC"
+    verificar:
+      - "Metragem informada corretamente"
+      - "Diferencia área útil vs área construída vs área total"
+      - "Erro de metragem = vício do produto"
+
+  - id: CI6
+    nome: "Meta Housing Ads"
+    condicional: "canal = meta"
+    fundamentacao: "Meta Advertising Standards — Housing"
+    verificar:
+      - "Categoria 'Habitação' configurada no Meta Ads"
+      - "Segmentação limitada (Meta restringe idade, gênero, CEP)"
+      - "Sem discriminação habitacional (Fair Housing)"
+
+  - id: CI7
+    nome: "Google Ads"
+    condicional: "canal = google"
+    fundamentacao: "Google Ads Policy + STJ jul/2024"
+    verificar:
+      - "NÃO usa marca concorrente como keyword"
+      - "Anúncio não confunde com resultado orgânico"
+      - "Extensões de local corretas"
+
+  - id: CI8
+    nome: "Portais Imobiliários"
+    condicional: "canal = zap | olx | vivareal"
+    verificar:
+      - "TOS da plataforma atendidos"
+      - "Anúncio ativo (não duplicado)"
+      - "Informações consistentes entre portais"
+      - "Fotos dentro dos padrões da plataforma"
+
+  - id: CI9
+    nome: "Distrato"
+    condicional: "tipo = lancamento | loteamento"
+    fundamentacao: "Lei 13.786/2018"
+    verificar:
+      - "Informações sobre distrato presentes"
+      - "Quadro-resumo com condições de rescisão"
+      - "Prazo de arrependimento de 7 dias (Art. 49 CDC, se aplicável)"
+
+  - id: CI10
+    nome: "Disclaimers"
+    obrigatorio: true
+    verificar:
+      - "'Sujeito a disponibilidade' se necessário"
+      - "Condições de financiamento claras"
+      - "Se na planta: data prevista de entrega"
+      - "'Imagem ilustrativa' em renders/maquetes"
+
+# ============================================================
+# RELATÓRIO
+# ============================================================
+
+relatorio:
+  formato: |
+    # Auditoria de Anúncio Imobiliário
+
+    **Anúncio:** {{descricao}}
+    **Canal:** {{canal}}
+    **Tipo:** {{tipo_imovel}}
+    **Auditado por:** Praedium
+
+    ## Resultado
+    | # | Item | Status | Observação |
+    |---|------|--------|------------|
+    (10 pontos com ✅/⚠️/❌/N.A.)
+
+    ## Score: {{X}}/10 conformes (excluindo N.A.)
+
+    ## Ajustes Necessários
+    (lista de correções por prioridade)
+
+    ---
+    ⚠️ DISCLAIMER: Análise consultiva. Não substitui parecer de advogado
+    ou assessoria do CRECI.
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+
+anti_patterns:
+  - "Publicar sem CRECI"
+  - "Fotos de banco como se fossem do imóvel"
+  - "Prometer valorização sem fonte"
+  - "Meta Ads sem categoria Housing"
+  - "Usar marca concorrente no Google Ads"

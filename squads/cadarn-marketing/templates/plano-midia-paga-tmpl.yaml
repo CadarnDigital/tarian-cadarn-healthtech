@@ -1,0 +1,161 @@
+# Plano de Mídia Paga Template — Squad Cadarn Marketing
+# Framework: Pedro Sobral — Metodologia Subido
+# Agente: Mídia (Gestor de Tráfego Pago)
+# Replicável para clientes Tarian
+
+template:
+  name: plano-midia-paga
+  version: "1.0.0"
+  description: "Plano de mídia: estrutura de campanhas, segmentação, verba, nomenclatura, métricas"
+  squad: cadarn-marketing
+  agent: trafego
+  replicavel: true
+  tarian_portable: true
+
+params:
+  cliente:
+    nome: "{{cliente_nome}}"
+    periodo: "{{mes_ano}}"
+    verba_total: "R$ {{valor}}"
+    plataforma: "Meta Ads | Google Ads | Ambos"
+    objetivo_principal: "{{leads | vendas | reconhecimento | trafego}}"
+    negocio_local: true | false
+
+# ============================================================
+# ESTRUTURA DE CAMPANHAS (3 Tipos Sobral)
+# ============================================================
+
+campanhas:
+  perpetua:
+    nome: "[CONTINUA]"
+    descricao: "Always-on, otimização contínua"
+    objetivo: "{{conversao_leads_recorrentes}}"
+    verba_percentual: "65%"
+    verba_valor: "R$ {{valor}}"
+    publico: "Quente (remarketing, lookalike 1%)"
+    campanhas:
+      - nome: "[CONTINUA] | {{OBJETIVO}} | {{PUBLICO}} | {{CRIATIVO}}"
+        objetivo_meta: "{{objetivo_campanha}}"
+        publico: "{{descricao_publico}}"
+        metrica_principal: "{{CPL | ROAS | CPA}}"
+        meta_metrica: "{{valor_alvo}}"
+        criativos: "{{quantidade_e_tipo}}"
+
+  lancamento:
+    nome: "[TESTE]"
+    descricao: "Início em teste, escala se validar"
+    objetivo: "{{testar_oferta_criativo_publico}}"
+    verba_percentual: "25%"
+    verba_valor: "R$ {{valor}}"
+    publico: "Morno → Frio"
+    campanhas:
+      - nome: "[TESTE] | {{OBJETIVO}} | {{PUBLICO}} | {{CRIATIVO}}"
+        objetivo_meta: ""
+        publico: ""
+        metrica_principal: ""
+        tipo_teste: "Ninja (R$10/dia x 3d) | Boladão (R$50/dia)"
+
+  diaria:
+    nome: "[DIARIA]"
+    descricao: "Oferta do dia, evento, urgência"
+    objetivo: "{{conversao_imediata}}"
+    verba_percentual: "10%"
+    verba_valor: "R$ {{valor}}"
+    publico: "Quente (base existente)"
+
+# ============================================================
+# SEGMENTAÇÃO HIERÁRQUICA
+# ============================================================
+
+segmentacao:
+  quente:
+    prioridade: "MÁXIMA"
+    audiencias:
+      - "Visitou site (pixel) — últimos 30d"
+      - "Engajou Instagram — últimos 30/60/90d"
+      - "Lista de clientes/leads (upload)"
+      - "Lookalike 1% dos clientes"
+  morno:
+    prioridade: "MÉDIA"
+    audiencias:
+      - "Lookalike 2-3%"
+      - "Interesses específicos + localização"
+      - "Seguidores de concorrentes"
+  frio:
+    prioridade: "BAIXA"
+    audiencias:
+      - "Interesses amplos + demográfico"
+      - "Lookalike 5-10%"
+      - "Broad (sem segmentação)"
+
+# ============================================================
+# REGRAS DE TESTE
+# ============================================================
+
+testes:
+  ninja:
+    descricao: "Teste rápido e barato"
+    verba: "R$10/dia"
+    duracao: "3 dias"
+    decisao: "CTR >1.5% → escalar | <1% → matar"
+  boladao:
+    descricao: "Teste com dados rápidos"
+    verba: "R$50/dia"
+    duracao: "3-5 dias"
+    decisao: "Se atingir meta da métrica → Andrômeda"
+  andromeda:
+    descricao: "Escala agressiva pós-validação"
+    verba: "R$100+/dia"
+    duracao: "Contínuo enquanto ROAS positivo"
+    regra: "Só entra após Ninja ou Boladão validar"
+
+# ============================================================
+# NOMENCLATURA PADRÃO
+# ============================================================
+
+nomenclatura:
+  formato: "[TIPO] | [OBJETIVO] | [PÚBLICO] | [CRIATIVO] | [DATA]"
+  exemplos:
+    - "[CONTINUA] | LEADS | LOOKALIKE-1% | CARROSSEL-V2 | 2026-04"
+    - "[TESTE] | VENDAS | INTERESSE-IMOVEIS | REEL-DEPO | 2026-04"
+    - "[DIARIA] | TRAFEGO | REMARKETING-30D | STORIES-PROMO | 2026-04-15"
+
+# ============================================================
+# MÉTRICAS (1 principal por campanha)
+# ============================================================
+
+metricas:
+  regra: "NUNCA misturar métricas. 1 métrica principal por campanha."
+  mapa:
+    leads: "CPL (Custo por Lead)"
+    vendas: "ROAS ou CPA"
+    reconhecimento: "CPM"
+    trafego: "CPC"
+  alerta: "Se não sabe a métrica → NÃO rode a campanha"
+
+# ============================================================
+# REGRAS NEGÓCIO LOCAL (Sobral)
+# ============================================================
+
+negocio_local:
+  aplicavel: "{{true_false}}"
+  regras:
+    - "Mínimo R$20/dia por campanha"
+    - "Raio de segmentação: 5-15km (testar)"
+    - "Horário de veiculação: horário comercial + pico noturno"
+    - "Criativo com referência local (bairro, cidade, ponto)"
+    - "Google Ads: campanhas de serviço local + GMB otimizado"
+
+# ============================================================
+# CHECKLIST PRÉ-LANÇAMENTO
+# ============================================================
+
+checklist:
+  - "[ ] Pixel/tag instalado e disparando"
+  - "[ ] Públicos criados na plataforma"
+  - "[ ] Criativos aprovados por Coel"
+  - "[ ] Landing page testada (mobile + desktop)"
+  - "[ ] Nomenclatura padronizada"
+  - "[ ] Métrica principal definida por campanha"
+  - "[ ] Verba distribuída e aprovada"
+  - "[ ] Compliance verificada (@aequitas se oferta)"

@@ -1,0 +1,139 @@
+# Cessão de Direitos Template — Squad Cadarn Jurídica
+# Framework: Lei 9.610/98 (LDA) + INPI + CC
+# Agente: Signum (Especialista PI)
+# Replicável para clientes Tarian
+
+template:
+  name: cessao-direitos
+  version: "1.0.0"
+  description: "Cláusula de cessão de direitos autorais/imagem/marca/software para contratos"
+  squad: cadarn-juridica
+  agent: especialista-pi
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+
+# Parâmetros
+params:
+  tipo: "{{tipo: autoral | imagem | marca | software}}"
+  cedente: "{{cedente_nome}}"
+  cessionario: "{{cessionario_nome}}"
+  obra: "{{descricao_obra}}"
+
+# ============================================================
+# CHECKLIST DE CESSÃO (10 ITENS)
+# ============================================================
+
+checklist:
+
+  - id: CD1
+    item: "Cessão EXPRESSA e ESCRITA"
+    fundamentacao: "Art. 49, I, LDA"
+    obrigatorio: true
+    nota: "Cessão verbal é NULA"
+
+  - id: CD2
+    item: "Direitos patrimoniais vs morais separados"
+    fundamentacao: "Art. 24 e 49 LDA"
+    obrigatorio: true
+    nota: "Morais são INALIENÁVEIS — nunca ceder"
+
+  - id: CD3
+    item: "Escopo da cessão definido"
+    obrigatorio: true
+    campos:
+      - "Usos permitidos (publicidade, editorial, institucional)"
+      - "Mídias (digital, impresso, TV, OOH)"
+      - "Territorialidade (Brasil, mundial)"
+      - "Prazo (determinado ou indeterminado)"
+
+  - id: CD4
+    item: "Exclusividade ou não"
+    obrigatorio: true
+    nota: "Cessão exclusiva impede o autor de usar a própria obra"
+
+  - id: CD5
+    item: "Remuneração pela cessão"
+    obrigatorio: true
+    nota: "Se embutida no contrato de serviço: declarar expressamente"
+
+  - id: CD6
+    item: "Obras derivadas e adaptações"
+    obrigatorio: true
+    nota: "Permitir ou não modificação da obra pelo cessionário"
+
+  - id: CD7
+    item: "Subcessionários"
+    obrigatorio: true
+    nota: "Cessionário pode sublicenciar? Definir expressamente"
+
+  - id: CD8
+    item: "Créditos e atribuição"
+    obrigatorio: true
+    nota: "Direito moral de paternidade (Art. 24, I) é irrenunciável"
+
+  - id: CD9
+    item: "Rescisão da cessão"
+    obrigatorio: true
+    nota: "Condições em que a cessão pode ser revogada"
+
+  - id: CD10
+    item: "IA Generativa (se aplicável)"
+    condicional: true
+    nota: |
+      Se obra criada com IA:
+      - Disclosure obrigatório
+      - Garantia limitada de não-infração
+      - Impossibilidade de atribuir autoria humana à IA
+
+# ============================================================
+# MODELOS POR TIPO
+# ============================================================
+
+modelos:
+
+  autoral:
+    titulo: "Cessão de Direitos Autorais Patrimoniais"
+    fundamentacao: "Lei 9.610/98"
+    campos_especificos:
+      - "Tipo de obra (texto, design, código, foto)"
+      - "Data de criação"
+      - "Obra sob encomenda ou pré-existente"
+
+  imagem:
+    titulo: "Termo de Autorização de Uso de Imagem"
+    fundamentacao: "CF Art. 5, X + CC Art. 20"
+    campos_especificos:
+      - "Pessoa identificável (nome, CPF)"
+      - "Menor de idade: assinatura de AMBOS responsáveis"
+      - "Contexto de uso (campanha, site, redes)"
+      - "Prazo e territorialidade"
+      - "Remuneração ou gratuidade"
+
+  marca:
+    titulo: "Licença de Uso de Marca"
+    fundamentacao: "Lei 9.279/96 (LPI)"
+    campos_especificos:
+      - "Registro INPI (nº processo)"
+      - "Classes Nice"
+      - "Licença exclusiva ou não"
+
+  software:
+    titulo: "Cessão de Direitos sobre Software"
+    fundamentacao: "Lei 9.609/98"
+    campos_especificos:
+      - "Código-fonte incluído"
+      - "Documentação técnica"
+      - "Direito de modificação"
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+
+anti_patterns:
+  - "Cessão verbal ('a gente combinou')"
+  - "Ceder direitos morais (é NULO)"
+  - "Cessão genérica sem escopo definido"
+  - "Usar imagem de menor sem autorização dos dois pais"
+  - "Garantir originalidade absoluta de output de IA"

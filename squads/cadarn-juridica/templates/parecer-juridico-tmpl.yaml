@@ -1,0 +1,127 @@
+# Parecer Jurídico Template — Squad Cadarn Jurídica
+# Framework: Pipeline de Triagem + Análise + Consolidação
+# Agente: Themis (Líder Jurídico) + Especialistas
+# Replicável para clientes Tarian
+
+template:
+  name: parecer-juridico
+  version: "1.0.0"
+  description: "Parecer jurídico consolidado com fundamentação legal e recomendações práticas"
+  squad: cadarn-juridica
+  agent: lider-juridico
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - tom_de_voz
+
+# Parâmetros
+params:
+  empresa:
+    nome: "{{empresa_nome}}"
+  questao:
+    tema: "{{tema}}"
+    area: "{{area_juridica}}"
+    especialista: "{{especialista_designado}}"
+    urgencia: "{{urgencia}}"
+
+# ============================================================
+# ESTRUTURA DO PARECER
+# ============================================================
+
+parecer:
+  formato: |
+    # Parecer Jurídico — {{tema}}
+
+    **Data:** {{data}}
+    **Solicitante:** {{empresa_nome}}
+    **Área:** {{area_juridica}}
+    **Especialista:** {{especialista_designado}}
+    **Nível de Risco:** {{risco: ALTO | MÉDIO | BAIXO}}
+
+    ---
+
+    ## 1. Resumo Executivo
+    {{resumo em linguagem acessível, 1-2 parágrafos}}
+
+    ## 2. Questão Analisada
+    {{descrição da situação ou dúvida apresentada}}
+
+    ## 3. Fundamentação Legal
+
+    ### Legislação Aplicável
+    | Lei/Norma | Artigos | Relevância |
+    |-----------|---------|------------|
+    {{tabela de leis aplicáveis}}
+
+    ### Jurisprudência
+    {{decisões relevantes, se houver}}
+
+    ## 4. Análise
+    {{análise técnica com subsecções por tópico}}
+
+    ## 5. Avaliação de Risco
+
+    | Risco | Probabilidade | Impacto | Mitigação |
+    |-------|--------------|---------|-----------|
+    {{tabela de riscos identificados}}
+
+    ## 6. Recomendações
+
+    | # | Ação | Prazo | Prioridade |
+    |---|------|-------|------------|
+    {{máximo 5 recomendações acionáveis}}
+
+    ## 7. Conclusão
+    {{parecer conclusivo com posicionamento claro}}
+
+    ---
+
+    ⚠️ **DISCLAIMER:** Este parecer é consultivo e não substitui assessoria
+    jurídica de advogado habilitado na OAB. Em litígio, notificação judicial
+    ou valores elevados, escalar para assessoria jurídica humana.
+
+    ---
+    *Parecer emitido por {{especialista}} — Squad Cadarn Jurídica v1.0*
+
+# ============================================================
+# NÍVEIS DE RISCO
+# ============================================================
+
+niveis_risco:
+  alto:
+    criterios:
+      - "Valor > R$ 20.000"
+      - "Litígio em andamento ou iminente"
+      - "Matéria sem jurisprudência consolidada"
+      - "CDC aplicável (consumidor)"
+      - "Penalidade administrativa possível"
+    acao: "Escalar para advogado humano obrigatoriamente"
+
+  medio:
+    criterios:
+      - "Valor R$ 5.000 - R$ 20.000"
+      - "Gap contratual identificado"
+      - "Compliance parcial"
+      - "Precedente desfavorável existente"
+    acao: "Implementar recomendações + monitorar"
+
+  baixo:
+    criterios:
+      - "Valor < R$ 5.000"
+      - "Questão preventiva"
+      - "Compliance atendido"
+      - "Dúvida de interpretação"
+    acao: "Seguir recomendações, sem urgência"
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+
+anti_patterns:
+  - "Parecer sem fundamentação legal (achismo)"
+  - "Parecer sem avaliação de risco"
+  - "Recomendar sem priorizar"
+  - "Omitir disclaimer"
+  - "Afirmar certeza em matéria sem jurisprudência"
+  - "Parecer genérico sem contexto do cliente"

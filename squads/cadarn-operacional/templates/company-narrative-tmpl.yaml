@@ -1,0 +1,246 @@
+# Company Narrative Template — Guia de Narrativa da Empresa
+# Alimenta o onboarding de funcionários (employee-onboarding-tmpl.yaml)
+# Preenchido pelo cliente ao iniciar o Tarian. Usado por Scala, Arc e Nexus.
+
+template:
+  name: company-narrative
+  version: "1.0.0"
+  description: "Guia de narrativa da empresa: história, valores, cultura e tom de voz para onboarding"
+  squad: cadarn-operacional
+  feeds:
+    - employee-onboarding-tmpl.yaml
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - historia_fundacao
+    - valores_cultura
+    - tom_de_voz
+  preenchido_por: "Fundador / CEO / Líder da empresa-cliente"
+
+# ============================================================
+# INSTRUÇÕES DE PREENCHIMENTO
+# ============================================================
+instrucoes: |
+  Este guia é a alma do onboarding. Não é um documento corporativo —
+  é a história REAL da empresa contada por quem a criou.
+
+  REGRAS:
+  - Escreva como se estivesse contando para um amigo num café
+  - Seja vulnerável: erros e dificuldades geram mais conexão que conquistas
+  - Se uma pergunta não se aplica, escreva "não se aplica" (não invente)
+  - Este documento será usado em conversas, não em apresentações
+  - Revise com alguém de confiança antes de finalizar
+
+  TEMPO ESTIMADO: 45-60 minutos
+
+# ============================================================
+# SEÇÃO 1 — A HISTÓRIA (contada pelo fundador)
+# Framework: Arc (ACTIVATE — tornar memorável)
+# ============================================================
+historia:
+
+  origem:
+    pergunta: "Como a empresa nasceu? Qual foi o momento exato em que você decidiu criar isso?"
+    exemplo: "Estava no terceiro ano de advocacia, ganhando bem mas infeliz. Um cliente me pediu ajuda com marketing e eu resolvi em 2 horas o que a agência dele não resolvia em 2 meses. Naquele dia eu soube."
+    resposta: "{{historia_origem}}"
+
+  problema_fundador:
+    pergunta: "Qual problema PESSOAL você vivia que te levou a criar a empresa?"
+    nota: "Todo negócio nasce de uma dor real. Qual era a sua?"
+    resposta: "{{problema_fundador}}"
+
+  batismo_de_fogo:
+    pergunta: "Qual foi o momento mais difícil? O dia em que quase desistiu?"
+    nota: "Vulnerabilidade gera confiança. Funcionário novo precisa saber que o fundador também sofreu"
+    resposta: "{{batismo_de_fogo}}"
+
+  ponto_de_virada:
+    pergunta: "O que mudou? Qual foi a decisão ou evento que fez a empresa virar o jogo?"
+    resposta: "{{ponto_de_virada}}"
+
+  onde_estamos:
+    pergunta: "Onde a empresa está HOJE? (sem exagero, sem falsa modéstia)"
+    resposta: "{{onde_estamos}}"
+
+  para_onde_vamos:
+    pergunta: "Qual é o sonho grande? Onde a empresa quer estar em 3-5 anos?"
+    nota: "Funcionário novo precisa saber que está entrando num trem em movimento, não num trem parado"
+    resposta: "{{para_onde_vamos}}"
+
+# ============================================================
+# SEÇÃO 2 — POR QUE EXISTIMOS
+# Framework: Nexus (Organizational Health — 6 perguntas de clareza)
+# ============================================================
+proposito:
+
+  por_que_existimos:
+    pergunta: "Se a empresa fechasse amanhã, o que o mundo perderia?"
+    nota: "Não vale 'gerar lucro' ou 'criar empregos'. Qual impacto REAL?"
+    resposta: "{{por_que_existimos}}"
+
+  o_que_fazemos:
+    pergunta: "Em uma frase simples, o que a empresa faz? (teste: sua mãe entenderia?)"
+    resposta: "{{o_que_fazemos}}"
+
+  para_quem:
+    pergunta: "Quem é o cliente ideal? Descreva como se fosse uma pessoa real"
+    resposta: "{{para_quem}}"
+
+  como_somos_diferentes:
+    pergunta: "O que a empresa faz que os concorrentes NÃO fazem? (ou fazem pior)"
+    resposta: "{{como_somos_diferentes}}"
+
+# ============================================================
+# SEÇÃO 3 — VALORES (os reais, não os do quadro na parede)
+# Framework: Nexus (Organizational Health) + Scala (Culture)
+# ============================================================
+valores:
+
+  instrucao: |
+    Liste de 3 a 6 valores. Para cada um:
+    - O que significa NA PRÁTICA (não a definição do dicionário)
+    - Um exemplo real de quando o valor foi vivido
+    - Um exemplo real de quando o valor foi VIOLADO (e o que aconteceu)
+
+    Se você não consegue dar exemplos reais, o valor é decorativo — delete.
+
+  lista:
+    - valor: "{{valor_1_nome}}"
+      significado_pratico: "{{valor_1_pratica}}"
+      exemplo_vivido: "{{valor_1_exemplo_positivo}}"
+      exemplo_violado: "{{valor_1_exemplo_negativo}}"
+
+    - valor: "{{valor_2_nome}}"
+      significado_pratico: "{{valor_2_pratica}}"
+      exemplo_vivido: "{{valor_2_exemplo_positivo}}"
+      exemplo_violado: "{{valor_2_exemplo_negativo}}"
+
+    - valor: "{{valor_3_nome}}"
+      significado_pratico: "{{valor_3_pratica}}"
+      exemplo_vivido: "{{valor_3_exemplo_positivo}}"
+      exemplo_violado: "{{valor_3_exemplo_negativo}}"
+
+    # Adicionar até 6 se necessário
+
+  valor_inegociavel:
+    pergunta: "Se tivesse que escolher UM valor que nunca será sacrificado, qual seria?"
+    nota: "Este é o que define demissão. Se alguém viola este, não fica"
+    resposta: "{{valor_inegociavel}}"
+
+# ============================================================
+# SEÇÃO 4 — COMO NOS COMPORTAMOS
+# Framework: Nexus (Five Dysfunctions — confiança + conflito)
+# ============================================================
+comportamento:
+
+  como_lidamos_com_erro:
+    pergunta: "Quando alguém erra aqui, o que acontece? (seja honesto)"
+    opcoes:
+      - "A gente conversa abertamente e resolve"
+      - "Depende de quem errou"
+      - "Ninguém fala nada e o clima fica estranho"
+      - "O líder chama no particular"
+    resposta: "{{como_lidamos_com_erro}}"
+
+  como_tomamos_decisoes:
+    pergunta: "Como decisões são tomadas? Quem decide o quê?"
+    nota: "Funcionário novo precisa saber: pode decidir sozinho? Precisa perguntar? Para quem?"
+    resposta: "{{como_tomamos_decisoes}}"
+
+  como_lidamos_com_conflito:
+    pergunta: "Dois membros do time discordam. O que é esperado que aconteça?"
+    nota: "Harmonia artificial (ninguém discorda) é sinal de medo, não de paz"
+    resposta: "{{como_lidamos_com_conflito}}"
+
+  o_que_nao_toleramos:
+    pergunta: "O que é motivo de desligamento imediato aqui? (além do óbvio)"
+    nota: "Linhas vermelhas claras desde o dia 1 evitam surpresas"
+    resposta: "{{o_que_nao_toleramos}}"
+
+  o_que_valorizamos_invisivel:
+    pergunta: "O que é valorizado aqui mas ninguém fala explicitamente? (ex: quem ajuda sem pedir, quem questiona decisões)"
+    nota: "As regras não escritas são as mais importantes. Torne-as escritas"
+    resposta: "{{o_que_valorizamos_invisivel}}"
+
+# ============================================================
+# SEÇÃO 5 — TOM DE VOZ INTERNO
+# Framework: Scala (Culture) — como a empresa fala com o time
+# ============================================================
+tom_de_voz:
+
+  instrucao: |
+    O tom de voz interno define como o time se comunica.
+    Isso impacta: mensagens, emails, feedback, reuniões, documentos.
+    Funcionário novo absorve o tom nos primeiros dias — se não for intencional, será aleatório.
+
+  formalidade:
+    pergunta: "Como é a comunicação do dia a dia?"
+    escala: "1 (super informal, gírias, memes) ←→ 5 (formal, tratamento por senhor/senhora)"
+    resposta: "{{formalidade}}"
+
+  como_chamamos_uns_aos_outros:
+    pergunta: "Primeiro nome? Apelido? Sobrenome? Cargo?"
+    resposta: "{{tratamento}}"
+
+  canais_e_regras:
+    pergunta: "Quais canais são usados para quê?"
+    exemplo: "WhatsApp = urgente. Email = formal. Slack = dia a dia. ClickUp = tarefas"
+    resposta: "{{canais_e_regras}}"
+
+  feedback:
+    pergunta: "Como feedback é dado aqui? (direto? sanduíche? só em 1:1? público?)"
+    resposta: "{{como_feedback}}"
+
+  palavras_proibidas:
+    pergunta: "Tem alguma palavra ou expressão que o time NUNCA usa? (ex: 'não é meu departamento', 'sempre foi assim')"
+    resposta: "{{palavras_proibidas}}"
+
+  frases_identitarias:
+    pergunta: "Tem alguma frase ou expressão que só o time usa? Bordão interno?"
+    nota: "Linguagem compartilhada cria pertencimento. Se existe, ensine no dia 1"
+    resposta: "{{frases_identitarias}}"
+
+# ============================================================
+# SEÇÃO 6 — O TIME HOJE (snapshot para contexto do novo membro)
+# Framework: Nexus (Working Genius + Five Dysfunctions awareness)
+# ============================================================
+time_atual:
+
+  quem_e_quem:
+    pergunta: "Liste cada pessoa do time: nome, cargo, tempo de casa, uma característica marcante"
+    nota: "Funcionário novo precisa saber com quem vai interagir ANTES de chegar"
+    resposta: "{{quem_e_quem}}"
+
+  dinamica_atual:
+    pergunta: "Como está a saúde do time HOJE? (seja honesto — o onboarding se adapta)"
+    opcoes:
+      - "Ótimo: confiança alta, time coeso"
+      - "Bom: funciona mas tem pontos de fricção"
+      - "Tenso: tem conflitos não resolvidos"
+      - "Reconstruindo: saiu alguém recentemente, time se ajustando"
+    resposta: "{{dinamica_atual}}"
+
+  aviso_ao_novo:
+    pergunta: "Tem algo que o novo membro PRECISA saber sobre a dinâmica atual mas que ninguém vai falar espontaneamente?"
+    nota: "Melhor preparar do que deixar descobrir sozinho"
+    resposta: "{{aviso_ao_novo}}"
+
+# ============================================================
+# VALIDAÇÃO
+# ============================================================
+validacao:
+  checklist:
+    - "[ ] História tem origem, dificuldade e ponto de virada (não só conquistas)"
+    - "[ ] Propósito passa no teste 'minha mãe entenderia'?"
+    - "[ ] Cada valor tem exemplo real positivo E negativo"
+    - "[ ] Existe pelo menos 1 valor inegociável definido"
+    - "[ ] Tom de voz está descrito com exemplos práticos"
+    - "[ ] Snapshot do time atual está honesto (não idealizado)"
+    - "[ ] O documento foi revisado por pelo menos 1 pessoa além do fundador"
+
+  nota_final: |
+    Este documento é VIVO. Revisar a cada 6 meses ou quando:
+    - Um valor se provar falso (delete, não maquie)
+    - A história ganhar um novo capítulo significativo
+    - O time mudar significativamente (>30% de rotatividade)
+    - O tom de voz evoluir naturalmente

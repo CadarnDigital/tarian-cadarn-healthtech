@@ -1,0 +1,189 @@
+# Contrato de Agência Digital — 12 Cláusulas
+# Framework: Themis — Estrutura Completa de Contrato
+# Agente: Themis (Líder Jurídico)
+# Replicável para clientes Tarian
+
+template:
+  name: contrato-agencia-12clausulas
+  version: "1.0.0"
+  description: "Modelo contratual robusto com 12 cláusulas para agências de Engenharia de Receita"
+  squad: cadarn-juridica
+  agent: lider-juridico
+  replicavel: true
+  tarian_portable: true
+  brand_touchpoints:
+    - nome_empresa
+    - tom_de_voz
+
+# Parâmetros
+params:
+  contratante:
+    nome: "{{contratante_nome}}"
+    cnpj: "{{contratante_cnpj}}"
+    endereco: "{{contratante_endereco}}"
+  contratada:
+    nome: "{{contratada_nome}}"
+    cnpj: "{{contratada_cnpj}}"
+    endereco: "{{contratada_endereco}}"
+  contrato:
+    valor_setup: "{{valor_setup}}"
+    valor_mensal: "{{valor_mensal}}"
+    verba_midia: "{{verba_midia}}"
+    prazo_meses: "{{prazo_meses}}"
+    exclusividade: "{{exclusividade: sim | nao}}"
+    usa_ia: "{{usa_ia: sim | nao}}"
+    setor: "{{setor}}"
+
+# ============================================================
+# 12 CLÁUSULAS
+# ============================================================
+
+clausulas:
+
+  - id: C1
+    nome: "Preâmbulo e Qualificação das Partes"
+    obrigatoria: true
+    conteudo: |
+      Qualificação completa das partes com CNPJ, endereço, representantes legais.
+      Definir natureza do contrato: prestação de serviços de marketing digital
+      (Engenharia de Receita). Obrigação de MEIO, salvo estipulação expressa.
+
+  - id: C2
+    nome: "Objeto do Contrato — Escopo Exaustivo"
+    obrigatoria: true
+    conteudo: |
+      Lista EXAUSTIVA de serviços incluídos E excluídos.
+      Previsão de aditivo para extras. Cláusula vaga gera scope creep.
+    risco_se_ausente: "Scope creep + alegação de inadimplemento"
+
+  - id: C3
+    nome: "Entregáveis, SLA e Prazos"
+    obrigatoria: true
+    conteudo: |
+      Tabela de entregas com frequência e prazo.
+      | Entregável | Frequência | Prazo | Responsável |
+      Definir processo de aprovação (cliente aprova em X dias úteis).
+
+  - id: C4
+    nome: "KPIs e Métricas — Natureza Referencial"
+    obrigatoria: true
+    conteudo: |
+      KPIs são REFERENCIAIS, não metas contratuais.
+      Obrigação de MEIO expressa: "melhores esforços".
+      NUNCA prometer resultado numérico (leads, ROI, seguidores).
+    risco_se_ausente: "Conversão para obrigação de resultado (TJES 0004882)"
+
+  - id: C5
+    nome: "Remuneração"
+    obrigatoria: true
+    conteudo: |
+      Setup Fee: R$ {{valor_setup}} (parcela única)
+      MRR: R$ {{valor_mensal}}/mês
+      Verba de mídia: R$ {{verba_midia}}/mês (SEPARADA, conta do cliente)
+      Forma de pagamento, dia de vencimento, juros e multa por atraso.
+
+  - id: C6
+    nome: "Propriedade Intelectual"
+    obrigatoria: true
+    conteudo: |
+      Cessão EXPRESSA e ESCRITA de direitos patrimoniais (Art. 49, I, LDA).
+      Direitos morais preservados (Art. 24 LDA).
+      Se usa IA: cláusula de disclosure + garantia limitada de não-infração.
+      Contas de plataforma: criadas em nome do CLIENTE.
+    risco_se_ausente: "Cessão verbal é NULA"
+
+  - id: C7
+    nome: "Confidencialidade (NDA)"
+    obrigatoria: true
+    conteudo: |
+      Vigência: duração do contrato + 2 anos pós-término.
+      Multa: 12x última mensalidade.
+      Abrange: estratégias, dados, processos, informações comerciais.
+
+  - id: C8
+    nome: "Limitação de Responsabilidade"
+    obrigatoria: true
+    conteudo: |
+      Cap: 12 meses de fees pagos.
+      Exclusões: dolo, fraude, violação de dados pessoais.
+      Agência não responde por: resultados de mercado, ações de terceiros,
+      mudanças de algoritmo, decisões do cliente.
+
+  - id: C9
+    nome: "Proteção de Dados (LGPD)"
+    obrigatoria: true
+    conteudo: |
+      Cliente = CONTROLADOR. Agência = OPERADOR.
+      Lista de subprocessadores com DPA.
+      Incidentes: notificação em 48h.
+      Transferência internacional: base legal Art. 33.
+    cross_ref: "Shield (especialista-lgpd) revisa esta cláusula"
+
+  - id: C10
+    nome: "Rescisão"
+    obrigatoria: true
+    conteudo: |
+      Aviso prévio: 30 dias (notificação formal).
+      Multa rescisória: 20% do valor remanescente (Art. 412 CC, máx 50%).
+      Portabilidade de dados: 15 dias úteis.
+      Devolução de acessos e assets em 10 dias úteis.
+
+  - id: C11
+    nome: "Exclusividade (quando aplicável)"
+    obrigatoria: false
+    conteudo: |
+      Se exclusividade: definir praça/segmento.
+      Acréscimo de 20-30% sobre valor mensal.
+      Não-exclusividade é o padrão (declarar explicitamente).
+
+  - id: C12
+    nome: "Reajuste e Equilíbrio"
+    obrigatoria: true
+    conteudo: |
+      Reajuste anual pelo IPCA/IBGE.
+      Cláusula de equilíbrio para onerosidade excessiva (Art. 317 CC).
+      Cláusula de hardship fiscal para EC 132/2023 (transição tributária).
+
+# ============================================================
+# CLÁUSULAS COMPLEMENTARES (se aplicável)
+# ============================================================
+
+clausulas_complementares:
+
+  - id: CC1
+    nome: "Resolução Escalonada de Conflitos"
+    conteudo: |
+      Nível 1 — Negociação Direta (15 dias)
+      Nível 2 — Mediação (30 dias, mediador credenciado)
+      Nível 3A — Arbitragem (contratos > R$ 50.000/ano)
+      Nível 3B — Foro Judicial (contratos menores)
+
+  - id: CC2
+    nome: "Cláusula de IA (se usa_ia = sim)"
+    conteudo: |
+      Disclosure de uso de IA ao cliente.
+      Revisão humana obrigatória antes de publicação.
+      Garantia limitada de não-infração.
+      Vedação de dados pessoais em IA sem autorização.
+      Cap de responsabilidade por IA: 6 meses de fees.
+
+  - id: CC3
+    nome: "Testemunhas (OBRIGATÓRIO)"
+    conteudo: |
+      2 testemunhas com nome, CPF e assinatura.
+      Transforma contrato em título executivo extrajudicial (CPC Art. 784, III).
+    risco_se_ausente: "Cobrança exige ação ordinária em vez de execução direta"
+
+# ============================================================
+# ANTI-PATTERNS
+# ============================================================
+
+anti_patterns:
+  - "Prometer resultado numérico no contrato"
+  - "Cláusula de objeto vaga ('serviços de marketing digital')"
+  - "Multa > 50% do valor da obrigação"
+  - "Cessão verbal de direitos (é NULA)"
+  - "Contrato sem testemunhas"
+  - "Verba de mídia misturada com fee"
+  - "Conta de plataforma em nome da agência"
+  - "Rescisão sem portabilidade de dados"

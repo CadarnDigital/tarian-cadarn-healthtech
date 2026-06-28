@@ -1,0 +1,27 @@
+{
+  "language": "portuguese",
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Edit(*)",
+      "Write(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__*"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(rm -rf /*)",
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean -fd*)",
+      "Bash(> /dev/sda*)",
+      "Bash(mkfs*)",
+      "Bash(dd if=*)",
+      "Bash(rm -rf .git*)"
+    ]
+  }
+}

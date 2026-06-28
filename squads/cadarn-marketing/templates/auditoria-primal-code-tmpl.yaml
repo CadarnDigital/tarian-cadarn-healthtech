@@ -1,0 +1,123 @@
+# Auditoria Primal Code Template — Squad Cadarn Marketing
+# Framework: Patrick Hanlon — Primal Code® (7 elementos)
+# Agente: Coel (Brand Guardian)
+# Replicável para clientes Tarian
+
+template:
+  name: auditoria-primal-code
+  version: "1.0.0"
+  description: "Auditoria de conteúdo: scanner 7 elementos, coerência, contraste, belief, veredito"
+  squad: cadarn-marketing
+  agent: brand-guardian
+  replicavel: true
+  tarian_portable: true
+  cross_squad: true
+
+params:
+  cliente:
+    nome: "{{cliente_nome}}"
+    data_auditoria: "{{data}}"
+    modo: "Guardião | Conselheiro"
+    lote_id: "{{batch_id}}"
+
+# ============================================================
+# RESUMO EXECUTIVO
+# ============================================================
+
+resumo:
+  total_pecas: "{{N}}"
+  aprovadas: "{{N}}"
+  com_ressalvas: "{{N}}"
+  para_revisao: "{{N}}"
+  pausadas: "{{N}}"
+  score_medio: "{{X}}/14"
+  padroes_detectados: "{{lista_de_gaps_recorrentes}}"
+
+# ============================================================
+# AUDITORIA POR PEÇA
+# ============================================================
+
+pecas:
+  - id: "{{peca_id}}"
+    formato: "{{Reel | Carrossel | Post | Stories}}"
+    tema: "{{descricao_curta}}"
+
+    # ETAPA 1 — Scanner de Identidade
+    scanner:
+      creation_story:
+        status: "PRESENTE | PARCIAL | AUSENTE"
+        score: "{{0_1_2}}"
+        nota: ""
+      creed:
+        status: ""
+        score: "{{0_1_2}}"
+        nota: ""
+      icons:
+        status: ""
+        score: "{{0_1_2}}"
+        nota: ""
+      rituals:
+        status: ""
+        score: "{{0_1_2}}"
+        nota: ""
+      pagans:
+        status: ""
+        score: "{{0_1_2}}"
+        nota: ""
+      sacred_words:
+        status: ""
+        score: "{{0_1_2}}"
+        nota: ""
+      leader:
+        status: ""
+        score: "{{0_1_2}}"
+        nota: ""
+      score_total: "{{X}}/14"
+      limiar_formato: "{{limiar_exigido}}"
+      passou: true | false
+
+    # ETAPA 2 — Teste de Coerência
+    coerencia:
+      creation_story_creed: "Coerente | Parcial | Incoerente"
+      tom_leader: "Pessoal | Impessoal | Genérico"
+      sacred_words: "Presente | Ausente | Genérica"
+      teste_concorrente: "Poderia ser publicada por concorrente? Sim | Não"
+
+    # ETAPA 3 — Teste do Inimigo
+    contraste:
+      nivel: "DECLARA | IMPLICA | POSICIONA | NEUTRA"
+      critico: true | false
+      nota: ""
+
+    # ETAPA 4 — Força do Belief System
+    belief:
+      contribuicao: "REFORÇA | NEUTRA | ENFRAQUECE"
+      nota: ""
+
+    # ETAPA 5 — Veredito
+    veredito: "APROVADO | APROVADO_COM_RESSALVAS | REVISAO_NECESSARIA | PAUSADO_ESCALAR_FABIANO"
+    acao: "{{ação_corretiva_se_necessário}}"
+    agente_retorno: "{{agente_que_deve_corrigir}}"
+
+# ============================================================
+# PADRÕES RECORRENTES
+# ============================================================
+
+padroes:
+  gaps_frequentes:
+    - elemento: "{{elemento_mais_ausente}}"
+      frequencia: "{{X}} de {{N}} peças"
+      impacto: "{{descricao}}"
+  recomendacoes_gerais:
+    - "{{recomendacao_1}}"
+    - "{{recomendacao_2}}"
+
+# ============================================================
+# ESCALAÇÕES
+# ============================================================
+
+escalacoes:
+  - peca_id: "{{id}}"
+    motivo: "{{motivo_da_pausa}}"
+    status: "AGUARDANDO_FABIANO"
+    data: "{{data}}"

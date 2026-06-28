@@ -1,0 +1,455 @@
+# Squad Cadarn Operacional — Workflow Integrado
+# Como os 5 agentes trabalham juntos em cada cenário operacional
+# Autor: Craft (squad-creator) + mesa redonda
+# Versão: 1.0.0
+
+workflow:
+  name: squad-operacional-integrated
+  version: "1.0.0"
+  description: "Orquestração dos 5 agentes operacionais em cenários-chave"
+  squad: cadarn-operacional
+
+# ============================================================
+# HIERARQUIA DE COMANDO
+# ============================================================
+
+hierarquia:
+  decisao_final: "Fabiano (CEO)"
+  lider_squad: "Scala (lider-operacional)"
+  agentes_gestao:
+    - "Kairos (gestor-processos)"
+    - "Vault (financeiro)"
+    - "Nexus (rh-pessoas)"
+  agente_relacionamento:
+    - "Arc (client-success)"
+  conselheiro_externo: "Coel (brand-guardian) — auditoria via brand_touchpoints"
+
+  regra: |
+    Scala ORQUESTRA os 4 agentes. Cada agente é DONO do seu domínio.
+    Scala não faz o trabalho do agente — pede, recebe, integra.
+    Coel é CONVOCADO (não está na squad) para auditoria de marca.
+
+# ============================================================
+# 6 CENÁRIOS INTEGRADOS
+# ============================================================
+
+cenarios:
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 1: ONBOARDING DE NOVO CLIENTE
+  # ─────────────────────────────────────────
+  - id: C1
+    nome: "Onboarding de Novo Cliente"
+    trigger: "Novo contrato fechado"
+    complexidade: ALTA
+    duracao: "100 dias"
+
+    fluxo:
+      - step: 1
+        agente: Arc
+        acao: "Criar plano First 100 Days para o cliente"
+        task: "map-client-journey.md (modo onboarding)"
+        template: "client-onboarding-first100days-tmpl.yaml"
+        output: "plano-onboarding-{cliente}.md"
+
+      - step: 2
+        agente: Kairos
+        acao: "Configurar projeto do cliente na ferramenta de gestão"
+        task: "map-process (para o projeto do cliente)"
+        output: "Projeto configurado no ClickUp/ferramenta"
+
+      - step: 3
+        agente: Vault
+        acao: "Registrar contrato no financeiro, confirmar recebimento"
+        output: "Entrada no Profit First (conta INCOME)"
+
+      - step: 4
+        agente: Scala
+        acao: "Revisar plano de Arc, designar equipe de entrega"
+        output: "Equipe alocada, kickoff agendado"
+
+      - step: 5
+        agente: Coel
+        acao: "Auditar comunicações de boas-vindas (brand_touchpoints)"
+        trigger_condicional: "Se comunicação vai para o cliente"
+        output: "Parecer de alinhamento de marca"
+
+      - step: 6
+        agente: Argus
+        acao: "Cadastrar cliente no portfólio — iniciar monitoramento de health score"
+        task: "run-client-health-check.md (cadastro inicial)"
+        input: "client-intake-handoff-tmpl.yaml preenchido por Caio"
+        output: "Cliente registrado no portfólio com baseline de health score"
+
+      # GATE: Marketing só inicia após Arc confirmar fase ACTIVATE concluída
+      - step: 7
+        agente: Arc
+        acao: "Após kickoff concluído (fase ACTIVATE) → notificar Squad Marketing para iniciar diagnóstico"
+        gate: "ACTIVATE completo (kickoff realizado, acesso à ferramenta concedido)"
+        handoff_format:
+          para: "Consultora (squad-marketing)"
+          dados:
+            - cliente_nome
+            - segmento
+            - servicos_contratados
+            - dor_principal
+            - resultado_esperado_90d
+            - perfil_disc
+            - restricoes_conteudo
+            - fase_coleman_atual
+        nota: "Marketing NÃO inicia antes deste sinal — evita atropelar fase AFFIRM/ACTIVATE"
+
+    kpis:
+      - "Contato em <24h (Arc)"
+      - "Kickoff na semana 1 (Scala)"
+      - "Projeto no ClickUp em <48h (Kairos)"
+      - "Cliente cadastrado no Argus em <4h do fechamento"
+      - "Marketing inicia APÓS kickoff confirmado (Arc → Marketing gate)"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 2: ONBOARDING DE NOVO FUNCIONÁRIO
+  # ─────────────────────────────────────────
+  - id: C2
+    nome: "Onboarding de Novo Funcionário"
+    trigger: "Novo funcionário contratado"
+    complexidade: ALTA
+    duracao: "100 dias"
+
+    fluxo:
+      - step: 1
+        agente: Scala
+        acao: "Orquestrar criação do plano de onboarding"
+        task: "create-employee-onboarding.md"
+        template: "employee-onboarding-tmpl.yaml"
+        pre_requisito: "company-narrative-tmpl.yaml preenchido"
+
+      - step: 2
+        agente: Arc
+        acao: "Gerar camada emocional (8 fases adaptadas)"
+        output: "Touchpoints emocionais por fase"
+
+      - step: 3
+        agente: Nexus
+        acao: "Gerar camada cultural + agendar Working Genius (dia 8-10)"
+        task: "apply-working-genius.md (parcial — agendar)"
+
+      - step: 4
+        agente: Kairos
+        acao: "Criar projeto de onboarding na ferramenta de gestão"
+        output: "Checklist automatizado com datas"
+
+      - step: 5
+        agente: Nexus
+        acao: "Avaliar Ideal Team Player no dia 45"
+        template: "five-dysfunctions-diagnostic-tmpl.yaml (seção ITP)"
+
+      - step: 6
+        agente: Scala
+        acao: "Review de 90 dias — decisão GO/NO-GO"
+        output: "Funcionário integrado ou plano de correção"
+
+    kpis:
+      - "Working Genius mapeado antes do dia 15 (Nexus)"
+      - "Primeira entrega real antes do dia 15 (Scala)"
+      - "Review de 90 dias realizado (Scala + Nexus)"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 3: DIAGNÓSTICO OPERACIONAL TRIMESTRAL
+  # ─────────────────────────────────────────
+  - id: C3
+    nome: "Diagnóstico Operacional Trimestral"
+    trigger: "Início de trimestre ou sob demanda"
+    complexidade: MEDIA
+    duracao: "1-2 semanas"
+
+    fluxo:
+      - step: 1
+        agente: Scala
+        acao: "Iniciar diagnóstico, coletar KPIs de todos os agentes"
+        task: "run-operational-diagnostic.md"
+        template: "operational-diagnostic-tmpl.yaml"
+
+      - step: 2
+        agente: Vault
+        acao: "Fornecer KPI-1 (MRR) e KPI-7 (Margem) + diagnóstico Fix This Next"
+        task: "setup-profit-first.md (fase 0 — diagnóstico BHN)"
+
+      - step: 3
+        agente: Kairos
+        acao: "Fornecer KPI-3 (Prazo) e KPI-5 (Horas/Entregável) + auditoria processos"
+        output: "Status de SOPs e automações"
+
+      - step: 4
+        agente: Nexus
+        acao: "Fornecer KPI-6 (Happiness) + diagnóstico Five Dysfunctions"
+        task: "apply-working-genius.md (se não foi feito recentemente)"
+
+      - step: 5
+        agente: Arc
+        acao: "Fornecer KPI-2 (Churn) e KPI-4 (NPS) + diagnóstico jornada"
+        task: "map-client-journey.md (modo diagnóstico)"
+
+      - step: 6
+        agente: Scala
+        acao: "Consolidar relatório + plano de ação 90 dias"
+        output: "relatorio-diagnostico.md + plano-acao-90d.md"
+
+      - step: 7
+        agente: Scala
+        acao: "Sessão de Gametape Review (opcional, recomendado)"
+        template: "gametape-review-tmpl.yaml"
+
+    kpis:
+      - "7/7 KPIs coletados (sem 'não meço')"
+      - "Plano de ação com máx 5 itens"
+      - "Próximo diagnóstico agendado"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 4: RECLAMAÇÃO DE CLIENTE
+  # ─────────────────────────────────────────
+  - id: C4
+    nome: "Tratamento de Reclamação"
+    trigger: "Cliente reclamou"
+    complexidade: BAIXA-MEDIA
+    duracao: "24-72h"
+
+    fluxo:
+      - step: 1
+        agente: Scala
+        acao: "Aplicar H.E.R.E. method: Hear → Empathize → Resolve → Exceed"
+        comando: "*here {reclamação}"
+
+      - step: 2
+        agente: Arc
+        acao: "Identificar fase atual do cliente + risco de churn"
+        comando: "*fase {cliente}"
+
+      - step: 3
+        agente: Kairos
+        acao: "Verificar se é falha de processo (SOP, automação, entrega)"
+        output: "Root cause: processo / pessoa / exceção"
+
+      - step: 4
+        agente: Scala
+        acao: "Se recorrente: agendar Gametape Review da interação"
+        template: "gametape-review-tmpl.yaml"
+
+    kpis:
+      - "Resposta ao cliente em <4h"
+      - "Resolução em <72h"
+      - "SOP criado se recorrente"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 5: SETUP FINANCEIRO (PROFIT FIRST)
+  # ─────────────────────────────────────────
+  - id: C5
+    nome: "Implementação Profit First"
+    trigger: "Empresa sem sistema financeiro ou pedido direto"
+    complexidade: MEDIA
+    duracao: "1-2 semanas setup + contínuo"
+
+    fluxo:
+      - step: 1
+        agente: Vault
+        acao: "Diagnóstico Fix This Next + setup Profit First"
+        task: "setup-profit-first.md"
+        templates:
+          - "fix-this-next-diagnostic-tmpl.yaml"
+          - "profit-first-setup-tmpl.yaml"
+
+      - step: 2
+        agente: Scala
+        acao: "Integrar KPI-7 (Margem) no dashboard operacional"
+
+      - step: 3
+        agente: Kairos
+        acao: "Configurar lembretes automáticos (dia 10 e 25) na ferramenta"
+        output: "Automação de alocação"
+
+    kpis:
+      - "5 contas abertas"
+      - "Primeira alocação realizada"
+      - "CAPs definidos"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 6: AVALIAÇÃO DE SAÚDE DO TIME
+  # ─────────────────────────────────────────
+  - id: C6
+    nome: "Avaliação de Saúde do Time"
+    trigger: "Conflito, contratação, reestruturação ou trimestral"
+    complexidade: MEDIA
+    duracao: "1-2 semanas"
+
+    fluxo:
+      - step: 1
+        agente: Nexus
+        acao: "Diagnosticar Five Dysfunctions (base da pirâmide)"
+        template: "five-dysfunctions-diagnostic-tmpl.yaml"
+
+      - step: 2
+        agente: Nexus
+        acao: "Mapear Working Genius do time"
+        task: "apply-working-genius.md"
+        template: "working-genius-tmpl.yaml"
+
+      - step: 3
+        agente: Scala
+        acao: "Avaliar candidatos se contratação (Skills/Will/Culture/Trajectory)"
+        comando: "*avaliar-candidato {perfil}"
+
+      - step: 4
+        agente: Nexus
+        acao: "Estruturar reuniões (4 tipos Lencioni)"
+        comando: "*estruturar-reunioes"
+
+      - step: 5
+        agente: Scala
+        acao: "Integrar resultados no plano operacional"
+        output: "Realocação + ajustes de rituais"
+
+    kpis:
+      - "Disfunção mais baixa identificada"
+      - "Working Genius de todos mapeado"
+      - "Plano de ação por nível"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 7: HEALTH CHECK SEMANAL DO PORTFÓLIO
+  # ─────────────────────────────────────────
+  - id: C7
+    nome: "Health Check Semanal do Portfólio"
+    trigger: "Toda semana (segunda-feira) ou sob demanda"
+    complexidade: MEDIA
+    duracao: "1-2 horas"
+
+    fluxo:
+      - step: 1
+        agente: Argus
+        acao: "Executar health check de todos os clientes ativos"
+        task: "run-client-health-check.md (full check)"
+        output: "health-check-{YYYY-MM-DD}.md"
+
+      - step: 2
+        agente: Argus
+        acao: "Escalonar clientes vermelhos para Fabiano em <24h"
+        trigger_condicional: "Se há clientes com semáforo vermelho"
+        output: "Alert com cliente, score, causa e ação recomendada"
+
+      - step: 3
+        agente: Arc
+        acao: "Ação imediata em clientes vermelhos (dentro do seu domínio: jornada, NPS, touchpoint)"
+        trigger_condicional: "Se causa do alerta é relacionamento ou jornada"
+
+      - step: 4
+        agente: Kairos
+        acao: "Ação imediata em clientes vermelhos (dentro do seu domínio: entregáveis atrasados)"
+        trigger_condicional: "Se causa do alerta é atraso de entrega"
+
+    kpis:
+      - "Health check rodado toda semana"
+      - "Nenhum alerta vermelho sem ação em <24h"
+      - "Clientes amarelos recebem plano de ação em <48h"
+
+  # ─────────────────────────────────────────
+  # CENÁRIO 8: RELATÓRIO MENSAL DE PORTFÓLIO
+  # ─────────────────────────────────────────
+  - id: C8
+    nome: "Relatório Mensal — Portfólio (Fabiano) + Cliente"
+    trigger: "Último dia útil do mês"
+    complexidade: ALTA
+    duracao: "1 dia"
+
+    fluxo:
+      - step: 1
+        agente: Argus
+        acao: "Consolidar dados do portfólio — coletar de Arc, Kairos, Vault, Métrica"
+        task: "generate-portfolio-report.md (tipo: portfolio)"
+        output: "relatorio-portfolio-{YYYY-MM}.md"
+
+      - step: 2
+        agente: Argus
+        acao: "Gerar relatório mensal executivo para CADA cliente ativo"
+        task: "generate-portfolio-report.md (tipo: cliente — por cliente)"
+        template: "monthly-portfolio-report-tmpl.yaml (seção: client_report)"
+        output: "relatorio-mensal-{cliente}-{YYYY-MM}.md"
+
+      - step: 3
+        agente: Coel
+        acao: "Auditar brand touchpoints dos relatórios antes de enviar ao cliente"
+        trigger_condicional: "Obrigatório — relatório é output client-facing"
+
+      - step: 4
+        agente: Arc
+        acao: "Enviar relatório ao cliente + agendar reunião de review"
+        nota: "Reunião de review mensal é parte do ritual Coleman (ACCLIMATE em diante)"
+
+    kpis:
+      - "Relatório de portfólio entregue para Fabiano em D+1 do mês"
+      - "Relatório cliente entregue antes da reunião de review"
+      - "Coel aprovou brand touchpoints"
+
+# ============================================================
+# REGRAS DE ORQUESTRAÇÃO
+# ============================================================
+
+regras:
+
+  - regra: "Scala é a porta de entrada"
+    descricao: "Todo cenário começa ou termina com Scala (exceto C5 que Vault lidera)"
+
+  - regra: "Cada agente é dono do seu domínio"
+    descricao: "Scala não faz o trabalho de Vault/Nexus/Kairos/Arc — delega e integra"
+
+  - regra: "Coel é convocado, não residente"
+    descricao: "Coel audita brand_touchpoints quando output vai para cliente ou público"
+
+  - regra: "Dados alimentam dados"
+    descricao: "KPIs de um agente alimentam diagnósticos de outro (Churn do Arc → Scala)"
+
+  - regra: "Diagnóstico trimestral é obrigatório"
+    descricao: "Mesmo sem problemas aparentes, C3 roda a cada 90 dias"
+
+  - regra: "Gametape é coaching, nunca punição"
+    descricao: "Sessões de Gametape começam pelo positivo, foco em comportamento"
+
+  - regra: "Replicável para clientes"
+    descricao: "Todo workflow funciona para Cadarn HQ e para clientes Tarian"
+
+  - regra: "Argus vê o portfólio, Arc vê o cliente"
+    descricao: "Arc = profundidade em um cliente. Argus = largura em todos. Jamais confundir os escopos."
+
+  - regra: "Marketing só entra após kickoff confirmado"
+    descricao: "Arc sinaliza ACTIVATE completo antes do Marketing iniciar diagnóstico — protege fase AFFIRM"
+
+  - regra: "Health check é ritual, não reativo"
+    descricao: "C7 roda toda semana independente de problemas aparentes. Churn começa silencioso."
+
+# ============================================================
+# COEL INTEGRATION — BRAND TOUCHPOINTS
+# ============================================================
+
+coel_integration:
+  descricao: |
+    Coel (Brand Guardian) não faz parte da Squad Operacional mas é
+    CONVOCADO para auditoria em qualquer output que toca o cliente.
+    O campo brand_touchpoints em cada template lista os pontos
+    que Coel deve verificar.
+
+  quando_convocar:
+    - "Comunicação para cliente (boas-vindas, reports, celebração)"
+    - "Templates de narrativa (company-narrative)"
+    - "Materiais de onboarding visíveis ao público"
+    - "SOPs que definem tom de voz do atendimento"
+
+  como_convocar: |
+    Qualquer agente pode pedir: "@brand-guardian *parecer {artefato}"
+    Coel retorna parecer com ajustes de tom e forma (nunca conteúdo técnico).
+
+  brand_touchpoints_catalog:
+    - nome_empresa
+    - historia_fundacao
+    - valores_cultura
+    - tom_de_voz
+    - tom_comunicacao
+    - canais_preferidos
+    - identidade_visual
+    - padrao_atendimento

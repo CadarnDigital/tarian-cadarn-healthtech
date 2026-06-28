@@ -1,0 +1,170 @@
+# MEDDIC Scoring Template — Squad Cadarn Comercial
+# Agente: GestorFunil
+# Preencher após discovery call ou sequência WhatsApp
+# tarian_portable: true
+
+template:
+  name: meddic-scoring
+  version: "1.0.0"
+  description: "Ficha de qualificação MEDDIC adaptada para PMEs premium BR — score 0-12"
+  squad: cadarn-comercial
+  agent: gestor-funil
+  replicavel: true
+  tarian_portable: true
+
+# ============================================================
+# IDENTIFICAÇÃO DO LEAD
+# ============================================================
+
+lead:
+  nome: "{{nome_lead}}"
+  empresa: "{{empresa}}"
+  segmento: "{{segmento}}"  # imobiliaria | advocacia | estetica | outro
+  cargo_decisor: "{{cargo}}"
+  data_qualificacao: "{{data}}"
+  canal_discovery: "{{canal}}"  # call | whatsapp | reuniao
+
+# ============================================================
+# SCORING MEDDIC — 6 VARIÁVEIS (0-2 cada, máx 12)
+# ============================================================
+# 0 = desconhecido | 1 = parcial | 2 = confirmado
+# ============================================================
+
+meddic:
+
+  # M — MÉTRICAS
+  # Cliente sabe, em números, quanto o problema custa ou quanto quer crescer
+  metrics:
+    score: "{{M_score}}"  # 0 | 1 | 2
+    pergunta_usada: "Quantos clientes novos/mês hoje? Quanto cada um vale?"
+    resposta_lead: "{{M_resposta}}"
+    evidencia: "{{M_evidencia}}"  # ex: "R$50k/mês em clientes perdidos por falta de visibilidade"
+    nota: "{{M_nota}}"
+
+  # E — ECONOMIC BUYER
+  # Quem assina e libera pagamento
+  economic_buyer:
+    score: "{{EB_score}}"  # 0 | 1 | 2
+    knockout: true  # Se score=0, bloquear proposta
+    pergunta_usada: "Você decide sozinho ou tem alguém que precisa dar ok — sócio, financeiro?"
+    resposta_lead: "{{EB_resposta}}"
+    nome_decisor: "{{EB_nome}}"
+    cargo_decisor: "{{EB_cargo}}"
+    decisor_presente_na_reuniao: "{{EB_presente}}"  # sim | não
+    nota: "{{EB_nota}}"
+
+  # D1 — CRITÉRIOS DE DECISÃO
+  # O que ele compara para escolher (ou não fazer nada)
+  decision_criteria:
+    score: "{{D1_score}}"  # 0 | 1 | 2
+    pergunta_usada: "O que seria inegociável numa consultoria? O que faria dizer 'não é o certo'?"
+    resposta_lead: "{{D1_resposta}}"
+    criterios_mapeados:
+      - "{{D1_criterio_1}}"
+      - "{{D1_criterio_2}}"
+    nota: "{{D1_nota}}"
+
+  # D2 — PROCESSO DE DECISÃO
+  # Passos reais de "interesse" até "contrato assinado"
+  decision_process:
+    score: "{{D2_score}}"  # 0 | 1 | 2
+    pergunta_usada: "Se a proposta fizer sentido, como seria o processo até fechar? Tem etapa que trava?"
+    resposta_lead: "{{D2_resposta}}"
+    passos_mapeados:
+      - "{{D2_passo_1}}"
+      - "{{D2_passo_2}}"
+    prazo_estimado: "{{D2_prazo}}"
+    nota: "{{D2_nota}}"
+
+  # I — IDENTIFY PAIN
+  # Problema concreto que custa dinheiro AGORA e é reconhecido como urgente
+  identify_pain:
+    score: "{{I_score}}"  # 0 | 1 | 2
+    knockout: true  # Se score=0, bloquear proposta
+    pergunta_usada: "O que mais te incomoda na captação? Se continuasse assim 6 meses, seria problemático?"
+    resposta_lead: "{{I_resposta}}"
+    dor_em_uma_frase: "{{I_dor}}"
+    urgencia: "{{I_urgencia}}"  # imediata | crescente | latente
+    custo_estimado_inacao: "{{I_custo}}"
+    gatilho_jtbd: "{{I_gatilho}}"  # o que aconteceu que fez buscar solução agora?
+    nota: "{{I_nota}}"
+
+  # C — CHAMPION
+  # Quem vai vender sua solução internamente quando você não estiver na sala
+  champion:
+    score: "{{C_score}}"  # 0 | 1 | 2
+    pergunta_usada: "Tem alguém na equipe que sente essa dor no dia a dia e ajudaria na próxima etapa?"
+    resposta_lead: "{{C_resposta}}"
+    nome_champion: "{{C_nome}}"
+    cargo_champion: "{{C_cargo}}"
+    nivel_influencia: "{{C_influencia}}"  # alto | médio | baixo
+    nota: "{{C_nota}}"
+
+# ============================================================
+# SCORING E DECISÃO
+# ============================================================
+
+scoring:
+  M: "{{M_score}}"
+  E: "{{EB_score}}"
+  D1: "{{D1_score}}"
+  D2: "{{D2_score}}"
+  I: "{{I_score}}"
+  C: "{{C_score}}"
+  total: "{{TOTAL}}"  # soma de M+E+D1+D2+I+C (máx 12)
+
+knockouts:
+  economic_buyer_zero: "{{EB_score == 0}}"  # true = bloquear proposta
+  identify_pain_zero: "{{I_score == 0}}"     # true = bloquear proposta
+  knockout_ativo: "{{any knockout}}"          # true = parar aqui
+
+decisao:
+  # 10-12: Avançar | 7-9: Requalificar | 4-6: Nutrir | 0-3: Descartar
+  resultado: "{{decisao}}"  # AVANÇAR | REQUALIFICAR | NUTRIR | DESCARTAR
+  justificativa: "{{justificativa}}"
+
+  se_avancou:
+    proximos_passos: "Passar para Camaleão (briefing) → Caio (diagnóstico + proposta)"
+    briefing_solicitado: "{{briefing_camaleao}}"  # sim | não
+    palavras_chave_jtbd: "{{palavras_jtbd}}"  # frases exatas do lead
+
+  se_requalificou:
+    pergunta_cirurgica: "{{pergunta_para_variavel_mais_baixa}}"
+    data_retorno: "{{data_requalificacao}}"
+
+  se_nutriu:
+    conteudo_nutricao: "{{tema_baseado_na_dor}}"
+    data_proximo_check: "{{data_30_dias}}"
+    cadencia: "run-followup-cadence.md (modo nutrição)"
+
+  se_descartou:
+    mensagem_saida: "Sem problema agora — fico disponível se o contexto mudar. Posso marcar um contato daqui 90 dias?"
+    data_reavaliacao: "{{data_90_dias}}"
+
+# ============================================================
+# PERFIL COMPORTAMENTAL (MEDDIC → Camaleão)
+# ============================================================
+
+sinais_disc:
+  velocidade_resposta: "{{velocidade}}"  # rápida | normal | lenta
+  tom_primeiro_contato: "{{tom}}"
+  canal_preferido: "{{canal}}"
+  perfil_provavel: "{{D|I|S|C}}"
+  confianca_perfil: "{{alta|média|baixa}}"
+
+# ============================================================
+# HISTÓRICO
+# ============================================================
+
+historico:
+  tentativas_anteriores:
+    - "{{tentativa_1}}"
+    - "{{tentativa_2}}"
+  fornecedor_anterior: "{{anterior}}"
+  motivo_troca: "{{motivo}}"
+
+metadata:
+  criado_por: "GestorFunil"
+  data: "{{data}}"
+  versao: "1.0"
+  squad: "cadarn-comercial"
