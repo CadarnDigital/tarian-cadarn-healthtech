@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Módulo 3 — A Clínica · Cadarn Healthtech</title>
+<style>
+:root{--navy:#0e2a4a;--vinho:#5e0f0b;--caramelo:#9a7a51;--offwhite:#f5f0e8;--white:#ffffff;--text:#1a1a1a;--text-sec:#555555;--border:#ddd6ca}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;font-size:10.5pt;color:var(--text);background:var(--white);line-height:1.72}
+@page{size:A4;margin:2.2cm 2cm}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact}}
+.mod-header{border-left:5px solid var(--navy);padding:.15cm 0 .15cm 1.3cm;margin-bottom:.9cm}
+.mod-eyebrow{font-size:7.5pt;font-weight:bold;letter-spacing:.2em;text-transform:uppercase;color:var(--vinho);display:block;margin-bottom:.15cm}
+.mod-title{font-size:26pt;font-weight:bold;color:var(--navy);line-height:1.1}
+.section-label{font-size:7.5pt;font-weight:bold;letter-spacing:.18em;text-transform:uppercase;color:var(--caramelo);display:block;margin-top:.9cm;margin-bottom:.1cm}
+h3{font-size:11pt;font-weight:bold;color:var(--vinho);margin-top:.7cm;margin-bottom:.2cm}
+p{font-size:10.5pt;margin-bottom:.35cm;line-height:1.72}
+strong{color:var(--navy)}
+ul,ol{margin:0 0 .38cm 1.2cm}
+li{line-height:1.72;margin-bottom:.1cm}
+.antes-block{border-left:4px solid var(--navy);background:var(--offwhite);padding:.5cm .85cm;margin-bottom:.65cm}
+.antes-label{font-size:7.5pt;font-weight:bold;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:.18cm}
+.antes-block p{margin-bottom:.22cm;font-style:italic}
+.antes-block p:last-child{margin-bottom:0}
+.ouro-block{border-left:4px solid var(--vinho);background:var(--offwhite);padding:.5cm .85cm;margin-top:.9cm;margin-bottom:.45cm}
+.ouro-label{font-size:7.5pt;font-weight:bold;letter-spacing:.18em;text-transform:uppercase;color:var(--vinho);display:block;margin-bottom:.22cm}
+.ouro-block p{font-style:italic;margin-bottom:.2cm}
+.ouro-block p:last-child{margin-bottom:0}
+.ouro-instruction{font-size:9.5pt;color:var(--text-sec);font-style:italic}
+.step-list{counter-reset:steps;list-style:none;margin:0 0 .42cm 0;padding:0}
+.step-list li{counter-increment:steps;display:flex;gap:.45cm;margin-bottom:.32cm;line-height:1.65}
+.step-list li::before{content:counter(steps);flex-shrink:0;width:1.3em;height:1.3em;background:var(--navy);color:#fff;font-size:8.5pt;font-weight:bold;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:.12em}
+.divider{border:none;border-top:1px solid var(--caramelo);margin:.55cm 0;opacity:.65}
+.doc-footer{margin-top:1.3cm;padding-top:.3cm;border-top:1px solid var(--caramelo);display:flex;justify-content:space-between;align-items:center;font-size:8.5pt;color:var(--text-sec);font-style:italic}
+.doc-footer-brand{font-weight:bold;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);font-size:8pt}
+.doc-footer-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--vinho);margin:0 .28cm;vertical-align:middle}
+</style>
+</head>
+<body>
+
+<div class="mod-header">
+  <span class="mod-eyebrow">Módulo 3 · Cadarn Healthtech</span>
+  <div class="mod-title">A Clínica</div>
+</div>
+
+<div class="antes-block">
+  <span class="antes-label">Antes de ler</span>
+  <p>Uma clínica atendeu 300 consultas no mês. Enviou todas as cobranças para a operadora. Recebeu 70% do valor esperado. Onde foi parar os outros 30% — e quem tem a responsabilidade de recuperar?</p>
+  <p>Essa pergunta tem uma resposta técnica e uma resposta econômica. Este módulo vai te dar as duas.</p>
+</div>
+
+<hr class="divider">
+
+<span class="section-label">A engrenagem da receita</span>
+
+<h3>O problema que ninguém vê de fora</h3>
+<p>Do lado de fora, uma clínica parece simples: médico atende, operadora paga. A receita flui. Não é assim que funciona.</p>
+<p>Entre o ato médico e o dinheiro disponível na conta da clínica existe uma esteira inteira de etapas administrativas. Esse conjunto de etapas tem nome: <strong>RCM — Revenue Cycle Management</strong>, ou <strong>Ciclo de Gestão da Receita</strong>. E o gargalo central não é "atender mais" — é <strong>converter atendimento em recebimento sem deixar dinheiro parado pelo caminho</strong>.</p>
+
+<h3>A esteira: do atendimento ao pagamento</h3>
+<ol class="step-list">
+  <li><strong>Verificação de elegibilidade.</strong> Antes de atender, a recepção verifica se aquele paciente está ativo no plano e se o procedimento está coberto. Problemas detectados na entrada evitam glosas na saída.</li>
+  <li><strong>Autorização prévia.</strong> Muitos procedimentos exigem que a operadora autorize antes de acontecer. Se o médico fizer a cirurgia sem a autorização, a clínica corre o risco de não receber.</li>
+  <li><strong>Registro clínico.</strong> O médico registra o que fez: o código do procedimento, os materiais usados, a evolução clínica. Aqui começa um dos problemas mais frustrantes do setor: o médico decide pelo melhor tratamento clínico sem necessariamente conhecer as regras contratuais da operadora.</li>
+  <li><strong>Codificação.</strong> O setor tem seu próprio vocabulário de códigos: o <strong>TUSS — Terminologia Unificada da Saúde Suplementar</strong>. Usar o código errado, desatualizado ou incompatível com o CID-10 é causa imediata de glosa.</li>
+  <li><strong>Montagem e envio do lote.</strong> As cobranças são agrupadas em <strong>guias</strong>, depois empacotadas em <strong>lotes</strong> — arquivos no formato <strong>XML</strong> transmitidos eletronicamente. Esse formato se chama <strong>TISS — Troca de Informação em Saúde Suplementar</strong>. Uma tag no XML fora do lugar, o lote inteiro é rejeitado.</li>
+  <li><strong>Conferência antes do envio.</strong> Antes de transmitir, o ideal é passar por um validador de TISS — uma ferramenta que confere a estrutura do arquivo e detecta erros antes de chegarem na operadora. Muitas clínicas pulam essa etapa.</li>
+  <li><strong>Recebimento do demonstrativo de retorno.</strong> Depois que o lote chega na operadora, ela devolve um relatório dizendo o que aceitou pagar e o que recusou. A parte recusada tem nome: <strong>glosa</strong>.</li>
+  <li><strong>Recurso de glosa.</strong> Quando a glosa é injusta, a clínica pode contestar. Mas o recurso tem dois inimigos: os prazos curtos que as operadoras impõem e a complexidade técnica de saber exatamente como argumentar.</li>
+  <li><strong>Conciliação.</strong> A clínica cruza o que esperava receber com o que de fato entrou na conta bancária. Qualquer diferença precisa ser investigada e cobrada.</li>
+</ol>
+<p>Esse ciclo inteiro pode levar 30, 60 ou até 90 dias. E qualquer problema em qualquer etapa reinicia o cronômetro.</p>
+
+<hr class="divider">
+
+<span class="section-label">O inimigo central</span>
+
+<h3>A glosa</h3>
+<p>A glosa é a recusa, total ou parcial, do pagamento de uma conta médica pela operadora. Dois efeitos devastadores ao mesmo tempo:</p>
+<p><strong>Efeito 1 — Margem.</strong> Glosas podem comprometer até 30% do faturamento bruto anual de uma clínica se não houver processo robusto de recuperação. Em hospitais de grande complexidade, a taxa de glosa inicial chegou a <strong>15,89% em 2024</strong>.</p>
+<p><strong>Efeito 2 — Caixa.</strong> O ciclo de pagamentos dos convênios já é lento: 30, 60, às vezes 90 dias. Uma glosa adiciona tempo a esse prazo. Clínicas promissoras foram à insolvência não por falta de pacientes, mas porque o dinheiro dos atendimentos ficou represado em glosas enquanto os funcionários precisavam de salário.</p>
+<p>As causas mais comuns:</p>
+<ul>
+  <li>Guia preenchida de forma incompleta ou com dado incorreto</li>
+  <li>Código TUSS desatualizado ou incompatível com o CID-10</li>
+  <li>Assinatura obrigatória faltando</li>
+  <li>Autorização prévia ausente ou vencida</li>
+  <li>Dado cadastral do beneficiário divergente (conexão com o Módulo 2 — se a corretora não fez a movimentação cadastral corretamente, a clínica recebe uma glosa por elegibilidade)</li>
+</ul>
+<p><strong>Um dado que reorganiza tudo:</strong> cerca de <strong>68% das glosas são administrativas</strong> — geradas por erro burocrático, não por problema clínico. São evitáveis antes do envio. Isso transforma o problema de "como recuperar a glosa" para "como impedir que a glosa nasça".</p>
+
+<h3>A diferença entre glosa inicial e glosa final</h3>
+<p>Nos grandes hospitais do Brasil, a glosa inicial foi de <strong>15,89%</strong> em 2024. Mas a glosa final — depois dos recursos — foi de apenas <strong>1,96%</strong>. Isso significa que 14% do faturamento foi retido, contestado, e depois devolvido.</p>
+<p>A glosa funciona também como um <strong>mecanismo de dilatação de prazo de pagamento</strong>. A operadora usa a glosa para segurar dinheiro enquanto o prestador trabalha para provar que tem razão. Para a clínica sem processo de recurso eficiente, esse dinheiro nunca volta.</p>
+
+<hr class="divider">
+
+<span class="section-label">O gap que quebra clínicas</span>
+
+<h3>O gap de caixa que poucos calculam</h3>
+<p>Existe um problema além da glosa que afeta especialmente os prestadores de maior porte: o <strong>gap de caixa</strong> entre o prazo de receber dos convênios e o prazo de pagar os fornecedores.</p>
+<p>Nos grandes hospitais brasileiros, esse gap piorou entre 2024 e 2025: o prazo médio de recebimento dos convênios foi de 66,6 para <strong>78,5 dias</strong>. O prazo médio de pagamento de fornecedores caiu para <strong>46 dias</strong>. Resultado: a clínica espera 78 dias para receber, mas precisa pagar em 46 — um buraco de 32 dias que ela banca com capital próprio ou crédito.</p>
+<p>Glosa + prazo longo + gap de caixa = a equação que quebra clínicas que atendem bem e cobram mal.</p>
+
+<div class="ouro-block">
+  <span class="ouro-label">Frase de ouro</span>
+  <p>"A clínica não tem problema de atendimento — tem problema de ______________. A ______________ é a recusa de pagamento da operadora, e cerca de 68% dela é causada por erro ______________, não por problema clínico. O melhor caminho não é recuperar depois — é ______________ antes do envio."</p>
+  <p class="ouro-instruction">Quatro espaços preenchidos = pode ir para o Módulo 4.</p>
+</div>
+
+<div class="doc-footer">
+  <span class="doc-footer-brand">Cadarn Healthtech</span>
+  <span>Módulo 3 — A Clínica <span class="doc-footer-dot"></span> Domínio Healthtech</span>
+</div>
+
+</body>
+</html>

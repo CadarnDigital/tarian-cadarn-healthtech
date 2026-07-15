@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Módulo 5 — A Jogada Cadarn · Cadarn Healthtech</title>
+<style>
+:root{--navy:#0e2a4a;--vinho:#5e0f0b;--caramelo:#9a7a51;--offwhite:#f5f0e8;--white:#ffffff;--text:#1a1a1a;--text-sec:#555555;--border:#ddd6ca}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;font-size:10.5pt;color:var(--text);background:var(--white);line-height:1.72}
+@page{size:A4;margin:2.2cm 2cm}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact}}
+.mod-header{border-left:5px solid var(--navy);padding:.15cm 0 .15cm 1.3cm;margin-bottom:.9cm}
+.mod-eyebrow{font-size:7.5pt;font-weight:bold;letter-spacing:.2em;text-transform:uppercase;color:var(--vinho);display:block;margin-bottom:.15cm}
+.mod-title{font-size:26pt;font-weight:bold;color:var(--navy);line-height:1.1}
+.section-label{font-size:7.5pt;font-weight:bold;letter-spacing:.18em;text-transform:uppercase;color:var(--caramelo);display:block;margin-top:.9cm;margin-bottom:.1cm}
+h3{font-size:11pt;font-weight:bold;color:var(--vinho);margin-top:.7cm;margin-bottom:.2cm}
+p{font-size:10.5pt;margin-bottom:.35cm;line-height:1.72}
+strong{color:var(--navy)}
+ul,ol{margin:0 0 .38cm 1.2cm}
+li{line-height:1.72;margin-bottom:.1cm}
+.antes-block{border-left:4px solid var(--navy);background:var(--offwhite);padding:.5cm .85cm;margin-bottom:.65cm}
+.antes-label{font-size:7.5pt;font-weight:bold;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:.18cm}
+.antes-block p{margin-bottom:.22cm;font-style:italic}
+.antes-block p:last-child{margin-bottom:0}
+.ouro-block{border-left:4px solid var(--vinho);background:var(--offwhite);padding:.5cm .85cm;margin-top:.9cm;margin-bottom:.45cm}
+.ouro-label{font-size:7.5pt;font-weight:bold;letter-spacing:.18em;text-transform:uppercase;color:var(--vinho);display:block;margin-bottom:.22cm}
+.ouro-block p{font-style:italic;margin-bottom:.2cm}
+.ouro-block p:last-child{margin-bottom:0}
+.ouro-instruction{font-size:9.5pt;color:var(--text-sec);font-style:italic}
+.callout{border-left:4px solid var(--vinho);background:var(--offwhite);padding:.42cm .75cm;margin:.5cm 0}
+.callout p{margin:0;font-style:italic;font-size:10pt;line-height:1.72}
+.callout strong{color:var(--vinho)}
+table{width:100%;border-collapse:collapse;margin:.42cm 0 .7cm;font-size:10pt}
+thead tr{border-bottom:2.5px solid var(--vinho)}
+thead th{padding:.18cm .38cm;text-align:left;color:var(--navy);font-size:8.5pt;font-weight:bold;letter-spacing:.06em;text-transform:uppercase}
+tbody tr{border-bottom:1px solid var(--border)}
+tbody tr:nth-child(even){background-color:var(--offwhite)}
+tbody td{padding:.2cm .38cm;vertical-align:top;line-height:1.55}
+tbody td:first-child{color:var(--navy);font-weight:bold}
+.divider{border:none;border-top:1px solid var(--caramelo);margin:.55cm 0;opacity:.65}
+.doc-footer{margin-top:1.3cm;padding-top:.3cm;border-top:1px solid var(--caramelo);display:flex;justify-content:space-between;align-items:center;font-size:8.5pt;color:var(--text-sec);font-style:italic}
+.doc-footer-brand{font-weight:bold;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);font-size:8pt}
+.doc-footer-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--vinho);margin:0 .28cm;vertical-align:middle}
+</style>
+</head>
+<body>
+
+<div class="mod-header">
+  <span class="mod-eyebrow">Módulo 5 · Cadarn Healthtech</span>
+  <div class="mod-title">A Jogada Cadarn</div>
+</div>
+
+<div class="antes-block">
+  <span class="antes-label">Antes de ler</span>
+  <p>Se a raiz do problema da corretora (movimentação cadastral errada) e a raiz do problema da clínica (glosa de elegibilidade) são o mesmo problema visto de lados opostos — o que acontece quando você tem acesso às duas pontas ao mesmo tempo?</p>
+  <p>Este módulo responde com números, com estratégia e com arquitetura de produto.</p>
+</div>
+
+<div class="callout">
+  <p><strong>Como ler este módulo.</strong> Os módulos anteriores descreveram o mercado como ele é — fatos, dados, pesquisa. Este módulo é diferente: ele descreve como a Cadarn pretende atuar nesse mercado. É prescritivo, não descritivo. Os frameworks e nomes de produto são hipóteses estratégicas — material de trabalho a validar, não verdades consolidadas. Leia assim: como um dono de negócio avaliando uma oportunidade, não como um pesquisador buscando certeza.</p>
+</div>
+
+<hr class="divider">
+
+<span class="section-label">A posição estratégica</span>
+
+<h3>O ponto de partida: as duas pontas da cadeia</h3>
+<p>A Cadarn tem acesso a algo que pouquíssimos players no mercado têm: <strong>as duas pontas da cadeia da saúde suplementar ao mesmo tempo</strong>.</p>
+<p>Uma ponta é uma corretora de planos de saúde de pequeno porte — o lado da originação e manutenção do contrato, dos cadastros, das movimentações de vidas, das faturas conferidas mês a mês.</p>
+<p>A outra ponta é uma empresa de faturamento hospitalar — o lado do prestador, do ciclo de receita, do TISS/TUSS, das glosas, dos recursos, da conciliação.</p>
+<p>Ter as duas pontas nas mãos é o equivalente a ter um laboratório vivo com os dois problemas principais do setor. Você não precisa adivinhar onde a dor mora — você está dentro dela.</p>
+
+<h3>O Efeito Espelho das Ineficiências</h3>
+<p>Quando você olha para as duas pontas ao mesmo tempo, um padrão emerge:</p>
+<p><strong>Na corretora:</strong> a dor é a movimentação cadastral — funcionários demitidos que continuam na fatura, inclusões que atrasam, dados errados que a operadora rejeita.</p>
+<p><strong>Na clínica/hospital:</strong> a dor é a glosa de elegibilidade — o hospital tenta faturar um atendimento de uma vida que já deveria ter sido excluída do plano, a operadora recusa, o dinheiro fica parado.</p>
+<p>São os mesmos dados vistos de lados opostos. A exclusão que a corretora não processou a tempo virou a glosa que o hospital vai receber no fim do mês.</p>
+<p>Isso é o <strong>Efeito Espelho das Ineficiências</strong>: a ineficiência de uma ponta se reflete como prejuízo na outra. E do Efeito Espelho emerge o <strong>Insight de Ouro</strong>: a raiz de quase toda glosa administrativa e de toda cobrança indevida é a mesma — assimetria de dados cadastrais e lentidão na atualização da base de vidas.</p>
+
+<hr class="divider">
+
+<span class="section-label">A oferta</span>
+
+<h3>O Trio da Eficiência Operacional</h3>
+<p>A oferta para a corretora se estrutura em três produtos encadeados, cobrindo o ciclo de vida do cliente dentro da corretora: <strong>Entrada → Manutenção → Retenção</strong>.</p>
+<p><strong>Produto 1 — Automação de Onboarding (Entrada).</strong> Ataca o "Gargalo da Foto de Documento": a equipe perde horas digitando dados de documentos recebidos por foto no WhatsApp. A solução: OCR com IA extrai a foto do RG/CPF/CNH como JSON estruturado → analista confere (1 minuto vs 10 de digitação) → script automatizado digita no portal da operadora via RPA.</p>
+<p><strong>Produto 2 — Automação de Conciliação (Manutenção/Financeiro).</strong> Algoritmo cruza as vidas ativas na corretora com as vidas faturadas pela operadora e aponta divergências automaticamente. Valor entregue: recuperação imediata de dinheiro pago por vidas indevidas.</p>
+<p><strong>Produto 3 — Consultoria de Sinistralidade (Retenção).</strong> Dashboards preditivos com comunicação automatizada de alertas proativos sobre contratos em risco. Valor entregue: a corretora chega à renovação com dados técnicos, mune o RH do cliente com argumentos, e retém contratos que seriam perdidos.</p>
+
+<hr class="divider">
+
+<span class="section-label">O ROI</span>
+
+<h3>O ROI que fecha qualquer objeção de preço</h3>
+<p>Números reais de uma corretora no Lucro Presumido:</p>
+
+<table>
+  <thead>
+    <tr><th>Item</th><th>Valor</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Custo atual — analista de backoffice/ano (13 meses)</td><td>R$ 65.469</td></tr>
+    <tr><td>Setup da automação (única vez)</td><td>R$ 3.000</td></tr>
+    <tr><td>Mensalidade da automação</td><td>R$ 1.500/mês</td></tr>
+    <tr><td>Total anual da automação</td><td>R$ 21.000</td></tr>
+    <tr><td>Ganho líquido</td><td>R$ 44.469/ano</td></tr>
+    <tr><td>ROI</td><td>211,7%</td></tr>
+  </tbody>
+</table>
+
+<p>Em palavras diretas: <strong>para cada R$ 1,00 investido na automação, o cliente recupera R$ 2,11 por ano</strong>. E o investimento é menos de 1/3 do custo de um funcionário.</p>
+<p><strong>O ROI em horas:</strong> uma corretora com 100 inclusões/mês, a 10 minutos cada: 16 horas gastas em digitação. Com automação: 1 hora de conferência. Mais 20 a 30 horas salvas por analista por mês. Total: quase <strong>50 horas mensais</strong> devolvidas ao backoffice.</p>
+
+<hr class="divider">
+
+<span class="section-label">A objeção técnica</span>
+
+<h3>O contorno do Fator R</h3>
+<p>A objeção mais sofisticada: se a corretora automatiza e demite o analista de backoffice, a folha cai. Se cair abaixo de 28% do faturamento, ela perde o Fator R — e volta para o Anexo V, com alíquota de 15,5% em vez de 6%.</p>
+<p><strong>A resposta: não venda "corte de custo" — venda "Eficiência Estratégica".</strong> Três caminhos:</p>
+<p><strong>Realocação</strong> — o analista não é demitido; para de ser "digitador" e vira "consultor de sinistralidade". A folha permanece a mesma, mas a produtividade explode.</p>
+<p><strong>Concentração de folha</strong> — com a economia gerada, aumenta os salários dos funcionários de alta performance. Mantém a folha alta (acima de 28%), mas com estrutura mais enxuta e tecnológica.</p>
+<p><strong>Escala</strong> — a automação permite atender 2 ou 3 vezes mais clientes com os mesmos funcionários. Se a receita dobra e a folha se mantém, a rentabilidade escala.</p>
+
+<hr class="divider">
+
+<span class="section-label">A estratégia de entrada</span>
+
+<h3>Wizard of Oz — as três fases de validação</h3>
+<p>As três fases antes de construir o produto final:</p>
+<p><strong>Fase 1 (imediata):</strong> no faturamento hospitalar, extrair o relatório dos últimos 3-6 meses de glosas e filtrar as administrativas. Na corretora, listar as 3 maiores reclamações de reajuste ou divergência de fatura.</p>
+<p><strong>Fase 2 (2 semanas):</strong> em vez de construir uma plataforma, criar um script em Python conectado à API do Claude, processar os arquivos reais e medir tempo e erros versus o trabalho humano manual.</p>
+<p><strong>Fase 3 (1 mês):</strong> com os relatórios das duas pontas, calcular o ROI real — "nossa IA encontrou R$ 15.000 em erros de faturamento em 10 minutos" — e usar esse número como argumento de vendas para escalar.</p>
+<p><strong>O Cavalo de Troia:</strong> o processo de entrada de menor atrito e maior dor é a conciliação de comissões. Resolve esse problema primeiro, ganha a confiança do dono, e abre a porta para o restante do Trio da Eficiência.</p>
+
+<div class="ouro-block">
+  <span class="ouro-label">Frase de ouro</span>
+  <p>"A Cadarn não é um vendedor de software para o setor de saúde — é um ______________Tech que usa IA como vantagem competitiva para operar ______________ e ______________ mais rápido, barato e preciso que os concorrentes tradicionais. O Insight de Ouro é que a raiz da glosa do hospital e a raiz da cobrança indevida da corretora são ______________ — assimetria de dados cadastrais. E ter as duas pontas é o laboratório perfeito para provar e vender essa solução."</p>
+  <p class="ouro-instruction">Quatro espaços: o Módulo 6 é seu dicionário final.</p>
+</div>
+
+<div class="doc-footer">
+  <span class="doc-footer-brand">Cadarn Healthtech</span>
+  <span>Módulo 5 — A Jogada Cadarn <span class="doc-footer-dot"></span> Domínio Healthtech</span>
+</div>
+
+</body>
+</html>

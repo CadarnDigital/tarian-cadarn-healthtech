@@ -9,8 +9,7 @@
       "Glob(*)",
       "Grep(*)",
       "WebFetch(*)",
-      "WebSearch(*)",
-      "mcp__*"
+      "WebSearch(*)"
     ],
     "deny": [
       "Bash(rm -rf /)",
