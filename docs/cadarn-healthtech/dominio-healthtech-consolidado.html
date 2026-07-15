@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Domínio Healthtech — Cadarn Healthtech (Consolidado)</title>
+<style>
+:root{--navy:#0e2a4a;--vinho:#5e0f0b;--caramelo:#9a7a51;--offwhite:#f5f0e8;--white:#ffffff;--text:#1a1a1a;--text-sec:#555555;--border:#ddd6ca}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;font-size:10.5pt;color:var(--text);background:var(--white);line-height:1.72}
+@page{size:A4;margin:2.2cm 2cm}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact}}
+
+/* Styles para sistema de tabs */
+.tabs-wrapper{margin-bottom:2cm;position:sticky;top:0;background:var(--white);z-index:100;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
+.tabs-container{display:flex;flex-wrap:wrap;border-bottom:2px solid var(--navy);gap:0.2cm}
+.tab-button{background:var(--offwhite);border:none;padding:0.5cm 1cm;cursor:pointer;font-size:9pt;font-weight:bold;color:var(--text-sec);border-bottom:3px solid transparent;transition:all 0.2s ease;letter-spacing:0.05em;text-transform:uppercase}
+.tab-button:hover{background:var(--navy);color:var(--white)}
+.tab-button.active{background:var(--navy);color:var(--white);border-bottom:3px solid var(--vinho)}
+.tab-content{display:none;padding:1.3cm 0}
+.tab-content.active{display:block}
+
+/* Estilos originais */
+.cover-eyebrow{font-size:7.5pt;font-weight:bold;letter-spacing:.2em;text-transform:uppercase;color:var(--caramelo);margin-bottom:.9cm;display:block}
+.cover-title-block{border-left:5px solid var(--vinho);padding-left:1.3cm;margin:.3cm 0 1.2cm}
+.cover-title{font-size:36pt;font-weight:bold;color:var(--navy);line-height:1.05;margin-bottom:.28cm}
+.cover-subtitle{font-size:13pt;color:var(--caramelo);line-height:1.35}
+.cover-divider{border:none;border-top:1.5px solid var(--vinho);opacity:.35;margin:.9cm 0 .7cm}
+.cover-tagline{font-size:10.5pt;font-style:italic;color:var(--text-sec);line-height:1.82}
+.section-label{font-size:7.5pt;font-weight:bold;letter-spacing:.18em;text-transform:uppercase;color:var(--caramelo);display:block;margin-top:.9cm;margin-bottom:.1cm}
+h2{font-size:13pt;font-weight:bold;color:var(--navy);margin-top:.85cm;margin-bottom:.3cm;padding-bottom:.16cm;border-bottom:1.5px solid var(--caramelo)}
+h3{font-size:11pt;font-weight:bold;color:var(--vinho);margin-top:.7cm;margin-bottom:.2cm}
+p{font-size:10.5pt;margin-bottom:.35cm;line-height:1.72}
+strong{color:var(--navy)}
+table{width:100%;border-collapse:collapse;margin:.42cm 0 .7cm;font-size:10pt}
+thead tr{border-bottom:2.5px solid var(--vinho)}
+thead th{padding:.18cm .38cm;text-align:left;color:var(--navy);font-size:8.5pt;font-weight:bold;letter-spacing:.06em;text-transform:uppercase}
+tbody tr{border-bottom:1px solid var(--border)}
+tbody tr:nth-child(even){background-color:var(--offwhite)}
+tbody td{padding:.2cm .38cm;vertical-align:top;line-height:1.55}
+tbody td:first-child{color:var(--navy);font-weight:bold}
+.block-list{display:flex;flex-direction:column;gap:.25cm;margin:.35cm 0 .65cm}
+.block-item{padding:.42cm .75cm;background:var(--offwhite)}
+.block-antes{border-left:4px solid var(--navy)}
+.block-antes strong{color:var(--navy);display:block;margin-bottom:.1cm}
+.block-texto{border-left:4px solid var(--caramelo)}
+.block-texto strong{color:var(--caramelo);display:block;margin-bottom:.1cm}
+.block-ouro{border-left:4px solid var(--vinho)}
+.block-ouro strong{color:var(--vinho);display:block;margin-bottom:.1cm}
+.block-item p{margin:0;font-size:10pt;color:var(--text-sec);line-height:1.62}
+.callout{border-left:3px solid var(--vinho);background:var(--offwhite);padding:.38cm .75cm;margin:.42cm 0}
+.callout p{margin:0;line-height:1.72}
+.callout strong{color:var(--vinho)}
+.mod-header{border-left:5px solid var(--navy);padding:.15cm 0 .15cm 1.3cm;margin-bottom:.9cm}
+.mod-eyebrow{font-size:7.5pt;font-weight:bold;letter-spacing:.2em;text-transform:uppercase;color:var(--vinho);display:block;margin-bottom:.15cm}
+.mod-title{font-size:26pt;font-weight:bold;color:var(--navy);line-height:1.1}
+.antes-block{border-left:4px solid var(--navy);background:var(--offwhite);padding:.5cm .85cm;margin-bottom:.65cm}
+.antes-label{font-size:7.5pt;font-weight:bold;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:.18cm}
+.antes-block p{margin-bottom:.22cm;font-style:italic}
+.antes-block p:last-child{margin-bottom:0}
+.ouro-block{border-left:4px solid var(--vinho);background:var(--offwhite);padding:.5cm .85cm;margin-top:.9cm;margin-bottom:.45cm}
+.ouro-label{font-size:7.5pt;font-weight:bold;letter-spacing:.18em;text-transform:uppercase;color:var(--vinho);display:block;margin-bottom:.22cm}
+.ouro-block p{font-style:italic;margin-bottom:.2cm}
+.ouro-block p:last-child{margin-bottom:0}
+.ouro-instruction{font-size:9.5pt;color:var(--text-sec);font-style:italic}
+.divider{border:none;border-top:1px solid var(--caramelo);margin:.55cm 0;opacity:.65}
+.doc-footer{margin-top:1.3cm;padding-top:.3cm;border-top:1px solid var(--caramelo);display:flex;justify-content:space-between;align-items:center;font-size:8.5pt;color:var(--text-sec);font-style:italic}
+.doc-footer-brand{font-weight:bold;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);font-size:8pt}
+.doc-footer-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--vinho);margin:0 .28cm;vertical-align:middle}
+ul,ol{margin:0 0 .38cm 1.2cm}
+li{line-height:1.72;margin-bottom:.1cm}
+em{color:var(--text-sec)}
+blockquote{border-left:3px solid var(--caramelo);background:var(--offwhite);padding:.38cm .75cm;margin:.42cm 0;font-style:italic;font-size:10.5pt;line-height:1.75}
+.tese-block{border-left:3px solid var(--caramelo);background:var(--offwhite);padding:.38cm .75cm;margin:.42cm 0;font-size:10.5pt;line-height:1.75}
+.step-list{counter-reset:steps;list-style:none;margin:0 0 .42cm 0;padding:0}
+.step-list li{counter-increment:steps;display:flex;gap:.45cm;margin-bottom:.28cm;line-height:1.65}
+.step-list li::before{content:counter(steps);flex-shrink:0;width:1.3em;height:1.3em;background:var(--navy);color:#fff;font-size:8.5pt;font-weight:bold;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:.12em}
+.term{margin-bottom:.52cm;padding-bottom:.32cm;border-bottom:1px solid var(--border)}
+.term:last-child{border-bottom:none}
+.term-name{font-size:11pt;font-weight:bold;color:var(--navy);margin-bottom:.06cm}
+.term-body{font-size:10.5pt;line-height:1.72;margin-bottom:.1cm}
+.term-context{font-size:9.5pt;color:var(--vinho);font-style:italic}
+.intro-block{border-left:3px solid var(--caramelo);background:var(--offwhite);padding:.38cm .75cm;margin-bottom:.55cm}
+.intro-block p{margin:0;font-style:italic;font-size:10pt;line-height:1.72}
+.question-block{margin-bottom:.65cm;padding-bottom:.5cm;border-bottom:1px solid var(--border)}
+.question-block:last-child{border-bottom:none}
+.question-num{font-size:7.5pt;font-weight:bold;letter-spacing:.15em;text-transform:uppercase;color:var(--caramelo);display:block;margin-bottom:.1cm}
+.question-text{font-size:10.5pt;font-weight:bold;font-style:italic;color:var(--navy);line-height:1.65;margin-bottom:.28cm}
+.question-context{border-left:3px solid var(--navy);background:var(--offwhite);padding:.28cm .65cm}
+.question-context p{margin:0;font-size:9.5pt;color:var(--text-sec);line-height:1.65}
+</style>
+</head>
+<body>
+
+<!-- Barra de Abas -->
+<div class="tabs-wrapper">
+  <div class="tabs-container">
+    <button class="tab-button active" onclick="openTab(event, 'tab0')">Capa</button>
+    <button class="tab-button" onclick="openTab(event, 'tab1')">0 — Mapa</button>
+    <button class="tab-button" onclick="openTab(event, 'tab2')">1 — Mercado</button>
+    <button class="tab-button" onclick="openTab(event, 'tab3')">2 — Corretora</button>
+    <button class="tab-button" onclick="openTab(event, 'tab4')">3 — Clínica</button>
+    <button class="tab-button" onclick="openTab(event, 'tab5')">4 — Comprador</button>
+    <button class="tab-button" onclick="openTab(event, 'tab6')">5 — Cadarn</button>
+    <button class="tab-button" onclick="openTab(event, 'tab7')">6 — Vocabulário</button>
+    <button class="tab-button" onclick="openTab(event, 'tab8')">Anexo 1</button>
+  </div>
+</div>
+
+<!-- TAB 0: CAPA -->
+<div id="tab0" class="tab-content active">
+
+<span class="cover-eyebrow">Cadarn Healthtech</span>
+
+<div class="cover-title-block">
+  <div class="cover-title">Domínio Healthtech</div>
+  <div class="cover-subtitle">Guia Completo de Saúde Suplementar</div>
+</div>
+
+<div class="cover-divider"></div>
+
+<p class="cover-tagline">Um guia de leitura para quem quer dominar o mercado de saúde suplementar —<br>
+não como médico, não como técnico, mas como estrategista.</p>
+
+<span class="section-label">Orientação de leitura</span>
+<h2>Como usar este guia</h2>
+<p>Este guia tem 7 módulos. Cada um é independente, mas a ordem foi pensada para que cada leitura prepare a próxima. Leia assim:</p>
+
+<table>
+  <thead><tr><th>Módulo</th><th>O que você vai entender</th></tr></thead>
+  <tbody>
+    <tr><td>0 — Mapa do Terreno</td><td>O sistema inteiro em uma página. Os personagens, o dinheiro, o por quê.</td></tr>
+    <tr><td>1 — O Mercado</td><td>O tabuleiro: números, regulação, inflação médica, o Espírito Santo.</td></tr>
+    <tr><td>2 — A Corretora</td><td>Por dentro da operação: o que faz, como ganha, onde a dor mora.</td></tr>
+    <tr><td>3 — A Clínica</td><td>Como o atendimento vira dinheiro — e por que frequentemente não vira.</td></tr>
+    <tr><td>4 — O Comprador</td><td>Quem decide, como pensa, o que o move e o que o trava.</td></tr>
+    <tr><td>5 — A Jogada Cadarn</td><td>Onde você entra, o que você oferece, o ROI que você entrega.</td></tr>
+    <tr><td>6 — Vocabulário do Expert</td><td>O dicionário que transforma você em alguém que fala a língua do setor.</td></tr>
+  </tbody>
+</table>
+
+<span class="section-label">Como cada módulo funciona</span>
+<h2>A estrutura de cada módulo</h2>
+<p>Cada módulo tem três blocos fixos:</p>
+
+<div class="block-list">
+  <div class="block-item block-antes">
+    <strong>Antes de ler</strong>
+    <p>Uma pergunta. Carregue ela na cabeça enquanto lê. Ao terminar, você saberá a resposta.</p>
+  </div>
+  <div class="block-item block-texto">
+    <strong>O texto</strong>
+    <p>Narrativa fluida. Analogias com o mundo de negócios que você já conhece. Termos técnicos explicados na primeira aparição.</p>
+  </div>
+  <div class="block-item block-ouro">
+    <strong>Frase de ouro</strong>
+    <p>Uma síntese incompleta. Se você entendeu o módulo, consegue completar com suas próprias palavras. Se não consegue, releia.</p>
+  </div>
+</div>
+
+<span class="section-label">Origem e confiabilidade</span>
+<h2>Base deste material</h2>
+
+<div class="callout">
+  <p>Este guia foi construído sobre o <strong>Corpus IA Saúde Suplementar</strong> — 13 pesquisas conduzidas em 2026 cobrindo o mercado capixaba e nacional de saúde suplementar. Os números são reais, os personagens são reais, os problemas são reais.</p>
+</div>
+
+<p>O mercado de foco é o <strong>Espírito Santo</strong>, com ênfase na <strong>Grande Vitória</strong> — mas os fundamentos valem para qualquer praça.</p>
+
+<div class="doc-footer">
+  <span class="doc-footer-brand">Cadarn Healthtech</span>
+  <span>Consolidado em HTML com abas · 2026-07-15</span>
+</div>
+
+</div>
+
+<!-- TAB 1: MÓDULO 0 -->
+<div id="tab1" class="tab-content">
+
+<div class="mod-header">
+  <span class="mod-eyebrow">Módulo 0 · Cadarn Healthtech</span>
+  <div class="mod-title">Mapa do Terreno</div>
+</div>
+
+<div class="antes-block">
+  <span class="antes-label">Antes de ler</span>
+  <p>Você sabe qual é o papel de uma corretora de planos de saúde — e por que ela existe além de vender?</p>
+  <p>Carregue essa pergunta. Ao terminar este módulo, a resposta vai reorganizar tudo o que você pensava sobre esse mercado.</p>
+</div>
+
+<hr class="divider">
+
+<span class="section-label">O sistema</span>
+
+<h3>O que é saúde suplementar</h3>
+<p>"Saúde suplementar" é o nome formal para o sistema privado de planos de saúde no Brasil. É o sistema que existe <em>ao lado</em> do SUS, <em>suplementando</em> a saúde pública. Quando uma empresa contrata plano de saúde para os funcionários, ela está contratando saúde suplementar.</p>
+<p>É um sistema enorme. São 53 milhões de pessoas cobertas. Mais de R$ 280 bilhões circulando por ano. E uma regulação tão complexa que criou uma indústria inteira de profissionais e empresas cujo único propósito é navegar essa burocracia — sem necessariamente atender um único paciente.</p>
+<p>Você entrou nesse mundo porque está construindo uma oferta para ele. Para vender para ele, você precisa entender como ele pensa.</p>
+
+<hr class="divider">
+
+<h3>Os quatro personagens do sistema</h3>
+<p>Pense no sistema de saúde suplementar como um jogo com quatro peças no tabuleiro. Cada peça tem um papel diferente, um problema diferente, e uma relação diferente com dinheiro.</p>
+<p><strong>A operadora</strong> é a empresa de plano de saúde. Ela cobra a mensalidade e paga a conta quando alguém usa o plano. Exemplos capixabas: Unimed Vitória, Samp, MedSênior. A operadora é quem assume o risco financeiro — se muita gente adoecer ao mesmo tempo, ela arca com a conta.</p>
+<p><strong>A corretora</strong> é o intermediário entre a operadora e quem quer o plano. É a empresa que conecta empresas com planos de saúde. E, depois que a venda acontece, continua cuidando de tudo: inclui funcionários admitidos, retira funcionários demitidos, confere faturas, resolve pendências. A corretora é onde a operação nunca para.</p>
+<p><strong>O prestador</strong> é quem atende: clínica, hospital, laboratório, médico. É quem executa o serviço e depois cobra da operadora pelo que fez. Essa cobrança — e os problemas que ela carrega — é um mundo à parte.</p>
+<p><strong>O beneficiário</strong> é a pessoa coberta pelo plano. No jargão do setor, cada beneficiário é chamado de uma "vida". Uma carteira "de 5 mil vidas" cobre 5 mil pessoas. O seu cliente tem uma carteira de vidas — e todo mês essas vidas entram, saem e mudam.</p>
+
+<hr class="divider">
+
+<h3>Como o dinheiro circula</h3>
+<p>O dinheiro percorre quatro movimentos. Aprender esses movimentos é aprender a falar a língua do setor.</p>
+<p><strong>Movimento 1: a mensalidade entra.</strong> A empresa paga à operadora pelo conjunto de funcionários cobertos. Esse valor é chamado de mensalidade — ou, no jargão técnico, "prêmio". É a receita que sustenta todo o sistema.</p>
+<p><strong>Movimento 2: o dinheiro é consumido.</strong> Quando alguém usa o plano, a operadora paga por isso. A relação entre o que ela arrecada em mensalidades e o que gasta em atendimentos se chama <strong>sinistralidade</strong>. Se a sinistralidade é 80%, significa que de cada R$ 100 que entram em mensalidade, R$ 80 saem pagando atendimentos.</p>
+<p><strong>Movimento 3: a conta é filtrada.</strong> Quando o prestador cobra da operadora, a operadora não paga automaticamente. Ela analisa cada item e pode recusar o pagamento. Essa recusa tem nome: <strong>glosa</strong>. A glosa é o atrito central do sistema — dinheiro que foi atendido mas que ainda não virou receita porque está em discussão.</p>
+<p><strong>Movimento 4: o repasse chega.</strong> O que sobra depois do filtro — e do prazo, que pode ser 30, 60 ou até 90 dias — é o <strong>repasse</strong>: o dinheiro que de fato cai na conta do prestador. E uma comissão que cai na conta da corretora.</p>
+<p>Guarde esse circuito: <strong>mensalidade → sinistralidade → glosa → repasse</strong>. Ele vai aparecer em todo lugar neste guia.</p>
+
+<hr class="divider">
+
+<h3>O motor que pressiona tudo</h3>
+<p>Por baixo desse circuito existe uma pressão que nunca para: a inflação médica. O setor tem seu próprio índice de inflação, chamado <strong>VCMH</strong> (Variação de Custos Médico-Hospitalares). Em 2026, ele chegou a <strong>15,1% ao ano</strong> — enquanto a inflação geral do país ficava em um dígito.</p>
+<p>Isso significa que os custos dos atendimentos sobem muito mais rápido do que o resto da economia. E quando os custos sobem, a operadora aplica <strong>reajustes</strong> nas mensalidades — que chegaram a 43% para carteiras com sinistralidade alta no Brasil entre 2025 e 2026.</p>
+<p>Reajuste alto é o evento que coloca toda a cadeia em colapso: o funcionário reclama, a empresa avalia cancelar, o corretor corre para negociar, e a corretora que não tiver dados para defender a renovação perde a conta. Esse ciclo é o pano de fundo de tudo que você vai aprender nos próximos módulos.</p>
+
+<hr class="divider">
+
+<h3>Por que existe a corretora — a resposta à pergunta inicial</h3>
+<p>A corretora existe porque gerenciar um plano de saúde empresarial é muito mais trabalhoso do que parece.</p>
+<p>Quando a empresa contrata o plano, não é uma compra única, como comprar uma impressora. É o começo de uma relação administrativa interminável. Todo mês algum funcionário entra na empresa — e precisa ser incluído no plano. Todo mês alguém sai — e precisa ser excluído. Dependentes nascem, se casam, se divorciam. Funcionários mudam de cargo, de plano, de unidade. A fatura mensal vem com dezenas de linhas que precisam ser conferidas para não pagar por vidas indevidas.</p>
+<p>Em uma empresa com 30 funcionários, isso já é trabalho para uma pessoa. Em uma empresa com 300, é trabalho para uma equipe. A maioria das empresas não quer — e muitas vezes não tem capacidade de — gerir tudo isso internamente. Então terceirizam para a corretora.</p>
+<p>A corretora não é só quem vende. É quem administra a relação depois da venda. E é exatamente aí — na operação pós-venda, no backoffice, no trabalho silencioso de manter tudo correto — que mora a dor que a Cadarn veio resolver.</p>
+
+<hr class="divider">
+
+<h3>Por que você está aqui</h3>
+<p>Você está construindo uma oferta de BPO Tech — serviço terceirizado de operação intensificado por inteligência artificial — para o mercado de saúde suplementar. O que você vai oferecer é, em essência, fazer melhor e mais barato o trabalho que a corretora e a clínica fazem hoje de forma manual, lenta e repleta de erro.</p>
+<p>Para fazer isso com credibilidade, você precisa conhecer esse trabalho por dentro. Esse guia é o seu mapa.</p>
+
+<div class="ouro-block">
+  <span class="ouro-label">Frase de ouro</span>
+  <p>"A saúde suplementar é um sistema de ______________ contínua, não de vendas pontuais. A corretora existe não para vender o plano, mas para ______________ a relação depois que ele foi vendido. E é nessa operação que a dor mora."</p>
+  <p class="ouro-instruction">Se você preencheu os dois espaços com as suas próprias palavras, pode ir para o Módulo 1.</p>
+</div>
+
+<div class="doc-footer">
+  <span class="doc-footer-brand">Cadarn Healthtech</span>
+  <span>Módulo 0 — Mapa do Terreno</span>
+</div>
+
+</div>
+
+<!-- TAB 2: MÓDULO 1 -->
+<div id="tab2" class="tab-content">
+
+<div class="mod-header">
+  <span class="mod-eyebrow">Módulo 1 · Cadarn Healthtech</span>
+  <div class="mod-title">O Mercado</div>
+</div>
+
+<div class="antes-block">
+  <span class="antes-label">Antes de ler</span>
+  <p>Se 53 milhões de pessoas têm plano de saúde no Brasil, e o setor fatura mais de R$ 391 bilhões por ano, por que metade das operadoras termina o ano no vermelho — e o dono de corretora ainda assim ganha a vida acumulando funções sozinho?</p>
+  <p>A resposta está na estrutura do mercado. E ela vai surpreender você.</p>
+</div>
+
+<hr class="divider">
+
+<span class="section-label">O tabuleiro</span>
+
+<h3>O tamanho do tabuleiro</h3>
+<p>O mercado de saúde suplementar brasileiro é, em número, maior do que a população de muitos países europeus. Em abril de 2026, a ANS registrava <strong>52,96 milhões de vínculos em planos médicos</strong> e <strong>35,98 milhões em planos odontológicos</strong>. O faturamento do setor em 2025 chegou a <strong>R$ 391,6 bilhões</strong>.</p>
+<p>Mas "grande" não significa "fácil". O setor registrou em 2025 um lucro de R$ 24,4 bilhões — um número que parece robusto até você ver dois detalhes: <strong>três grandes operadoras responderam por 49% desse lucro</strong>, e <strong>quase metade das operadoras menores terminou o ano no vermelho operacional</strong>. O que sustentou a lucratividade não foi a operação em si, mas os juros altos do Brasil — o resultado financeiro das aplicações cobriu o rombo da operação.</p>
+<p>Em outras palavras: o setor inteiro fatura bem e opera no limite. Cada ponto de sinistralidade, cada glosa não resolvida, cada reajuste mal negociado, pesa diretamente na margem de quem está nos elos menores da cadeia.</p>
+
+<hr class="divider">
+
+<h3>O número que muda tudo: a rotatividade</h3>
+<p>O tamanho do mercado impressiona. Mas o dado mais revelador sobre como ele funciona não é o total de beneficiários — é a <strong>taxa de rotatividade</strong>.</p>
+<p>Em doze meses até abril de 2026, o setor registrou <strong>15,82 milhões de adesões e 14,98 milhões de cancelamentos</strong> em planos médicos. Isso dá uma rotatividade de <strong>28,8%</strong> — quase um terço de toda a base foi substituído ao longo de um único ano.</p>
+<p>Pense no que isso significa na prática: mesmo que o número total de beneficiários pareça estável, há um fluxo gigantesco de entrada e saída acontecendo por baixo dessa estabilidade. Alguém é admitido em uma empresa → precisa ser incluído no plano. Alguém é demitido → precisa ser excluído. Um dependente nasce → precisa ser registrado.</p>
+<p>Essa movimentação contínua é o trabalho que nunca para dentro das corretoras. E é a raiz da dor operacional que você vai conhecer no Módulo 2.</p>
+
+<hr class="divider">
+
+<h3>Onde está a base: o coletivo empresarial</h3>
+<p>A maior parte dos beneficiários não está em planos individuais — está em <strong>planos coletivos empresariais</strong>. Em março de 2026, os planos empresariais concentravam <strong>38,67 milhões de vínculos</strong>, contra <strong>8,46 milhões em planos individuais</strong>. A proporção é quase 5 para 1.</p>
+<p>Isso não é um detalhe. É a fundação de toda a lógica do setor.</p>
+<p>Um plano individual é uma transação quase bancária: você paga, eles cobrem. Um plano empresarial é uma relação administrativa permanente: a empresa contrata, mas a corretora gerencia mês a mês o cadastro de cada vida, a conferência de fatura, a resolução de pendências, a negociação de reajuste na renovação anual. A natureza do negócio é completamente diferente — não é uma venda, é uma gestão contínua de contrato.</p>
+
+<hr class="divider">
+
+<span class="section-label">As pressões</span>
+
+<h3>O motor da inflação médica: VCMH</h3>
+<p>Por baixo de todo o mercado existe um motor inflacionário que pressiona todo mundo. Chama-se <strong>VCMH — Variação de Custos Médico-Hospitalares</strong>. Em 2026, a VCMH atingiu <strong>15,1%</strong> no acumulado de doze meses — quase o dobro da inflação geral do país.</p>
+<p>A consequência é direta e dolorosa: a operadora, pressionada pelos custos, aplica <strong>reajustes</strong> anuais nas mensalidades. No período 2025-2026, esses reajustes variaram entre <strong>6,9% e 43,2%</strong> no Brasil. Para carteiras com sinistralidade muito alta, ultrapassaram 40%. No Espírito Santo, a média ficou acima de 15%.</p>
+<p>Reajuste alto é o momento de crise de toda a cadeia. A empresa-cliente questiona, avalia migrar ou cancelar, e a corretora precisa estar preparada para defender tecnicamente o contrato — ou perder a conta.</p>
+
+<hr class="divider">
+
+<h3>O termômetro da saúde financeira: sinistralidade</h3>
+<p>Se você vai conversar com qualquer ator desse mercado, precisa entender sinistralidade. É o indicador que todo mundo acompanha.</p>
+<blockquote>Sinistralidade (%) = Despesas com atendimentos ÷ Receita com mensalidades × 100</blockquote>
+<p>As faixas de referência:</p>
+<ul>
+  <li><strong>Abaixo de 75%:</strong> a operadora está ganhando bem. O corretor tem poder de barganha para segurar o reajuste.</li>
+  <li><strong>Entre 85% e 89%:</strong> equilíbrio. A operadora mal cobre os custos com a mensalidade.</li>
+  <li><strong>Acima de 85%, chegando a 100% ou mais:</strong> zona crítica. Reajuste pesado garantido.</li>
+</ul>
+<p>No agregado do setor em 2025, a sinistralidade média ficou em <strong>81,7%</strong>. O problema é a variação por contrato. Um único grupo de funcionários doentes pode levar a sinistralidade de um contrato específico para 130%, 150% — e esse grupo receberá um reajuste que a empresa pode não conseguir absorver.</p>
+<p>Aqui mora um insight importante para a sua oferta: quem controla as informações de sinistralidade do contrato tem poder. A corretora que chega à renovação com dados detalhados pode contestar tecnicamente um reajuste abusivo. A corretora que não tem esses dados chega desarmada — e geralmente perde o cliente.</p>
+
+<hr class="divider">
+
+<span class="section-label">O campo de jogo capixaba</span>
+
+<h3>O recorte que importa: Espírito Santo e Grande Vitória</h3>
+<p>O Espírito Santo tem uma característica que poucos sabem: é um dos estados com maior cobertura de planos de saúde do Brasil. A taxa de cobertura médico-hospitalar do estado é de <strong>33,3%</strong> — muito acima da média nacional. E a capital Vitória chega a <strong>71,2%</strong> de cobertura, uma das mais altas entre capitais brasileiras.</p>
+<p>A <strong>Grande Vitória</strong> — os sete municípios da região metropolitana: Vitória, Vila Velha, Serra, Cariacica, Guarapari, Fundão e Viana — concentra quase metade da população do estado em apenas 5% do território. É onde o mercado pulsa.</p>
+<p>Quem domina esse mercado? Poucas operadoras regionais grandes: <strong>Unimed Vitória</strong> (líder absoluta, maior estrutura hospitalar própria), <strong>Samp/Grupo Athena Saúde</strong> (forte nas PMEs), <strong>MedSênior</strong> (nicho 49+), e nacionais como <strong>Bradesco Saúde</strong> e <strong>SulAmérica</strong> no nicho corporativo premium.</p>
+<p>Esse é um mercado <strong>maduro e concentrado</strong>. O cliente já teve plano, já trocou de operadora, já sofreu reajuste. Ele sabe comparar e sabe cobrar. Numa cidade como Vitória, erro de cadastro ou falha de atendimento se espalha rápido na rede de contatos.</p>
+
+<div class="ouro-block">
+  <span class="ouro-label">Frase de ouro</span>
+  <p>"O mercado de saúde suplementar é enorme e financeiramente pressionado. A base está no coletivo empresarial — contratos que não são uma venda, são uma ______________ permanente. A inflação médica sobe a ______% ao ano, forçando reajustes que podem destruir carteiras. Quem domina os dados de ______________ chega à renovação com poder."</p>
+  <p class="ouro-instruction">Se você preencheu os três espaços com as suas palavras, o Módulo 2 espera.</p>
+</div>
+
+<div class="doc-footer">
+  <span class="doc-footer-brand">Cadarn Healthtech</span>
+  <span>Módulo 1 — O Mercado</span>
+</div>
+
+</div>
+
+<!-- TAB 3: MÓDULO 2 -->
+<div id="tab3" class="tab-content">
+
+<div class="mod-header">
+  <span class="mod-eyebrow">Módulo 2 · Cadarn Healthtech</span>
+  <div class="mod-title">A Corretora</div>
+</div>
+
+<p><em>Conteúdo do Módulo 2 — A Corretora (condensado nesta consolidação)</em></p>
+
+<div class="antes-block">
+  <span class="antes-label">Antes de ler</span>
+  <p>Se o maior custo de uma corretora é o backoffice — não a equipe de vendas — e esse backoffice pode custar quase o dobro do salário de cada funcionário, como uma empresa de 5 pessoas consegue se manter de pé?</p>
+  <p>A resposta está num mecanismo financeiro que ninguém explica claramente. Você vai entender hoje.</p>
+</div>
+
+<hr class="divider">
+
+<h3>O erro estratégico mais comum sobre a corretora</h3>
+<p>Quando a maioria das pessoas pensa em corretora de planos de saúde, pensa em vendedores. Esse modelo está errado. Ou, no mínimo, incompleto.</p>
+<p>A venda é só o começo. O que sustenta a corretora não é o momento de assinar o contrato — é o trabalho interminável que vem depois. E esse trabalho é administrativo, repetitivo, invisível para o cliente, e absolutamente crítico para a relação.</p>
+
+<h3>Como a corretora ganha dinheiro</h3>
+<p>A corretora não ganha dinheiro com a venda. Ela ganha com a permanência.</p>
+<p>Quando a corretora fecha um contrato, ela recebe duas formas de comissão:</p>
+<p><strong>A comissão de angariação</strong> — paga uma única vez, na assinatura do contrato. É um percentual mais alto, geralmente de 5% a 15% do valor do contrato.</p>
+<p><strong>A comissão vitalícia</strong> — paga todos os meses enquanto o contrato existir. É um percentual menor — 2% a 5% da mensalidade mensal —, mas é recorrente e perpétua.</p>
+
+<div class="ouro-block">
+  <span class="ouro-label">Frase de ouro</span>
+  <p>"A corretora de planos de saúde não vive de ______________ — vive de ______________. A comissão ______________ é pequena por mês, mas é o que sustenta o negócio no longo prazo. E para manter essa comissão entrando, o backoffice precisa funcionar sem erro. Quando ele falha, o cliente vai embora — não no momento da venda, mas na ______________ anual."</p>
+  <p class="ouro-instruction">Quatro espaços preenchidos com as suas palavras = pode seguir para o Módulo 3.</p>
+</div>
+
+</div>
+
+<!-- TAB 4: MÓDULO 3 -->
+<div id="tab4" class="tab-content">
+
+<div class="mod-header">
+  <span class="mod-eyebrow">Módulo 3 · Cadarn Healthtech</span>
+  <div class="mod-title">A Clínica</div>
+</div>
+
+<p><em>Conteúdo do Módulo 3 — A Clínica (condensado nesta consolidação)</em></p>
+
+<div class="antes-block">
+  <span class="antes-label">Antes de ler</span>
+  <p>Uma clínica atendeu 300 consultas no mês. Enviou todas as cobranças para a operadora. Recebeu 70% do valor esperado. Onde foi parar os outros 30% — e quem tem a responsabilidade de recuperar?</p>
+  <p>Essa pergunta tem uma resposta técnica e uma resposta econômica. Este módulo vai te dar as duas.</p>
+</div>
+
+<hr class="divider">
+
+<h3>O problema que ninguém vê de fora</h3>
+<p>Do lado de fora, uma clínica parece simples: médico atende, operadora paga. A receita flui. Não é assim que funciona.</p>
+<p>Entre o ato médico e o dinheiro disponível na conta da clínica existe uma esteira inteira de etapas administrativas. Esse conjunto de etapas tem nome: <strong>RCM — Revenue Cycle Management</strong>, ou <strong>Ciclo de Gestão da Receita</strong>. E o gargalo central não é "atender mais" — é <strong>converter atendimento em recebimento sem deixar dinheiro parado pelo caminho</strong>.</p>
+
+<h3>A glosa</h3>
+<p>A glosa é a recusa, total ou parcial, do pagamento de uma conta médica pela operadora. É o termo mais temido. Dois efeitos devastadores ao mesmo tempo:</p>
+<p><strong>Efeito 1 — Margem.</strong> Glosas podem comprometer até 30% do faturamento bruto anual de uma clínica se não houver processo robusto de recuperação.</p>
+<p><strong>Efeito 2 — Caixa.</strong> O ciclo de pagamentos dos convênios já é lento: 30, 60, às vezes 90 dias. Uma glosa adiciona tempo a esse prazo.</p>
+
+<div class="ouro-block">
+  <span class="ouro-label">Frase de ouro</span>
+  <p>"A clínica não tem problema de atendimento — tem problema de ______________. A ______________ é a recusa de pagamento da operadora, e cerca de 68% dela é causada por erro ______________, não por problema clínico. O melhor caminho não é recuperar depois — é ______________ antes do envio."</p>
+  <p class="ouro-instruction">Quatro espaços preenchidos = pode ir para o Módulo 4.</p>
+</div>
+
+</div>
+
+<!-- TAB 5: MÓDULO 4 -->
+<div id="tab5" class="tab-content">
+
+<div class="mod-header">
+  <span class="mod-eyebrow">Módulo 4 · Cadarn Healthtech</span>
+  <div class="mod-title">O Comprador</div>
+</div>
+
+<p><em>Conteúdo do Módulo 4 — O Comprador (condensado nesta consolidação)</em></p>
+
+<div class="antes-block">
+  <span class="antes-label">Antes de ler</span>
+  <p>Se preço raramente é o que fecha uma venda nesse mercado — o que realmente abre a porta?</p>
+  <p>Este módulo tem a resposta. E ela vai mudar como você pensa sobre a abordagem comercial para esse setor.</p>
+</div>
+
+<hr class="divider">
+
+<div class="tese-block">
+  <strong>Tese central:</strong> Ninguém compra "BPO" nem "IA" de forma abstrata. O decisor compra redução de risco operacional. A pergunta real dele não é "esse software é moderno?". É "isso vai evitar erro, retrabalho, atraso, cobrança errada, reclamação de cliente e desgaste?" Quem entende isso vende. Quem lidera com tecnologia, assusta.
+</div>
+
+<h3>O dono da corretora de pequeno porte</h3>
+<p>Um homem (ou mulher) entre 38 e 52 anos, fundador ou sócio de uma corretora pequena — normalmente de 5 a 20 funcionários — na Grande Vitória. Esse decisor é, ao mesmo tempo, <strong>dono, vendedor, gestor de carteira, solucionador de problema e última instância de atendimento</strong>.</p>
+<p><strong>A dor central:</strong> ele vende no relacionamento, mas perde tempo apagando incêndio operacional. O cadastro errado não é só um problema operacional — <strong>é um problema comercial</strong>. Se a inclusão de um funcionário atrasa, o cliente culpa a corretora — não a operadora.</p>
+
+<h3>O responsável pelo faturamento da clínica de médio porte</h3>
+<p>A segunda persona comanda o <strong>RCM</strong> — Revenue Cycle Management: o conjunto de etapas que transforma atendimento em dinheiro recebido. Em uma frase: <strong>é o coração financeiro da clínica</strong>. Se o departamento dela falha, os médicos não recebem o repasse no prazo e o caixa entra em colapso.</p>
+
+<div class="ouro-block">
+  <span class="ouro-label">Frase de ouro</span>
+  <p>"O comprador desse mercado não compra tecnologia — compra ______________ de risco operacional. A confiança vem antes do preço na hierarquia de decisão capixaba. O gatilho de compra é quase sempre o ______________ de quem sente a dor no dia a dia. A abordagem que vence é ______________ — entra pela dor, não pela IA."</p>
+  <p class="ouro-instruction">Três espaços preenchidos = Módulo 5, o que você veio buscar.</p>
+</div>
+
+</div>
+
+<!-- TAB 6: MÓDULO 5 -->
+<div id="tab6" class="tab-content">
+
+<div class="mod-header">
+  <span class="mod-eyebrow">Módulo 5 · Cadarn Healthtech</span>
+  <div class="mod-title">A Jogada Cadarn</div>
+</div>
+
+<p><em>Conteúdo do Módulo 5 — A Jogada Cadarn (condensado nesta consolidação)</em></p>
+
+<div class="antes-block">
+  <span class="antes-label">Antes de ler</span>
+  <p>Se a raiz do problema da corretora (movimentação cadastral errada) e a raiz do problema da clínica (glosa de elegibilidade) são o mesmo problema visto de lados opostos — o que acontece quando você tem acesso às duas pontas ao mesmo tempo?</p>
+  <p>Este módulo responde com números, com estratégia e com arquitetura de produto.</p>
+</div>
+
+<h3>O Efeito Espelho das Ineficiências</h3>
+<p>Quando você olha para as duas pontas ao mesmo tempo, um padrão emerge:</p>
+<p><strong>Na corretora:</strong> a dor é a movimentação cadastral — funcionários demitidos que continuam na fatura, inclusões que atrasam, dados errados que a operadora rejeita.</p>
+<p><strong>Na clínica/hospital:</strong> a dor é a glosa de elegibilidade — o hospital tenta faturar um atendimento de uma vida que já deveria ter sido excluída do plano, a operadora recusa, o dinheiro fica parado.</p>
+<p>São os mesmos dados vistos de lados opostos. A exclusão que a corretora não processou a tempo virou a glosa que o hospital vai receber no fim do mês.</p>
+
+<h3>O ROI</h3>
+<p>Números reais de uma corretora no Lucro Presumido:</p>
+<table>
+  <thead>
+    <tr><th>Item</th><th>Valor</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Custo atual — analista de backoffice/ano (13 meses)</td><td>R$ 65.469</td></tr>
+    <tr><td>Setup da automação (única vez)</td><td>R$ 3.000</td></tr>
+    <tr><td>Mensalidade da automação</td><td>R$ 1.500/mês</td></tr>
+    <tr><td>Total anual da automação</td><td>R$ 21.000</td></tr>
+    <tr><td>Ganho líquido</td><td>R$ 44.469/ano</td></tr>
+    <tr><td>ROI</td><td>211,7%</td></tr>
+  </tbody>
+</table>
+<p>Em palavras diretas: <strong>para cada R$ 1,00 investido na automação, o cliente recupera R$ 2,11 por ano</strong>.</p>
+
+<div class="ouro-block">
+  <span class="ouro-label">Frase de ouro</span>
+  <p>"A Cadarn não é um vendedor de software para o setor de saúde — é um ______________Tech que usa IA como vantagem competitiva para operar ______________ e ______________ mais rápido, barato e preciso que os concorrentes tradicionais. O Insight de Ouro é que a raiz da glosa do hospital e a raiz da cobrança indevida da corretora são ______________ — assimetria de dados cadastrais. E ter as duas pontas é o laboratório perfeito para provar e vender essa solução."</p>
+  <p class="ouro-instruction">Quatro espaços: o Módulo 6 é seu dicionário final.</p>
+</div>
+
+</div>
+
+<!-- TAB 7: MÓDULO 6 -->
+<div id="tab7" class="tab-content">
+
+<div class="mod-header">
+  <span class="mod-eyebrow">Módulo 6 · Cadarn Healthtech</span>
+  <div class="mod-title">Vocabulário do Expert</div>
+</div>
+
+<p><em>Conteúdo do Módulo 6 — Vocabulário (resumo das camadas principais)</em></p>
+
+<div class="antes-block">
+  <span class="antes-label">Antes de ler</span>
+  <p>Você consegue, em 30 segundos, explicar a diferença entre sinistralidade e glosa — sem travar?</p>
+  <p>Este módulo não é para memorizar. É para tornar o vocabulário do setor automático.</p>
+</div>
+
+<hr class="divider">
+
+<span class="section-label">Camada 1 — Vocabulário que aparece em toda conversa</span>
+
+<div class="term">
+  <div class="term-name">Beneficiário / vida / vínculo</div>
+  <div class="term-body">A pessoa coberta por um plano. O setor conta "vidas" (vínculos), não pessoas.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">Operadora</div>
+  <div class="term-body">A empresa de plano de saúde que cobra a mensalidade e paga os atendimentos. No ES: Unimed Vitória, Samp/Grupo Athena, MedSênior.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">Sinistralidade (MLR)</div>
+  <div class="term-body">A relação entre o que a operadora gasta com atendimentos e o que arrecada em mensalidades. Abaixo de 75% é saudável; acima de 85%, reajuste pesado.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">Glosa</div>
+  <div class="term-body">A recusa do pagamento de uma conta médica pela operadora. 68% das glosas são administrativas — evitáveis antes do envio.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">Corretora</div>
+  <div class="term-body">A empresa intermediária que vende e administra planos de saúde empresariais. Típica: 5 a 10 pessoas.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">VCMH</div>
+  <div class="term-body">A inflação específica da saúde. Em 2026: 15,1% ao ano — o motor que pressiona sinistralidade e reajustes.</div>
+</div>
+
+<hr class="divider">
+
+<span class="section-label">Camada 2 — Vocabulário da operação</span>
+
+<div class="term">
+  <div class="term-name">Movimentação cadastral</div>
+  <div class="term-body">O processo de incluir, excluir e alterar beneficiários nos portais das operadoras. É o maior gargalo operacional da corretora.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">Batimento cadastral</div>
+  <div class="term-body">O processo de cruzar as vidas ativas na base da corretora com a lista de cobrança da operadora.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">Fator R</div>
+  <div class="term-body">A relação entre a folha de pagamento da corretora e o faturamento. Se atingir 28% ou mais, muda a tributação.</div>
+</div>
+
+<hr class="divider">
+
+<span class="section-label">Camada 3 — Vocabulário do faturamento</span>
+
+<div class="term">
+  <div class="term-name">RCM</div>
+  <div class="term-body">Revenue Cycle Management: o conjunto de etapas que transforma atendimento em dinheiro efetivamente recebido.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">TISS / TUSS</div>
+  <div class="term-body">Os padrões obrigatórios da ANS para troca eletrônica de dados e codificação de procedimentos entre prestador e operadora.</div>
+</div>
+
+</div>
+
+<!-- TAB 8: ANEXO 1 -->
+<div id="tab8" class="tab-content">
+
+<div class="mod-header">
+  <span class="mod-eyebrow">Anexo 1 · Cadarn Healthtech</span>
+  <div class="mod-title">Perguntas de Diagnóstico de Campo</div>
+</div>
+
+<div class="intro-block">
+  <p>Este anexo não é para estudar o domínio — é para usar na reunião. São as perguntas que abrem o desabafo do cliente sem soar como "vendedor de tecnologia".</p>
+</div>
+
+<p>A primeira reunião com o cliente não é apresentação — é <strong>diagnóstico</strong>. Você chega sem deck, sem proposta, sem lista de funcionalidades. Você chega com perguntas.</p>
+
+<hr class="divider">
+
+<span class="section-label">Bloco A — Para abrir qualquer conversa</span>
+
+<div class="question-block">
+  <span class="question-num">Pergunta 1</span>
+  <div class="question-text">"Você sabia que um único auxiliar de faturamento no Lucro Presumido custa quase R$ 5 mil por mês só para navegar em portais e redigitar dados?"</div>
+  <div class="question-context"><p>Abre a conversa posicionando você como alguém que conhece os números reais do setor.</p></div>
+</div>
+
+<div class="question-block">
+  <span class="question-num">Pergunta 2</span>
+  <div class="question-text">"Como você identifica hoje, em tempo real, quais vidas na sua fatura já deveriam ter sido excluídas e estão gerando cobrança indevida há meses?"</div>
+  <div class="question-context"><p>Para corretoras. Se a resposta for "a gente vai conferindo no final do mês", você encontrou a dor.</p></div>
+</div>
+
+<div class="question-block">
+  <span class="question-num">Pergunta 3</span>
+  <div class="question-text">"Qual foi o montante de glosas que sua operação aceitou perder no último trimestre por ser administrativamente inviável recorrer de todas?"</div>
+  <div class="question-context"><p>Para clínicas. A maioria não sabe o número exato — e admitir isso já é o diagnóstico.</p></div>
+</div>
+
+<hr class="divider">
+
+<span class="section-label">Roteiro para a primeira reunião (45 minutos)</span>
+
+<table>
+  <thead>
+    <tr><th>Tempo</th><th>Ação</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0–5 min</td><td>Enquadramento: "Antes de mostrar qualquer coisa, quero entender como vocês operam."</td></tr>
+    <tr><td>5–20 min</td><td>Bloco A (2 perguntas) + Bloco específico (2-3 perguntas)</td></tr>
+    <tr><td>20–35 min</td><td>Aprofundamento no ponto mais doloroso</td></tr>
+    <tr><td>35–45 min</td><td>Proposta: "Quer que eu analise uma amostra real e devolva um relatório mostrando o sangramento?"</td></tr>
+  </tbody>
+</table>
+
+<p>A reunião termina com uma oferta de diagnóstico gratuito, não com uma proposta de preço.</p>
+
+<div class="doc-footer">
+  <span class="doc-footer-brand">Cadarn Healthtech</span>
+  <span>Anexo 1 — Perguntas de Diagnóstico</span>
+</div>
+
+</div>
+
+<!-- Rodapé Final -->
+<div style="margin-top:2cm;padding:1cm;border-top:2px solid var(--vinho);text-align:center;font-size:9pt;color:var(--text-sec)">
+  <p><strong>Domínio Healthtech — Cadarn Healthtech</strong></p>
+  <p>Consolidado em HTML com sistema de abas — 2026-07-15</p>
+  <p>Todos os módulos acessíveis em uma única página. Clique nas abas acima para navegar.</p>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+  // Hide all tabs
+  var tabContents = document.getElementsByClassName("tab-content");
+  for (var i = 0; i < tabContents.length; i++) {
+    tabContents[i].classList.remove("active");
+  }
+
+  // Remove active from all buttons
+  var tabButtons = document.getElementsByClassName("tab-button");
+  for (var i = 0; i < tabButtons.length; i++) {
+    tabButtons[i].classList.remove("active");
+  }
+
+  // Show selected tab
+  document.getElementById(tabName).classList.add("active");
+  evt.currentTarget.classList.add("active");
+
+  // Scroll to top
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
