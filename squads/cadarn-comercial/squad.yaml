@@ -1,6 +1,9 @@
+# Correção pós-incidente 2026-07-19 — roster e dna_source restaurados idênticos à Martech
+# (fonte da verdade: /home/fabianocadarn/projects/_AIOX_Manager/squads/cadarn-comercial/squad.yaml);
+# apenas description/icp adaptados ao Healthtech. Ver .claude/rules/ (Craft/@squad-creator).
 name: cadarn-comercial
-version: 1.0.0
-description: Squad Cadarn Comercial — Prospecção, qualificação, fechamento e pós-venda para ICP high-ticket (Imobiliárias, Advocacia, Estética premium)
+version: 1.1.0
+description: Squad Cadarn Comercial — Prospecção, qualificação, fechamento e pós-venda para o ICP de saúde suplementar (corretoras de plano de saúde, faturamento hospitalar/BPO, clínicas e consultórios pequenos)
 author: Fabiano Cunha
 license: UNLICENSED
 
@@ -9,14 +12,19 @@ aiox:
   type: squad
 
 # ICP — Ideal Customer Profile
+# Segmentos e dores: fonte docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md (tabela de perfis, linhas 31-38)
+# Preço: fonte docs/cadarn-healthtech/Corpus IA/06-cadarn-modelo-oferta.md (linhas 134-136) — confirmado apenas
+#        para o primeiro produto do Trio da Eficiência (automação de cadastro/onboarding)
+# Ciclo de venda: fonte docs/cadarn-healthtech/Corpus IA/05-decisor-jornada-compra.md (linhas 183-187)
 icp:
-  primary: "PMEs de serviços premium high-ticket"
+  primary: "Operadores de saúde suplementar — corretoras de plano de saúde, faturamento hospitalar/BPO e clínicas/consultórios pequenos"
   segments:
-    - Imobiliárias (corretores premium, pequenas imobiliárias)
-    - Escritórios de advocacia (2-20 advogados)
-    - Clínicas de estética avançada (médico proprietário)
-  ticket_range: "R$5.000-R$30.000/mês"
-  ciclo_venda: "7-30 dias por segmento"
+    - "Gestor operacional de corretora — dor: glosa, cadastro travado, venda perdida (Influenciador/usuário)"
+    - "Responsável por faturamento hospitalar — dor: volume alto, custo de equipe, TISS (Influenciador/usuário)"
+    - "Dono de clínica/consultório pequeno — dor: retrabalho, tempo da equipe (Decisor, mas lê 'saúde' como saúde do paciente, não como operação)"
+    - "Decisor financeiro/sócio/diretor — dor: receita represada, custo de oportunidade (Decisor — precisa de argumento de crescimento, não só eficiência)"
+  ticket_range: "Setup R$3.000,00 (única vez) + Mensalidade R$1.500,00/mês — confirmado para o 1º produto do Trio da Eficiência (automação de cadastro). Preço dos demais 2 produtos do Trio (faturamento, sinistralidade): [INFERÊNCIA — não verificada: não pesquisado ainda]"
+  ciclo_venda: "~84 dias em média (dado HubSpot citado na fonte); por porte de corretora: 1-3 meses (pequenas) a 4-6+ meses (médias); 6-9 meses em soluções complexas de BPO integral a corretoras/administradoras"
 
 # Hierarquia
 hierarchy:
@@ -62,6 +70,53 @@ agents:
       - ".aiox-core/knowledge/agents-dna/camaleao/adaptacao-comunicacao-m2m.md"
     note: "Coringa adaptativo — gera briefing pré-reunião e revisa proposta escrita por perfil DISC"
 
+  # CROSS-SQUAD (MKT + Comercial)
+  - id: consultora
+    name: Camy
+    role: Consultora Sênior — Diagnóstico, Sessão de Clareza e Proposta (Supermercado)
+    layer: processo
+    status: ativo
+    dna_source: "Camila Renaux (CR+, MKT360, Sessão de Clareza, Supermercado do Estrategista)"
+    knowledge_path:
+      - ".aiox-core/knowledge/agents-dna/renaux/"
+    cross_squad: cadarn-marketing
+    note: "Cross-squad: MKT (diagnóstico multicanal) + Comercial (Sessão de Clareza + Supermercado). Arquivo em squads/cadarn-marketing/agents/consultora.md"
+    forja_status_healthtech: "Arquivo físico EXISTE neste Tarian: squads/cadarn-marketing/agents/consultora.md (verificado 2026-07-19)"
+
+  # ESPECIALISTA DE PORTAL (novo)
+  - id: locus
+    name: Locus
+    role: Especialista em Copy de Portal Imobiliário
+    layer: suporte
+    status: ativo
+    tier: 3
+    note: |
+      Especialista em títulos, descrições, frases comerciais e frases de card para
+      ZAP Imóveis, OLX, Viva Real e Canal Pro. Calibra público pela faixa de preço
+      e integra com Atlas (@analyst) para pesquisa de bairro/rua antes de produzir.
+    knowledge_path:
+      - squads/cadarn-comercial/memory/locus.md
+    forja_status_healthtech: "SEM arquivo físico neste Tarian (verificado 2026-07-19). Escopo (portal imobiliário) não é aplicável ao ICP de saúde suplementar — avaliar com Fabiano se este agente deve ser reescopado, pausado ou removido do roster do Tarian Healthtech."
+
+  # ESPECIALISTA GMN (novo)
+  - id: radar
+    name: Radar
+    role: Especialista Google Meu Negócio — Ranqueamento Local e Captação de Leads
+    layer: suporte
+    status: ativo
+    tier: 3
+    dna_source: "Luciano Arthur (Escola de SEO) — metodologia GMN/GBP Brasil"
+    knowledge_path:
+      - squads/cadarn-comercial/memory/radar.md
+      - docs/biblioteca/pesquisas/_inbox/2026-06-01_especialistas-google-meu-negocio-seo-local-brasil.md
+      - docs/biblioteca/pesquisas/_inbox/2026-06-01_luciano-arthur-escola-seo-metodologia-gmn.md
+    note: |
+      Especialista em Google Meu Negócio orgânico para corretores e imobiliárias.
+      SAB vs Storefront, trinômio de ranqueamento, checklist 25 itens, estratégia de reviews.
+      NÃO recomenda LSA (indisponível no Brasil em 2026). Reutilizável para todos os clientes imobiliários.
+      Criado: 2026-06-01.
+    forja_status_healthtech: "SEM arquivo físico neste Tarian (verificado 2026-07-19). Escopo original (imobiliário) não é aplicável ao ICP de saúde suplementar sem adaptação — avaliar com Fabiano."
+
   # FASE 2
   - id: processador-objecoes
     name: ProcessadorObjeções
@@ -76,7 +131,7 @@ agents:
 
 # Pipeline Comercial
 pipeline:
-  description: "Fluxo padrão de aquisição de cliente Cadarn"
+  description: "Fluxo padrão de aquisição de cliente Cadarn Healthtech"
   stages:
     - name: prospeccao
       agent: caio
@@ -91,8 +146,12 @@ pipeline:
       output: "Score MEDDIC + decisão: avançar / nutrir / descartar"
 
     - name: diagnostico
-      agent: caio
-      output: "Mapeamento de dor + perfil do decisor + urgência confirmada"
+      agent: camy
+      output: "Diagnóstico multicanal CR+ + mapeamento de dor + Sessão de Clareza (se aplicável)"
+
+    - name: sessao-clareza
+      agent: camy
+      output: "Sessão de Clareza executada + primeiros passos + convite para proposta"
 
     - name: adaptacao-contexto
       agent: camaleao
@@ -118,8 +177,8 @@ pipeline:
 integrations:
   - squad: cadarn-operacional
     tipo: handoff
-    agente_destino: "Ops Lead + Arc"
-    trigger: "Contrato assinado → Ops registra onboarding e Arc inicia fase AFFIRM"
+    agente_destino: "Kairos + Arc"
+    trigger: "Contrato assinado → Kairos registra no ClickUp e Arc inicia fase AFFIRM"
     handoff_template: "squads/cadarn-comercial/templates/client-intake-handoff-tmpl.yaml"
     nota: "Caio preenche client-intake-handoff ANTES de notificar. Sem handoff preenchido = onboarding bloqueado."
 
@@ -135,15 +194,24 @@ integrations:
     handoff_template: "squads/cadarn-comercial/templates/client-intake-handoff-tmpl.yaml"
     nota: "Marketing NÃO inicia antes do sinal de Arc — protege fase AFFIRM/ACTIVATE do Coleman"
 
+  - squad: cadarn-healthtech
+    tipo: consumo
+    agente_destino: "Llif"
+    trigger: "squad-comercial precisa de munição comercial (Corpus IA) e diagnóstico estratégico antes de executar prospecção/fechamento"
+    nota: "Llif orquestra a estratégia; squad-comercial executa. Decisão de Fabiano, 2026-07-16. Preservado na correção de 2026-07-19 por ser fato específico deste Tarian, não DNA de agente."
+
 # Upgrade path
 upgrades:
-  note: "MVP1 COMPLETO. Todos os 3 agentes ativos: Caio, GestorFunil, Camaleão."
+  note: "MVP1 COMPLETO. Todos os 3 agentes ativos: Caio, GestorFunil, Camaleão. Roster completo (7 agentes) restaurado em 2026-07-19 — Consultora/Locus/Radar/ProcessadorObjeções presentes no manifesto com dna_source original da Martech; Locus e Radar aguardam decisão de Fabiano sobre reescopo para saúde suplementar antes de forja física."
   prompts: ".aiox-core/knowledge/agents-dna/PROMPTS-PERPLEXITY-MVP1-PENDENTES.md"
   process: "Perplexity → Echo (M2M-ETL) → atualizar knowledge_path → criar agente"
   status:
     caio: ativo
     camaleao: ativo
     gestor-funil: ativo
+    consultora: "ativo (arquivo físico existe — cadarn-marketing)"
+    locus: "ativo no manifesto — sem arquivo físico no Healthtech, escopo não adaptado"
+    radar: "ativo no manifesto — sem arquivo físico no Healthtech, escopo não adaptado"
     processador-objecoes: fase2 # aguarda prompt D do PROMPTS-PERPLEXITY-MVP1-PENDENTES.md
 
 config:
@@ -154,5 +222,7 @@ tags:
   - comercial
   - cadarn
   - vendas
-  - high-ticket
+  - saude-suplementar
+  - bpo
+  - automacao
   - prospeccao

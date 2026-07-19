@@ -1,0 +1,199 @@
+name: forja
+version: 1.0.0
+description: Squad Forja Cadarn Healthtech — Casa dos construtores. Concebe, arquiteta, implementa, testa e entrega o produto Cadarn Healthtech (Tarian, squads, features, automações do Trio da Eficiência).
+author: Fabiano Cunha
+license: UNLICENSED
+
+aiox:
+  minVersion: "2.1.0"
+  type: squad
+
+motto: "Do bloco bruto à lâmina afiada"
+
+nature:
+  description: |
+    Squad unificada de construção e gestão de produto — provisionada neste Tarian
+    a partir da mesma Squad Forja da Cadarn Martech (HQ). Reúne quem arquiteta,
+    implementa, testa, deploya e gerencia o ciclo de vida do produto Cadarn
+    Healthtech. É a forja onde o aço bruto dos requisitos vira a lâmina afiada
+    do código em produção — aqui aplicada à Engenharia de Fluxo.
+  mode: "execução + gestão"
+
+# Hierarquia
+hierarchy:
+  decision_authority: "Emrys (Regência — aiox-master) — autoridade superior"
+  squad_leader: "Morgan (PM) — líder operacional"
+  note: |
+    Morgan lidera a Squad Forja operacionalmente (prioridades, backlog, ritmo,
+    entregas). Emrys (Regente) mantém autoridade governativa sobre Morgan e
+    sobre toda a squad — podendo redirecionar, arbitrar conflitos e proteger
+    o alinhamento com a Constitution AIOX.
+
+# Membros da Squad (11 agentes)
+agents:
+  # --- Gestão de ciclo ---
+  - id: pm
+    name: Morgan
+    role: Product Management — requisitos, specs, épicos
+    layer: gestao
+    lead: true
+    agent_file: ".aiox-core/development/agents/pm.md"
+    skill: "/pm"
+    note: "Líder operacional da Squad Forja"
+
+  - id: po
+    name: Pax
+    role: Product Owner — validação de stories, backlog
+    layer: gestao
+    agent_file: ".aiox-core/development/agents/po.md"
+    skill: "/po"
+
+  - id: sm
+    name: River
+    role: Scrum Master — criação de stories, sprints
+    layer: gestao
+    agent_file: ".aiox-core/development/agents/sm.md"
+    skill: "/sm"
+
+  # --- Arquitetura & Design ---
+  - id: architect
+    name: Aria
+    role: Arquitetura e design técnico
+    layer: arquitetura
+    agent_file: ".aiox-core/development/agents/architect.md"
+    skill: "/architect"
+
+  - id: ux-design-expert
+    name: Uma
+    role: UX/UI design, frontend specs
+    layer: arquitetura
+    agent_file: ".aiox-core/development/agents/ux-design-expert.md"
+    skill: "/ux-design-expert"
+
+  - id: design-system
+    name: Cosmo
+    role: Design System, tokens, componentização atômica
+    layer: arquitetura
+    agent_file: ".aiox-core/development/agents/design-system.md"
+    skill: "/design-system"
+    note: "Liaison com Squad Mkt Healthtech quando essa squad estiver forjada"
+
+  # --- Construção & Dados ---
+  - id: dev
+    name: Dex
+    role: Implementação de código
+    layer: construcao
+    agent_file: ".aiox-core/development/agents/dev.md"
+    skill: "/dev"
+
+  - id: data-engineer
+    name: Dara
+    role: Database, schemas, migrations, RLS
+    layer: construcao
+    agent_file: ".aiox-core/development/agents/data-engineer.md"
+    skill: "/data-engineer"
+
+  # --- Qualidade & Entrega ---
+  - id: qa
+    name: Quinn
+    role: Testes, quality gates, reviews
+    layer: qualidade
+    agent_file: ".aiox-core/development/agents/qa.md"
+    skill: "/qa"
+
+  - id: aegis
+    name: Aegis
+    role: Security review, threat modeling, secrets audit, runbook de incidentes
+    layer: qualidade
+    agent_file: ".aiox-core/development/agents/aegis.md"
+    skill: "/aegis"
+    note: "Gate pré-drafting obrigatório em stories com PII/auth — dado de saúde suplementar é sensível por natureza (LGPD)"
+
+  - id: devops
+    name: Gage
+    role: CI/CD, git push (EXCLUSIVO), PR, releases
+    layer: qualidade
+    agent_file: ".aiox-core/development/agents/devops.md"
+    skill: "/devops"
+
+# Agentes multi-chapéu (participam de TODAS as squads deste Tarian)
+shared_agents:
+  - id: llif
+    name: Llif
+    role: Estrategista-Consultor & Arquiteto de Operações em Saúde
+    home_squad: cadarn-healthtech
+    note: "Multi-chapéu — porta de entrada do Tarian (decisão 2026-07-16). Consulta obrigatória para conhecimento de domínio de saúde suplementar antes de decisões de produto."
+  - id: proofreader
+    name: Grafia
+    role: Revisão de português
+    note: "Multi-chapéu — gate transversal obrigatório em artefatos client-facing"
+  - id: feynman
+    name: Dick
+    role: Simplificador Feynman
+    note: "Multi-chapéu — sob demanda, nudge da Regência em client-facing"
+  - id: brand-guardian
+    name: Coel
+    role: Guardião de marca
+    home_squad: cadarn-marketing
+    note: "Multi-chapéu — auditoria em naming e artefatos client-facing. Disponível quando a Squad Mkt Healthtech for forjada."
+
+# Fluxo operacional
+pipeline:
+  description: "Fluxo padrão de construção de produto na Forja"
+  stages:
+    - name: briefing
+      agent: pm
+      output: "PRD, epic, requisitos, prioridades"
+
+    - name: validation
+      agent: po
+      output: "Stories validadas, backlog priorizado"
+
+    - name: drafting
+      agent: sm
+      output: "Stories técnicas com AC e task breakdown"
+
+    - name: design
+      agents: [architect, ux-design-expert, design-system]
+      output: "Arquitetura técnica, specs de UX, tokens/componentes"
+
+    - name: construction
+      agents: [dev, data-engineer]
+      output: "Código, schemas, migrations, integrações"
+
+    - name: quality
+      agent: qa
+      output: "Testes, reviews, quality gates (PASS/CONCERNS/FAIL/WAIVED)"
+
+    - name: delivery
+      agent: devops
+      output: "Git push, PR, release, deploy"
+
+# Integrações com outras squads deste Tarian
+integrations:
+  - squad: cadarn-healthtech
+    tipo: consumo
+    agente_destino: "Llif"
+    trigger: "Forja precisa de conhecimento de domínio (saúde suplementar, corretora, faturamento) para construir features corretas"
+    nota: "Llif é a fonte de verdade do domínio; Forja não infere regras de negócio de saúde suplementar por conta própria"
+
+  - squad: cadarn-marketing
+    tipo: liaison
+    agente_ponte: "Cosmo (design-system)"
+    trigger: "Decisões de tokens visuais, componentes de marca, naming de features"
+    nota: "Pendente até a Squad Mkt Healthtech ser forjada com DNA próprio"
+
+config:
+  extends: extend
+  language: pt-BR
+
+dependencies:
+  squads: []
+
+tags:
+  - construcao
+  - forja
+  - produto
+  - core
+  - gestao
+  - cadarn-healthtech

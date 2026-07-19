@@ -1,6 +1,11 @@
+# Correção pós-incidente 2026-07-19 — roster e dna_source restaurados idênticos à Martech;
+# apenas ICP/description adaptados ao Healthtech.
+# Fonte da verdade do roster: /home/fabianocadarn/projects/_AIOX_Manager/squads/cadarn-marketing/squad.yaml
+# Fatos de ICP Healthtech: docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md
+
 name: cadarn-marketing
 version: 1.1.0
-description: Squad Cadarn Martech — 11 agentes, 7 tasks, 7 templates para prestadores de serviços premium (high-ticket)
+description: Squad Cadarn Healthtech Marketing — 11 agentes, 7 tasks, 7 templates para o mercado de saúde suplementar (corretoras de plano de saúde, faturamento hospitalar/BPO, clínicas e consultórios pequenos)
 author: Fabiano Cunha
 license: UNLICENSED
 
@@ -9,37 +14,46 @@ aiox:
   type: squad
 
 # ICP — Ideal Customer Profile
+# [fonte: docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md]
 icp:
-  primary: "Prestadores de serviços premium (high-ticket)"
+  primary: "Operadores de saúde suplementar — corretoras de plano de saúde, faturamento hospitalar/BPO e clínicas pequenas"
   segments:
-    - Imobiliárias de luxo
-    - Escritórios de advocacia
-    - Clínicas de estética avançada
-    - Arquitetos e designers de interiores
-    - Consultores e profissionais liberais
+    - Gestor operacional de corretora de planos de saúde
+    - Responsável por faturamento hospitalar / BPO
+    - Dono de clínica ou consultório pequeno
+    - Decisor financeiro / sócio da corretora ou clínica
+  estado_mental: "Quer resolver, não se transformar — intensidade aspiracional média [fonte: tom-de-voz-cadarn-healthtech-v1.0.md]"
 
-# Hierarquia
+# Hierarquia (verbatim do original — roster idêntico à Martech)
 hierarchy:
   decision_authority: "Fabiano (decisão final absoluta)"
   brand_guardian: "#2 Brand Guardian — Coel (Patrick Hanlon) — parecer + escalação, sem veto"
-  strategy_lead: "#1 Estrategista-chefe (Código Cadarn)"
+  strategy_lead: "#1 Estrategista-chefe (Código Ogilvy)"
 
-# 11 agentes em 5 camadas
+# 11 agentes em 5 camadas — id/name/role/layer/dna_source verbatim do original.
+# knowledge_path do original preservado; docs Healthtech ADICIONADOS (não substituem).
 agents:
   # CAMADA 1 — FUNDAÇÃO
   - id: estrategista
-    name: Cadarn
+    name: Ogilvy
     role: Estrategista-chefe
     layer: fundacao
     dna_source: "Código Cadarn (Samira + Fabiano)"
-    knowledge_path: ".aiox-core/knowledge/framework-cadarn-m2m/"
+    knowledge_path:
+      - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
+      - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
+      - "docs/cadarn-healthtech/Corpus IA/06-cadarn-modelo-oferta.md"
+      - ".aiox-core/knowledge/framework-cadarn-m2m/"
 
   - id: brand-guardian
     name: Coel
     role: Brand Guardian
     layer: fundacao
     dna_source: "Patrick Hanlon (Primal Branding)"
-    knowledge_path: ".aiox-core/knowledge/agents-dna/hanlon/"
+    knowledge_path:
+      - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
+      - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
+      - ".aiox-core/knowledge/agents-dna/hanlon/"
 
   # CAMADA 2 — ESTRATÉGIA
   - id: branding
@@ -47,14 +61,28 @@ agents:
     role: Branding Estratégico
     layer: estrategia
     dna_source: "Tay Dantas (Vinci Society)"
-    knowledge_path: ".aiox-core/knowledge/agents-dna/tay-dantas/"
+    knowledge_path:
+      - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
+      - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
+      - ".aiox-core/knowledge/agents-dna/tay-dantas/"
 
   - id: consultora
-    name: Clarissa
-    role: Consultora Sênior
+    name: Camy
+    role: Consultora Sênior — Diagnóstico, Sessão de Clareza, Supermercado
     layer: estrategia
-    dna_source: "Camila Renaux (Metodologia CR+)"
-    knowledge_path: ".aiox-core/knowledge/agents-dna/renaux/"
+    dna_source: "Camila Renaux (CR+, MKT360, Sessão de Clareza, Supermercado do Estrategista)"
+    knowledge_path:
+      - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
+      - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
+      - "docs/cadarn-healthtech/Corpus IA/04-faturamento-saude-clinicas-bpo.md"
+      - "docs/cadarn-healthtech/Corpus IA/05-decisor-jornada-compra.md"
+      - "docs/cadarn-healthtech/Corpus IA/06-cadarn-modelo-oferta.md"
+      - "docs/cadarn-healthtech/Corpus IA/08-anexo-glossario.md"
+      - ".aiox-core/knowledge/agents-dna/renaux/"
+    cross_squad: cadarn-comercial
+    conselho: mentora-estrategia-posicionamento
+    version: '3.0'
+    note: "Triplo chapéu: Squad MKT + Squad Comercial + Conselho de Mentoria"
 
   # CAMADA 3 — CRIAÇÃO
   - id: copywriter
@@ -63,6 +91,9 @@ agents:
     layer: criacao
     dna_source: "Ícaro de Carvalho (tom) + Alex Hormozi (frameworks)"
     knowledge_path:
+      - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
+      - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
+      - "docs/cadarn-healthtech/Corpus IA/08-anexo-glossario.md"
       - ".aiox-core/knowledge/agents-dna/icaro-carvalho/"
       - ".aiox-core/knowledge/agents-dna/hormozi/"
 
@@ -71,14 +102,20 @@ agents:
     role: Roteirista de Vídeo
     layer: criacao
     dna_source: "Giullya Becker (Conteúdos Magnéticos)"
-    knowledge_path: ".aiox-core/knowledge/agents-dna/becker/"
+    knowledge_path:
+      - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
+      - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
+      - ".aiox-core/knowledge/agents-dna/becker/"
 
   - id: diretora-criativa
     name: Iris
     role: Diretora Criativa
     layer: criacao
     dna_source: "Hanah Franklin (Formato Criativo)"
-    knowledge_path: ".aiox-core/knowledge/agents-dna/franklin/"
+    knowledge_path:
+      - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
+      - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
+      - ".aiox-core/knowledge/agents-dna/franklin/"
 
   # CAMADA 4 — DISTRIBUIÇÃO
   - id: social-media
@@ -86,7 +123,10 @@ agents:
     role: Social Media Manager
     layer: distribuicao
     dna_source: "Rafael Kiso (mLabs)"
-    knowledge_path: ".aiox-core/knowledge/cursos/engaje-mais-venda/"
+    knowledge_path:
+      - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
+      - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
+      - ".aiox-core/knowledge/cursos/engaje-mais-venda/"
 
   - id: trafego
     name: Mídia
@@ -94,6 +134,8 @@ agents:
     layer: distribuicao
     dna_source: "Pedro Sobral (Comunidade Subido)"
     knowledge_path:
+      - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
+      - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
       - ".aiox-core/knowledge/agents-dna/sobral/"
       - ".aiox-core/knowledge/cursos/engaje-mais-venda/06-midia-paga/"
 
@@ -102,7 +144,11 @@ agents:
     role: Analytics de Conteúdo
     layer: distribuicao
     dna_source: "Rafael Kiso (mLabs)"
-    knowledge_path: ".aiox-core/knowledge/cursos/engaje-mais-venda/"
+    knowledge_path:
+      - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
+      - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
+      - "docs/cadarn-healthtech/Corpus IA/06-cadarn-modelo-oferta.md"
+      - ".aiox-core/knowledge/cursos/engaje-mais-venda/"
 
   # CAMADA 5 — EXECUÇÃO
   - id: designer
@@ -110,11 +156,14 @@ agents:
     role: Designer Social Media
     layer: execucao
     dna_source: "Raysa Keila (Canva Evolution)"
-    knowledge_path: ".aiox-core/knowledge/agents-dna/raysa-keila/"
+    knowledge_path:
+      - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
+      - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
+      - ".aiox-core/knowledge/agents-dna/raysa-keila/"
 
 # Pipeline de produção de conteúdo
 pipeline:
-  description: "Fluxo padrão de produção de conteúdo para clientes premium"
+  description: "Fluxo padrão de produção de conteúdo para clientes de saúde suplementar"
   stages:
     - name: diagnostico
       agent: consultora
@@ -126,7 +175,7 @@ pipeline:
 
     - name: estrategia
       agent: estrategista
-      output: "Plano estratégico + pilares de conteúdo + Console S.I.C."
+      output: "Plano estratégico + pilares de conteúdo + Painel de Métricas"
 
     - name: planejamento
       agent: social-media
@@ -216,8 +265,16 @@ config:
 dependencies:
   squads: []
 
+# Confirmado fisicamente em squads/cadarn-healthtech/agents/llif.md — mesmo padrão
+# já adotado em squads/cadarn-comercial/squad.yaml (decisão de Fabiano, 2026-07-16).
+integrations:
+  - squad: cadarn-healthtech
+    tipo: consumo
+    agente_destino: "Llif"
+    trigger: "squad-mkt precisa de conhecimento de domínio (saúde suplementar, ICP, Tom de Voz) e visibilidade cross-squad antes de decisões de conteúdo/posicionamento"
+    nota: "Llif orquestra estratégia de domínio; squad-mkt executa produção de conteúdo. Mesmo padrão adotado em squad-comercial, decisão de Fabiano, 2026-07-16."
+
 tags:
   - marketing
-  - cadarn
-  - premium
-  - high-ticket
+  - cadarn-healthtech
+  - saude-suplementar

@@ -46,17 +46,40 @@ Lista de entregáveis priorizados para a fase de validação:
 - [ ] Roteiro de validação clínica (`*roadmap-validacao`)
 - [ ] Obter XML TISS anonimizado (pré-requisito para treino operacional — depende do cliente)
 
-## Cisão Futura — 2º Agente Comercial/SDR
+## Relação com a Squad Comercial (atualizado 2026-07-16)
 
 ```yaml
-gatilho: "Início da Fase de operação (validação confirmada, tarian-health nasce)"
-o_que_fazer: "Cindir de Llif um agente comercial/SDR"
-comando: "*extend-squad cadarn-healthtech --add agent"
-herda_de_llif: "Caps 3-4-5 (munição comercial validada em campo)"
-  # Cap 3: glosa administrativa, categoria e custo
-  # Cap 4: centro de compras (7 papéis), jornada 8 etapas
-  # Cap 5: Challenger em saúde suplementar
-nota: "Mecânica nativa porque Llif nasceu como squad — sem migração manual"
+status: "Squad cadarn-comercial já existe (Caio, Camaleão, GestorFunil) — substitui o plano antigo de cisão futura de 1 SDR"
+papel_llif: "Orquestrador consultivo — estratégia, diagnóstico, munição comercial (Caps 3-4-5)"
+papel_squad_comercial: "Execução tática — prospecção, qualificação, follow-up, fechamento"
+fluxo: "Llif diagnostica e prepara munição → squad-comercial executa a operação de vendas"
+nota: "Substitui a seção antiga 'Cisão Futura — 2º Agente Comercial/SDR'. Decisão: Fabiano, 2026-07-16."
+```
+
+## Papel Expandido — Porta de Entrada do Tarian (decisão 2026-07-16)
+
+```yaml
+decisao: "Llif deixa de ser só o agente da squad cadarn-healthtech e vira o braço direito
+  de Fabiano neste Tarian — secretário + conselheiro + consultor, com autonomia para
+  ser brutalmente honesto."
+o_que_muda:
+  - "Llif é quem recebe Fabiano ao abrir o Claude Code neste Tarian (porta de entrada)"
+  - "Llif vira transversal nas squads Forja, MKT, Comercial e Conselho (mesmo padrão de
+     Grafia/Dick/Coel) — participa de todas, mantém a casa em cadarn-healthtech"
+  - "Memória do Llif absorve dado real de cliente ao longo do tempo (personas: Delma,
+     Alexandre, futuros clientes reais)"
+o_que_nao_muda:
+  - "Emrys continua existindo — é o especialista de bastidor para mecânica de framework
+     (delegation matrix, git push, gates de segurança, protocolo entre squads)"
+  - "Llif NÃO absorve a governança de framework do Emrys — aciona o Emrys quando a
+     tarefa é mecânica, do mesmo jeito que aciona @devops pra dar push"
+justificativa: |
+  Emrys carrega conhecimento de framework (reutilizável entre Tarians — Alex, Samira,
+  Martech, aqui). Llif carrega conhecimento de domínio + cliente real (específico deste
+  produto). Fundir os dois recriaria a mistura de responsabilidades que o projeto vem
+  corrigindo a sessão inteira. Separar preserva os dois, mas muda quem é "a cara" do
+  projeto no dia a dia.
+nota: "Decisão: Fabiano, 2026-07-16."
 ```
 
 ## Contexto Operacional
