@@ -88,27 +88,12 @@ agents:
     name: Mylus
     role: Consultor Analítico de Vendas B2B Complexas — Engenharia de Valor
     layer: suporte
-    status: forja-inicial
+    status: ativo
     dna_source: "Marcos Mylius (Engenharia de Valor) — framework, não persona/voz"
     knowledge_path:
       - ".aiox-core/knowledge/agents-dna/mylius/DNA-EXTRACT.md"
     conselho: true
     note: "Agente ADICIONAL ao Caio (não substitui) — venda B2B complexa com comitê de decisão formal. Nome 'Mylus' confirmado por Fabiano (2026-07-19), roteamento vs. Caio é heurística livre (nunca bloqueio), hat no Conselho de Mentoria ATIVO (padrão Camy/Clarissa — Healthtech é braço da própria Cadarn, não cliente, então o Conselho se aplica normalmente). Réplica idêntica ao núcleo forjado em _AIOX_Manager/squads/cadarn-comercial/agents/mylus.md — apenas whenToUse e a seção aditiva 'Aplicação ao Contexto Cadarn Healthtech' foram adaptados ao ICP local (squad.yaml deste arquivo, bloco icp:)."
-
-  # ESPECIALISTA DE PORTAL (novo)
-  - id: locus
-    name: Locus
-    role: Especialista em Copy de Portal Imobiliário
-    layer: suporte
-    status: ativo
-    tier: 3
-    note: |
-      Especialista em títulos, descrições, frases comerciais e frases de card para
-      ZAP Imóveis, OLX, Viva Real e Canal Pro. Calibra público pela faixa de preço
-      e integra com Atlas (@analyst) para pesquisa de bairro/rua antes de produzir.
-    knowledge_path:
-      - squads/cadarn-comercial/memory/locus.md
-    forja_status_healthtech: "SEM arquivo físico neste Tarian (verificado 2026-07-19). Escopo (portal imobiliário) não é aplicável ao ICP de saúde suplementar — avaliar com Fabiano se este agente deve ser reescopado, pausado ou removido do roster do Tarian Healthtech."
 
   # ESPECIALISTA GMN (novo)
   - id: radar
@@ -214,7 +199,7 @@ integrations:
 
 # Upgrade path
 upgrades:
-  note: "MVP1 COMPLETO. Todos os 3 agentes ativos: Caio, GestorFunil, Camaleão. Roster completo (7 agentes) restaurado em 2026-07-19 — Consultora/Locus/Radar/ProcessadorObjeções presentes no manifesto com dna_source original da Martech; Locus e Radar aguardam decisão de Fabiano sobre reescopo para saúde suplementar antes de forja física."
+  note: "MVP1 COMPLETO. Todos os 3 agentes ativos: Caio, GestorFunil, Camaleão. Locus removido do roster Healthtech em 2026-07-19 (portal de listagem imobiliária, sem equivalente em saúde suplementar). Radar mantido no roster, reescopo pra clínicas/consultórios pequenos (GMN) em andamento — Fabiano pediu pesquisa dedicada do Atlas (categoria médica GMN, review de paciente x LGPD dado sensível, agendamento) antes de finalizar; reskin mecânico existe como rascunho não commitado, 2026-07-19."
   prompts: ".aiox-core/knowledge/agents-dna/PROMPTS-PERPLEXITY-MVP1-PENDENTES.md"
   process: "Perplexity → Echo (M2M-ETL) → atualizar knowledge_path → criar agente"
   status:
@@ -222,8 +207,7 @@ upgrades:
     camaleao: ativo
     gestor-funil: ativo
     consultora: "ativo (arquivo físico existe — cadarn-marketing)"
-    locus: "ativo no manifesto — sem arquivo físico no Healthtech, escopo não adaptado"
-    radar: "ativo no manifesto — sem arquivo físico no Healthtech, escopo não adaptado"
+    radar: "reskin mecânico em rascunho (não commitado) — aguardando pesquisa Atlas sobre GMN pra saúde/clínica (categoria médica, review de paciente x LGPD dado sensível, agendamento) antes de finalizar, decisão de Fabiano 2026-07-19"
     processador-objecoes: fase2 # aguarda prompt D do PROMPTS-PERPLEXITY-MVP1-PENDENTES.md
 
 config:

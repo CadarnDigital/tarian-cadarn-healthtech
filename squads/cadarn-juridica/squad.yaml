@@ -77,21 +77,6 @@ agents:
     knowledge_path: ".aiox-core/knowledge/agents-dna/juridica-lgpd/"
     reference_framework: "Bruno Bioni (Data Privacy Brasil)"
 
-  - id: especialista-imobiliario
-    name: Praedium
-    role: Especialista Direito Imobiliário
-    layer: especialista
-    specialties:
-      - Lei 6.530/78 (exercício da profissão de corretor)
-      - CRECI/COFECI regulamentações
-      - Lei 13.786/2018 (distrato imobiliário)
-      - Lei 8.245/91 (locação)
-      - Marketing digital de imóveis (compliance plataformas)
-      - Tokenização (Resolução COFECI 1.551/2025 — suspensa)
-    dna_source: "Pesquisa interna + Perplexity (2 arquivos, 2.783 linhas)"
-    knowledge_path: ".aiox-core/knowledge/agents-dna/juridica-imobiliario/"
-    client_zero: "{CLIENTE_IMOBILIARIO}"  # Preencher no setup — ver specialists/imobiliario/
-
   # CAMADA 2B — ESPECIALISTA CORE (pesquisa completa)
   - id: especialista-consumidor
     name: Aequitas
