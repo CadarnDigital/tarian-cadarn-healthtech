@@ -105,8 +105,8 @@ agents:
     dna_source: "Luciano Arthur (Escola de SEO) — metodologia GMN/GBP Brasil"
     knowledge_path:
       - squads/cadarn-comercial/memory/radar.md
-      - docs/biblioteca/pesquisas/_inbox/2026-06-01_especialistas-google-meu-negocio-seo-local-brasil.md
-      - docs/biblioteca/pesquisas/_inbox/2026-06-01_luciano-arthur-escola-seo-metodologia-gmn.md
+      - docs/biblioteca/pesquisas/_inbox/2026-07-19_gmn-google-meu-negocio-clinicas-saude-brasil.md
+    note: "Reescopado de imobiliária (Martech) pra clínicas/consultórios pequenos (Healthtech), v1.1, 2026-07-19. As 2 pesquisas originais da Martech (2026-06-01, metodologia geral GMN) não existem neste repo — o núcleo técnico universal foi herdado no arquivo do agente; aprofundamento na metodologia geral exige consultar _AIOX_Manager ou nova pesquisa aqui."
     note: |
       Especialista em Google Meu Negócio orgânico para corretores e imobiliárias.
       SAB vs Storefront, trinômio de ranqueamento, checklist 25 itens, estratégia de reviews.
@@ -199,7 +199,7 @@ integrations:
 
 # Upgrade path
 upgrades:
-  note: "MVP1 COMPLETO. Todos os 3 agentes ativos: Caio, GestorFunil, Camaleão. Locus removido do roster Healthtech em 2026-07-19 (portal de listagem imobiliária, sem equivalente em saúde suplementar). Radar mantido no roster, reescopo pra clínicas/consultórios pequenos (GMN) em andamento — Fabiano pediu pesquisa dedicada do Atlas (categoria médica GMN, review de paciente x LGPD dado sensível, agendamento) antes de finalizar; reskin mecânico existe como rascunho não commitado, 2026-07-19."
+  note: "MVP1 COMPLETO. Todos os 3 agentes ativos: Caio, GestorFunil, Camaleão. Locus removido do roster Healthtech em 2026-07-19 (portal de listagem imobiliária, sem equivalente em saúde suplementar). Radar reescopado pra clínicas/consultórios pequenos (GMN) e finalizado com pesquisa dedicada do Atlas, v1.1, 2026-07-19."
   prompts: ".aiox-core/knowledge/agents-dna/PROMPTS-PERPLEXITY-MVP1-PENDENTES.md"
   process: "Perplexity → Echo (M2M-ETL) → atualizar knowledge_path → criar agente"
   status:
@@ -207,7 +207,7 @@ upgrades:
     camaleao: ativo
     gestor-funil: ativo
     consultora: "ativo (arquivo físico existe — cadarn-marketing)"
-    radar: "reskin mecânico em rascunho (não commitado) — aguardando pesquisa Atlas sobre GMN pra saúde/clínica (categoria médica, review de paciente x LGPD dado sensível, agendamento) antes de finalizar, decisão de Fabiano 2026-07-19"
+    radar: "ativo — reescopado pra clínicas/consultórios pequenos com pesquisa dedicada do Atlas (categoria médica GMN, CFM Res. 2.336/2023, LGPD em reviews, Doctoralia/agendamento, YMYL), v1.1, 2026-07-19"
     processador-objecoes: fase2 # aguarda prompt D do PROMPTS-PERPLEXITY-MVP1-PENDENTES.md
 
 config:
