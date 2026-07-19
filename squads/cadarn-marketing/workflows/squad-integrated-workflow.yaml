@@ -19,7 +19,7 @@ hierarquia:
 
   camadas:
     fundacao: "Cadarn (Estrategista) + Coel (Brand Guardian)"
-    estrategia: "Clarissa (Diagnóstico) + Vinci (Branding)"
+    estrategia: "Camy (Diagnóstico) + Vinci (Branding)"
     criacao: "Logos (Copy) + Magnética (Roteiro) + Iris (Direção Criativa)"
     distribuicao: "Pulso (Social) + Mídia (Tráfego) + Métrica (Analytics)"
     execucao: "Pixel (Design)"
@@ -27,7 +27,7 @@ hierarquia:
   regra: |
     Cadarn DEFINE a direção estratégica.
     Coel AUDITA conformidade de marca (não veta — escala para Fabiano).
-    Clarissa DIAGNÓSTICA antes de qualquer estratégia nova.
+    Camy DIAGNÓSTICA antes de qualquer estratégia nova.
     Criação NUNCA começa sem briefing aprovado.
     Mídia NUNCA ativa campanhas sem peças auditadas pelo Coel.
     GATE MARKETING (handoff Comercial): Marketing só inicia onboarding
@@ -55,7 +55,7 @@ cenarios:
 
     fluxo:
       - step: 1
-        agente: Clarissa
+        agente: Camy
         acao: "Diagnóstico multicanal completo (CR+ Etapa 1)"
         task: "run-diagnostic.md"
         template: "diagnostico-multicanal-tmpl.yaml"
@@ -68,9 +68,9 @@ cenarios:
         acao: "Posicionamento e identidade de marca (Creator Brand System)"
         task: "create-brand-positioning.md"
         template: "brand-positioning-tmpl.yaml"
-        input: "Diagnóstico da Clarissa + conhecimento DNA Tay Dantas"
+        input: "Diagnóstico da Camy + conhecimento DNA Tay Dantas"
         output: "Universo de marca, regras visuais, tom de voz, pilares"
-        gate: "Diagnóstico Clarissa aprovado ANTES de iniciar"
+        gate: "Diagnóstico Camy aprovado ANTES de iniciar"
         duracao: "2-3 dias"
 
       - step: 3
@@ -205,7 +205,7 @@ cenarios:
         acao: "Diagnóstico da conta de anúncios e briefing de campanha"
         task: "plan-paid-media.md"
         template: "plano-midia-paga-tmpl.yaml"
-        input: "Diagnóstico Clarissa + performance orgânica + verba disponível"
+        input: "Diagnóstico Camy + performance orgânica + verba disponível"
         output: "Plano de mídia: objetivo, público, verba, criativos necessários, KPIs"
         nota: "Metodologia Sobral: Ninja ($60-120/dia) OU Boladão (>$300/dia)"
 
@@ -302,7 +302,7 @@ cenarios:
 
     fluxo:
       - step: 1
-        agente: Clarissa
+        agente: Camy
         acao: "Rediagnóstico: o que mudou desde o diagnóstico original?"
         task: "run-diagnostic.md"
         input: "Relatórios de performance + novas informações do cliente"
@@ -346,7 +346,7 @@ cenarios:
 regras:
 
   - regra: "Diagnóstico antes de tudo"
-    descricao: "'Estratégia sem diagnóstico é suposição.' Clarissa diagnostica antes de qualquer novo ciclo estratégico."
+    descricao: "'Estratégia sem diagnóstico é suposição.' Camy diagnostica antes de qualquer novo ciclo estratégico."
 
   - regra: "Coel audita antes de publicar"
     descricao: "Nenhum conteúdo vai ao ar sem auditoria Primal Code. Peças pagas têm prioridade máxima de auditoria."
@@ -379,7 +379,7 @@ integracao:
 
   com_squad_comercial:
     trigger: "Argus (account-orchestrator) notifica Cadarn quando cliente entra em fase ADOPT"
-    acao: "Cadarn + Clarissa revisitam diagnóstico para expansão de escopo"
+    acao: "Cadarn + Camy revisitam diagnóstico para expansão de escopo"
     nota: "Expansão de contrato passa por Caio (comercial) antes de Marketing ajustar escopo"
 
   com_brand_guardian_externo:

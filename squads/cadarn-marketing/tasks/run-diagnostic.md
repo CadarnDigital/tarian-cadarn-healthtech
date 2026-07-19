@@ -4,7 +4,7 @@
 
 ```yaml
 task: runDiagnostic()
-responsavel: Clarissa (Consultora Sênior)
+responsavel: Camy (Consultora Sênior)
 responsavel_type: Agente
 squad: cadarn-marketing
 templates:
@@ -79,7 +79,7 @@ elicit:
 
 ```yaml
 action: analyze
-agent: Clarissa
+agent: Camy
 steps:
   - Identificar 3-5 concorrentes diretos
   - Benchmark de presença digital (seguidores, frequência, formatos)
@@ -91,7 +91,7 @@ steps:
 
 ```yaml
 action: audit
-agent: Clarissa
+agent: Camy
 channels:
   - instagram: bio, frequência, formatos, engajamento, estética
   - site: SEO básico, velocidade, mobile, CTA, conversão
@@ -105,7 +105,7 @@ channels:
 
 ```yaml
 action: generate
-agent: Clarissa
+agent: Camy
 output: swot_digital
 format: |
   FORÇAS (internas, positivas)
@@ -120,7 +120,7 @@ format: |
 
 ```yaml
 action: generate
-agent: Clarissa
+agent: Camy
 template: diagnostico-multicanal-tmpl.yaml
 output: diagnostico_completo
 sections:
@@ -170,4 +170,4 @@ elicit:
 ---
 
 *Squad Cadarn Marketing — Task: Diagnóstico Multicanal*
-*Agente: Clarissa (Metodologia CR+)*
+*Agente: Camy (Metodologia CR+)*
