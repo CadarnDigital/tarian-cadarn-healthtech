@@ -83,6 +83,18 @@ agents:
     note: "Cross-squad: MKT (diagnóstico multicanal) + Comercial (Sessão de Clareza + Supermercado). Arquivo em squads/cadarn-marketing/agents/consultora.md"
     forja_status_healthtech: "Arquivo físico EXISTE neste Tarian: squads/cadarn-marketing/agents/consultora.md (verificado 2026-07-19)"
 
+  # VENDA B2B COMPLEXA — ENGENHARIA DE VALOR (novo, réplica Martech)
+  - id: mylus
+    name: Mylus
+    role: Consultor Analítico de Vendas B2B Complexas — Engenharia de Valor
+    layer: suporte
+    status: forja-inicial
+    dna_source: "Marcos Mylius (Engenharia de Valor) — framework, não persona/voz"
+    knowledge_path:
+      - ".aiox-core/knowledge/agents-dna/mylius/DNA-EXTRACT.md"
+    conselho: true
+    note: "Agente ADICIONAL ao Caio (não substitui) — venda B2B complexa com comitê de decisão formal. Nome 'Mylus' confirmado por Fabiano (2026-07-19), roteamento vs. Caio é heurística livre (nunca bloqueio), hat no Conselho de Mentoria ATIVO (padrão Camy/Clarissa — Healthtech é braço da própria Cadarn, não cliente, então o Conselho se aplica normalmente). Réplica idêntica ao núcleo forjado em _AIOX_Manager/squads/cadarn-comercial/agents/mylus.md — apenas whenToUse e a seção aditiva 'Aplicação ao Contexto Cadarn Healthtech' foram adaptados ao ICP local (squad.yaml deste arquivo, bloco icp:)."
+
   # ESPECIALISTA DE PORTAL (novo)
   - id: locus
     name: Locus
