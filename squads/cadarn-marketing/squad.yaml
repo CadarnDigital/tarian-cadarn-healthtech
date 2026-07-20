@@ -43,7 +43,8 @@ agents:
       - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
       - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
       - "docs/cadarn-healthtech/Corpus IA/06-cadarn-modelo-oferta.md"
-      - ".aiox-core/knowledge/framework-cadarn-m2m/"
+      - ".craidd/valores/"
+      - ".craidd/metodo/"
 
   - id: brand-guardian
     name: Coel
