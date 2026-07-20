@@ -1,0 +1,3 @@
+[submodule ".craidd"]
+	path = .craidd
+	url = https://github.com/CadarnDigital/craidd.git
