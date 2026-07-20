@@ -102,6 +102,30 @@ Deliberação e decisão           →  OPUS
 Consolidação em memória/ata     →  SONNET
 ```
 
+## Regra de Consulta Obrigatória — Troca de Modelo em Spawn (MUST)
+
+**Antes de invocar a tool Agent com um `model` explícito (override do default — por exemplo `model: "opus"` num spawn de subagente), o agente condutor DEVE perguntar a Fabiano e aguardar confirmação. Nunca decidir sozinho e informar depois.**
+
+### Por que esta regra existe
+
+O restante desta rule orienta QUANDO Opus é tecnicamente mais adequado que Sonnet — mas orientação de adequação técnica não é autorização de gasto. Em 2026-07-20, uma Távola Express de 6 agentes foi rodada inteira em Opus sem consulta prévia. Fabiano gostou de a ferramenta permitir essa escolha, mas foi claro: quer ser consultado ANTES de cada troca de modelo em spawn, não informado depois do fato.
+
+### Regra prática
+
+Antes de qualquer `Agent(model: "opus"|"sonnet"|"haiku"|"fable")` que seja um override explícito do default:
+
+1. Identificar que o spawn vai usar model explícito
+2. PERGUNTAR a Fabiano antes de disparar: *"Vou rodar {tarefa} em {modelo}, porque {razão}. Confirma?"*
+3. AGUARDAR confirmação explícita antes de chamar a tool Agent
+
+**Exceção:** se Fabiano já autorizou o modelo para aquela sessão/tarefa específica (ex: "roda tudo em Opus hoje", "pode usar Opus pra Távola inteira"), não é preciso perguntar de novo dentro da mesma sessão para a mesma tarefa recorrente.
+
+### Severidade
+
+**MUST** — específico para o ATO de escolher/trocar o modelo de um spawn. Isso substitui, só neste ponto, o caráter "SHOULD, nunca bloqueia" do resto da rule. A orientação de QUANDO Opus é tecnicamente melhor continua SHOULD; a consulta antes de AGIR sobre essa escolha é MUST.
+
+---
+
 ## Regra de exceção: Sonnet escala de volta
 
 Se durante a execução em Sonnet aparecer uma **ambiguidade não resolvida** nas fases anteriores de julgamento, Sonnet deve **parar e devolver a decisão ao Opus** em vez de inventar. Exemplos:
@@ -196,4 +220,4 @@ Como a rule visa otimização econômica, Emrys deve **sinalizar** oportunidades
 
 ---
 
-*Rule: model-selection | Criada: 2026-04-11 | Autor: Fabiano + Emrys | Padrão: Planner-Executor | Severidade: SHOULD | Revisão: trimestral*
+*Rule: model-selection | Criada: 2026-04-11 | Atualizada: 2026-07-20 (Regra de Consulta Obrigatória — MUST perguntar antes de trocar modelo em spawn) | Autor: Fabiano + Emrys | Padrão: Planner-Executor | Severidade: SHOULD (orientação) / MUST (consulta antes de trocar) | Revisão: trimestral*
