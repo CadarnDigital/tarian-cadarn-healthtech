@@ -1,5 +1,5 @@
 ---
-documento: Design Brief — Squad Comercial (Cadarn Healthtech)
+documento: Design Brief — Squad Comercial (Cadarn Healtech)
 versao: "0.1"
 status: "proposto — aguarda aprovação de Fabiano"
 data: 2026-07-15
@@ -15,14 +15,14 @@ relacionado:
   - squads/cadarn-comercial/squad.yaml
 ---
 
-# Design Brief — Squad Comercial Cadarn Healthtech
+# Design Brief — Squad Comercial Cadarn Healtech
 
-> A squad `cadarn-comercial` do Tarian Healthtech é hoje **cópia literal da Squad Comercial da
+> A squad `cadarn-comercial` do Tarian Healtech é hoje **cópia literal da Squad Comercial da
 > Martech**: ICP de imobiliária/advocacia/estética, ticket R$5k-30k, DNA de Caio Carneiro (VENDE-C)
 > + Flávio Augusto, DISC calibrado por COFECI/OAB/CFM. Nada disso serve à Saúde Suplementar.
 >
 > Este brief redesenha os **3 agentes** (líder comercial, gestor-funil, camaleão) ancorando-os no
-> cânone próprio da Healthtech — o Corpus IA (Caps 3-4-5 = munição comercial), o Glossário do setor,
+> cânone próprio da Healtech — o Corpus IA (Caps 3-4-5 = munição comercial), o Glossário do setor,
 > o Tom de Voz v1.0 (Hermès Tech, formal-moderado, "IA no passo 3") e o Dossiê de Marca v0.1
 > (antagonista "a Demora", frame copiloto).
 >
@@ -90,7 +90,7 @@ Forja**. *Fallback de menor atrito:* manter "Caio" se Fabiano preferir zero chur
 - **Script/objeções:** postura **Challenger** — 1ª reunião é **diagnóstico, não apresentação** ("investigue, não apresente"). Objeção se trata **dando segurança, não rebatendo**: perda de controle → prometer visibilidade; síndrome do protecionismo → reposicionar como **copiloto** (automatiza o braçal, não o cognitivo); LGPD → segurança nível bancário como **ponto de partida**, não resposta a objeção; custo → deslocar para "custo da ineficiência atual" + ROI.
 - **Arquétipo:** de Caio Carneiro + Flávio Augusto → **Challenger Sale (Dixon & Adamson) + venda consultiva enterprise B2B**. Herda o **playbook validado de Llif** (Caps 3-4-5), conforme llif.md.
 - **Anti-patterns:** disparo frio no WhatsApp sem valor; "vamos automatizar tudo / tirar tudo da sua mão"; propor pacote fechado; exigir integração complexa na venda à clínica.
-- **Modo Conselho:** o "duplo chapéu" (Squad Comercial + Conselho de Mentoria) é artefato Martech. A Healthtech **não tem** squad Conselho de Mentoria mapeada. **Recomendo remover** o modo conselho deste agente — `[INFERÊNCIA — recomendação, não fato; martelo de Fabiano]`.
+- **Modo Conselho:** o "duplo chapéu" (Squad Comercial + Conselho de Mentoria) é artefato Martech. A Healtech **não tem** squad Conselho de Mentoria mapeada. **Recomendo remover** o modo conselho deste agente — `[INFERÊNCIA — recomendação, não fato; martelo de Fabiano]`.
 
 **O que NÃO muda:**
 - **Camada:** fundação. **Papel:** líder da frente comercial.
@@ -136,7 +136,7 @@ Forja**. *Fallback de menor atrito:* manter "Caio" se Fabiano preferir zero chur
 - **`dna_source` por agente:** remover Caio Carneiro/Flávio Augusto/MEDDIC-Napoli/DISC-Marston-Martech → apontar para Corpus IA (Caps 3-4-5 + Glossário) e frameworks Challenger/MEDDIC recalibrados.
 - **`knowledge_path`:** os caminhos `.aiox-core/knowledge/agents-dna/{caio-carneiro,flavio-augusto,...}` são DNA Martech → repontar para `docs/cadarn-healthtech/Corpus IA/` e o Glossário do setor.
 - **`pipeline.stages`:** manter a espinha, reescrever os `output` na linguagem do domínio.
-- **`integrations`:** os handoffs para `cadarn-operacional` (Arc/Argus/fase AFFIRM) e `cadarn-marketing` referenciam squads da Martech. **Verificar se existem no Tarian Healthtech** — provavelmente não (a Healthtech ainda vive na semente pré-operação). `[INFERÊNCIA — verificar antes da Forja]`
+- **`integrations`:** os handoffs para `cadarn-operacional` (Arc/Argus/fase AFFIRM) e `cadarn-marketing` referenciam squads da Martech. **Verificar se existem no Tarian Healtech** — provavelmente não (a Healtech ainda vive na semente pré-operação). `[INFERÊNCIA — verificar antes da Forja]`
 - **`tags`:** trocar `high-ticket` por termos do domínio (saúde suplementar, BPO, automação).
 
 ## 6. Nota sobre o ROI 211,7% (regra de domínio — MUST)
@@ -183,7 +183,7 @@ Itens que **não** existem no material e não podem ser inventados na Forja:
 
 - **DISC × persona de saúde** (para Camaleão) — o Corpus não mapeia perfil comportamental por persona. **Requer Atlas ou dados de persona (Anima)** antes de reconstruir as tabelas do §4.3.
 - **Verificação de nome galês** ("Cael" ou alternativa) — validar grafia/significado com Atlas.
-- **Existência das squads de integração** (`cadarn-operacional`, `cadarn-marketing`) no Tarian Healthtech — verificar antes de manter os handoffs do `squad.yaml`.
+- **Existência das squads de integração** (`cadarn-operacional`, `cadarn-marketing`) no Tarian Healtech — verificar antes de manter os handoffs do `squad.yaml`.
 - **Benchmarks de funil por segmento de saúde** (taxa qualificado→fechado, CAC, LTV) — o Corpus dá ciclo, mas não os percentuais; marcar como a calibrar com dado real.
 
 ## 10. Pipeline de criação (fase Sonnet)
@@ -195,4 +195,4 @@ de template sobre DNA já definido).
 
 ---
 
-*Design Brief Squad Comercial Healthtech v0.1 | proposto por Craft (@squad-creator) em 2026-07-15 | fase de projeto (Opus); criação pendente (Sonnet) | aguarda aprovação de Fabiano*
+*Design Brief Squad Comercial Healtech v0.1 | proposto por Craft (@squad-creator) em 2026-07-15 | fase de projeto (Opus); criação pendente (Sonnet) | aguarda aprovação de Fabiano*

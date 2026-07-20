@@ -1,5 +1,5 @@
 ---
-template: Planilha de ROI Cadarn Healthtech
+template: Planilha de ROI Cadarn Healtech
 versao: 1.0
 criado_em: 2026-06-28
 uso: Output de *planilha-roi
@@ -7,7 +7,7 @@ tier_de_fonte: 🜂 (Cap. 6 — projeção Cadarn) + dado real do cliente (obrig
 alerta: ROI 211,7% entra APENAS como referência marcada. Número entregue = calculado com dados reais.
 ---
 
-# PLANILHA DE ROI — CADARN HEALTHTECH
+# PLANILHA DE ROI — CADARN HEALTECH
 **Data:** ___________  
 **Cliente:** ___________  
 **Ponto de entrada:** ___________  
@@ -36,7 +36,7 @@ alerta: ROI 211,7% entra APENAS como referência marcada. Número entregue = cal
 
 ---
 
-## SEÇÃO 2 — SITUAÇÃO COM CADARN HEALTHTECH `[HIPÓTESE CADARN — a validar]`
+## SEÇÃO 2 — SITUAÇÃO COM CADARN HEALTECH `[HIPÓTESE CADARN — a validar]`
 
 > Projeções baseadas no ponto de entrada identificado. Precisam ser validadas no piloto.
 
@@ -63,7 +63,7 @@ alerta: ROI 211,7% entra APENAS como referência marcada. Número entregue = cal
 | Parâmetro | Valor |
 |---|---|
 | Economia mensal estimada (base) `[HIPÓTESE]` | R$ |
-| Investimento mensal Cadarn Healthtech | R$ (a definir na proposta) |
+| Investimento mensal Cadarn Healtech | R$ (a definir na proposta) |
 
 ### Tabela de Cenários
 
@@ -84,10 +84,10 @@ alerta: ROI 211,7% entra APENAS como referência marcada. Número entregue = cal
 > Esta seção é para contexto interno. NÃO apresentar ao cliente como benchmark ou resultado esperado.
 
 ```
-ROI Cadarn Healthtech — Cap. 6 (projeção interna): 211,7%
+ROI Cadarn Healtech — Cap. 6 (projeção interna): 211,7%
 
 CONTEXTO OBRIGATÓRIO:
-Este número é uma projeção modelada internamente pela Cadarn Healthtech,
+Este número é uma projeção modelada internamente pela Cadarn Healtech,
 baseada em cenário hipotético do Cap. 6 do Corpus IA.
 
 NÃO É:
@@ -140,4 +140,4 @@ LIMITAÇÕES:
 
 ---
 
-*Template v1.0 — Llif / Cadarn Healthtech | Preencher a partir de *planilha-roi | ROI 211,7% = referência interna, nunca benchmark*
+*Template v1.0 — Llif / Cadarn Healtech | Preencher a partir de *planilha-roi | ROI 211,7% = referência interna, nunca benchmark*

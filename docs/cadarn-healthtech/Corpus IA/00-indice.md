@@ -10,7 +10,7 @@ fontes_consolidadas: 13 pesquisas + 5 domínios curados + 1 fonte estratégica (
 # Corpus IA Saúde Suplementar
 ## Mercado de saúde suplementar, corretoras e faturamento
 
-Este material reúne, **sem repetição** e em **ordem didática**, tudo o que as fontes de base trazem sobre o mercado em que a Cadarn Healthtech vai atuar — e, no Capítulo 6, sobre como a Cadarn pretende atuar nele. Está dividido em 6 capítulos mais dois anexos, do panorama geral à jogada comercial, com um glossário de referência ao final. Cada afirmação factual carrega sua origem entre colchetes — `[fonte: ...]` — e todo termo técnico é explicado na primeira vez que aparece.
+Este material reúne, **sem repetição** e em **ordem didática**, tudo o que as fontes de base trazem sobre o mercado em que a Cadarn Healtech vai atuar — e, no Capítulo 6, sobre como a Cadarn pretende atuar nele. Está dividido em 6 capítulos mais dois anexos, do panorama geral à jogada comercial, com um glossário de referência ao final. Cada afirmação factual carrega sua origem entre colchetes — `[fonte: ...]` — e todo termo técnico é explicado na primeira vez que aparece.
 
 **Duas naturezas.** Os Capítulos 1 a 5 são **descritivos** — descrevem o mercado e vêm das pesquisas de base. O Capítulo 6 e o Anexo A são majoritariamente **prescritivos** — tratam do modelo de negócio, da oferta e do produto da própria Cadarn, e vêm de fontes exploratórias distintas (conversas estratégicas com IA). Seu conteúdo tem status de **hipótese a validar**, não de fato de mercado, e isso está sinalizado ao longo do capítulo. O Anexo B (Glossário) é **referência descritiva**.
 
@@ -28,7 +28,7 @@ A ordem é progressiva: cada capítulo se apoia no anterior.
 
 5. **[O Decisor e a Jornada de Compra](05-decisor-jornada-compra.md)** — quem decide a compra, como compra e como abordar cada persona.
 
-6. **[A Jogada da Cadarn Healthtech](06-cadarn-modelo-oferta.md)** — *(prescritivo)* o modelo de negócio (BPO Tech, as duas pontas, o Efeito Espelho), a oferta (o Trio da Eficiência), a arquitetura técnica do produto, o ROI (211,7%) e a abordagem comercial. Vira a câmera do mercado para a estratégia da própria Cadarn.
+6. **[A Jogada da Cadarn Healtech](06-cadarn-modelo-oferta.md)** — *(prescritivo)* o modelo de negócio (BPO Tech, as duas pontas, o Efeito Espelho), a oferta (o Trio da Eficiência), a arquitetura técnica do produto, o ROI (211,7%) e a abordagem comercial. Vira a câmera do mercado para a estratégia da própria Cadarn.
 
 — **[Anexo A — Perguntas Estratégicas](07-anexo-perguntas-estrategicas.md)** — o fio condutor das decisões de Fabiano, o backlog de perguntas em aberto (cada uma marcada como já destilada ou ainda pendente), o banco de perguntas de diagnóstico de campo dos três dossiês, a nota de método e a proveniência do material fora de escopo.
 

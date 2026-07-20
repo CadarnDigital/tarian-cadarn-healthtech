@@ -1,14 +1,14 @@
 ---
-template: Diagnóstico Cadarn Healthtech
+template: Diagnóstico Cadarn Healtech
 versao: 1.0
 criado_em: 2026-06-28
 uso: Output de *diagnostico-corretora | *diagnostico-clinica
 tier_de_fonte: FATO (Caps 1-5 para dados de mercado) + dado real do cliente
 ---
 
-# DIAGNÓSTICO CADARN HEALTHTECH
+# DIAGNÓSTICO CADARN HEALTECH
 **Data:** ___________  
-**Analista:** Llif / Cadarn Healthtech  
+**Analista:** Llif / Cadarn Healtech  
 **Tipo de operação:** [ ] Corretora  [ ] Clínica / Hospital  [ ] Faturamento hospitalar
 
 ---
@@ -70,7 +70,7 @@ tier_de_fonte: FATO (Caps 1-5 para dados de mercado) + dado real do cliente
 
 ## BLOCO 4 — O QUE É RESOLVÍVEL (ESCOPO POSSÍVEL)
 
-> Apenas o que a Cadarn Healthtech pode atacar no ponto de entrada identificado.
+> Apenas o que a Cadarn Healtech pode atacar no ponto de entrada identificado.
 
 **Ponto de entrada confirmado para piloto:**
 
@@ -97,7 +97,7 @@ tier_de_fonte: FATO (Caps 1-5 para dados de mercado) + dado real do cliente
 | Passo | Responsável | Prazo sugerido |
 |---|---|---|
 | Compartilhar amostra de dados (XML / planilha de glosa / relatório de cadastro) | Cliente | |
-| Proposta de piloto (escopo + prazo + investimento) | Cadarn Healthtech | |
+| Proposta de piloto (escopo + prazo + investimento) | Cadarn Healtech | |
 | Reunião de alinhamento de piloto | Ambos | |
 
 **Proposta de formato de piloto:**  
@@ -114,4 +114,4 @@ tier_de_fonte: FATO (Caps 1-5 para dados de mercado) + dado real do cliente
 
 ---
 
-*Template v1.0 — Llif / Cadarn Healthtech | Preencher a partir de *diagnostico-corretora ou *diagnostico-clinica*
+*Template v1.0 — Llif / Cadarn Healtech | Preencher a partir de *diagnostico-corretora ou *diagnostico-clinica*

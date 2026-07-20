@@ -1,24 +1,24 @@
 ---
-documento: Tom de Voz — Cadarn Healthtech
+documento: Tom de Voz — Cadarn Healtech
 versao: 1.0
 status: fechado
 data: 2026-06-23
-unidade: Cadarn Healthtech
+unidade: Cadarn Healtech
 mesa: Camy + Caio (cascata) → 6 ajustes incorporados → fusão Emrys
 autoridade: Fabiano
 relacionado:
   - dossie-marca-cadarn-healthtech-v0.1.md
 ---
 
-# Tom de Voz — Cadarn Healthtech
+# Tom de Voz — Cadarn Healtech
 *v1.0 — fechado em 2026-06-23*
 
-> Manual operacional de comunicação da Cadarn Healthtech. Régua de toda copy, proposta,
+> Manual operacional de comunicação da Cadarn Healtech. Régua de toda copy, proposta,
 > conversa de venda e comunicação de operação. Consulta no dia a dia.
 
 ---
 
-## O que a Cadarn Healthtech herda da Martech
+## O que a Cadarn Healtech herda da Martech
 
 A Martech tem o **Hermès Tech**: técnico sem ser hermético, preciso sem ser frio, estratégico sem ser acadêmico. A Health herda esse DNA. O que muda é o interlocutor — e, com ele, o vocabulário de referência.
 
@@ -78,7 +78,7 @@ A tecnologia é o meio. O que o cliente compra é fluxo — a guia que anda, o c
 
 ## Como falar sobre o problema do cliente
 
-A Demora tem nomes concretos. Nomear o problema específico é o primeiro sinal de que a Cadarn Healthtech conhece o mercado.
+A Demora tem nomes concretos. Nomear o problema específico é o primeiro sinal de que a Cadarn Healtech conhece o mercado.
 
 **Para operadores (corretora / faturamento):**
 > Em vez de: "sua operação tem ineficiências"
@@ -111,7 +111,7 @@ O prospect de saúde suplementar vai testar o vendedor com objeção de risco an
 
 ## Vocabulário de referência
 
-Palavras que carregam o DNA da marca. Usar com naturalidade — são o vocabulário nativo da Cadarn Healthtech.
+Palavras que carregam o DNA da marca. Usar com naturalidade — são o vocabulário nativo da Cadarn Healtech.
 
 **Core:** fluxo · operação · processo · auditar · conquistar · guia · cadastro · faturamento · a Demora · gargalo · capacidade · volume · escalar sem inchar · prazo · lote · TISS · glosa · devolutiva · piloto · frameworks · agentes · relatório
 
@@ -119,7 +119,7 @@ Palavras que carregam o DNA da marca. Usar com naturalidade — são o vocabulá
 
 ## Palavras de uso condicionado
 
-> **Princípio (martelo Fabiano, 2026-06-23):** a Cadarn Healthtech **não tem lista de palavras proibidas**. Qualquer palavra pode ser usada — desde que haja uma **razão específica** para ela naquele contexto. Sem razão declarada, o padrão é seguir o vocabulário de referência acima. A tabela abaixo registra as palavras que pedem cautela e a condição que justifica o uso.
+> **Princípio (martelo Fabiano, 2026-06-23):** a Cadarn Healtech **não tem lista de palavras proibidas**. Qualquer palavra pode ser usada — desde que haja uma **razão específica** para ela naquele contexto. Sem razão declarada, o padrão é seguir o vocabulário de referência acima. A tabela abaixo registra as palavras que pedem cautela e a condição que justifica o uso.
 
 | Palavra | Quando pode usar | Por que a cautela |
 |---|---|---|
@@ -127,7 +127,7 @@ Palavras que carregam o DNA da marca. Usar com naturalidade — são o vocabulá
 | "disruptivo" | Quase nunca. Só se estiver contrastando com incumbente específico do setor | Clichê de startup que não entrega |
 | "transformação" | Ao nomear o resultado de longo prazo para o decisor financeiro, nunca como promessa de entrada | Soa grande demais para o primeiro piloto |
 | "eficiência" | Ao quantificar: "reduz de X horas para Y" — nunca como adjetivo solto | Adjetivo sem número não convence gestor de saúde |
-| "substituir pessoas / cortar folha" | Nunca como argumento de venda. Pode aparecer como descrição de resultado *se o cliente trouxer primeiro* | Acende conflito interno — objeção que a Cadarn Healthtech não quer criar |
+| "substituir pessoas / cortar folha" | Nunca como argumento de venda. Pode aparecer como descrição de resultado *se o cliente trouxer primeiro* | Acende conflito interno — objeção que a Cadarn Healtech não quer criar |
 | "parceria" | Só após o piloto estar rodando — não na prospecção | Antes do resultado, soa como frase de vendedor |
 | "solução end-to-end" | Só se desdobrar imediatamente o que cada etapa cobre | Genérico demais; gestor de saúde precisa de especificidade |
 | travessão (—) | Nunca em copy. Pode aparecer em tabelas ou listas internas | Marca de texto gerado por IA — já virou piada no mercado |
@@ -168,7 +168,7 @@ O piloto é o gate real da venda relacional. O cliente satisfeito no piloto é o
 
 ## O que muda em relação à Martech
 
-| Dimensão | Cadarn Martech | Cadarn Healthtech |
+| Dimensão | Cadarn Martech | Cadarn Healtech |
 |---|---|---|
 | Público | Dono de PME (crescimento / receita) | Gestor / operador de saúde (eficiência / custo) |
 | Gatilho de compra | "Quero crescer, não depender de sorte" | "Quero resolver, não perder mais prazo nem venda" |

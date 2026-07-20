@@ -1,6 +1,6 @@
 ---
 tipo: dossie-marca
-unidade: Cadarn Healthtech
+unidade: Cadarn Healtech
 versao: "0.1"
 status: em-construcao
 criado_em: 2026-06-23
@@ -9,11 +9,11 @@ relacao: "2ª unidade de negócio da Cadarn. Cânone-mãe (método, valores, vis
 confidencialidade: interno — Tríade Cadarn + Delma
 ---
 
-# Cadarn Healthtech — Dossiê-Mestre da Marca (v0.1, em construção)
+# Cadarn Healtech — Dossiê-Mestre da Marca (v0.1, em construção)
 
 > **"Onde a saúde emperra, nós fazemos fluir."**
 
-A Cadarn Healthtech é a **segunda unidade de negócio da Cadarn** (marca aprovada por Samira em 2026-06-22). Leva soluções de IA para o mercado de saúde suplementar brasileiro. NÃO é vertical da Cadarn Martech: é unidade separada, com cânone próprio, sob o guarda-chuva de coerência do Cadw. Onde a Martech é **Engenharia de Receita** (marketing/vendas), a Health é **Engenharia de Fluxo** (operação).
+A Cadarn Healtech é a **segunda unidade de negócio da Cadarn** (marca aprovada por Samira em 2026-06-22). Leva soluções de IA para o mercado de saúde suplementar brasileiro. NÃO é vertical da Cadarn Martech: é unidade separada, com cânone próprio, sob o guarda-chuva de coerência do Cadw. Onde a Martech é **Engenharia de Receita** (marketing/vendas), a Health é **Engenharia de Fluxo** (operação).
 
 ---
 
@@ -21,8 +21,8 @@ A Cadarn Healthtech é a **segunda unidade de negócio da Cadarn** (marca aprova
 
 | Elemento | Definição |
 |---|---|
-| **Nome** | Cadarn Healthtech (raiz galesa "Cadarn" + descritor de categoria — mesmo molde de "Martech") |
-| **Posicionamento-âncora** | **Cadarn Healthtech — Engenharia de Fluxo** |
+| **Nome** | Cadarn Healtech (raiz galesa "Cadarn" + descritor de categoria — mesmo molde de "Martech") |
+| **Posicionamento-âncora** | **Cadarn Healtech — Engenharia de Fluxo** |
 | **Frase-síntese** | "Onde a saúde emperra, nós fazemos fluir." |
 | **Símbolo** | **Bambu** — firme porque flui (o carvalho racha no tufão, o bambu verga e não quebra). Casa com a etimologia de "Cadarn": potência disciplinada, estável sob pressão. A explorar como arquétipo. |
 
@@ -32,7 +32,7 @@ A assinatura "Engenharia de ___" é herdada da casa. "Fluxo" venceu eficiência/
 
 ## 2. Missão Oficial (FECHADA 2026-06-23)
 
-> "Quem trabalha com saúde conhece um adversário que ninguém colocou no organograma: a Demora. Ela mora na guia que não anda, no cadastro que trava, na venda que escapa porque a resposta chegou tarde, no documento que faltava e ninguém viu a tempo. A Demora não adoece o paciente; ela trava o crescimento de quem cuida dele, porque crescer, no jeito antigo, significa inchar a operação. A Cadarn Healthtech existe para tirar a Demora do caminho. Podemos assumir a operação inteira para você, ou levar a nossa inteligência para dentro da sua: frameworks operacionais que processam os dados, squads de agentes que executam cada etapa e um agente auditor que confere tudo e entrega relatórios de desempenho que orientam a operação e até a gestão da equipe. É a Engenharia de Fluxo. Começamos onde a Demora mais dói hoje, e seguimos por onde ela ainda se esconde. A operação cresce sem inchar. Use a máquina para conquistar tempo. O humano, para conquistar o cliente."
+> "Quem trabalha com saúde conhece um adversário que ninguém colocou no organograma: a Demora. Ela mora na guia que não anda, no cadastro que trava, na venda que escapa porque a resposta chegou tarde, no documento que faltava e ninguém viu a tempo. A Demora não adoece o paciente; ela trava o crescimento de quem cuida dele, porque crescer, no jeito antigo, significa inchar a operação. A Cadarn Healtech existe para tirar a Demora do caminho. Podemos assumir a operação inteira para você, ou levar a nossa inteligência para dentro da sua: frameworks operacionais que processam os dados, squads de agentes que executam cada etapa e um agente auditor que confere tudo e entrega relatórios de desempenho que orientam a operação e até a gestão da equipe. É a Engenharia de Fluxo. Começamos onde a Demora mais dói hoje, e seguimos por onde ela ainda se esconde. A operação cresce sem inchar. Use a máquina para conquistar tempo. O humano, para conquistar o cliente."
 
 Construída em mesa: Mozi + Verbo (1ª rodada de vozes) → Caio + Camy (2ª rodada, ajustes de Fabiano) → fusão e refino por Emrys.
 
@@ -61,14 +61,14 @@ A lentidão que faz perder venda, gera insatisfação e revela tarde a falta de 
 
 | Modo | O que é | Quando |
 |---|---|---|
-| **BPO** | "Assumimos a operação inteira para você." A Cadarn Healthtech opera o faturamento/cadastro com IA + Delma. | Porta de entrada, principalmente no início (Fase 1) |
+| **BPO** | "Assumimos a operação inteira para você." A Cadarn Healtech opera o faturamento/cadastro com IA + Delma. | Porta de entrada, principalmente no início (Fase 1) |
 | **Produto** | "Levamos a nossa inteligência para dentro da sua operação." Frameworks/agentes instalados no cliente. | Escala (Fase 2) |
 
 Escopo **elástico**: "começamos onde a Demora mais dói hoje, e seguimos por onde ela ainda se esconde" — não se tranca em faturamento+cadastro, sem citar o que ainda não fazemos.
 
 ### As 2 trilhas de cliente
 
-- **Trilha A — Faturamento (âncora: Alexandre).** Alexandre tem operação grande de faturamento hospitalar; Delma presta serviço a ele como PJ. Gargalo dele = capacidade. A Cadarn Healthtech entra aumentando o volume que a Delma processa com IA → Alexandre enxuga custo aos poucos. Cliente embutido, relação já existente.
+- **Trilha A — Faturamento (âncora: Alexandre).** Alexandre tem operação grande de faturamento hospitalar; Delma presta serviço a ele como PJ. Gargalo dele = capacidade. A Cadarn Healtech entra aumentando o volume que a Delma processa com IA → Alexandre enxuga custo aos poucos. Cliente embutido, relação já existente.
 - **Trilha B — BPO de cadastro (alvo: corretoras).** Cadastro = OCR de documentos (fotos) + digitação. Caso clássico de IA. Alvo concreto: empresa que a Delma conhece com ~9 pessoas só em cadastro (folha ~R$45–90k/mês; substituível por R$8–15k/mês de BPO).
 
 ---
@@ -92,7 +92,7 @@ A cor vira o código visual de qual unidade fala: Martech = vinho, Health = navy
 
 ## 7. Herança da casa vs. próprio da Health
 
-| Herda da Cadarn (espinha) | Próprio da Cadarn Healthtech |
+| Herda da Cadarn (espinha) | Próprio da Cadarn Healtech |
 |---|---|
 | Método C.A.D.A.R.N. | Missão (não é "Especialista Exausto") ✅ |
 | Nome + etimologia galesa | Posicionamento "Engenharia de Fluxo" ✅ |
@@ -123,7 +123,7 @@ Entrar PESADO no mercado, mas faseado:
 
 ## 10. Arquitetura — Tarian próprio (decisão 2026-06-23)
 
-**Decisão:** a Cadarn Healthtech terá um **Tarian próprio** (`tarian-health`), criado na **Fase de operação** (não agora — a estratégia atual não precisa de infra).
+**Decisão:** a Cadarn Healtech terá um **Tarian próprio** (`tarian-health`), criado na **Fase de operação** (não agora — a estratégia atual não precisa de infra).
 
 Razões: (1) **dados de saúde são sensíveis por lei** (LGPD Art. 11) — um BPO que processa guias é processador de dado sensível, exige isolamento, DPA, logs auditáveis; (2) agentes operacionais próprios (squads de faturamento/cadastro + agente auditor); (3) sócia (Delma) e jurídico tendem a empresa separada; (4) ambição de escala.
 
@@ -153,4 +153,4 @@ Razões: (1) **dados de saúde são sensíveis por lei** (LGPD Art. 11) — um B
 
 ---
 
-*Cadarn Healthtech — Dossiê-Mestre v0.1 | Cadw (Emrys) + mesa | 2026-06-23 | Status: em construção*
+*Cadarn Healtech — Dossiê-Mestre v0.1 | Cadw (Emrys) + mesa | 2026-06-23 | Status: em construção*

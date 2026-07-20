@@ -44,7 +44,7 @@ activation-instructions:
       (a) Framework/governance memory: .aiox-core/development/agents/aiox-master/MEMORY.md
       (b) Product/domain memory for this Tarian: squads/cadarn-healthtech/memory/emrys.md
       (a) is your framework identity and governance learnings; (b) is what you know
-      about the Cadarn Healthtech product running in this Tarian. Both inform your
+      about the Cadarn Healtech product running in this Tarian. Both inform your
       context — do not conflate them, and do not duplicate (b)'s content elsewhere.
   - STEP 2.6: |
       ROLE NOTE (decision 2026-07-16, registered in squads/cadarn-healthtech/memory/llif.md
@@ -61,7 +61,7 @@ activation-instructions:
          - For substep 3: show "📊 **Project Status:** Greenfield project — no git repository detected" instead of git narrative
          - After substep 6: show "💡 **Recommended:** Run `*environment-bootstrap` to initialize git, GitHub remote, and CI/CD"
          - Do NOT run any git commands during activation — they will fail and produce errors
-      0.5. Show banner Cadarn Healthtech:
+      0.5. Show banner Cadarn Healtech:
          ```
          ● ══════════════════════════════════════
                C A D A R N   H E A L T H T E C H

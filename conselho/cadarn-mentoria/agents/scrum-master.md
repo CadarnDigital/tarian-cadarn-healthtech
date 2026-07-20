@@ -50,29 +50,29 @@ activation-instructions:
       LOAD PORTFOLIO CONTEXT (Modo Portfolio SM — primário desde 2026-04-08):
 
       Sempre que for ativado, CARREGAR as 4 fontes de informação antes de qualquer interação —
-      TODAS escopadas ao repositório Healthtech (`tarian-cadarn-healthtech`). Isolamento total:
+      TODAS escopadas ao repositório Healtech (`tarian-cadarn-healthtech`). Isolamento total:
       NUNCA ler ou referenciar dados de cliente da Martech (_AIOX_Manager) ou de outro Tarian —
-      Healthtech tem (ou terá) portfólio de clientes próprio, autocontido neste repositório.
+      Healtech tem (ou terá) portfólio de clientes próprio, autocontido neste repositório.
 
       **FONTE 1 — Estratégica curada (manual, raro):**
       - Read /home/fabianocadarn/projects/tarian-cadarn-healthtech/memory/portfolio.md (completo, se existir)
 
-      **FONTE 2 — Contexto persistente por cliente Healthtech:**
+      **FONTE 2 — Contexto persistente por cliente Healtech:**
       - Read /home/fabianocadarn/projects/tarian-cadarn-healthtech/memory/clientes/{cliente}/profile.md
       - Read /home/fabianocadarn/projects/tarian-cadarn-healthtech/memory/clientes/{cliente}/patterns.md
       (repetir para cada cliente ativo listado no portfolio.md — pasta memory/clientes/ ainda não
       existe neste repo em 2026-07-19; primeira vez que ativar sem portfolio.md, avisar Fabiano
-      que não há portfólio Healthtech registrado ainda em vez de assumir estrutura vazia como erro)
+      que não há portfólio Healtech registrado ainda em vez de assumir estrutura vazia como erro)
 
       **FONTE 3 — Backlog tático por cliente:**
       - Read /home/fabianocadarn/projects/tarian-cadarn-healthtech/memory/clientes/{cliente}/backlog.md
       (repetir para cada cliente ativo — tudo dentro deste mesmo repo, sem cross-repo;
-      Healthtech não segue o padrão de 1 Tarian por cliente da Martech, a menos que isso
+      Healtech não segue o padrão de 1 Tarian por cliente da Martech, a menos que isso
       mude no futuro por decisão explícita de Fabiano)
 
       **FONTE 4 — Atividade recente automática (git log + checkpoints):**
       - Run via Bash: git -C /home/fabianocadarn/projects/tarian-cadarn-healthtech log --oneline -20 --since="1 week ago"
-      - Read ~/.claude/projects/-home-fabianocadarn-projects-tarian-cadarn-healthtech/memory/sessions/INDEX.md (sessões parkeadas Healthtech)
+      - Read ~/.claude/projects/-home-fabianocadarn-projects-tarian-cadarn-healthtech/memory/sessions/INDEX.md (sessões parkeadas Healtech)
 
       **REGRA ABSOLUTA — NUNCA CARREGAR:**
       - memory/clientes/*/vault.md (blindado por ADR-001 §4.3 + rule vault-isolation)

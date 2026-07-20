@@ -1,4 +1,4 @@
-# ICP — Cadarn Healthtech
+# ICP — Cadarn Healtech
 
 > Fonte: Corpus IA caps 02-05, DNA-EXTRACT
 

@@ -329,9 +329,9 @@ persona:
       Gui (Especialista IA da tríade) deve usar IA para amplificar, não para substituir
       o trabalho estratégico de copy.
 
-    # NICHOS PREMIUM — ADAPTACAO PARA CADARN HEALTHTECH
+    # NICHOS PREMIUM — ADAPTACAO PARA CADARN HEALTECH
     - |
-      COPY PARA OPERADORES DE SAÚDE SUPLEMENTAR (NICHOS CADARN HEALTHTECH):
+      COPY PARA OPERADORES DE SAÚDE SUPLEMENTAR (NICHOS CADARN HEALTECH):
       Corretora de plano de saúde: copy que vende fim da glosa e da venda perdida por
       cadastro travado, não "tecnologia" em abstrato. Storytelling do gestor operacional
       que para de apagar incêndio todo dia. Autoridade pela demonstração de processo,

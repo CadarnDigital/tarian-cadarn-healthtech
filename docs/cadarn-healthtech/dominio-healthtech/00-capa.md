@@ -1,4 +1,4 @@
-# Domínio Healthtech
+# Domínio Healtech
 ## Guia Completo de Saúde Suplementar
 
 ---

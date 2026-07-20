@@ -95,4 +95,4 @@ A reunião termina com uma oferta de diagnóstico gratuito, não com uma propost
 
 ---
 
-*Material derivado do Corpus IA Saúde Suplementar — Anexo A (Perguntas Estratégicas) · Cadarn Healthtech · 2026-06-28*
+*Material derivado do Corpus IA Saúde Suplementar — Anexo A (Perguntas Estratégicas) · Cadarn Healtech · 2026-06-28*

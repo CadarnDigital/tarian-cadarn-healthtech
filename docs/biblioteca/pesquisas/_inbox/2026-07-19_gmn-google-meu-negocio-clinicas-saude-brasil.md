@@ -109,7 +109,7 @@ O Google Business Profile oferece a função de agendamento online por meio de i
 
 ---
 
-## Síntese — o que muda de fato para a Cadarn Healthtech
+## Síntese — o que muda de fato para a Cadarn Healtech
 
 | Eixo | O que é igual ao Radar (imobiliário) | O que muda em saúde |
 |---|---|---|

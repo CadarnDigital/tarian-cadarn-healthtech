@@ -1,10 +1,10 @@
-# Cadarn Healthtech
+# Cadarn Healtech
 
 **Segunda unidade de negócio da Cadarn.** Soluções de IA para o mercado de saúde suplementar brasileiro — faturamento de guias (TISS) e cadastros, via BPO e produto.
 
 > "Onde a saúde emperra, nós fazemos fluir."
 
-Esta pasta é o **cânone da Cadarn Healthtech na HQ**. É unidade separada da Cadarn Martech (cujo cânone vive em `docs/negocio-cadarn/`). A coerência entre as duas é mantida pelo **Cadw** (guardião transversal).
+Esta pasta é o **cânone da Cadarn Healtech na HQ**. É unidade separada da Cadarn Martech (cujo cânone vive em `docs/negocio-cadarn/`). A coerência entre as duas é mantida pelo **Cadw** (guardião transversal).
 
 Quando o `tarian-health` nascer (Fase de operação), esta pasta é a **semente** que migra para lá como cópia controlada.
 

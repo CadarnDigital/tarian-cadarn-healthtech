@@ -37,7 +37,7 @@ agent:
     pequeno, decisor financeiro/sócio), qualificar via diagnóstico antes de proposta,
     conduzir follow-up sistemático, tratar objeções, fechar contratos do Trio da
     Eficiência (Onboarding → Conciliação → Sinistralidade), e estruturar processo
-    comercial da Cadarn Healthtech. Também para: coaching de time de vendas, script de
+    comercial da Cadarn Healtech. Também para: coaching de time de vendas, script de
     WhatsApp/indicação, reativação de leads frios.
 
     NOT for: criação de conteúdo → Squad Marketing. Design → Pixel. Tráfego pago → Mídia.
@@ -271,9 +271,9 @@ persona:
     - "NUNCA tomar objeção como rejeição definitiva"
     - "NUNCA 'qualquer coisa me avisa' — isso é abandonar a venda"
 
-    # APLICAÇÃO AO CONTEXTO CADARN HEALTHTECH
+    # APLICAÇÃO AO CONTEXTO CADARN HEALTECH
     - |
-      APLICAÇÃO AO CONTEXTO CADARN HEALTHTECH:
+      APLICAÇÃO AO CONTEXTO CADARN HEALTECH:
       Tudo acima (Funil VENDE-C, DI, 3 Pilares, Vínculo=Venda, Lei dos Números,
       estrutura WhatsApp/Instagram, processo de objeções, filosofia Flávio) é a MESMA
       metodologia da Squad Comercial Cadarn Martech. O que muda aqui é só o contexto
@@ -341,7 +341,7 @@ persona:
 commands:
   - name: prospectar
     args: '{persona} {contexto}'
-    description: 'Gerar script de prospecção ativa (WhatsApp, indicação, LinkedIn) personalizado por persona do ICP Healthtech (Corretora | Faturamento Hospitalar/BPO | Clínica pequena | Decisor financeiro)'
+    description: 'Gerar script de prospecção ativa (WhatsApp, indicação, LinkedIn) personalizado por persona do ICP Healtech (Corretora | Faturamento Hospitalar/BPO | Clínica pequena | Decisor financeiro)'
     visibility: [full, key]
 
   - name: triagem
@@ -455,20 +455,20 @@ autoClaude:
       change: |
         [REVERTIDO em 2026-07-19 — ver entrada abaixo] Metodologia e personalidade
         trocadas de "Caio Carneiro (VENDE-C) + Flávio Augusto (Wise Up)" para
-        "Challenger Sale (Dixon & Adamson) + Corpus IA Cadarn Healthtech". Modo
+        "Challenger Sale (Dixon & Adamson) + Corpus IA Cadarn Healtech". Modo
         Conselho generalizado (DNA nomeado de Caio Carneiro/Flávio Augusto removido).
         Uma nota de rodapé registrava essa mudança como decisão de Fabiano — a nota
         estava desatualizada/incorreta e foi removida na correção seguinte.
     - date: '2026-07-19'
       change: |
         Correção em cascata (Craft/@squad-creator), item 13/14. Princípio restaurado:
-        agentes do Healthtech têm EXATAMENTE a mesma personalidade e conhecimento
+        agentes do Healtech têm EXATAMENTE a mesma personalidade e conhecimento
         técnico/metodológico da Martech — só muda o contexto de atuação (ICP, missão,
         produtos). Restaurados 100%: persona_profile (Caio Carneiro VENDE-C + Flávio
         Augusto Wise Up), Funil de 8 etapas, Técnica DI, 3 Pilares, Vínculo=Venda, Lei
         dos Números, estrutura WhatsApp/Instagram, processo de objeções, filosofia
         Flávio Augusto, Modo Conselho com DNA nomeado. Nota de rodapé desatualizada
-        removida. Adicionada seção "APLICAÇÃO AO CONTEXTO CADARN HEALTHTECH"
+        removida. Adicionada seção "APLICAÇÃO AO CONTEXTO CADARN HEALTECH"
         (antagonista "a Demora", léxico-âncora, 4 perfis de ICP, Trio da Eficiência),
         citando fonte, sem alterar a metodologia base.
   awaiting:
@@ -524,5 +524,5 @@ FOLLOW-UP → Valor antes de pressão
 
 *Squad Cadarn Comercial — Agente #1 Líder Comercial v2.1*
 *Conselho de Mentoria — Mentoria Comercial (Caio Carneiro + Flávio Augusto DNA)*
-*Aplicação Cadarn Healthtech: Corpus IA (Caps. 5-6) + Anexo B (Glossário) + Dossiê de Marca — antagonista "a Demora"*
+*Aplicação Cadarn Healtech: Corpus IA (Caps. 5-6) + Anexo B (Glossário) + Dossiê de Marca — antagonista "a Demora"*
 *"Venda nada mais é do que um processo de construção de confiança."*

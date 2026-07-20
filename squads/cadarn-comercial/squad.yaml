@@ -1,6 +1,6 @@
 # Correção pós-incidente 2026-07-19 — roster e dna_source restaurados idênticos à Martech
 # (fonte da verdade: /home/fabianocadarn/projects/_AIOX_Manager/squads/cadarn-comercial/squad.yaml);
-# apenas description/icp adaptados ao Healthtech. Ver .claude/rules/ (Craft/@squad-creator).
+# apenas description/icp adaptados ao Healtech. Ver .claude/rules/ (Craft/@squad-creator).
 name: cadarn-comercial
 version: 1.1.0
 description: Squad Cadarn Comercial — Prospecção, qualificação, fechamento e pós-venda para o ICP de saúde suplementar (corretoras de plano de saúde, faturamento hospitalar/BPO, clínicas e consultórios pequenos)
@@ -93,7 +93,7 @@ agents:
     knowledge_path:
       - ".aiox-core/knowledge/agents-dna/mylius/DNA-EXTRACT.md"
     conselho: true
-    note: "Agente ADICIONAL ao Caio (não substitui) — venda B2B complexa com comitê de decisão formal. Nome 'Mylus' confirmado por Fabiano (2026-07-19), roteamento vs. Caio é heurística livre (nunca bloqueio), hat no Conselho de Mentoria ATIVO (padrão Camy/Clarissa — Healthtech é braço da própria Cadarn, não cliente, então o Conselho se aplica normalmente). Réplica idêntica ao núcleo forjado em _AIOX_Manager/squads/cadarn-comercial/agents/mylus.md — apenas whenToUse e a seção aditiva 'Aplicação ao Contexto Cadarn Healthtech' foram adaptados ao ICP local (squad.yaml deste arquivo, bloco icp:)."
+    note: "Agente ADICIONAL ao Caio (não substitui) — venda B2B complexa com comitê de decisão formal. Nome 'Mylus' confirmado por Fabiano (2026-07-19), roteamento vs. Caio é heurística livre (nunca bloqueio), hat no Conselho de Mentoria ATIVO (padrão Camy/Clarissa — Healtech é braço da própria Cadarn, não cliente, então o Conselho se aplica normalmente). Réplica idêntica ao núcleo forjado em _AIOX_Manager/squads/cadarn-comercial/agents/mylus.md — apenas whenToUse e a seção aditiva 'Aplicação ao Contexto Cadarn Healtech' foram adaptados ao ICP local (squad.yaml deste arquivo, bloco icp:)."
 
   # ESPECIALISTA GMN (novo)
   - id: radar
@@ -106,7 +106,7 @@ agents:
     knowledge_path:
       - squads/cadarn-comercial/memory/radar.md
       - docs/biblioteca/pesquisas/_inbox/2026-07-19_gmn-google-meu-negocio-clinicas-saude-brasil.md
-    note: "Reescopado de imobiliária (Martech) pra clínicas/consultórios pequenos (Healthtech), v1.1, 2026-07-19. As 2 pesquisas originais da Martech (2026-06-01, metodologia geral GMN) não existem neste repo — o núcleo técnico universal foi herdado no arquivo do agente; aprofundamento na metodologia geral exige consultar _AIOX_Manager ou nova pesquisa aqui."
+    note: "Reescopado de imobiliária (Martech) pra clínicas/consultórios pequenos (Healtech), v1.1, 2026-07-19. As 2 pesquisas originais da Martech (2026-06-01, metodologia geral GMN) não existem neste repo — o núcleo técnico universal foi herdado no arquivo do agente; aprofundamento na metodologia geral exige consultar _AIOX_Manager ou nova pesquisa aqui."
     note: |
       Especialista em Google Meu Negócio orgânico para corretores e imobiliárias.
       SAB vs Storefront, trinômio de ranqueamento, checklist 25 itens, estratégia de reviews.
@@ -128,7 +128,7 @@ agents:
 
 # Pipeline Comercial
 pipeline:
-  description: "Fluxo padrão de aquisição de cliente Cadarn Healthtech"
+  description: "Fluxo padrão de aquisição de cliente Cadarn Healtech"
   stages:
     - name: prospeccao
       agent: caio
@@ -199,7 +199,7 @@ integrations:
 
 # Upgrade path
 upgrades:
-  note: "MVP1 COMPLETO. Todos os 3 agentes ativos: Caio, GestorFunil, Camaleão. Locus removido do roster Healthtech em 2026-07-19 (portal de listagem imobiliária, sem equivalente em saúde suplementar). Radar reescopado pra clínicas/consultórios pequenos (GMN) e finalizado com pesquisa dedicada do Atlas, v1.1, 2026-07-19."
+  note: "MVP1 COMPLETO. Todos os 3 agentes ativos: Caio, GestorFunil, Camaleão. Locus removido do roster Healtech em 2026-07-19 (portal de listagem imobiliária, sem equivalente em saúde suplementar). Radar reescopado pra clínicas/consultórios pequenos (GMN) e finalizado com pesquisa dedicada do Atlas, v1.1, 2026-07-19."
   prompts: ".aiox-core/knowledge/agents-dna/PROMPTS-PERPLEXITY-MVP1-PENDENTES.md"
   process: "Perplexity → Echo (M2M-ETL) → atualizar knowledge_path → criar agente"
   status:

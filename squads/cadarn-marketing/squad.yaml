@@ -1,11 +1,11 @@
 # Correção pós-incidente 2026-07-19 — roster e dna_source restaurados idênticos à Martech;
-# apenas ICP/description adaptados ao Healthtech.
+# apenas ICP/description adaptados ao Healtech.
 # Fonte da verdade do roster: /home/fabianocadarn/projects/_AIOX_Manager/squads/cadarn-marketing/squad.yaml
-# Fatos de ICP Healthtech: docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md
+# Fatos de ICP Healtech: docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md
 
 name: cadarn-marketing
 version: 1.1.0
-description: Squad Cadarn Healthtech Marketing — 11 agentes, 7 tasks, 7 templates para o mercado de saúde suplementar (corretoras de plano de saúde, faturamento hospitalar/BPO, clínicas e consultórios pequenos)
+description: Squad Cadarn Healtech Marketing — 11 agentes, 7 tasks, 7 templates para o mercado de saúde suplementar (corretoras de plano de saúde, faturamento hospitalar/BPO, clínicas e consultórios pequenos)
 author: Fabiano Cunha
 license: UNLICENSED
 
@@ -31,7 +31,7 @@ hierarchy:
   strategy_lead: "#1 Estrategista-chefe (Código Ogilvy)"
 
 # 11 agentes em 5 camadas — id/name/role/layer/dna_source verbatim do original.
-# knowledge_path do original preservado; docs Healthtech ADICIONADOS (não substituem).
+# knowledge_path do original preservado; docs Healtech ADICIONADOS (não substituem).
 agents:
   # CAMADA 1 — FUNDAÇÃO
   - id: estrategista

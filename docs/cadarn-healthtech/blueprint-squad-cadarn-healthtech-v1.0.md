@@ -1,5 +1,5 @@
 ---
-documento: Blueprint — Squad Cadarn Healthtech (agente Llif)
+documento: Blueprint — Squad Cadarn Healtech (agente Llif)
 versao: "1.0"
 status: aprovado-completo (A, B e C martelados — forja concluída 2026-06-28)
 data: 2026-06-28
@@ -45,7 +45,7 @@ Llif nasce como **único membro ativo**; o squad nasce com ele.
 name: cadarn-healthtech
 version: 0.1.0
 description: >
-  Unidade de negócio Cadarn Healthtech — Engenharia de Fluxo para saúde
+  Unidade de negócio Cadarn Healtech — Engenharia de Fluxo para saúde
   suplementar. BPO Tech + produto de IA. Squad-semente que migra para
   tarian-health na Fase de operação. Cânone-mãe herdado da Martech sob o Cadw.
 author: Fabiano Cunha
@@ -53,7 +53,7 @@ license: UNLICENSED
 aiox: { minVersion: "2.1.0", type: squad }
 
 foundation:
-  unit: "Cadarn Healthtech (2ª unidade de negócio)"
+  unit: "Cadarn Healtech (2ª unidade de negócio)"
   positioning: "Engenharia de Fluxo — 'Onde a saúde emperra, nós fazemos fluir.'"
   antagonist: "a Demora"
   canon_inheritance: "Método C.A.D.A.R.N. + visual Hermès Tech + 6 valores — sob o Cadw"
@@ -211,4 +211,4 @@ Forja concluída em 2026-06-28. Todos os arquivos do §5 foram criados.
 
 ---
 
-*Blueprint Squad Cadarn Healthtech v1.0 | Craft (@squad-creator) | A+B+C aprovados por Fabiano 2026-06-28 | forja concluída | validação pendente*
+*Blueprint Squad Cadarn Healtech v1.0 | Craft (@squad-creator) | A+B+C aprovados por Fabiano 2026-06-28 | forja concluída | validação pendente*

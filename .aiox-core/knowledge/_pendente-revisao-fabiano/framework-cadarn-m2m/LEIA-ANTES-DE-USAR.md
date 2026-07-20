@@ -6,23 +6,23 @@ criado_por: Emrys (vistoria noturna, autonomia autorizada por Fabiano)
 
 # Por que este conteúdo está aqui e não em `.aiox-core/knowledge/framework-cadarn-m2m/`
 
-`estrategista.md` (Squad MKT Healthtech) e outros agentes referenciam
+`estrategista.md` (Squad MKT Healtech) e outros agentes referenciam
 `.aiox-core/knowledge/framework-cadarn-m2m/` como `knowledge_path`, mas essa
-pasta não existe no Tarian Healthtech. Copiei da Martech pra resolver o path
+pasta não existe no Tarian Healtech. Copiei da Martech pra resolver o path
 quebrado e, ao revisar, achei que a subpasta `estrategia-10p/` contém
 identidade **já aplicada** da Cadarn Martech (DNA da Samira, DNA da empresa,
 tom de voz, análise de concorrentes da própria Martech, personas dos clientes
 da Martech) — não é método genérico reutilizável. Copiar isso pra dentro do
-conhecimento ativo da Healthtech faria os agentes MKT de lá confundirem a
+conhecimento ativo da Healtech faria os agentes MKT de lá confundirem a
 identidade da Martech com a própria. Por isso: revertido pra cá, não
 mergeado. Ver `.claude/rules/` sobre isolamento total entre Tarians.
 
 ## Triagem preliminar (não é decisão — é economia de tempo pra sua leitura)
 
-**Alta confiança — identidade aplicada da Martech, provavelmente NÃO deve virar conhecimento ativo da Healthtech:**
+**Alta confiança — identidade aplicada da Martech, provavelmente NÃO deve virar conhecimento ativo da Healtech:**
 - `estrategia-10p/02-dna-conteudo/` — inteira (DNA Samira, DNA empresa, tom de voz)
-- `estrategia-10p/03-concorrentes/` — inteira (concorrentes DA MARTECH: Ariany SA, Camille Marketing, Clarissa, Dominique Saraiva, Victoria Tetzlaff — não fazem sentido como concorrentes da Healthtech)
-- `estrategia-10p/04-personas/` — inteira (personas de clientes da MARTECH: dono de imobiliária, arquiteto/engenheiro, serviços intelectuais, beleza — não são o ICP da Healthtech)
+- `estrategia-10p/03-concorrentes/` — inteira (concorrentes DA MARTECH: Ariany SA, Camille Marketing, Clarissa, Dominique Saraiva, Victoria Tetzlaff — não fazem sentido como concorrentes da Healtech)
+- `estrategia-10p/04-personas/` — inteira (personas de clientes da MARTECH: dono de imobiliária, arquiteto/engenheiro, serviços intelectuais, beleza — não são o ICP da Healtech)
 - `estrategia-10p/01-objetivos/` — objetivos de projeto da própria Martech
 - `estrategia-10p/05-jornada-compra/` e `07-linhas-editoriais/` — pesquisa aplicada ao conteúdo da Martech
 
@@ -37,7 +37,7 @@ mergeado. Ver `.claude/rules/` sobre isolamento total entre Tarians.
 O texto do agente cita especificamente precisar da lista completa dos **30
 sub-atributos do Hexágono Moral** (6 valores × 5 sub-atributos cada). Não
 encontrei esse detalhe em nenhum arquivo desta pasta nem no
-`.aiox-core/knowledge/cadarn-method/` que a Healthtech já tem (mais enxuto:
+`.aiox-core/knowledge/cadarn-method/` que a Healtech já tem (mais enxuto:
 metodo-cadarn.md, funil-5-fases, plano-tatico, arvore-decisao, glossario).
 Pode estar em `docs/negocio-cadarn/01-vigente/` na Martech (fonte "vigente"
 citada no DOSSIE como sucessora desta versão) — não verificado.

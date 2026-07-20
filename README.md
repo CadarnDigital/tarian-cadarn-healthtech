@@ -1,7 +1,7 @@
-# Cadarn Healthtech — Guia de Uso Rápido
+# Cadarn Healtech — Guia de Uso Rápido
 
 > 🎋 **Engenharia de Fluxo · Saúde Suplementar**  
-> Tarian Cadarn para operação do produto Healthtech. Operado por Fabiano + Gui.
+> Tarian Cadarn para operação do produto Healtech. Operado por Fabiano + Gui.
 
 ---
 
@@ -11,7 +11,7 @@
 ```bash
 health
 ```
-Isso abre a sessão Claude do Tarian Healthtech com Llif ativado automaticamente.
+Isso abre a sessão Claude do Tarian Healtech com Llif ativado automaticamente.
 
 ### Opção 2: Invocar skill do AIOX Manager
 ```

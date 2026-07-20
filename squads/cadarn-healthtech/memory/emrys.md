@@ -6,7 +6,7 @@ criado_em: 2026-07-15
 status: ativo
 ---
 
-# Memória Persistente — Emrys (Regência) · Cadarn Healthtech
+# Memória Persistente — Emrys (Regência) · Cadarn Healtech
 
 ## Fonte de Verdade
 
@@ -20,7 +20,7 @@ que ele linka.
 ## O Produto
 
 ```yaml
-nome: Cadarn Healthtech
+nome: Cadarn Healtech
 tipo: "2ª unidade de negócio da Cadarn (NÃO é vertical da Martech — cânone próprio)"
 dominio: Saúde Suplementar
 posicionamento: "Engenharia de Fluxo"
@@ -68,10 +68,10 @@ este produto, ler `squads/cadarn-healthtech/memory/llif.md` para o estado vivo
 
 | Data | Evento |
 |---|---|
-| 2026-06-22 | Marca Cadarn Healthtech aprovada (Samira) |
+| 2026-06-22 | Marca Cadarn Healtech aprovada (Samira) |
 | 2026-06-23 | Tom de Voz v1.0 fechado |
 | 2026-06-28 | Squad forjada — decisões A/B/C marteladas |
 | 2026-07-15 | Memória de projeto criada para o Emrys deste Tarian |
 
 ---
-*Emrys memory-produto | v0.1.0 | 2026-07-15 | Squad Cadarn Healthtech*
+*Emrys memory-produto | v0.1.0 | 2026-07-15 | Squad Cadarn Healtech*

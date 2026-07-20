@@ -1,15 +1,15 @@
 ---
 material: corpus-ia-saude-suplementar
 capitulo: 6
-titulo: "A Jogada da Cadarn Healthtech — Modelo de Negócio, Oferta e Produto"
+titulo: "A Jogada da Cadarn Healtech — Modelo de Negócio, Oferta e Produto"
 fontes: [health-estrategia-oferta-gemini, divergencias-metricas-saude-suplementar]
 gerado_em: 2026-06-27
 natureza: prescritivo
 ---
 
-# Capítulo 6 — A Jogada da Cadarn Healthtech: Modelo de Negócio, Oferta e Produto
+# Capítulo 6 — A Jogada da Cadarn Healtech: Modelo de Negócio, Oferta e Produto
 
-> **Como ler este capítulo — e por que ele é diferente dos cinco anteriores.** Os Capítulos 1 a 5 descrevem **o mercado**: o que é a saúde suplementar, como a corretora opera e se sustenta, como funciona o faturamento da clínica e quem decide a compra. São descritivos e vêm das 13 pesquisas de base. Este capítulo muda de natureza. Ele é **prescritivo**: trata de **como a Cadarn Healthtech pretende atuar** nesse mercado — o modelo de negócio, a oferta, a arquitetura técnica do produto, o ROI e a abordagem comercial. Toda a sua matéria-prima vem de uma fonte única e distinta: um arquivo de conversas estratégicas exploratórias conduzidas com os modelos Gemini e GPT [fonte: health-estrategia-oferta-gemini]. Por isso, daqui em diante, a citação de fonte é sempre a mesma.
+> **Como ler este capítulo — e por que ele é diferente dos cinco anteriores.** Os Capítulos 1 a 5 descrevem **o mercado**: o que é a saúde suplementar, como a corretora opera e se sustenta, como funciona o faturamento da clínica e quem decide a compra. São descritivos e vêm das 13 pesquisas de base. Este capítulo muda de natureza. Ele é **prescritivo**: trata de **como a Cadarn Healtech pretende atuar** nesse mercado — o modelo de negócio, a oferta, a arquitetura técnica do produto, o ROI e a abordagem comercial. Toda a sua matéria-prima vem de uma fonte única e distinta: um arquivo de conversas estratégicas exploratórias conduzidas com os modelos Gemini e GPT [fonte: health-estrategia-oferta-gemini]. Por isso, daqui em diante, a citação de fonte é sempre a mesma.
 >
 > **Aviso epistêmico (Art. IV — No Invention).** Boa parte do que segue são **hipóteses de oferta e propostas geradas em diálogo com IA**, não decisões fechadas pela Cadarn nem dados validados de mercado. Os números de mercado (custos, VCMH, sinistralidade) que reaparecem aqui já foram tratados e referenciados nos capítulos anteriores; o que é **próprio deste capítulo** — o cálculo de ROI da oferta, os nomes de produto, as arquiteturas de IA, o posicionamento "BPO Tech" — deve ser lido como **matéria-prima estratégica a validar**, e não como verdade consolidada. Onde a fonte apresenta algo como sugestão de um modelo de IA, o texto preserva esse status ("a fonte propõe", "as conversas sugerem").
 
@@ -215,7 +215,7 @@ Por fim, a fonte propõe **não construir um SaaS robusto agora**, e sim rodar u
 
 ## 6. Síntese do capítulo
 
-A jogada da Cadarn Healthtech, como a fonte a desenha, condensa-se em seis ideias-âncora:
+A jogada da Cadarn Healtech, como a fonte a desenha, condensa-se em seis ideias-âncora:
 
 1. **Ser BPO Tech, não vendedor de software.** Usar IA como vantagem competitiva desleal para prestar cadastro e faturamento mais rápido, barato e preciso — escalando sem multiplicar a equipe [fonte: health-estrategia-oferta-gemini].
 2. **As duas pontas são o laboratório.** Corretora + faturamento hospitalar nas mãos permitem que o dado de uma ponta valide a dor da outra — o **Efeito Espelho**, cuja raiz comum (**Insight de Ouro**) é a assimetria de dados cadastrais [fonte: health-estrategia-oferta-gemini].

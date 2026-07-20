@@ -1,5 +1,5 @@
 ---
-documento: Checkpoint — Sessão Llif & Cadarn Healthtech (21–28 junho 2026)
+documento: Checkpoint — Sessão Llif & Cadarn Healtech (21–28 junho 2026)
 tipo: resumo-executivo-consolidado
 data_sessao: 2026-06-21 a 2026-06-28
 status: consolidação para referência (originais inalterados)
@@ -7,7 +7,7 @@ consolidado_em: 2026-07-15
 nota: "Não altera os arquivos originais. Serve como snapshot da conversa."
 ---
 
-# Checkpoint — Sessão Llif & Cadarn Healthtech
+# Checkpoint — Sessão Llif & Cadarn Healtech
 
 **Período:** 21–28 de junho de 2026  
 **Tema central:** Design do agente Llif, decisões de squad, marca, tom de voz e corpus IA  
@@ -19,7 +19,7 @@ nota: "Não altera os arquivos originais. Serve como snapshot da conversa."
 
 Entre 21 e 28 de junho, você estava:
 
-1. **Nomeando a unidade** — Cadarn Healthtech (marca aprovada 2026-06-22)
+1. **Nomeando a unidade** — Cadarn Healtech (marca aprovada 2026-06-22)
 2. **Nomeando o agente** — Llif (galês para "fluxo/corrente")
 3. **Definindo a jogada** — Engenharia de Fluxo (BPO Tech + IA)
 4. **Pedindo pesquisas** — 17 pesquisas health-* para alimentar o Corpus IA
@@ -30,11 +30,11 @@ Entre 21 e 28 de junho, você estava:
 
 ## 1. Nome & Posicionamento
 
-### Unidade: **Cadarn Healthtech**
+### Unidade: **Cadarn Healtech**
 
 | Elemento | Valor |
 |----------|-------|
-| **Nome** | Cadarn Healthtech (raiz galesa + descriptor) |
+| **Nome** | Cadarn Healtech (raiz galesa + descriptor) |
 | **Posicionamento** | Engenharia de Fluxo para saúde suplementar |
 | **Frase-síntese** | "Onde a saúde emperra, nós fazemos fluir." |
 | **Símbolo** | Bambu — firme porque flui |
@@ -173,7 +173,7 @@ Capacita decisões estratégicas:
 
 **Missão Oficial (fechada 2026-06-23):**
 
-> "Quem trabalha com saúde conhece um adversário que ninguém colocou no organograma: a Demora. Ela mora na guia que não anda, no cadastro que trava, na venda que escapa porque a resposta chegou tarde, no documento que faltava e ninguém viu a tempo. A Demora não adoece o paciente; ela trava o crescimento de quem cuida dele, porque crescer, no jeito antigo, significa inchar a operação. A Cadarn Healthtech existe para tirar a Demora do caminho. Podemos assumir a operação inteira para você, ou levar a nossa inteligência para dentro da sua: frameworks operacionais que processam os dados, squads de agentes que executam cada etapa e um agente auditor que confere tudo e entrega relatórios de desempenho que orientam a operação e até a gestão da equipe. É a Engenharia de Fluxo. Começamos onde a Demora mais dói hoje, e seguimos por onde ela ainda se esconde. A operação cresce sem inchar. Use a máquina para conquistar tempo. O humano, para conquistar o cliente."
+> "Quem trabalha com saúde conhece um adversário que ninguém colocou no organograma: a Demora. Ela mora na guia que não anda, no cadastro que trava, na venda que escapa porque a resposta chegou tarde, no documento que faltava e ninguém viu a tempo. A Demora não adoece o paciente; ela trava o crescimento de quem cuida dele, porque crescer, no jeito antigo, significa inchar a operação. A Cadarn Healtech existe para tirar a Demora do caminho. Podemos assumir a operação inteira para você, ou levar a nossa inteligência para dentro da sua: frameworks operacionais que processam os dados, squads de agentes que executam cada etapa e um agente auditor que confere tudo e entrega relatórios de desempenho que orientam a operação e até a gestão da equipe. É a Engenharia de Fluxo. Começamos onde a Demora mais dói hoje, e seguimos por onde ela ainda se esconde. A operação cresce sem inchar. Use a máquina para conquistar tempo. O humano, para conquistar o cliente."
 
 **Antagonista — "A Demora":**
 - **NÃO é:** "inimiga da saúde" nem "adoece o paciente"

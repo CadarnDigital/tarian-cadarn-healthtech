@@ -1,4 +1,4 @@
-# Roadmap — Cadarn Healthtech
+# Roadmap — Cadarn Healtech
 
 > Fonte: Design Brief Llif v1.0, Cap 6 do Corpus IA
 > **Cap 6 = HIPÓTESE Cadarn — a validar. Não é plano consolidado.**

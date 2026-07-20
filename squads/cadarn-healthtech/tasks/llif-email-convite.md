@@ -62,7 +62,7 @@ Assunto: [nome], quanto tempo a equipe passa refazendo o que já foi feito?
 Uma pergunta direta: no último mês, quantas guias voltaram da [operadora]?
 E quantas horas da sua equipe foram para recontestar?
 
-Meu nome é [nome], da Cadarn Healthtech. Trabalhamos com corretoras e clínicas
+Meu nome é [nome], da Cadarn Healtech. Trabalhamos com corretoras e clínicas
 de saúde suplementar que estão cansadas de perder tempo com o mesmo problema.
 
 Não venho com solução. Venho com um diagnóstico de 30 minutos: olhamos
@@ -87,7 +87,7 @@ No mercado de saúde suplementar, 68% das glosas são administrativas.
 Campo errado, código desatualizado, prazo vencido. Receita que deveria
 ter entrado, não entrou.
 
-A Cadarn Healthtech trabalha com gestores que querem resolver esse
+A Cadarn Healtech trabalha com gestores que querem resolver esse
 gargalo sem precisar contratar mais pessoas.
 
 Proponho uma conversa de 30 minutos: analisamos os números de [empresa]

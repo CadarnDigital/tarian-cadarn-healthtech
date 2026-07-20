@@ -1,5 +1,5 @@
 ---
-documento: Design Brief — Agente Llif (Cadarn Healthtech)
+documento: Design Brief — Agente Llif (Cadarn Healtech)
 versao: "1.0"
 status: aprovado
 data: 2026-06-28
@@ -14,7 +14,7 @@ relacionado:
 
 # Design Brief — Agente Llif
 
-> Blueprint aprovado do primeiro agente da Cadarn Healthtech. Na fase de criação (Sonnet),
+> Blueprint aprovado do primeiro agente da Cadarn Healtech. Na fase de criação (Sonnet),
 > a Athena extrai o DNA-EXTRACT a partir do Corpus IA e o Squad Creator forja a persona
 > ancorada neste brief, no Tom de Voz v1.0 e no Dossiê de Marca v0.1.
 >

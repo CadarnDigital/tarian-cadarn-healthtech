@@ -35,7 +35,7 @@ Os principais diferenciais oferecidos envolvem **automação** (faturamento 24/7
 
 - **Soluzione Faturamento (Vitória, ES)** — Gestão de faturamento médico-hospitalar com sede no ES. Executa digitação de guias, auditoria de contas e envio TISS conforme padrão ANS. Assessora credenciamento e negociações com operadoras. Atende clínicas e hospitais pequenos e médios. Modelo mensal (preço sob consulta).
 
-- **Loki (Global)** — Healthtech de BPO financeiro especializado em saúde. Serviços: BPO Financeiro Saúde e CFO Saúde para clínicas, hospitais e laboratórios. Emissão de guias TISS, conciliação de convênios, controle de glosas e DRE gerencial. Integra com Doctoralia, iClinic, Feegow, Tasy. Automação avançada (faturamento 24/7, dashboards de glosas). Compliance LGPD e normativos ANS.
+- **Loki (Global)** — Healtech de BPO financeiro especializado em saúde. Serviços: BPO Financeiro Saúde e CFO Saúde para clínicas, hospitais e laboratórios. Emissão de guias TISS, conciliação de convênios, controle de glosas e DRE gerencial. Integra com Doctoralia, iClinic, Feegow, Tasy. Automação avançada (faturamento 24/7, dashboards de glosas). Compliance LGPD e normativos ANS.
 
 - **Maida Health — BPO Tech (Nacional)** — Plataforma de BPO tecnológico focada em operadoras de planos de saúde (autogestão, cooperativas, seguradoras). Serviços: call center omnicanal 24/7, cadastro de beneficiários (inclusões, movimentações, reembolsos) e regulação/auditoria médica com IA. Não atende clínicas diretamente — relevante para operadoras.
 

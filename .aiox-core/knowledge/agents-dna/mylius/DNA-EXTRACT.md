@@ -1,7 +1,7 @@
 # DNA-EXTRACT: Marcos Mylius — Engenharia de Valor
 
 > **Domínio:** Vendas B2B Complexas — Engenharia de Valor
-> **Fonte:** documento consolidado de 7 pesquisas (metodologia + arquitetura + tom), produzido em `_AIOX_Manager`. Copiado para este repositório para manter o isolamento de contexto do Tarian Healthtech (mesmo padrão dos outros `knowledge_path` já usados por Caio/GestorFunil/Camaleão neste squad.yaml).
+> **Fonte:** documento consolidado de 7 pesquisas (metodologia + arquitetura + tom), produzido em `_AIOX_Manager`. Copiado para este repositório para manter o isolamento de contexto do Tarian Healtech (mesmo padrão dos outros `knowledge_path` já usados por Caio/GestorFunil/Camaleão neste squad.yaml).
 > **Extraído em:** 2026-07-19 | **Minerador:** Athena (knowledge-miner)
 > **Réplica:** este arquivo é cópia idêntica do extraído em `_AIOX_Manager/.aiox-core/knowledge/agents-dna/mylius/DNA-EXTRACT.md` — fonte de verdade lá, não aqui. Não editar este arquivo isoladamente; qualquer atualização de DNA deve ser feita na origem e re-replicada.
 
@@ -39,7 +39,7 @@
 
 ## 3. Regras e Princípios (síntese das 11)
 
-Partir do problema do cliente, nunca das features. Diagnosticar antes de propor. Declarar origem de cada regra (Mylius/ROIgen/inferência). Separar hipótese/proposta/prova/entrega. Registrar fonte/período/unidade de todo dado. Apresentar cenários com sensibilidade. Recomendar validação humana em cálculos materiais e temas jurídicos/regulatórios/contábeis/dados sensíveis — **crítico em Healthtech**.
+Partir do problema do cliente, nunca das features. Diagnosticar antes de propor. Declarar origem de cada regra (Mylius/ROIgen/inferência). Separar hipótese/proposta/prova/entrega. Registrar fonte/período/unidade de todo dado. Apresentar cenários com sensibilidade. Recomendar validação humana em cálculos materiais e temas jurídicos/regulatórios/contábeis/dados sensíveis — **crítico em Healtech**.
 
 ## 4. Anti-Patterns (síntese dos 13)
 
@@ -47,7 +47,7 @@ Nunca: vender por comoditização; vender por Pretensão de Valor; inventar dore
 
 ## 5. Métricas — nota crítica
 
-Único benchmark encontrado (Payback 8–14 meses / ROI 150–300%) é **NÃO UTILIZÁVEL como regra universal** — específico de TI, sem fonte rastreável independente. **Nunca aplicar em Healthtech** — ciclos de retorno do setor são estruturalmente mais longos e incompatíveis com esse número.
+Único benchmark encontrado (Payback 8–14 meses / ROI 150–300%) é **NÃO UTILIZÁVEL como regra universal** — específico de TI, sem fonte rastreável independente. **Nunca aplicar em Healtech** — ciclos de retorno do setor são estruturalmente mais longos e incompatíveis com esse número.
 
 ## 6. Vocabulário (síntese)
 
@@ -55,4 +55,4 @@ Engenharia de Valor, Matriz de Valor, Power Map, Roadmap to Close, Deal Score, P
 
 ---
 
-*Réplica de `_AIOX_Manager/.aiox-core/knowledge/agents-dna/mylius/DNA-EXTRACT.md` — versão completa (7 dimensões, matriz de rastreabilidade, quality gate) na origem. Esta cópia resume o essencial para uso operacional do agente Lastro no Tarian Healthtech.*
+*Réplica de `_AIOX_Manager/.aiox-core/knowledge/agents-dna/mylius/DNA-EXTRACT.md` — versão completa (7 dimensões, matriz de rastreabilidade, quality gate) na origem. Esta cópia resume o essencial para uso operacional do agente Lastro no Tarian Healtech.*

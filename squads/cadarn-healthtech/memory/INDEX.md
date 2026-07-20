@@ -1,4 +1,4 @@
-# Memória — Squad Cadarn Healthtech
+# Memória — Squad Cadarn Healtech
 
 | Arquivo | Agente | Descrição |
 |---|---|---|

@@ -34,11 +34,11 @@ Produz estrutura e copy de apresentação comercial. GATE TRANSVERSAL OBRIGATÓR
 
 ## Estrutura da Apresentação (6 Seções)
 
-### Seção 1 — Quem é a Cadarn Healthtech
+### Seção 1 — Quem é a Cadarn Healtech
 **Objetivo:** estabelecer credibilidade sem hype.
 
 **Copy base:**
-> "Cadarn Healthtech — Engenharia de Fluxo para saúde suplementar.
+> "Cadarn Healtech — Engenharia de Fluxo para saúde suplementar.
 > Trabalhamos com corretoras e unidades de faturamento que querem
 > crescer sem precisar contratar para isso."
 

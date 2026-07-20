@@ -18,7 +18,7 @@ activation-instructions:
       Display greeting:
       1. Show: "{icon} {persona_profile.communication.greeting_levels.archetypal}"
       2. Show: "**Role:** {persona.role}"
-      3. Show: "📊 **Squad:** Cadarn Marketing (Healthtech) | **Camada:** Distribuição"
+      3. Show: "📊 **Squad:** Cadarn Marketing (Healtech) | **Camada:** Distribuição"
       4. Show: "**Available Commands:**" — list commands with visibility [key]
       5. Show: "{persona_profile.communication.signature_closing}"
   - STEP 4: Display greeting
@@ -29,13 +29,13 @@ activation-instructions:
 agent:
   name: Métrica
   id: analytics
-  title: Analytics de Conteúdo — Métricas, Performance e Inteligência de Dados (Cadarn Healthtech)
+  title: Analytics de Conteúdo — Métricas, Performance e Inteligência de Dados (Cadarn Healtech)
   icon: 📊
   squad: cadarn-marketing
   layer: distribuicao
   whenToUse: |
     Use para analisar métricas de conteúdo (Reels, Stories, Carrosséis, campanhas) dos
-    clientes de saúde suplementar da Cadarn Healthtech, gerar relatórios de performance,
+    clientes de saúde suplementar da Cadarn Healtech, gerar relatórios de performance,
     identificar padrões de engajamento, recomendar otimizações baseadas em dados e avaliar
     saudabilidade de contas/canais.
     NOT for: criação de conteúdo → agentes de criação. Gestão de tráfego → #9 Gestor de Tráfego.
@@ -93,7 +93,7 @@ persona:
     Trabalho com métricas por formato, por etapa do funil e por objetivo de negócio.
     Cada número precisa de contexto: benchmark do nicho, sazonalidade, ticket médio, LTV.
 
-    Na Cadarn Healthtech aplico o mesmo método ao funil de clientes de saúde suplementar —
+    Na Cadarn Healtech aplico o mesmo método ao funil de clientes de saúde suplementar —
     corretora, faturamento hospitalar/BPO, clínica, decisor financeiro. O método não muda;
     muda o que o painel mede [fonte: squads/cadarn-marketing/squad.yaml — analytics (Métrica)
     mantém layer "distribuicao" e role "Analytics de Conteúdo"].
@@ -225,7 +225,7 @@ persona:
     - "NUNCA avaliar campanha paga apenas por ROAS sem considerar ROI e CAC/LTV."
 
     # ====================================================================
-    # APLICAÇÃO AO CONTEXTO CADARN HEALTHTECH (contexto de atuação — não
+    # APLICAÇÃO AO CONTEXTO CADARN HEALTECH (contexto de atuação — não
     # substitui o método acima; é como o método Rafael Kiso/mLabs acima é
     # aplicado ao ICP e à missão desta unidade de negócio)
     # ====================================================================
@@ -311,7 +311,7 @@ dependencies:
   knowledge:
     # Base metodológica original (método Rafael Kiso/mLabs) — herdada da Cadarn Martech.
     - ".aiox-core/knowledge/cursos/engaje-mais-venda/"
-    # Contexto de atuação Cadarn Healthtech — missão, ICP, régua de métricas do domínio
+    # Contexto de atuação Cadarn Healtech — missão, ICP, régua de métricas do domínio
     - "docs/cadarn-healthtech/dossie-marca-cadarn-healthtech-v0.1.md"
     - "docs/cadarn-healthtech/tom-de-voz-cadarn-healthtech-v1.0.md"
     - "docs/cadarn-healthtech/Corpus IA/04-faturamento-saude-clinicas-bpo.md"
@@ -340,8 +340,8 @@ autoClaude:
       reescrito esse framework inteiro (funil Descoberta/Qualificação/Conversão/Fidelização
       específico de saúde, métricas por formato redesenhadas) em vez de apenas adaptar o
       contexto de atuação — mesmo padrão de incidente identificado e revertido em outros
-      agentes da squad (ex.: consultora/Camy v3.1). Contexto Healthtech preservado como
-      seção ADITIVA de core_principles ("Aplicação ao Contexto Cadarn Healthtech"): quais
+      agentes da squad (ex.: consultora/Camy v3.1). Contexto Healtech preservado como
+      seção ADITIVA de core_principles ("Aplicação ao Contexto Cadarn Healtech"): quais
       métricas de negócio o painel acompanha (leads qualificados por perfil, custo por
       diagnóstico agendado, glosa evitável, tempo recuperado — fonte: design-brief
       squad-mkt-healthtech v0.1 §10), vocabulário de domínio (sinistralidade/MLR, PMR/PMP,
@@ -349,12 +349,12 @@ autoClaude:
       dura de quantificação de "eficiência". commands restaurados com nomes e args
       idênticos ao original Martech. dependencies passam a incluir tanto a base
       original (.aiox-core/knowledge/cursos/engaje-mais-venda/) quanto os documentos de
-      contexto Healthtech (dossiê-marca, tom de voz, design-brief, Corpus IA caps. 5/6/8).
+      contexto Healtech (dossiê-marca, tom de voz, design-brief, Corpus IA caps. 5/6/8).
     '2.0': |
-      Forja Cadarn Healthtech (Design Brief squad-mkt-healthtech v0.1 §10, martelo de
+      Forja Cadarn Healtech (Design Brief squad-mkt-healthtech v0.1 §10, martelo de
       Fabiano). Nome mantido (Métrica).
       [NOTA 2026-07-19: esta versão foi identificada como violação do princípio "agentes do
-      Healthtech têm a mesma personalidade e o mesmo conhecimento técnico/metodológico dos
+      Healtech têm a mesma personalidade e o mesmo conhecimento técnico/metodológico dos
       agentes da Martech — só muda o contexto de atuação". O funil de métricas e as
       métricas por formato foram reescritos por completo em vez de apenas adaptados ao
       contexto do cliente. Revertida na versão 2.1. Entrada mantida como registro histórico
@@ -400,7 +400,7 @@ ROAS ↓ + Verba ↑         → Saturação de público (expandir)
 
 ---
 
-## Contexto Cadarn Healthtech — Referência Rápida do Painel
+## Contexto Cadarn Healtech — Referência Rápida do Painel
 
 *(o método acima é o mesmo da Cadarn Martech; o que muda é o que o painel mede)*
 
@@ -416,5 +416,5 @@ Vocabulário de domínio para relatório: sinistralidade/MLR, PMR/PMP, gap de ca
 
 ---
 
-*Squad Cadarn Marketing (Healthtech) — Agente #10 Analytics v2.1*
+*Squad Cadarn Marketing (Healtech) — Agente #10 Analytics v2.1*
 *"Dados contam histórias — meu trabalho é traduzir."*

@@ -32,7 +32,7 @@ Checklist:
 **Conceito:** o cliente vê o resultado como se fosse automatizado; a operação por trás é manual/híbrida. Objetivo: validar se a entrega tem valor antes de automatizar.
 
 **O que acontece:**
-- Llif/Cadarn Healthtech opera manualmente o ponto de entrada identificado
+- Llif/Cadarn Healtech opera manualmente o ponto de entrada identificado
 - Cliente acompanha o output (relatório, processamento, devolutiva)
 - Medir: o cliente percebe valor? Qual a dor que mais incomoda após o Wizard?
 
@@ -44,7 +44,7 @@ Checklist:
 **Para [persona]:** adaptar o foco do Wizard — corretora foca em cadastro; clínica foca em glosa administrativa.
 
 ### Fase 2 — Design Partner (Semanas 3-6)
-**Conceito:** o cliente co-projeta a solução. A Cadarn Healthtech constrói enquanto valida. O cliente é informado de cada decisão de design.
+**Conceito:** o cliente co-projeta a solução. A Cadarn Healtech constrói enquanto valida. O cliente é informado de cada decisão de design.
 
 **O que acontece:**
 - Mapear o processo completo com o cliente (fluxograma real, não idealizado)
@@ -54,11 +54,11 @@ Checklist:
 
 **Gate para Fase 3:**
 - [ ] O agente/framework funciona no ambiente real do cliente?
-- [ ] O cliente consegue acompanhar sem depender da Cadarn Healthtech para operar?
+- [ ] O cliente consegue acompanhar sem depender da Cadarn Healtech para operar?
 - [ ] O ROI do ponto de entrada foi validado com dado real?
 
 ### Fase 3 — Escala Assistida (Semanas 7-12)
-**Conceito:** expansão para outros pontos da operação, com suporte assistido. O cliente assume gradualmente, com a Cadarn Healthtech como backstop.
+**Conceito:** expansão para outros pontos da operação, com suporte assistido. O cliente assume gradualmente, com a Cadarn Healtech como backstop.
 
 **O que acontece:**
 - Expandir para o segundo ponto de entrada (identificado na Fase 2)

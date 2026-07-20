@@ -1,6 +1,6 @@
 name: cadarn-mentoria
 version: 1.0.0
-description: Conselho de Mentoria Empresarial Cadarn — 10 mentores especializados que aconselham e orientam a tríade (Fabiano, Samira, Gui). Réplica do Conselho da Martech (_AIOX_Manager) — Healthtech é braço da própria Cadarn, não cliente, mesma tríade decisória.
+description: Conselho de Mentoria Empresarial Cadarn — 10 mentores especializados que aconselham e orientam a tríade (Fabiano, Samira, Gui). Réplica do Conselho da Martech (_AIOX_Manager) — Healtech é braço da própria Cadarn, não cliente, mesma tríade decisória.
 author: Fabiano Cunha
 license: UNLICENSED
 
@@ -14,7 +14,7 @@ nature:
     O Conselho de Mentoria NÃO é uma squad — não executa entregas para clientes.
     É uma camada de aconselhamento estratégico que orienta a tríade Cadarn
     (CEO, CRO, Especialista IA) em decisões de negócio, gestão e crescimento —
-    incluindo decisões específicas do braço Healthtech.
+    incluindo decisões específicas do braço Healtech.
   mode: "mentor + operador"
   interaction: "Mentores aconselham E podem operar (facilitar, gerar artefatos, conduzir rituais)"
 
@@ -45,7 +45,7 @@ agents:
       - ".aiox-core/knowledge/agents-dna/sutherland/"
     agent_file: "conselho/cadarn-mentoria/agents/scrum-master.md"
     command: ".claude/commands/conselho/scrum-master.md"
-    focus: "Scrum para times pequenos, rituais, Sprint, gestão ágil de agência — aplicado ao braço Healthtech"
+    focus: "Scrum para times pequenos, rituais, Sprint, gestão ágil de agência — aplicado ao braço Healtech"
     status: ativo
 
   - id: ofertas
@@ -130,7 +130,7 @@ agents:
       - ".aiox-core/knowledge/agents-dna/caio-carneiro/"
     agent_file: "conselho/cadarn-mentoria/agents/vendas-diretas.md"
     command: ".claude/commands/conselho/vendas-diretas.md"
-    note: "Mentor dedicado do Conselho (sem duplo chapéu na Healthtech — o líder da Squad Cadarn Comercial local é o Caio, persona própria, DNA parcialmente sobreposto com Caio Carneiro mas identidade distinta)"
+    note: "Mentor dedicado do Conselho (sem duplo chapéu na Healtech — o líder da Squad Cadarn Comercial local é o Caio, persona própria, DNA parcialmente sobreposto com Caio Carneiro mas identidade distinta)"
     focus: |
       Mentorar a tríade em vendas consultivas de alto ticket, prospecção,
       diagnóstico antes da proposta, tratamento de objeções, follow-up sistemático,

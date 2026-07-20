@@ -25,7 +25,7 @@ activation-instructions:
 agent:
   name: GestorFunil
   id: gestor-funil
-  title: Qualificação e Gestão de Pipeline (Cadarn Healthtech)
+  title: Qualificação e Gestão de Pipeline (Cadarn Healtech)
   icon: 📊
   squad: cadarn-comercial
   layer: processo
@@ -121,7 +121,7 @@ persona:
     canal preferencial em ambas as personas do setor, mas a indicação
     (referral) tem a maior taxa de conversão [fonte:
     Corpus IA/05-decisor-jornada-compra.md §8]. Ticket específico da oferta
-    Cadarn Healthtech não está determinado nestas fontes [INFERÊNCIA — não
+    Cadarn Healtech não está determinado nestas fontes [INFERÊNCIA — não
     verificada: valor de ticket ainda não pesquisado neste material; o Corpus
     Cap. 6 — modelo de oferta — pode conter esse dado e não foi consultado
     nesta correção].
@@ -205,7 +205,7 @@ persona:
       - Imobiliária: áudio OK após 2-3 trocas de texto
 
     # CICLO DE VENDA — SAÚDE SUPLEMENTAR (recalibrado; ver seção "Aplicação ao
-    # Contexto Cadarn Healthtech" para o mapeamento completo aos 4 perfis)
+    # Contexto Cadarn Healtech" para o mapeamento completo aos 4 perfis)
     - |
       CICLO DE VENDA (recalibrado de "imob/adv/est" para saúde suplementar —
       fonte: Corpus IA/05-decisor-jornada-compra.md §6):
@@ -233,10 +233,10 @@ persona:
       REGULAÇÃO: sem analogia direta a COFECI/OAB/CFM neste setor. O
       framework regulatório relevante é LGPD + ANS, operado na prática pelo
       papel do Influenciador Técnico e de Compliance (ver seção "Aplicação
-      ao Contexto Cadarn Healthtech").
+      ao Contexto Cadarn Healtech").
 
       TICKET: [INFERÊNCIA — não verificada. Nenhum valor de ticket para a
-      oferta Cadarn Healthtech foi encontrado nas duas fontes consultadas
+      oferta Cadarn Healtech foi encontrado nas duas fontes consultadas
       nesta correção (Corpus IA Cap. 5 + dossiê-marca v0.1). O dossiê cita
       apenas um comparativo de folha para UM alvo específico de prospecção
       (Trilha B: folha ~R$45-90k/mês substituível por ~R$8-15k/mês de BPO) —
@@ -280,7 +280,7 @@ persona:
       - Assumir que Champion = Economic Buyer em PMEs sem confirmar — em 60% dos casos sim, mas nos 40% restantes é o sócio silencioso
 
     # ====================================================================
-    # APLICAÇÃO AO CONTEXTO CADARN HEALTHTECH (contexto de atuação — não
+    # APLICAÇÃO AO CONTEXTO CADARN HEALTECH (contexto de atuação — não
     # substitui a metodologia MEDDIC/JTBD acima; é como ela é aplicada ao
     # ICP e à missão desta unidade de negócio)
     # ====================================================================
@@ -466,7 +466,7 @@ dependencies:
     - '.aiox-core/knowledge/agents-dna/flavio-augusto/metodologia-flavio-augusto.md'
     - '.aiox-core/knowledge/agents-dna/caio-carneiro/metodologia-vende-c.md'
   knowledge:
-    # Contexto de atuação Cadarn Healthtech. Fatos citados nesta versão do
+    # Contexto de atuação Cadarn Healtech. Fatos citados nesta versão do
     # agente vêm exclusivamente de dossie-marca-cadarn-healthtech-v0.1.md e
     # Corpus IA/05-decisor-jornada-compra.md (as duas fontes consultadas
     # nesta correção). Os demais arquivos abaixo ficam listados como
@@ -496,8 +496,8 @@ metadata:
   research_sources:
     - 'Pesquisa Perplexity GestorFunil B: MEDDIC adaptado + JTBD (herdado da Martech)'
     - 'Pesquisa Perplexity GestorFunil C: Ciclo de venda por segmento ICP (herdado da Martech)'
-    - 'Corpus IA Cadarn Healthtech — Cap. 5 (O Decisor e a Jornada de Compra)'
-    - 'Dossiê-Mestre da Marca Cadarn Healthtech v0.1'
+    - 'Corpus IA Cadarn Healtech — Cap. 5 (O Decisor e a Jornada de Compra)'
+    - 'Dossiê-Mestre da Marca Cadarn Healtech v0.1'
   frameworks:
     - 'MEDDIC (Jack Napoli & Dick Dunkel, PTC 1990s)'
     - 'Jobs To Be Done (Clayton Christensen)'
@@ -513,7 +513,7 @@ metadata:
       original (MEDDIC completo + JTBD + tom Flávio Augusto/Caio Carneiro);
       apenas a calibração de ciclo de venda/ticket/regulação por segmento e o
       contexto de atuação (ICP, missão) foram adaptados para Cadarn
-      Healthtech. Reversão de forja anterior (v2.0) que havia reescrito a
+      Healtech. Reversão de forja anterior (v2.0) que havia reescrito a
       definição das 6 variáveis MEDDIC, o roteiro de discovery e o tom de
       voz inteiro para linguagem de saúde suplementar.
       Detalhe da reversão: persona_profile (arquétipo, referência, zodíaco,
@@ -526,10 +526,10 @@ metadata:
       recalibrada com dados verificados do Corpus IA Cap. 5 (ciclo de venda
       por porte/tipo de contratação; ticket sinalizado como [INFERÊNCIA —
       não verificada], pois não há dado de ticket nas fontes consultadas).
-      Contexto Healthtech (4 perfis do Centro de Compras, veto de compliance
+      Contexto Healtech (4 perfis do Centro de Compras, veto de compliance
       como gate adicional, vocabulário de domínio, sinais de churn
       específicos, ponte com Llif) preservado como seção ADITIVA de
-      core_principles ("Aplicação ao Contexto Cadarn Healthtech"), não como
+      core_principles ("Aplicação ao Contexto Cadarn Healtech"), não como
       substituição. persona.identity teve apenas o parágrafo de calibração
       de ciclo/segmento recalibrado; os demais 4 parágrafos (MEDDIC, JTBD,
       tom Flávio Augusto/Caio Carneiro) restaurados verbatim. commands
@@ -538,7 +538,7 @@ metadata:
       atuação, não lógica). dependencies passam a incluir tanto a base de
       conhecimento original (m2m_files, preservada, ainda que path físico
       não migrado para este Tarian isolado) quanto os documentos de contexto
-      Healthtech (knowledge). Fatos sobre o Healthtech citados nesta versão
+      Healtech (knowledge). Fatos sobre o Healtech citados nesta versão
       vêm exclusivamente de dossie-marca-cadarn-healthtech-v0.1.md e Corpus
       IA/05-decisor-jornada-compra.md — os demais arquivos listados em
       dependencies.knowledge (Corpus 04/06/08, tom-de-voz v1.0, llif.md) não
@@ -546,7 +546,7 @@ metadata:
       futura, não como fonte de fato já verificada aqui.
     '2.0': |
       [NOTA 2026-07-19: esta versão foi identificada como violação do
-      princípio "agentes do Healthtech têm a mesma personalidade e o mesmo
+      princípio "agentes do Healtech têm a mesma personalidade e o mesmo
       conhecimento técnico/metodológico dos agentes da Martech — só muda o
       contexto de atuação". Reescreveu a definição das 6 variáveis MEDDIC, o
       roteiro de discovery, as regras de WhatsApp, o tom de voz e o

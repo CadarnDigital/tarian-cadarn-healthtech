@@ -1,13 +1,13 @@
-# Tarian — Cadarn Healthtech
+# Tarian — Cadarn Healtech
 
-> Este é um Tarian Cadarn para produto próprio: sistema de operação digital da Cadarn para o produto **Cadarn Healthtech**.
+> Este é um Tarian Cadarn para produto próprio: sistema de operação digital da Cadarn para o produto **Cadarn Healtech**.
 > Operado por: Fabiano + Gui | Framework: Synkra AIOX
 
 ## Produto
 
-- **Nome:** Cadarn Healthtech
+- **Nome:** Cadarn Healtech
 - **Domínio:** Saúde Suplementar
-- **Vertical:** Healthtech
+- **Vertical:** Healtech
 - **Operador:** Fabiano + Gui
 - **Repositório:** CadarnDigital/tarian-cadarn-healthtech
 - **Status:** em operação
@@ -59,7 +59,7 @@ Use `@agent-name` ou `/AIOX:agents:agent-name`.
 | Squad | Agentes ativos | Escopo no produto |
 |-------|---------------|-------------------|
 | `cadarn-healthtech` | **Llif** | Diagnóstico, ROI, roteiro de venda, apresentação comercial — agente principal do produto |
-| `cadarn-comercial` | Caio, Camaleão, Gestor-funil | Pipeline de vendas B2B Healthtech |
+| `cadarn-comercial` | Caio, Camaleão, Gestor-funil | Pipeline de vendas B2B Healtech |
 | `cadarn-juridica` | Especialista LGPD | Contratos, LGPD Art. 11 (dados de saúde), conformidade TISS |
 | `cadarn-operacional` | Account-orchestrator, CS | Onboarding de parceiros (corretoras e clínicas) |
 
@@ -79,7 +79,7 @@ Definida em `squads/cadarn-healthtech/` — Llif operacional.
 
 ## Cowork
 
-- Project: "Tarian Cadarn Healthtech — Operação"
+- Project: "Tarian Cadarn Healtech — Operação"
 - Knowledge base carregada: corpus de domínio + DNA do produto
 - Conectores: conforme stack do produto
 

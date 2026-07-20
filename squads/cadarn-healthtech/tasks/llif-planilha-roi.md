@@ -62,14 +62,14 @@ SITUAÇÃO ATUAL (baseline do cliente)
   Operações com problema: [N × G]
   Custo do problema: R$ [N × G × custo_por_operacao]
 
-SITUAÇÃO COM CADARN HEALTHTECH [HIPÓTESE CADARN — a validar]
+SITUAÇÃO COM CADARN HEALTECH [HIPÓTESE CADARN — a validar]
   Redução de retrabalho estimada: [X]% (hipótese — validar no piloto)
   Tempo de ciclo reduzido: [Y] dias (hipótese — validar no piloto)
   Volume processável com mesma equipe: [Z]% a mais (hipótese)
 
 CÁLCULO DE ROI
   Economia mensal estimada: R$ [valor] [HIPÓTESE CADARN — a validar]
-  Investimento mensal Cadarn Healthtech: R$ [proposta — a definir]
+  Investimento mensal Cadarn Healtech: R$ [proposta — a definir]
   ROI mensal = (economia − investimento) / investimento × 100 = [X]%
   ROI anualizado = [Y]%
   Payback = [Z] meses
@@ -105,7 +105,7 @@ Data: [data] | Dados fornecidos em: [data da coleta]
 SITUAÇÃO ATUAL
   [tabela com os dados do cliente]
 
-SITUAÇÃO COM CADARN HEALTHTECH [HIPÓTESE CADARN — a validar]
+SITUAÇÃO COM CADARN HEALTECH [HIPÓTESE CADARN — a validar]
   [tabela com as hipóteses]
 
 CÁLCULO DE ROI

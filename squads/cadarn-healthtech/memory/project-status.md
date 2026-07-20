@@ -1,12 +1,12 @@
 ---
-documento: Status Vivo — Cadarn Healthtech (todas as squads)
+documento: Status Vivo — Cadarn Healtech (todas as squads)
 tipo: status-vivo
 atualizado_em: 2026-07-16
 nota: "Diferente das memórias de fato estável (llif.md, emrys.md) — este arquivo muda
   com frequência. Lido por Llif (porta de entrada) e por Emrys (bastidor)."
 ---
 
-# Status Vivo — Cadarn Healthtech
+# Status Vivo — Cadarn Healtech
 
 > Visão consolidada de todas as squads deste Tarian. Fonte de "o que está acontecendo agora".
 > Fatos estáveis (marca, decisões marteladas) vivem em `emrys.md` e no checkpoint. Aqui só o status.
@@ -19,7 +19,7 @@ nota: "Diferente das memórias de fato estável (llif.md, emrys.md) — este arq
 | **forja** | ✅ Provisionada (2026-07-16) | Estrutural, sem DNA de marca — reaproveita agentes core do framework. `aegis.md` corrigido (estava quebrado). |
 | **cadarn-marketing** (squad-mkt) | 🟢 11 agentes forjados (2026-07-16) | Ogilvy (estrategista), Coel, Vinci, Camy (consultora — corrigido de "Clarissa"), Logos, Magnética (mantido), Iris, Pulso, Mídia, Métrica, Pixel. DNA Engenharia de Fluxo aplicado (Tom de Voz v1.0 + Dossiê-Mestre), `squad.yaml` reancorado (ICP, knowledge_path, integração com Llif). Verificado pessoalmente arquivo a arquivo — sem jargão Martech residual. |
 | **cadarn-comercial** (squad-comercial) | 🟢 Caio + GestorFunil forjados (2026-07-16) | Caio e GestorFunil com DNA de saúde suplementar (Corpus IA Caps. 4-6). Integração com Llif adicionada no squad.yaml. **Camaleão pausado** — aguarda pesquisa de Fabiano sobre perfil DISC de gestor de corretora/faturista hospitalar (não existe no Corpus hoje). |
-| **conselho** (Conselho de Mentoria) | 🔴 Não provisionado | Confirmado: Healthtech PRECISA ter Conselho (só Tarians de cliente não têm). Provisionamento mecânico — 9 mentores, mesmo DNA da Martech (Hormozi, Sutherland, etc.), não muda entre produtos. |
+| **conselho** (Conselho de Mentoria) | 🔴 Não provisionado | Confirmado: Healtech PRECISA ter Conselho (só Tarians de cliente não têm). Provisionamento mecânico — 9 mentores, mesmo DNA da Martech (Hormozi, Sutherland, etc.), não muda entre produtos. |
 | **cadarn-juridica** | ⚪ Não avaliada ainda | Herdada da Martech, ainda não investigada nesta rodada de correção. |
 | **cadarn-operacional** | ⚪ Não avaliada ainda | Herdada da Martech, ainda não investigada nesta rodada de correção. |
 
@@ -37,7 +37,7 @@ o_que: |
   mapeamento DISC pronto para os 3 segmentos da Martech (Imobiliária, Advocacia,
   Estética) — nada equivalente existe para saúde suplementar (gestor de corretora,
   faturista hospitalar, dono de clínica).
-quem_faz: "Fabiano vai conduzir essa pesquisa pessoalmente no Tarian Healthtech (não delegada ao Atlas nesta sessão)"
+quem_faz: "Fabiano vai conduzir essa pesquisa pessoalmente no Tarian Healtech (não delegada ao Atlas nesta sessão)"
 quando_perguntar_de_novo: "Quando Fabiano voltar com a pesquisa pronta, retomar a Forja do Camaleão com esse material"
 enquanto_isso: "Caio e GestorFunil não dependem dessa pesquisa — podem ser forjados mesmo com o Camaleão pausado"
 ```

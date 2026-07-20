@@ -41,7 +41,7 @@ Produz roteiro completo para reunião de venda consultiva, seguindo o método Ch
 
 ### Bloco 1 — Abertura (nomeando a Demora, não a IA)
 
-**Objetivo:** estabelecer que Llif/Cadarn Healthtech entende o mercado de dentro.
+**Objetivo:** estabelecer que Llif/Cadarn Healtech entende o mercado de dentro.
 
 **Para corretora:**
 > *"Antes de qualquer coisa, quero entender: no último mês, quantas vezes uma venda atrasou porque o cadastro não saiu a tempo? E quantas perderam porque a guia voltou na hora errada?"*
@@ -101,7 +101,7 @@ Produz roteiro completo para reunião de venda consultiva, seguindo o método Ch
 > *"Não mudamos o sistema de vocês. Entramos no processo onde ele para. O que muda é o passo específico onde o [gargalo] acontece — o resto fica como está."*
 
 ### Objeção 3 — "Quantas pessoas vou precisar demitir?"
-> *"Esse não é o argumento que a Cadarn Healthtech usa. O que entregamos é capacidade — mais volume com a mesma equipe. O que você faz com isso é decisão de gestão, não de contrato com a gente."*
+> *"Esse não é o argumento que a Cadarn Healtech usa. O que entregamos é capacidade — mais volume com a mesma equipe. O que você faz com isso é decisão de gestão, não de contrato com a gente."*
 
 ## Output Esperado
 

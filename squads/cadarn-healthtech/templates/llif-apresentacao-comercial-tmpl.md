@@ -1,5 +1,5 @@
 ---
-template: Apresentação Comercial Cadarn Healthtech
+template: Apresentação Comercial Cadarn Healtech
 versao: 1.0
 criado_em: 2026-06-28
 uso: Output de *apresentacao-comercial
@@ -8,9 +8,9 @@ gate_transversal: OBRIGATÓRIO — Grafia antes de qualquer envio / nudge Dick
 formato: [ ] Deck (slides)  [ ] Documento texto
 ---
 
-# APRESENTAÇÃO COMERCIAL — CADARN HEALTHTECH
+# APRESENTAÇÃO COMERCIAL — CADARN HEALTECH
 **Data:** ___________  
-**Preparado por:** Llif / Cadarn Healthtech  
+**Preparado por:** Llif / Cadarn Healtech  
 **Cliente / Persona:** ___________  
 **Tipo de entrega:** [ ] BPO  [ ] Produto  [ ] Piloto  
 **Formato:** [ ] Deck  [ ] Documento
@@ -20,14 +20,14 @@ formato: [ ] Deck (slides)  [ ] Documento texto
 
 ---
 
-## SEÇÃO 1 — QUEM É A CADARN HEALTHTECH
+## SEÇÃO 1 — QUEM É A CADARN HEALTECH
 
 > Objetivo: credibilidade sem hype. Sem "solução end-to-end" sem desdobrar.
 
 **Copy base:**
 
 ```
-Cadarn Healthtech — Engenharia de Fluxo para saúde suplementar.
+Cadarn Healtech — Engenharia de Fluxo para saúde suplementar.
 
 Trabalhamos com corretoras e unidades de faturamento que querem
 crescer sem precisar contratar para isso.
@@ -206,4 +206,4 @@ Data sugerida: ___________
 
 ---
 
-*Template v1.0 — Llif / Cadarn Healthtech | Preencher a partir de *apresentacao-comercial | Gate transversal obrigatório*
+*Template v1.0 — Llif / Cadarn Healtech | Preencher a partir de *apresentacao-comercial | Gate transversal obrigatório*

@@ -161,13 +161,13 @@ persona:
       Effort & Sacrifice e Time Delay via tecnologia. É o multiplicador silencioso.
       CONFLITO: pode se perder em automação sofisticada sem que a oferta base esteja validada.
 
-    CONTEXTO: Cadarn Healthtech — automação de back-office para operadores de saúde
+    CONTEXTO: Cadarn Healtech — automação de back-office para operadores de saúde
     suplementar: corretoras de plano de saúde, faturamento hospitalar/BPO e
     clínicas/consultórios pequenos. O posicionamento "BPO Tech" (ser o próprio BPO
     operando com IA, não só vender software pra BPOs) é hipótese estratégica em
     validação, não decisão fechada pela Cadarn [INFERÊNCIA — não verificada, ver
     docs/cadarn-healthtech/Corpus IA/06-cadarn-modelo-oferta.md]. O desafio é construir
-    ofertas que posicionem a Cadarn Healthtech como "category of one" — não mais um
+    ofertas que posicionem a Cadarn Healtech como "category of one" — não mais um
     fornecedor de software, mas O método que gera X resultado para Y avatar em Z tempo.
 
     Opero em dois modos:
@@ -579,7 +579,7 @@ persona:
 
     # CONSELHOS PARA AGENCIAS
     - |
-      CONSELHOS ESPECÍFICOS PARA A CADARN (CADARN HEALTHTECH):
+      CONSELHOS ESPECÍFICOS PARA A CADARN (CADARN HEALTECH):
 
       OFERTA: Se soa como de todo mundo — você é invisível. Especificidade, velocidade, reversão de risco.
       SCALE ZERO: Remover Fabiano das operações críticas. Construir sistemas, não delivery dependente do dono.

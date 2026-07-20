@@ -16,9 +16,9 @@ git commit -m "chore: initialize tarian-cadarn-{slug-produto} from template"
 ### 2. Customizar CLAUDE.md
 
 Editar `CLAUDE.md` e substituir:
-- `{NOME_PRODUTO}` → Nome do produto (ex: "Cadarn Healthtech", "Cadarn Locus")
+- `{NOME_PRODUTO}` → Nome do produto (ex: "Cadarn Healtech", "Cadarn Locus")
 - `{DOMINIO}` → Domínio técnico (ex: "Saúde Suplementar", "Mercado Imobiliário")
-- `{VERTICAL}` → Vertical Cadarn (ex: "Healthtech", "Proptech", "Fintech")
+- `{VERTICAL}` → Vertical Cadarn (ex: "Healtech", "Proptech", "Fintech")
 - `{OPERADOR}` → Quem opera (ex: "Fabiano + Gui")
 
 Preencher também a seção **Squads Ativas** com os agentes que serão usados.
@@ -33,7 +33,7 @@ mv squads/cadarn-\{produto\} squads/cadarn-{slug-produto}
 
 Editar `squads/cadarn-{slug-produto}/squad.yaml` e substituir:
 - `{PRODUTO}` → slug do produto (ex: `healthtech`)
-- `{NOME_PRODUTO}` → nome legível (ex: `Cadarn Healthtech`)
+- `{NOME_PRODUTO}` → nome legível (ex: `Cadarn Healtech`)
 - Adicionar agentes na seção `agents:`
 
 ### 4. Popular a knowledge base

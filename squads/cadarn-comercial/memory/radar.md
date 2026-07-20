@@ -1,7 +1,7 @@
 # Radar — Memória Persistente
 
 Agente: Radar (Especialista GMN)
-Squad: Cadarn Comercial (Healthtech)
+Squad: Cadarn Comercial (Healtech)
 Versão: 1.1
 Criado (réplica/reescopo): 2026-07-19
 Origem: réplica reescopada do Radar da Cadarn Martech (_AIOX_Manager/squads/cadarn-comercial/agents/radar.md, v1.1, criado 2026-06-01)
@@ -13,7 +13,7 @@ Origem: réplica reescopada do Radar da Cadarn Martech (_AIOX_Manager/squads/cad
 ### Configuração do Agente
 - **DNA escolhido:** Luciano Arthur (Escola de SEO) — mesmo DNA da réplica original, selecionado após pesquisa de especialistas BR (2026-06-01, sessão Martech). Alternativas consideradas e descartadas naquela sessão: Tiago Nogueira (MÉDIO), Lucas Cruz (MÉDIO). Não repesquisado nesta réplica.
 - **Squad:** Cadarn Comercial (não Marketing) — objetivo principal é atrair lead, não construir presença/branding. Mesmo racional da réplica original.
-- **Reutilizável:** sim, mas com escopo mais estreito que a versão Martech — apenas para clientes Healthtech do segmento "dono/gestor de clínica ou consultório pequeno" com presença física de atendimento. Corretora de plano de saúde (B2B) e faturamento hospitalar/BPO ficam FORA do escopo: não dependem de busca local "perto de mim" para captar cliente [fonte: squads/cadarn-comercial/squad.yaml, bloco `icp.segments`].
+- **Reutilizável:** sim, mas com escopo mais estreito que a versão Martech — apenas para clientes Healtech do segmento "dono/gestor de clínica ou consultório pequeno" com presença física de atendimento. Corretora de plano de saúde (B2B) e faturamento hospitalar/BPO ficam FORA do escopo: não dependem de busca local "perto de mim" para captar cliente [fonte: squads/cadarn-comercial/squad.yaml, bloco `icp.segments`].
 
 ### Restrições Permanentes (não negociáveis — herdadas idênticas, fatos universais de GMN)
 - **LSA (Local Service Ads):** NÃO disponível no Brasil em 2026. Confirmado por múltiplas fontes (pesquisa original Martech, 2026-06-01). Nunca recomendar.
@@ -58,10 +58,10 @@ A pesquisa foi explícita sobre o que NÃO conseguiu confirmar. Estes pontos per
   `2026-06-01_luciano-arthur-escola-seo-metodologia-gmn.md`.
 - Fontes externas: Escola de SEO Luciano Arthur, Escola do Sobral (Google Ads — tangencial), Whitespark Local SEO survey.
 
-### 2026-07-19 — Réplica e Reescopo para Healthtech
-- Decisão de Fabiano: replicar o Radar da Martech para o Healthtech, trocando o avatar de
+### 2026-07-19 — Réplica e Reescopo para Healtech
+- Decisão de Fabiano: replicar o Radar da Martech para o Healtech, trocando o avatar de
   "corretor de imóveis / imobiliária" para "dono/gestor de clínica ou consultório pequeno"
-  — um dos 4 segmentos reais do ICP Healthtech, o único com presença física local relevante
+  — um dos 4 segmentos reais do ICP Healtech, o único com presença física local relevante
   para GMN (corretora de plano de saúde B2B e faturamento hospitalar/BPO não dependem de
   busca local).
   [fonte: squads/cadarn-comercial/squad.yaml deste repositório, blocos `icp.segments` e
@@ -72,7 +72,7 @@ A pesquisa foi explícita sobre o que NÃO conseguiu confirmar. Estes pontos per
 - Exemplos, scripts e templates de descrição/posts adaptados para o contexto de clínica/
   consultório. Categorias GMN de saúde sinalizadas como inferência não verificada (ver seção
   acima) — não copiadas como fato validado.
-- Pesquisas-fonte originais NÃO foram copiadas para este repositório (Healthtech ainda não
+- Pesquisas-fonte originais NÃO foram copiadas para este repositório (Healtech ainda não
   tem Biblioteca Cadarn própria) — permanecem no repositório Martech (_AIOX_Manager). Se
   necessário aprofundar, consultar aquele repositório ou reexecutar pesquisa via Atlas
   (@analyst) neste Tarian.

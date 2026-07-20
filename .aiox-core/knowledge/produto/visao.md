@@ -1,10 +1,10 @@
-# Visão do Produto — Cadarn Healthtech
+# Visão do Produto — Cadarn Healtech
 
 > Fonte: Design Brief Llif v1.0 + Dossiê de Marca v0.1
 
 ## Posicionamento
 
-**Cadarn Healthtech — Engenharia de Fluxo para Saúde Suplementar**
+**Cadarn Healtech — Engenharia de Fluxo para Saúde Suplementar**
 
 Símbolo: bambu — firme porque flui. Nome do agente: Llif (galês "fluxo/corrente").
 

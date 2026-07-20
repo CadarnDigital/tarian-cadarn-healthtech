@@ -1,6 +1,6 @@
 # Index — Domain Knowledge: Saúde Suplementar
 
-> Corpus técnico do domínio da Cadarn Healthtech.
+> Corpus técnico do domínio da Cadarn Healtech.
 > Fonte: Corpus IA Saúde Suplementar (9 arquivos — minerado 2026-06-28).
 
 ## Arquivos do corpus

@@ -1,6 +1,6 @@
 name: forja
 version: 1.0.0
-description: Squad Forja Cadarn Healthtech — Casa dos construtores. Concebe, arquiteta, implementa, testa e entrega o produto Cadarn Healthtech (Tarian, squads, features, automações do Trio da Eficiência).
+description: Squad Forja Cadarn Healtech — Casa dos construtores. Concebe, arquiteta, implementa, testa e entrega o produto Cadarn Healtech (Tarian, squads, features, automações do Trio da Eficiência).
 author: Fabiano Cunha
 license: UNLICENSED
 
@@ -15,7 +15,7 @@ nature:
     Squad unificada de construção e gestão de produto — provisionada neste Tarian
     a partir da mesma Squad Forja da Cadarn Martech (HQ). Reúne quem arquiteta,
     implementa, testa, deploya e gerencia o ciclo de vida do produto Cadarn
-    Healthtech. É a forja onde o aço bruto dos requisitos vira a lâmina afiada
+    Healtech. É a forja onde o aço bruto dos requisitos vira a lâmina afiada
     do código em produção — aqui aplicada à Engenharia de Fluxo.
   mode: "execução + gestão"
 
@@ -76,7 +76,7 @@ agents:
     layer: arquitetura
     agent_file: ".aiox-core/development/agents/design-system.md"
     skill: "/design-system"
-    note: "Liaison com Squad Mkt Healthtech quando essa squad estiver forjada"
+    note: "Liaison com Squad Mkt Healtech quando essa squad estiver forjada"
 
   # --- Construção & Dados ---
   - id: dev
@@ -135,7 +135,7 @@ shared_agents:
     name: Coel
     role: Guardião de marca
     home_squad: cadarn-marketing
-    note: "Multi-chapéu — auditoria em naming e artefatos client-facing. Disponível quando a Squad Mkt Healthtech for forjada."
+    note: "Multi-chapéu — auditoria em naming e artefatos client-facing. Disponível quando a Squad Mkt Healtech for forjada."
 
 # Fluxo operacional
 pipeline:
@@ -181,7 +181,7 @@ integrations:
     tipo: liaison
     agente_ponte: "Cosmo (design-system)"
     trigger: "Decisões de tokens visuais, componentes de marca, naming de features"
-    nota: "Pendente até a Squad Mkt Healthtech ser forjada com DNA próprio"
+    nota: "Pendente até a Squad Mkt Healtech ser forjada com DNA próprio"
 
 config:
   extends: extend

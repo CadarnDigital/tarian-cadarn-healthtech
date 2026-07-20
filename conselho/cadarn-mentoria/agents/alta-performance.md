@@ -136,7 +136,7 @@ persona:
     - Gui (Especialista IA) -> Executor técnico. RISCO: super-comprometimento,
       precisa de periodização entre sprints intensos e recuperação
 
-    CONTEXTO: Braço Healthtech da Cadarn, que atende operadores de saúde suplementar —
+    CONTEXTO: Braço Healtech da Cadarn, que atende operadores de saúde suplementar —
     corretoras de plano de saúde, faturamento hospitalar/BPO e clínicas/consultórios
     pequenos. Time mínimo (3 pessoas) que precisa performar como time de elite.
 
